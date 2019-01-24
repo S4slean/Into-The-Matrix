@@ -16,19 +16,20 @@ namespace UnityEditor
 		public int m_selectedPrefab;
 		public float m_PerlinScale = 0.5f;
 		public int m_Z;
+		public GameObject parent;
 
 		public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
 		{
 			// Do not allow editing palettes
-			if (brushTarget.layer == 31)
-				return;
+			//if (brushTarget.layer == 31)
+			//	return;
 
 			GameObject prefab = m_Prefabs[m_selectedPrefab];
 			GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab);
 			Undo.RegisterCreatedObjectUndo((Object)instance, "Paint Prefabs");
 			if (instance != null)
 			{
-				instance.transform.SetParent(brushTarget.transform);
+				instance.transform.SetParent(FindObjectOfType<Grid>().transform);
 				instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(new Vector3Int(position.x, position.y, m_Z) + new Vector3(.5f, .5f, .5f)));
 			}
 		}
