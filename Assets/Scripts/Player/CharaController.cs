@@ -54,9 +54,6 @@ public class CharaController : MonoBehaviour
 		}
 	}
 
-	
-
-
 
 	IEnumerator Move(Vector3 axe, int step)
 	{
