@@ -1,12 +1,34 @@
-
-*.meta
-
-Library/
-
+# =============== #
+# Unity generated #
+# =============== #
 Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
 
-Assembly-CSharp\.csproj
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
 
-obj/Debug/
-
-\.vs/Into The Matrix/v15/
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
