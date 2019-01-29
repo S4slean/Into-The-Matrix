@@ -5,11 +5,8 @@ using UnityEngine;
 public class AttackBox : MonoBehaviour
 {
 	private bool active = true;
+	public float delay = 1;
 
-	private void Start()
-	{
-		active = true;
-	}
 
 	public void OnTriggerEnter(Collider other)
 	{
@@ -17,10 +14,12 @@ public class AttackBox : MonoBehaviour
 	}
 
 	private void Update()
-	{
-		if (!active)
-			Destroy(gameObject);
-		active = false;
+	{			
+		if(delay < 0)
+			gameObject.SetActive(false);
+
+		delay -= Time.deltaTime;
+
 	}
 
 

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireBall : Skill
+public class DeathBeam : Skill
 {
 	public override void Activate()
 	{
-		print("Throw FireBall");
+		
 	}
-
 }

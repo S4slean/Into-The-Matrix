@@ -7,6 +7,7 @@ public class CharaController : MonoBehaviour
 {
 	[Header("References")]
 	public GameObject AttackBox;
+	private Animator anim;
 
 	[Header ("Move Stats")]
 	[Range (0, 300) ]public int swipeTolerance = 30;
@@ -22,6 +23,7 @@ public class CharaController : MonoBehaviour
 
 	[Header ("States")]
 	[SerializeField] bool ismoving = false;
+	[SerializeField] bool inUI = false;
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
@@ -32,6 +34,7 @@ public class CharaController : MonoBehaviour
 	{
 		if (AttackBox == null)
 			AttackBox = transform.GetChild(1).gameObject;
+		anim = GetComponent<Animator>();
 	}
 
 	private void Update()
@@ -40,12 +43,17 @@ public class CharaController : MonoBehaviour
 		{
 			startMousePos = Input.mousePosition;
 			holdedTime = 0;
+			if (startMousePos.y < 200)
+				inUI = true;
+			else
+				inUI = false;
+	
 		}
 
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0) && !ismoving)
+		if (Input.GetMouseButtonUp(0) && !ismoving && !inUI)
 		{
 			if (swipe.magnitude < swipeTolerance)
 			{
@@ -55,7 +63,7 @@ public class CharaController : MonoBehaviour
 			HandleMove();			
 		}
 
-		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !ismoving)
+		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !ismoving && !inUI)
 		{
 			HandleMove();
 		}
@@ -71,6 +79,12 @@ public class CharaController : MonoBehaviour
 			int step = Mathf.RoundToInt(swipe.x / stepDistance);
 			ismoving = true;
 			StartCoroutine(Move(Vector3.right * Mathf.Sign(step)));
+			if (Mathf.Sign(step) < 0)
+				transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+
+			if (Mathf.Sign(step) > 0)
+				transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+
 
 
 		}
@@ -81,11 +95,22 @@ public class CharaController : MonoBehaviour
 			int step = Mathf.RoundToInt(swipe.y / stepDistance);
 			ismoving = true;
 			StartCoroutine(Move(Vector3.forward * Mathf.Sign(step)));
+			if (Mathf.Sign(step) < 0)
+				transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+
+			if (Mathf.Sign(step) > 0)
+				transform.rotation = Quaternion.Euler(new Vector3(0,0, 0));
 		}
 	}
 
 	IEnumerator Move(Vector3 axe)
 	{
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 2,10))
+		{
+			ismoving = false;
+			yield break;
+		}
+
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
@@ -100,5 +125,6 @@ public class CharaController : MonoBehaviour
 	{
 		print("Attack");
 		AttackBox.SetActive(true);
+		anim.Play("Attack");
 	}
 }

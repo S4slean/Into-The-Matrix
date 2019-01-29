@@ -10,5 +10,12 @@ public class Skill : MonoBehaviour
 	public Image image;
 	public string description;
 	public int cost;
+	public int coolDown;
+
+
+	public virtual void Activate()
+	{
+
+	}
 	
 }
