@@ -107,7 +107,6 @@ public class CharaController : MonoBehaviour
 	{
 		if (Physics.Raycast(transform.position + Vector3.up, axe, 3, 9))
 		{
-			print("obstructed");
 			ismoving = false;
 			yield break;
 		}
@@ -124,7 +123,6 @@ public class CharaController : MonoBehaviour
 
 	void Attack()
 	{
-		print("Attack");
 		AttackBox.SetActive(true);
 		anim.Play("Attack");
 	}

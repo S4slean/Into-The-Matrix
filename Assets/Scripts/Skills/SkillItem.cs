@@ -28,9 +28,7 @@ public class SkillItem : MonoBehaviour
 		{
 			if(FindObjectOfType<SkillBar>().PlayerSkills[0] != null && FindObjectOfType<SkillBar>().PlayerSkills[1] != null && FindObjectOfType<SkillBar>().PlayerSkills[2] != null)
 			{
-				print("full");
 				StartCoroutine(Drop(8, -player.transform.forward));
-	
 			}
 			else
 			{

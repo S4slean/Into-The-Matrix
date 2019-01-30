@@ -8,11 +8,6 @@ public class AttackBox : MonoBehaviour
 	public float delay = 1;
 
 
-	public void OnTriggerEnter(Collider other)
-	{
-		Destroy(other.gameObject);
-	}
-
 	private void Update()
 	{			
 		if(delay < 0)
