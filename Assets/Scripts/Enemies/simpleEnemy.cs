@@ -18,7 +18,7 @@ public class simpleEnemy : MonoBehaviour
 	}
 
 	[Header ("Stats")]
-	[Range(1,1000)] public float difficulty;
+	[Range(1,1000)] public int difficulty;
 	public int moveStep = 8;
 	public int patrolWidth ;
 	public int patrolHeight ;

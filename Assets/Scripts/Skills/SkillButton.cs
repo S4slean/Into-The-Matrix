@@ -12,6 +12,7 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 	RectTransform rectTransform;
 	SkillBar skillBar;
 	Button btn;
+	Image cooldownIMG;
 	public Skill skill;
 
 	private void Start()
@@ -21,6 +22,8 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		rectTransform = GetComponent<RectTransform>();
 		skillBar = FindObjectOfType<SkillBar>();
 		btn = GetComponent<Button>();
+		cooldownIMG = transform.GetChild(1).GetComponent<Image>();
+		skill = GetComponent<Skill>();
 		btn.onClick.AddListener(skill.Activate);
 	}
 
@@ -52,5 +55,10 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		{
 			rectTransform.anchoredPosition = Vector3.zero;
 		}
+	}
+
+	private void Update()
+	{
+		cooldownIMG.fillAmount = Mathf.Clamp01(skill.cooldown/skill.coolDownDuration);
 	}
 }

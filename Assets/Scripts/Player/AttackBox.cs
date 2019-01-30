@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class AttackBox : MonoBehaviour
 {
-	private bool active = true;
 	public float delay = 1;
+	private float timer;
 
+	private void OnEnable()
+	{
+		timer = delay;
+	}
 
 	private void Update()
 	{			
-		if(delay < 0)
+		if(timer < 0)
 			gameObject.SetActive(false);
 
-		delay -= Time.deltaTime;
+		timer -= Time.deltaTime;
 
 	}
 

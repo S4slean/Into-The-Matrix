@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class DealDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public int damage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void OnEnable()
+	{
+		if (gameObject.tag == "Player")
+			damage = GetComponent<PlayerStats>().damage;
+		if (gameObject.tag == "Enemy")
+			damage = GetComponent<simpleEnemy>().difficulty;
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+
+
+		if(other.tag == "Player")
+		{
+		}
+	}
 }

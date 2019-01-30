@@ -7,16 +7,28 @@ using UnityEngine.UI;
 public class Skill : MonoBehaviour
 {
 	public new string name;
-	public Image image;
+	public Sprite icon;
 	public string description;
 	public int cost;
-	public int coolDown;
+	public float coolDownDuration;
 	public bool requireTarget = false;
+
+	public float cooldown;
 
 
 	public virtual void Activate()
 	{
+		if (cooldown > 0)
+			return;
+
+		cooldown = coolDownDuration;
 
 	}
-	
+
+	private void Update()
+	{
+		if (cooldown > 0)
+			cooldown -= Time.deltaTime;
+	}
+
 }

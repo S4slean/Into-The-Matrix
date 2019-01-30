@@ -6,7 +6,10 @@ public class FireBall : Skill
 {
 	public override void Activate()
 	{
-		
+		if (cooldown > 0)
+			return;
+
+		cooldown = coolDownDuration;
 	}
 
 }
