@@ -105,8 +105,9 @@ public class CharaController : MonoBehaviour
 
 	IEnumerator Move(Vector3 axe)
 	{
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 2,10))
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
 		{
+			print("obstructed");
 			ismoving = false;
 			yield break;
 		}
@@ -116,7 +117,7 @@ public class CharaController : MonoBehaviour
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 
-			yield return new WaitForSeconds(stepDuration/moveStep);
+			yield return new WaitForSeconds(0);
 		}
 		ismoving = false;
 	}

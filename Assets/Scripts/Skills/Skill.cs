@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = " new Skill", menuName = "Skills") ]
+
 public class Skill : MonoBehaviour
 {
 	public new string name;
@@ -11,6 +11,7 @@ public class Skill : MonoBehaviour
 	public string description;
 	public int cost;
 	public int coolDown;
+	public bool requireTarget = false;
 
 
 	public virtual void Activate()

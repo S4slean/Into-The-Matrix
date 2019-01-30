@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 {
+	GameObject player;
+	GameObject itemPrefab;
 	RectTransform rectTransform;
 	SkillBar skillBar;
 	Button btn;
@@ -13,6 +15,8 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 
 	private void Start()
 	{
+		itemPrefab = Resources.Load("SkillItem" ) as GameObject;
+		player = FindObjectOfType<CharaController>().gameObject;
 		rectTransform = GetComponent<RectTransform>();
 		skillBar = FindObjectOfType<SkillBar>();
 		btn = GetComponent<Button>();
@@ -30,6 +34,10 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		{
 			int index = skillBar.PlayerSkills.IndexOf(skill);
 			skillBar.PlayerSkills[index] = null; ;
+
+			GameObject instance = Instantiate(itemPrefab, player.transform.position + (2*player.transform.forward), Quaternion.Euler(0,0,0));
+			instance.GetComponent<SkillItem>().skill = skill;
+
 			Destroy(gameObject);
 		}
 		else
