@@ -18,11 +18,12 @@ public class SkillBar : MonoBehaviour
 		{
 			if(PlayerSkills[i] == null)
 			{
-				PlayerSkills[i] = skill;
 				GameObject Instance = Instantiate(SkillButtonPrefab, transform.GetChild(i));
 				SkillButton skillButton = Instance.GetComponent<SkillButton>();
 				CopyComponent(skill, Instance);
+				skill = Instance.GetComponent<Skill>();
 				skillButton.index = i;
+				PlayerSkills[i] = skill;
 				Instance.transform.GetChild(0).GetComponent<Text>().text = skill.name;
 				break;
 			}
