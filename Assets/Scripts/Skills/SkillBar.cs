@@ -22,6 +22,7 @@ public class SkillBar : MonoBehaviour
 				GameObject Instance = Instantiate(SkillButtonPrefab, transform.GetChild(i));
 				SkillButton skillButton = Instance.GetComponent<SkillButton>();
 				skillButton.skill = skill;
+				skillButton.index = i;
 				Instance.transform.GetChild(0).GetComponent<Text>().text = skill.name;
 				break;
 			}

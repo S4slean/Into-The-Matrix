@@ -6,7 +6,7 @@ public class FireBall : Skill
 {
 	public override void Activate()
 	{
-		print("Throw FireBall");
+		
 	}
 
 }

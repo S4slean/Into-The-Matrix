@@ -105,7 +105,7 @@ public class CharaController : MonoBehaviour
 
 	IEnumerator Move(Vector3 axe)
 	{
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 3, 9))
 		{
 			print("obstructed");
 			ismoving = false;

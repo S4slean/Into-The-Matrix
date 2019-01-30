@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 712328406621830145}
   - component: {fileID: 712328406621830158}
   - component: {fileID: 712328406621830159}
+  - component: {fileID: 299071243}
   m_Layer: 9
   m_Name: SkillItem
   m_TagString: Untagged
@@ -105,3 +106,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: {fileID: 0}
+--- !u!95 &299071243
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712328406621830156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b868772ab1e9a35479896ebc3e5058d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

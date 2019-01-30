@@ -203,7 +203,7 @@ public class simpleEnemy : MonoBehaviour
 	{
 		ismoving = true;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 2))
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 3))
 		{
 			ismoving = false;
 			yield break;
