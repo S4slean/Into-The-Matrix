@@ -15,6 +15,7 @@ public class CharaController : MonoBehaviour
 	public int moveStep = 30;
 	public float stepDuration = 1;
 	public float delayBeforeRun = .7f;
+	private Vector3 lastMove;
 
 	[Header ("Attack Stats")]
 	public float attackLength = 1;
@@ -65,7 +66,12 @@ public class CharaController : MonoBehaviour
 
 		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !ismoving && !inUI)
 		{
-			HandleMove();
+			if (swipe.magnitude > swipeTolerance)
+				HandleMove();
+			else
+				StartCoroutine(Move(lastMove));
+
+			startMousePos = Input.mousePosition;
 		}
 
 		holdedTime += Time.deltaTime;
@@ -105,6 +111,8 @@ public class CharaController : MonoBehaviour
 
 	IEnumerator Move(Vector3 axe)
 	{
+		ismoving = true;
+
 		if (Physics.Raycast(transform.position + Vector3.up, axe, 3, 9))
 		{
 			ismoving = false;
@@ -118,6 +126,7 @@ public class CharaController : MonoBehaviour
 
 			yield return new WaitForSeconds(0);
 		}
+		lastMove = axe;
 		ismoving = false;
 	}
 

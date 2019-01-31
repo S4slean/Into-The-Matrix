@@ -19,6 +19,9 @@ public class simpleEnemy : MonoBehaviour
 
 	[Header ("Stats")]
 	[Range(1,1000)] public int difficulty;
+	public int health = 3;
+
+	[Header ("Movement")]
 	public int moveStep = 8;
 	public int patrolWidth ;
 	public int patrolHeight ;
@@ -48,28 +51,28 @@ public class simpleEnemy : MonoBehaviour
 	private void Update()
 	{
 
-
-		enemyToPlayer = player.transform.position - transform.position;
+		CheckDeath();																//Vérifie si il est pas mort
+		enemyToPlayer = player.transform.position - transform.position;				//vérifie la position relative du joueur par rapport à l'ennemie (permettra de récupérer la distance et l'axe le plus court jusqu'à lui)
 
 		switch (state)
 		{
-			case State.patrolRight:
+			case State.patrolRight:													//Patrouille vers la droite
 				{
-					if (step > 0 && !ismoving)
+					if (step > 0 && !ismoving)										//Si il lui reste des pas à faire il bouge à droite
 					{
 						step--;
 						StartCoroutine(Move( Vector3.right));
 					}
-					if( step <= 0)
+					if( step <= 0)													//Sinon il change de direction
 					{
 						step = patrolHeight;
 						state = State.patrolDown;
 					}
-					DetectPlayer();
+					DetectPlayer();													//Vérifie si le joueur est à portée de la zone de détection
 					break;
 				}
 
-			case State.patrolDown:
+			case State.patrolDown:													//Patrouille vers le bas
 				{
 					if (step > 0 && !ismoving)
 					{
@@ -85,7 +88,7 @@ public class simpleEnemy : MonoBehaviour
 					break;
 				}
 
-			case State.patrolLeft:
+			case State.patrolLeft:													//Patrouille vers la gauche
 				{
 					if (step > 0 && !ismoving)
 					{
@@ -102,7 +105,7 @@ public class simpleEnemy : MonoBehaviour
 					break;
 				}
 
-			case State.patrolUp:
+			case State.patrolUp:													//Patrouille vers le haut
 				{
 					if (step > 0 && !ismoving)
 					{
@@ -118,25 +121,25 @@ public class simpleEnemy : MonoBehaviour
 					break;
 				}
 
-			case State.SelectSkill:
+			case State.SelectSkill:																									//Determine quel skill le mob doit utiliser puis pass
 				{
-					if(meleeSkills.Count == 0)
+					if(meleeSkills.Count == 0)																						//S'il n'a pas de skill au CaC il en prend un à distance
 					{
 						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
 						state = State.rangedAttack;
 					}
-					else if(rangedSkills.Count == 0)
+					else if(rangedSkills.Count == 0)																				//S'il n'a pas de skill à distance il en prend un au Cac
 					{
 						selectedSkill = meleeSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
 						state = State.meleeAttack;
 					}
 
-					else if(enemyToPlayer.magnitude < 4)
+					else if(enemyToPlayer.magnitude < 4)																			//S'il a les deux mais est proche, il en prend un au Cac
 					{
 						selectedSkill = meleeSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
 						state = State.meleeAttack;
 					}
-					else
+					else																											//S'il a les deux mais est éloigné, il en prend un à distance
 					{
 						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
 						state = State.rangedAttack;
@@ -146,20 +149,20 @@ public class simpleEnemy : MonoBehaviour
 					break;
 				}
 
-			case State.meleeAttack:
+			case State.meleeAttack:																									//Phase d'attaque au Cac
 				{
-					if (enemyToPlayer.magnitude < 2.5f)
+					if (enemyToPlayer.magnitude < 2.5f)																				//s'il est à portée il utilise le skill
 					{
 						useSkill();
 						return;
 					}
 
-					GetClose();
+					GetClose();																										//Sinon il se rapproche
 
 					break;
 				}
 
-			case State.wait:
+			case State.wait:																										//State vide en attente d'une coroutine de séléction d'action
 				{
 					break;
 				}
@@ -170,26 +173,39 @@ public class simpleEnemy : MonoBehaviour
 
 	}
 
+	//vérifier si le mob est pas mort (t'es pas mourru l'âne, t'es pas mourru)
+	private void CheckDeath()
+	{
+		if(health < 1)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	//Utiliser le skill et passer en attente de la prochaine action
 	private void useSkill()
 	{
-		selectedSkill.Activate();
+		selectedSkill.EnemyUse();
 		state = State.wait;
 		StartCoroutine(Wait());
 	}
 
+	//Permet au mob de se rapprocher du joueur
 	public void GetClose()
 	{
-
+		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
 		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving)
 		{
 			StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 		}
+		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
 			StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 		}
 	}
 
+	//Detection du joueur si il est dans le detection range(distance en case)
 	private void DetectPlayer()
 	{
 		if (enemyToPlayer.magnitude < detectionRange*2 )
@@ -199,11 +215,13 @@ public class simpleEnemy : MonoBehaviour
 		}
 	}
 
+	//Coroutine de mouvement sur une case. Prend en paramètre la direction du dépacement.
 	IEnumerator Move(Vector3 axe)
 	{
 		ismoving = true;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 3))
+		//Detection des obstacles. Si le chemin est obstrué le déplacement est annulé
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 3))						
 		{
 			ismoving = false;
 			yield break;
@@ -218,6 +236,8 @@ public class simpleEnemy : MonoBehaviour
 		}
 		ismoving = false;
 	}
+
+	//Phase d'attente après une attaque
 	IEnumerator Wait()
 	{
 		yield return new WaitForSeconds(waitingTime);

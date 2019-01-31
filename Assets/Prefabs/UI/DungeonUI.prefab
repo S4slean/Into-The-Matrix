@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3172722917862661264}
   - component: {fileID: 5836911610438512103}
   - component: {fileID: 2858351208604150398}
+  - component: {fileID: 95791381105739899}
   m_Layer: 5
   m_Name: SlotLeft
   m_TagString: Untagged
@@ -74,6 +75,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &95791381105739899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381044582774890881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af65673e7682bf0488965221ca26a3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &518683538841240207
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,6 +273,7 @@ GameObject:
   - component: {fileID: 4479556659584664023}
   - component: {fileID: 3981248020634684969}
   - component: {fileID: 6503267978134471779}
+  - component: {fileID: 5149958002123523452}
   m_Layer: 5
   m_Name: SkillBar
   m_TagString: Untagged
@@ -356,6 +370,24 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 0, y: 10}
   m_UseGraphicAlpha: 1
+--- !u!114 &5149958002123523452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149958002123523451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72a22d6d84e72c45ac51b98c575674c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillButtonPrefab: {fileID: 4203993479799126724, guid: 2cdf30bfb08afbf4a9220d2538800036,
+    type: 3}
+  PlayerSkills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7385663474178492849
 GameObject:
   m_ObjectHideFlags: 0

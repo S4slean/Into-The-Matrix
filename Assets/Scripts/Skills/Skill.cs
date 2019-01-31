@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour
 
 	public float cooldown;
 
-
+	//Active the skill
 	public virtual void Activate()
 	{
 		if (cooldown > 0)
@@ -23,6 +23,12 @@ public class Skill : MonoBehaviour
 
 		cooldown = coolDownDuration;
 
+	}
+
+	//Activation by enemy, contains placement functions if needed
+	public virtual void EnemyUse()
+	{
+		Activate();
 	}
 
 	private void Update()
