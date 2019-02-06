@@ -14,7 +14,7 @@ public class AttackBox : MonoBehaviour
 
 	private void Update()
 	{			
-		if(timer < 0)
+		if(timer < 0)								//la box reste active le temps du delay
 			gameObject.SetActive(false);
 
 		timer -= Time.deltaTime;

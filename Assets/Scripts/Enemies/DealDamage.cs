@@ -4,16 +4,8 @@ using UnityEngine;
 
 public class DealDamage : MonoBehaviour
 {
-	public int damage;
+	public int damage = 1;
 
-	private void OnEnable()
-	{
-		//Detect Damage initiator
-		if (gameObject.tag == "Player")
-			damage =FindObjectOfType<PlayerStats>().damage;
-		if (gameObject.tag == "Enemy")
-			damage = GetComponent<simpleEnemy>().difficulty;
-	}
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -30,7 +22,7 @@ public class DealDamage : MonoBehaviour
 		}
 
 		//Trigger interaction with NPC
-		if(other.tag == "NPC")
+		if(other.tag == "NPC" && gameObject.tag =="Player")
 		{
 
 		}

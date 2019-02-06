@@ -183,11 +183,9 @@ public class simpleEnemy : MonoBehaviour
 	}
 
 	//Utiliser le skill et passer en attente de la prochaine action
-	private void useSkill()
+	public void useSkill()
 	{
-		selectedSkill.EnemyUse();
-		state = State.wait;
-		StartCoroutine(Wait());
+		StartCoroutine(selectedSkill.EnemyUse(this));
 	}
 
 	//Permet au mob de se rapprocher du joueur
@@ -237,11 +235,18 @@ public class simpleEnemy : MonoBehaviour
 		ismoving = false;
 	}
 
-	//Phase d'attente après une attaque
-	IEnumerator Wait()
+	//Phase d'attente après une attaque (Relance le patterne de l'ennemi)
+	public IEnumerator WaitForNewCycle()
 	{
+		state = State.wait;
 		yield return new WaitForSeconds(waitingTime);
 		DetectPlayer();
 		state = State.patrolUp;
+	}
+
+	public void ReceiveDamage(int dmg)
+	{
+		state = State.wait;
+		health -= dmg;
 	}
 }
