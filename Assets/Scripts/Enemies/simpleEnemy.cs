@@ -20,6 +20,7 @@ public class simpleEnemy : MonoBehaviour
 	[Header ("Stats")]
 	[Range(1,1000)] public int difficulty;
 	public int health = 3;
+	public int strength = 1;
 
 	[Header ("Movement")]
 	public int moveStep = 8;
@@ -242,11 +243,5 @@ public class simpleEnemy : MonoBehaviour
 		yield return new WaitForSeconds(waitingTime);
 		DetectPlayer();
 		state = State.patrolUp;
-	}
-
-	public void ReceiveDamage(int dmg)
-	{
-		state = State.wait;
-		health -= dmg;
 	}
 }

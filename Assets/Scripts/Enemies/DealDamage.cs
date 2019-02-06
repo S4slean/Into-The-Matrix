@@ -13,6 +13,7 @@ public class DealDamage : MonoBehaviour
 		if(other.tag == "Player")
 		{
 			other.GetComponent<PlayerStats>().health -= damage;
+			//Ajouter Feedbacks visuels !!								<=============
 		}
 		
 		//Deal damage to ennemies
@@ -22,9 +23,10 @@ public class DealDamage : MonoBehaviour
 		}
 
 		//Trigger interaction with NPC
-		if(other.tag == "NPC" && gameObject.tag =="Player")
+		if(other.tag == "NPC" && gameObject.tag =="Player" )
 		{
 
 		}
+
 	}
 }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 	public int health = 3;
-	public int damage = 1;
+	public int strength = 1;
+	public int defense = 1;
 
 	public void Update()
 	{
