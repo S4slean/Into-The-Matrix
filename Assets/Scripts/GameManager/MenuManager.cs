@@ -8,14 +8,14 @@ public class MenuManager : MonoBehaviour
 
     [Header("Test")]
 
-    public GameObject SorcierPanel;
+    public GameObject MarchandPanel;
     public GameObject PortePanel;
 
 
 
     public void ActiveSorcierPanel()
     {
-        SorcierPanel.SetActive(true);
+        MarchandPanel.SetActive(true);
     }
 
     public void ActivePortePanel()
@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
 
     public void Menu ()
     {
-        SorcierPanel.SetActive(false);
+        MarchandPanel.SetActive(false);
         PortePanel.SetActive(false);
     }
 
