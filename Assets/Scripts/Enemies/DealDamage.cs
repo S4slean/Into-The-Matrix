@@ -12,7 +12,7 @@ public class DealDamage : MonoBehaviour
 		//Deal Damage to player
 		if(other.tag == "Player")
 		{
-			other.GetComponent<PlayerStats>().health -= damage;
+			FindObjectOfType<PlayerStats>().health -= damage;
 			//Ajouter Feedbacks visuels !!								<=============
 		}
 		

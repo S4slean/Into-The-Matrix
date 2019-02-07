@@ -25,7 +25,7 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		cooldownIMG = transform.GetChild(1).GetComponent<Image>();
 		skill = GetComponent<Skill>();
 
-		btn.onClick.AddListener(skill.Activate);												//Ajout de la fonction du skill à l'event du bouton
+		btn.onClick.AddListener(delegate { skill.Activate(player); });												//Ajout de la fonction du skill à l'event du bouton
 	}
 
 	//Déplacement du skill lors d'un Drag

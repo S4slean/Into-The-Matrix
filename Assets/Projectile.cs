@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+
 		switch (behaviour)
 		{
 			case Behaviour.oneHit:

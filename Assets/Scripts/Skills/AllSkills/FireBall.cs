@@ -11,14 +11,14 @@ public class FireBall : Skill
 		fireballPrefab = Resources.Load("Projectiles/Fireball") as GameObject;
 	}
 
-	public override void Activate()
+	public override void Activate(GameObject user)
 	{
 		if (cooldown > 0)
 			return;
 
 		cooldown = coolDownDuration;
 
-
+		Instantiate(fireballPrefab, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation);
 
 
 	}
