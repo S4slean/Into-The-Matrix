@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMoneyManager : MonoBehaviour
 {
     public int currentMoney; // Argent que le joueur possède
+    public Text CoinsText;
 
     void Start()
     {
@@ -19,6 +21,7 @@ public class PlayerMoneyManager : MonoBehaviour
         }
 
         //Line where to set the UI element for money
+        CoinsText.text = "Coins:" + currentMoney;
     }
 
     void Update()
@@ -32,5 +35,7 @@ public class PlayerMoneyManager : MonoBehaviour
         currentMoney += MoneyToAdd;
         PlayerPrefs.SetInt("PlayerCurrentMoney", currentMoney);
         //Line where to update the UI element for money
+        CoinsText.text = "Coins:"+currentMoney;
+
     }
 }
