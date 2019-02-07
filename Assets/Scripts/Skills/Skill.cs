@@ -18,6 +18,8 @@ public class Skill : MonoBehaviour
 	public float coolDownDuration;
 	[Tooltip("The player needs to select a specific target ?")]
 	public bool requireTarget = false;
+	[Tooltip("")]
+	public float enemyActivationRange = 5;
 	[Tooltip("The anticipation animation duration")]
 	public float enemyLaunchTime = .75f;
 	[Tooltip("The Recover animation duration (Vulnerability Frame)")]
@@ -27,7 +29,7 @@ public class Skill : MonoBehaviour
 	public float cooldown;
 
 	//Active the skill
-	public virtual void Activate()
+	public virtual void Activate(GameObject user)
 	{
 		if (cooldown > 0)
 			return;
@@ -38,9 +40,9 @@ public class Skill : MonoBehaviour
 	//Activation by enemy, contains placement functions if needed
 	public virtual IEnumerator EnemyUse(simpleEnemy enemy)
 	{
-		yield return new WaitForSeconds(1);
-		Activate();
-		StartCoroutine(enemy.WaitForNewCycle());
+		yield return new WaitForSeconds(enemyLaunchTime);
+		Activate(enemy.gameObject);
+		StartCoroutine(enemy.WaitForNewCycle(enemyRecoverTime));
 		yield break;
 	}
 

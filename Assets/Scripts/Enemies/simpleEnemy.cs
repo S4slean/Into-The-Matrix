@@ -27,7 +27,6 @@ public class simpleEnemy : MonoBehaviour
 	public int patrolWidth ;
 	public int patrolHeight ;
 	public int detectionRange = 6;
-	public float waitingTime = 2;
 
 	[Header("States")]
 	public State state;
@@ -154,11 +153,20 @@ public class simpleEnemy : MonoBehaviour
 				{
 					if (enemyToPlayer.magnitude < 2.5f)																				//s'il est à portée il utilise le skill
 					{
+						FacePlayer();
 						useSkill();
+						state = State.wait;
 						return;
 					}
 
 					GetClose();																										//Sinon il se rapproche
+
+					break;
+				}
+
+			case State.rangedAttack:
+				{
+					DetectPlayerInLine(selectedSkill.enemyActivationRange);
 
 					break;
 				}
@@ -173,6 +181,34 @@ public class simpleEnemy : MonoBehaviour
 
 
 	}
+
+	private bool DetectPlayerInLine(float range)
+	{
+		if (Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z))
+		{
+			return Physics.Raycast(transform.position, (Vector3.right * Mathf.Sign(enemyToPlayer.x)), range);
+
+		}
+		else
+		{
+			return Physics.Raycast(transform.position, (Vector3.forward * Mathf.Sign(enemyToPlayer.z)), range);
+		}
+	}
+
+	private void FacePlayer()
+	{
+		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
+		if (Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z))
+		{
+			transform.LookAt(transform.position +(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
+		}
+		//si plus éloigné sur l'axe vertical se rapprocher verticalement
+		else
+		{
+			transform.LookAt(transform.position + (Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
+		}
+	}
+
 
 	//vérifier si le mob est pas mort (t'es pas mourru l'âne, t'es pas mourru)
 	private void CheckDeath()
@@ -205,13 +241,15 @@ public class simpleEnemy : MonoBehaviour
 	}
 
 	//Detection du joueur si il est dans le detection range(distance en case)
-	private void DetectPlayer()
+	private bool DetectPlayer()
 	{
-		if (enemyToPlayer.magnitude < detectionRange*2 )
+		if (enemyToPlayer.magnitude < detectionRange * 2)
 		{
 			state = State.SelectSkill;
-			return;
+			return true;
 		}
+		else
+			return false;
 	}
 
 	//Coroutine de mouvement sur une case. Prend en paramètre la direction du dépacement.
@@ -237,11 +275,11 @@ public class simpleEnemy : MonoBehaviour
 	}
 
 	//Phase d'attente après une attaque (Relance le patterne de l'ennemi)
-	public IEnumerator WaitForNewCycle()
+	public IEnumerator WaitForNewCycle(float waitingTime)
 	{
 		state = State.wait;
 		yield return new WaitForSeconds(waitingTime);
-		DetectPlayer();
-		state = State.patrolUp;
+		if(!DetectPlayer())
+			state = State.patrolUp;
 	}
 }

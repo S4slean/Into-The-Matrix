@@ -5,9 +5,12 @@ using UnityEngine;
 public class ConstantSpin : MonoBehaviour
 {
 	public int angularSpeed = 5;
-    // Update is called once per frame
-    void Update()
+	private Vector3 localForward;
+	// Update is called once per frame
+	void Update()
     {
-		transform.Rotate(transform.forward, 5); 
+		localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
+
+		transform.Rotate(localForward, 5); 
     }
 }
