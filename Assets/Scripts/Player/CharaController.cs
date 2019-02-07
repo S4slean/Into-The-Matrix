@@ -113,7 +113,7 @@ public class CharaController : MonoBehaviour
 	{
 		ismoving = true;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 3, 9))
+		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
 		{
 			ismoving = false;
 			yield break;

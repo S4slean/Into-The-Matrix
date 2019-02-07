@@ -166,7 +166,15 @@ public class simpleEnemy : MonoBehaviour
 
 			case State.rangedAttack:
 				{
-					DetectPlayerInLine(selectedSkill.enemyActivationRange);
+					if(DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
+					{
+						FacePlayer();
+						useSkill();
+						state = State.wait;
+						return;
+					}
+					else
+						GetClose();
 
 					break;
 				}
@@ -186,12 +194,22 @@ public class simpleEnemy : MonoBehaviour
 	{
 		if (Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z))
 		{
-			return Physics.Raycast(transform.position, (Vector3.right * Mathf.Sign(enemyToPlayer.x)), range);
+			RaycastHit hit;
+			Physics.Raycast(transform.position, (Vector3.right * Mathf.Sign(enemyToPlayer.x)),out hit, range);
+			if (hit.transform.tag == "Player")
+				return true;
+			else
+				return false;
 
 		}
 		else
 		{
-			return Physics.Raycast(transform.position, (Vector3.forward * Mathf.Sign(enemyToPlayer.z)), range);
+			RaycastHit hit;
+			Physics.Raycast(transform.position, (Vector3.forward * Mathf.Sign(enemyToPlayer.z)),out hit, range);
+			if (hit.transform.tag == "Player")
+				return true;
+			else
+				return false;
 		}
 	}
 
@@ -229,14 +247,20 @@ public class simpleEnemy : MonoBehaviour
 	public void GetClose()
 	{
 		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
-		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving)
+		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving )
 		{
-			StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
+			if( Mathf.RoundToInt(enemyToPlayer.x) <20)
+				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
+			else
+				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 		}
 		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
-			StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
+			if (Mathf.RoundToInt(enemyToPlayer.z) <2)
+				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
+			else
+				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 		}
 	}
 
@@ -245,8 +269,16 @@ public class simpleEnemy : MonoBehaviour
 	{
 		if (enemyToPlayer.magnitude < detectionRange * 2)
 		{
-			state = State.SelectSkill;
-			return true;
+			RaycastHit hit;
+			if(!Physics.Raycast(transform.position, enemyToPlayer, out hit, 9)) return false;
+
+			if (hit.transform.name == "Player")
+			{
+				state = State.SelectSkill;
+				return true;
+			}
+			else return false;
+
 		}
 		else
 			return false;
@@ -258,7 +290,7 @@ public class simpleEnemy : MonoBehaviour
 		ismoving = true;
 
 		//Detection des obstacles. Si le chemin est obstrué le déplacement est annulé
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 3))						
+		if (Physics.Raycast(transform.position + Vector3.up, axe,2))						
 		{
 			ismoving = false;
 			yield break;
@@ -279,7 +311,7 @@ public class simpleEnemy : MonoBehaviour
 	{
 		state = State.wait;
 		yield return new WaitForSeconds(waitingTime);
-		if(!DetectPlayer())
+		if (!DetectPlayer())
 			state = State.patrolUp;
 	}
 }
