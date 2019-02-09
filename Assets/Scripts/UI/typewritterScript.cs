@@ -19,12 +19,19 @@ public class typewritterScript : MonoBehaviour
 
     IEnumerator ShowText ()
     {
-        for(int i = 0;i < fullText.Length; i++)
+        for(int i = 0;i < fullText.Length+1; i++)
         {
             currentText = fullText.Substring(0, i);
             this.GetComponent<Text>().text = currentText;
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForEndOfFrame();
         }
     }
+
+	public void NextText(string newText)
+	{
+		fullText = newText;
+		currentText = "";
+		StartCoroutine(ShowText());
+	}
 }
 

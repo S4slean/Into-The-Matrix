@@ -23,9 +23,9 @@ public class DealDamage : MonoBehaviour
 		}
 
 		//Trigger interaction with NPC
-		if(other.tag == "NPC" && gameObject.tag =="Player" )
+		if(other.tag == "PNJ" && gameObject.tag =="Player" )
 		{
-
+			other.GetComponent<PNJ_Dialogue>().DisplayText();
 		}
 
 	}
