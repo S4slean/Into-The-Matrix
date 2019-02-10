@@ -1,5 +1,3 @@
-#if (UNITY_EDITOR)
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -13,10 +11,9 @@ namespace UnityEditor
 	{
 		private const float k_PerlinOffset = 100000f;
 		public GameObject[] m_Prefabs;
-		public int m_selectedPrefab;
 		public float m_PerlinScale = 0.5f;
 		public int m_Z;
-		public GameObject parent;
+		public int m_index;
 
 		public override void Paint(GridLayout grid, GameObject brushTarget, Vector3Int position)
 		{
@@ -24,12 +21,17 @@ namespace UnityEditor
 			//if (brushTarget.layer == 31)
 			//	return;
 
-			GameObject prefab = m_Prefabs[m_selectedPrefab];
+			//int index = Mathf.Clamp(Mathf.FloorToInt(GetPerlinValue(position, m_PerlinScale, k_PerlinOffset)*m_Prefabs.Length), 0, m_Prefabs.Length - 1);
+			GameObject prefab = m_Prefabs[m_index];
+			Transform checkObject = GetObjectInCell(grid, grid.transform, new Vector3Int(position.x, position.y, m_Z));
+			if(checkObject != null)
+				Undo.DestroyObjectImmediate(checkObject.gameObject);
+
 			GameObject instance = (GameObject) PrefabUtility.InstantiatePrefab(prefab);
 			Undo.RegisterCreatedObjectUndo((Object)instance, "Paint Prefabs");
 			if (instance != null)
 			{
-				instance.transform.SetParent(FindObjectOfType<Grid>().transform);
+				instance.transform.SetParent(grid.transform);
 				instance.transform.position = grid.LocalToWorld(grid.CellToLocalInterpolated(new Vector3Int(position.x, position.y, m_Z) + new Vector3(.5f, .5f, .5f)));
 			}
 		}
@@ -37,10 +39,10 @@ namespace UnityEditor
 		public override void Erase(GridLayout grid, GameObject brushTarget, Vector3Int position)
 		{
 			// Do not allow editing palettes
-			if (brushTarget.layer == 31)
-				return;
+			//if (brushTarget.layer == 31)
+			//	return;
 
-			Transform erased = GetObjectInCell(grid, brushTarget.transform, new Vector3Int(position.x, position.y, m_Z));
+			Transform erased = GetObjectInCell(grid, grid.transform, new Vector3Int(position.x, position.y, m_Z));
 			if (erased != null)
 				Undo.DestroyObjectImmediate(erased.gameObject);
 		}
@@ -74,6 +76,7 @@ namespace UnityEditor
 
 		private SerializedProperty m_Prefabs;
 		private SerializedObject m_SerializedObject;
+		private SerializedProperty m_index;
 
 		protected void OnEnable()
 		{
@@ -86,12 +89,10 @@ namespace UnityEditor
 			m_SerializedObject.UpdateIfRequiredOrScript();
 			prefabBrush.m_PerlinScale = EditorGUILayout.Slider("Perlin Scale", prefabBrush.m_PerlinScale, 0.001f, 0.999f);
 			prefabBrush.m_Z = EditorGUILayout.IntField("Position Z", prefabBrush.m_Z);
-			prefabBrush.m_selectedPrefab = EditorGUILayout.IntField("SelectedPrefab", prefabBrush.m_selectedPrefab);
+			prefabBrush.m_index = EditorGUILayout.IntField("Selected Prefab", prefabBrush.m_index);
 				
 			EditorGUILayout.PropertyField(m_Prefabs, true);
 			m_SerializedObject.ApplyModifiedPropertiesWithoutUndo();
 		}
 	}
 }
-
-#endif
