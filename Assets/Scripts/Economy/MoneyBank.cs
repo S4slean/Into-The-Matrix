@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class MoneyBank : MonoBehaviour
 {
+    //DEBUG
+    //Appuyer sur A pour déposer l'argent du joueur dans la banque
+    //Appuyer sur Z pour reset la banque 
 
-    public PlayerMoneyManager PMM;
     public int BankMoney; // Argent disponible dans la banque
+    public PlayerMoneyManager PMM;
 
     // Start is called before the first frame update
     void Start()
