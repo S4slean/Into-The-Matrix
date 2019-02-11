@@ -16,13 +16,11 @@ public class RoomSpawner : MonoBehaviour
 	bool spawned = false;
 	bool destroying = false;
 	RoomTemplates roomTemplates;
-	GameObject filler;
 	float delay;
 
 	private void Start()
 	{
 		roomTemplates = FindObjectOfType<RoomTemplates>();
-		filler = roomTemplates.filler;
 
 		if (openingdir == OpeningDirection.Left)
 			delay = .2f;
@@ -91,16 +89,15 @@ public class RoomSpawner : MonoBehaviour
 	{
 		if (other.tag != "RoomSpawner")
 		{
-			//Instantiate(filler, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}
 		else
 		{
-			if (other.GetComponent<RoomSpawner>().destroying == false)
+			if (other.GetComponent<RoomSpawner>().destroying == false )
 			{
 				spawned = true;
 				destroying = true;
-				Invoke("Destroy", .1f);
+				Destroy();
 			}
 		}
 	}

@@ -15,7 +15,7 @@ public class RoomTemplates : MonoBehaviour
 	public List<GameObject> upEnds;
 	public List<GameObject> downEnds;
 	public List<GameObject> rightEnds;
-	public GameObject filler;
+
 
 	[Header ("Dungeon Properties")]
 	public List<GameObject> spawnedRooms;
