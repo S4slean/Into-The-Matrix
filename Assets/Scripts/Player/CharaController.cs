@@ -23,7 +23,8 @@ public class CharaController : MonoBehaviour
 	public static Collider[] targets;
 
 	[Header ("States")]
-	[SerializeField] bool ismoving = false;
+	[SerializeField] bool unableToMove = false;
+	[SerializeField] bool unableToRotate = false;
 	[SerializeField] bool inUI = false;
 
 	private Vector3 startMousePos;
@@ -54,7 +55,7 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0) && !ismoving && !inUI)
+		if (Input.GetMouseButtonUp(0) && !unableToMove && !inUI)
 		{
 			if (swipe.magnitude < swipeTolerance)
 			{
@@ -64,7 +65,7 @@ public class CharaController : MonoBehaviour
 			HandleMove();			
 		}
 
-		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !ismoving && !inUI)
+		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !unableToMove && !inUI)
 		{
 			if (swipe.magnitude > swipeTolerance)
 				HandleMove();
@@ -82,13 +83,12 @@ public class CharaController : MonoBehaviour
 		//Mouvement Horizontal
 		if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
 		{
-			int step = Mathf.RoundToInt(swipe.x / stepDistance);
-			ismoving = true;
+			int step = Mathf.RoundToInt(swipe.x / stepDistance);;
 			StartCoroutine(Move(Vector3.right * Mathf.Sign(step)));
-			if (Mathf.Sign(step) < 0)
+			if (Mathf.Sign(step) < 0 && !unableToRotate)
 				transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
 
-			if (Mathf.Sign(step) > 0)
+			if (Mathf.Sign(step) > 0 && !unableToRotate)
 				transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
 
 
@@ -99,23 +99,22 @@ public class CharaController : MonoBehaviour
 		if (Mathf.Abs(swipe.x) < Math.Abs(swipe.y))
 		{
 			int step = Mathf.RoundToInt(swipe.y / stepDistance);
-			ismoving = true;
 			StartCoroutine(Move(Vector3.forward * Mathf.Sign(step)));
-			if (Mathf.Sign(step) < 0)
+			if (Mathf.Sign(step) < 0 && !unableToRotate)
 				transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
-			if (Mathf.Sign(step) > 0)
+			if (Mathf.Sign(step) > 0 && !unableToRotate)
 				transform.rotation = Quaternion.Euler(new Vector3(0,0, 0));
 		}
 	}
 
 	IEnumerator Move(Vector3 axe)
 	{
-		ismoving = true;
+		unableToMove = true;
 
 		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
 		{
-			ismoving = false;
+			unableToMove = false;
 			yield break;
 		}
 
@@ -127,12 +126,18 @@ public class CharaController : MonoBehaviour
 			yield return new WaitForSeconds(0);
 		}
 		lastMove = axe;
-		ismoving = false;
+		unableToMove = false;
 	}
 
 	void Attack()
 	{
 		AttackBox.SetActive(true);
 		anim.Play("Attack");
+	}
+
+	public void SetPlayerMovement(bool canMove, bool canRotate)
+	{
+		unableToMove = !canMove;
+		unableToRotate = !canRotate;
 	}
 }
