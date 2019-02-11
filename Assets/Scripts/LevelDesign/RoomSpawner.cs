@@ -14,6 +14,7 @@ public class RoomSpawner : MonoBehaviour
 
 	public OpeningDirection openingdir;
 	bool spawned = false;
+	bool destroying = false;
 	RoomTemplates roomTemplates;
 	GameObject filler;
 	float delay;
@@ -24,20 +25,21 @@ public class RoomSpawner : MonoBehaviour
 		filler = roomTemplates.filler;
 
 		if (openingdir == OpeningDirection.Left)
-			delay = .02f;
+			delay = .2f;
 		if (openingdir == OpeningDirection.Top)
-			delay = .03f;
+			delay = .3f;
 		if (openingdir == OpeningDirection.Right)
-			delay = .05f;
+			delay = .5f;
 		if (openingdir == OpeningDirection.Bottom)
-			delay = .07f;
+			delay = .7f;
 
-		Invoke("DefineNeededRoom",.1f);
+		Invoke("DefineNeededRoom",delay);
 
 	}
 
 	private void DefineNeededRoom()
 	{
+
 
 		if (roomTemplates.spawnedRooms.Count > roomTemplates.dungeonSize)
 		{
@@ -65,6 +67,9 @@ public class RoomSpawner : MonoBehaviour
 
 	private void SpawnRoom(List<GameObject> roomList)
 	{
+		if (spawned || destroying)
+			return;
+
 		int roomID;
 		if (roomTemplates.seedGenerated == false)
 		{
@@ -75,7 +80,6 @@ public class RoomSpawner : MonoBehaviour
 		{
 			roomID = int.Parse(roomTemplates.seed.Substring(0, 1));
 			roomTemplates.seed = roomTemplates.seed.Remove(0, 1);
-			print(roomID);
 		}
 
 		roomTemplates.spawnedRooms.Add( Instantiate(roomList[roomID], transform.position, Quaternion.identity));
@@ -90,5 +94,19 @@ public class RoomSpawner : MonoBehaviour
 			//Instantiate(filler, transform.position, Quaternion.identity);
 			Destroy(gameObject);
 		}
+		else
+		{
+			if (other.GetComponent<RoomSpawner>().destroying == false)
+			{
+				spawned = true;
+				destroying = true;
+				Invoke("Destroy", .1f);
+			}
+		}
+	}
+
+	public void Destroy()
+	{
+		Destroy(gameObject);
 	}
 }
