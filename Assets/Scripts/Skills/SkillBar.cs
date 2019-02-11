@@ -9,7 +9,7 @@ public class SkillBar : MonoBehaviour
 	public GameObject SkillButtonPrefab;
 	public List<Skill> PlayerSkills = new List<Skill>(3);
 
-	//Création du boton
+	//Création du boutton
     public void CreateButton(Skill skill)
 	{
 		if (PlayerSkills.Count > 3)							// si le joueur à déjà 3 skill ne fait rien
@@ -29,7 +29,6 @@ public class SkillBar : MonoBehaviour
 				break;
 			}
 		}
-
 	}
 
 	//Permet de copier un component sur un autre gameobject

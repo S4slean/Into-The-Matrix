@@ -11,8 +11,6 @@ public class MenuManager : MonoBehaviour
     public GameObject MarchandPanel;
     public GameObject PortePanel;
 
-
-
     public void ActiveSorcierPanel()
     {
         MarchandPanel.SetActive(true);

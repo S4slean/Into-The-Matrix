@@ -19,8 +19,6 @@ public class FireBall : Skill
 		cooldown = coolDownDuration;
 
 		Instantiate(fireballPrefab, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation);
-
-
 	}
 
 }
