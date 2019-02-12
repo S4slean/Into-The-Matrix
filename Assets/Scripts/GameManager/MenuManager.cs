@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
 
     public GameObject MarchandPanel;
     public GameObject PortePanel;
+    public CharaController PlayerCC; 
 
     public void ActiveSorcierPanel()
     {
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
     {
         MarchandPanel.SetActive(false);
         PortePanel.SetActive(false);
+        PlayerCC.enabled = true;
     }
 
     public void EntertheDungeons ()

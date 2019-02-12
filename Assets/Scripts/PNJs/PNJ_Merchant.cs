@@ -6,15 +6,10 @@ using UnityEngine.UI;
 public class PNJ_Merchant : MonoBehaviour
 {
     public GameObject MerchantInterface; // Interface du marchand sur l'UI, qui doit s'activer quand le joueur interragit avec le PNJ
+    public CharaController PlayerCC;
 
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         
     }
@@ -24,6 +19,7 @@ public class PNJ_Merchant : MonoBehaviour
         if(other.name == "AttackCollider")
         {
             MerchantInterface.SetActive(true);
+            PlayerCC.enabled = false;
         }
     }
 }
