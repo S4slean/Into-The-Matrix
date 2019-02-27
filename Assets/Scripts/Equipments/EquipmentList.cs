@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Liste des équipements trouvables dans le dongeon
+
 public class EquipmentList : MonoBehaviour
 {
     public List<Equipment> equipments;
