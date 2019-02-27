@@ -5,7 +5,7 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour
 {
 	public int damage = 1;
-	public bool DoT = false;
+	public bool DamageOverTime = false;
 
 	public float dmgTick = 1;
 	float tick;
@@ -20,7 +20,7 @@ public class DealDamage : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		if (!DoT)
+		if (!DamageOverTime)
 			return;
 
 		tick -= Time.deltaTime;
@@ -34,6 +34,10 @@ public class DealDamage : MonoBehaviour
 
 	private void ApplyDamage(Collider other)
 	{
+
+		if (other.tag == null)
+			return;
+
 		//Deal Damage to player
 		if (other.tag == "Player")
 		{
@@ -44,7 +48,7 @@ public class DealDamage : MonoBehaviour
 		//Deal damage to ennemies
 		if (other.tag == "Enemy")
 		{
-			other.GetComponent<simpleEnemy>().health -= damage;
+			other.GetComponent<SimpleEnemy>().health -= damage;
 		}
 
 		//Trigger interaction with NPC

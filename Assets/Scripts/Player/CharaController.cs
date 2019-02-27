@@ -25,6 +25,7 @@ public class CharaController : MonoBehaviour
 	[Header ("States")]
 	[SerializeField] bool unableToMove = false;
 	[SerializeField] bool unableToRotate = false;
+	[SerializeField] bool isMoving = false;
 	[SerializeField] bool inUI = false;
 
 	private Vector3 startMousePos;
@@ -55,7 +56,7 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0) && !unableToMove && !inUI)
+		if (Input.GetMouseButtonUp(0) && !isMoving && !inUI)
 		{
 			if (swipe.magnitude < swipeTolerance)
 			{
@@ -65,7 +66,7 @@ public class CharaController : MonoBehaviour
 			HandleMove();			
 		}
 
-		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !unableToMove && !inUI)
+		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !isMoving && !inUI)
 		{
 			if (swipe.magnitude > swipeTolerance)
 				HandleMove();
@@ -110,11 +111,14 @@ public class CharaController : MonoBehaviour
 
 	IEnumerator Move(Vector3 axe)
 	{
-		unableToMove = true;
+		if (unableToMove && isMoving)
+			yield break;
+
+		isMoving = true;
 
 		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
 		{
-			unableToMove = false;
+			isMoving = false;
 			yield break;
 		}
 
@@ -126,7 +130,7 @@ public class CharaController : MonoBehaviour
 			yield return new WaitForSeconds(0);
 		}
 		lastMove = axe;
-		unableToMove = false;
+		isMoving = false;
 	}
 
 	void Attack()

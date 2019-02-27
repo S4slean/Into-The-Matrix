@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class simpleEnemy : MonoBehaviour
+public class SimpleEnemy : MonoBehaviour
 {
 	public enum State
 	{
@@ -14,7 +14,8 @@ public class simpleEnemy : MonoBehaviour
 		SelectSkill,
 		rangedAttack,
 		meleeAttack,
-		wait
+		wait,
+		follow
 	}
 
 	[Header ("Stats")]
@@ -31,6 +32,12 @@ public class simpleEnemy : MonoBehaviour
 	[Header("States")]
 	public State state;
 	[SerializeField] private bool ismoving = false;
+	public bool isAttacking = false;
+	public bool unableToMove = false;
+	public bool unableToRotate = false;
+
+
+
 	int step;
 	private GameObject player;
 	private Vector3 enemyToPlayer;
@@ -123,9 +130,11 @@ public class simpleEnemy : MonoBehaviour
 
 			case State.SelectSkill:																									//Determine quel skill le mob doit utiliser puis pass
 				{
+					
+
 					if(meleeSkills.Count == 0)																						//S'il n'a pas de skill au CaC il en prend un à distance
 					{
-						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
+						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, rangedSkills.Count)];
 						state = State.rangedAttack;
 					}
 					else if(rangedSkills.Count == 0)																				//S'il n'a pas de skill à distance il en prend un au Cac
@@ -141,7 +150,7 @@ public class simpleEnemy : MonoBehaviour
 					}
 					else																											//S'il a les deux mais est éloigné, il en prend un à distance
 					{
-						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, meleeSkills.Count)];
+						selectedSkill = rangedSkills[UnityEngine.Random.Range(0, rangedSkills.Count)];
 						state = State.rangedAttack;
 					}
 
@@ -154,8 +163,8 @@ public class simpleEnemy : MonoBehaviour
 					if (enemyToPlayer.magnitude < 2.5f)																				//s'il est à portée il utilise le skill
 					{
 						FacePlayer();
-						useSkill();
 						state = State.wait;
+						useSkill();
 						return;
 					}
 
@@ -169,13 +178,19 @@ public class simpleEnemy : MonoBehaviour
 					if(DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
 					{
 						FacePlayer();
-						useSkill();
 						state = State.wait;
+						useSkill();
 						return;
 					}
 					else
 						GetClose();
 
+					break;
+				}
+
+			case State.follow:
+				{
+					GetClose();
 					break;
 				}
 
@@ -195,9 +210,13 @@ public class simpleEnemy : MonoBehaviour
 		if (Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z))
 		{
 			RaycastHit hit;
-			Physics.Raycast(transform.position, (Vector3.right * Mathf.Sign(enemyToPlayer.x)),out hit, range);
-			if (hit.transform.tag == "Player")
-				return true;
+			if (Physics.Raycast(transform.position, (Vector3.right * Mathf.Sign(enemyToPlayer.x)), out hit, range))
+			{
+				if (hit.transform.tag == "Player")
+					return true;
+				else
+					return false;
+			}
 			else
 				return false;
 
@@ -205,9 +224,13 @@ public class simpleEnemy : MonoBehaviour
 		else
 		{
 			RaycastHit hit;
-			Physics.Raycast(transform.position, (Vector3.forward * Mathf.Sign(enemyToPlayer.z)),out hit, range);
-			if (hit.transform.tag == "Player")
-				return true;
+			if (Physics.Raycast(transform.position, (Vector3.forward * Mathf.Sign(enemyToPlayer.z)), out hit, range))
+			{
+				if (hit.transform.tag == "Player")
+					return true;
+				else
+					return false;
+			}
 			else
 				return false;
 		}
@@ -274,7 +297,9 @@ public class simpleEnemy : MonoBehaviour
 
 			if (hit.transform.name == "Player")
 			{
-				state = State.SelectSkill;
+				if(!isAttacking)
+					state = State.SelectSkill;
+
 				return true;
 			}
 			else return false;
@@ -290,11 +315,15 @@ public class simpleEnemy : MonoBehaviour
 		ismoving = true;
 
 		//Detection des obstacles. Si le chemin est obstrué le déplacement est annulé
-		if (Physics.Raycast(transform.position + Vector3.up, axe,2))						
+		if (Physics.Raycast(transform.position + Vector3.up, axe,2) || unableToMove)						
 		{
 			ismoving = false;
 			yield break;
 		}
+
+		if(!unableToRotate)
+			transform.rotation = Quaternion.LookRotation(axe);
+
 
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
@@ -312,6 +341,8 @@ public class simpleEnemy : MonoBehaviour
 		state = State.wait;
 		yield return new WaitForSeconds(waitingTime);
 		if (!DetectPlayer())
+		{
 			state = State.patrolUp;
+		}
 	}
 }
