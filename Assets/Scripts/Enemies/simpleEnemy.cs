@@ -198,12 +198,14 @@ public class SimpleEnemy : MonoBehaviour
 				{
 					break;
 				}
-
-
 		}
-
-
 	}
+
+
+
+
+
+
 
 	private bool DetectPlayerInLine(float range)
 	{
@@ -235,6 +237,7 @@ public class SimpleEnemy : MonoBehaviour
 				return false;
 		}
 	}
+
 
 	private void FacePlayer()
 	{

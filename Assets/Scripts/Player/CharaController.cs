@@ -27,6 +27,7 @@ public class CharaController : MonoBehaviour
 	[SerializeField] bool unableToRotate = false;
 	[SerializeField] bool isMoving = false;
 	[SerializeField] bool inUI = false;
+	[SerializeField] private bool freezing = false;
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
@@ -66,11 +67,11 @@ public class CharaController : MonoBehaviour
 			HandleMove();			
 		}
 
-		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !isMoving && !inUI)
+		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !inUI)
 		{
 			if (swipe.magnitude > swipeTolerance)
 				HandleMove();
-			else
+			else if(!isMoving)
 				StartCoroutine(Move(lastMove));
 
 			startMousePos = Input.mousePosition;
@@ -81,16 +82,35 @@ public class CharaController : MonoBehaviour
 
 	public void HandleMove()
 	{
+		if (freezing)
+			return;
+
 		//Mouvement Horizontal
 		if (Mathf.Abs(swipe.x) > Mathf.Abs(swipe.y))
 		{
-			int step = Mathf.RoundToInt(swipe.x / stepDistance);;
-			StartCoroutine(Move(Vector3.right * Mathf.Sign(step)));
-			if (Mathf.Sign(step) < 0 && !unableToRotate)
-				transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+			int step = Mathf.RoundToInt(swipe.x / stepDistance);
 
-			if (Mathf.Sign(step) > 0 && !unableToRotate)
-				transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+			if(transform.rotation == Quaternion.LookRotation(Vector3.right * Mathf.Sign(step)) && !isMoving)
+				StartCoroutine(Move(Vector3.right * Mathf.Sign(step)));
+			if (Mathf.Sign(step) < 0)
+			{
+				lastMove = Vector3.left;
+				if (!unableToRotate)
+				{
+					transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+					StartCoroutine(FreezePlayer());
+				}
+			}
+
+			if (Mathf.Sign(step) > 0)
+			{
+				lastMove = Vector3.right;
+				if (!unableToRotate)
+				{
+					transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+					StartCoroutine(FreezePlayer());
+				}
+			}
 
 
 
@@ -100,20 +120,39 @@ public class CharaController : MonoBehaviour
 		if (Mathf.Abs(swipe.x) < Math.Abs(swipe.y))
 		{
 			int step = Mathf.RoundToInt(swipe.y / stepDistance);
-			StartCoroutine(Move(Vector3.forward * Mathf.Sign(step)));
-			if (Mathf.Sign(step) < 0 && !unableToRotate)
-				transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
 
-			if (Mathf.Sign(step) > 0 && !unableToRotate)
-				transform.rotation = Quaternion.Euler(new Vector3(0,0, 0));
+			if (transform.rotation == Quaternion.LookRotation(Vector3.forward * Mathf.Sign(step)) && !isMoving)
+				StartCoroutine(Move(Vector3.forward * Mathf.Sign(step)));
+			if (Mathf.Sign(step) < 0)
+			{
+				lastMove = Vector3.back;
+				if (!unableToRotate)
+				{
+					transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+					StartCoroutine(FreezePlayer());
+				}
+			}
+
+			if (Mathf.Sign(step) > 0)
+			{
+				lastMove = Vector3.forward;
+				if (!unableToRotate)
+				{
+					transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+					StartCoroutine(FreezePlayer());
+				}
+			}
 		}
+
+
 	}
 
 	IEnumerator Move(Vector3 axe)
 	{
-		if (unableToMove && isMoving)
+		if (unableToMove || isMoving)
 			yield break;
 
+		lastMove = axe;
 		isMoving = true;
 
 		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
@@ -129,8 +168,10 @@ public class CharaController : MonoBehaviour
 
 			yield return new WaitForSeconds(0);
 		}
-		lastMove = axe;
+		
 		isMoving = false;
+
+		//StartCoroutine(FreezePlayer());
 	}
 
 	void Attack()
@@ -143,5 +184,27 @@ public class CharaController : MonoBehaviour
 	{
 		unableToMove = !canMove;
 		unableToRotate = !canRotate;
+	}
+
+	public void GetPlayerMovement(out bool canMove, out bool canRotate)
+	{
+		canMove = !unableToMove;
+		canRotate = !unableToRotate;
+	}
+
+	IEnumerator FreezePlayer()
+	{
+		if (freezing)
+			yield break;
+
+		freezing = true;
+		bool canMove;
+		bool canRotate;
+
+		GetPlayerMovement(out canMove, out canRotate);
+		SetPlayerMovement(false, false);
+		yield return new WaitForSeconds(0.05f);
+		SetPlayerMovement(canMove, canRotate);
+		freezing = false;
 	}
 }

@@ -58,5 +58,10 @@ public class DealDamage : MonoBehaviour
 		}
 	}
 
+	public void DestroySelf()
+	{
+		Destroy(gameObject);
+	}
+
 
 }

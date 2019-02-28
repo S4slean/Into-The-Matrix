@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
 	public float projectileSpeed = 1;
 	public float range = 10;
+	public bool explode = false;
 	public Behaviour behaviour = Behaviour.oneHit;
 
 	private Vector3 startPos;
@@ -33,6 +34,11 @@ public class Projectile : MonoBehaviour
 		{
 			case Behaviour.oneHit:
 				{
+					if (explode)
+					{
+						Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, transform.position, transform.rotation);
+					}
+
 					Destroy();
 					break;
 				}

@@ -4762,6 +4762,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  DamageOverTime: 0
+  dmgTick: 1
 --- !u!135 &498708390642883515
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9464,6 +9466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   range: 15
+  explode: 1
   behaviour: 0
 --- !u!54 &3063077974897122901
 Rigidbody:
