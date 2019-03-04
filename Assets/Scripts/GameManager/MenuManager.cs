@@ -10,9 +10,11 @@ public class MenuManager : MonoBehaviour
 
     public GameObject MarchandPanel;
     public GameObject PortePanel;
+    public GameObject PorteMyStuff;
+    public GameObject PorteMap;
     public CharaController PlayerCC; 
 
-    public void ActiveSorcierPanel()
+    public void ActiveMerchantPanel()
     {
         MarchandPanel.SetActive(true);
     }
@@ -20,6 +22,18 @@ public class MenuManager : MonoBehaviour
     public void ActivePortePanel()
     {
         PortePanel.SetActive(true);
+        PorteMyStuff.SetActive(false);
+        PorteMap.SetActive(false);
+    }
+
+    public void ActivePorteMyStuff()
+    {
+        PorteMyStuff.SetActive(true);
+    }
+
+    public void ActivePorteMap()
+    {
+        PorteMap.SetActive(true);
     }
 
     public void Menu ()

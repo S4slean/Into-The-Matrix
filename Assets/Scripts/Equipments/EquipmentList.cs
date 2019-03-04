@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EquipmentList : MonoBehaviour
 {
+    public List<Equipment> Allequipments;
     public List<Equipment> equipments;
 
     private void Start()
@@ -15,14 +16,16 @@ public class EquipmentList : MonoBehaviour
 
     public void EnableItemIntheList()
     {
-        equipments = new List<Equipment>(GetComponents<Equipment>());
+        Allequipments = new List<Equipment>(GetComponents<Equipment>());
 
-        for (int i = 0; i < equipments.Count; i++)
+
+        for (int i = 0; i < Allequipments.Count; i++)
         {
-            if (equipments[i].enabled != true)
+            if(Allequipments[i].enabled != false)
             {
-                equipments.Remove(equipments[i]);
+                equipments.Add(Allequipments[i]);
             }
+
         }
     }
 }

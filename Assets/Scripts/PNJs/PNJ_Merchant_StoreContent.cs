@@ -6,16 +6,19 @@ using UnityEngine.UI;
 // Contient les boutons des objets en vente dans le magasin
 
 /* !!! POUR AJOUTER DE NOUVEAUX OBJETS !!!  
- * Ajouter le script de l'objet (ex: LongSword) au gameobject auquel est attaché ce script
+ * Ajouter le script de l'objet (ex: LongSword) au gameobject "StoreContent"
  * puis ajouter un bouton avec le nom du script en enfant. 
  * !!! POUR AJOUTER DES OBJETS AU STORE !!! 
  * Activer le script de l'objet contenu sur ce gameobject puis activer la fonction AdditemToShopContent*/
  
 public class PNJ_Merchant_StoreContent : MonoBehaviour
 {
-    private Transform[] childObjects; // Sert à récupérer la liste des object en enfant
-    public List<GameObject> ShopContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du shop.
+    public GameObject StoreContent; // Assigner le gameobject du même nom -> UI du marchand
 
+    [Header("System elements - Ignore please")]
+
+    public Transform[] childObjects; // Sert à récupérer la liste des object en enfant
+    public List<GameObject> ShopContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du shop.
     public List<Equipment> equipmentsForSale; // Liste des équipements à vendre
 
     // Start is called before the first frame update
@@ -32,7 +35,7 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
 
     public void InitiateLists()
     {
-        childObjects = GetComponentsInChildren<Transform>(true);
+        childObjects = StoreContent.GetComponentsInChildren<Transform>(true);
         ShopContentList = new List<GameObject>();
 
         // Récupère les boutons du store
@@ -44,10 +47,10 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
             }
 
         }
-        ShopContentList.Remove(gameObject);
+        ShopContentList.Remove(StoreContent.gameObject);
 
         // Récupère les équipements et les ajoute à la liste 
-        equipmentsForSale = new List<Equipment>(GetComponents<Equipment>());
+        equipmentsForSale = new List<Equipment>(StoreContent.GetComponents<Equipment>());
     }
 
     public void AddItemToShopContent()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LongSword : Equipment
+public class Longsword : Equipment
 {
     CharaController CC;
     PlayerStats PS;

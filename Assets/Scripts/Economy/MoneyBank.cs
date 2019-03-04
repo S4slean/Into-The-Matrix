@@ -62,4 +62,16 @@ public class MoneyBank : MonoBehaviour
             BankMoneyDisplays[i].text = "Money: " + BankMoney;
         }
     }
+
+
+
+    // !!! DEBUG !!! 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "AttackCollider")
+        {
+            BankMoney += 50;
+            ActualizeBankMoney();
+        }
+    }
 }
