@@ -209,12 +209,14 @@ MonoBehaviour:
   stepDistance: 2
   moveStep: 10
   stepDuration: 0
-  delayBeforeRun: 0.1
+  delayBeforeRun: 0.17
   attackLength: 1
   attackWidth: 1
   unableToMove: 0
   unableToRotate: 0
+  isMoving: 0
   inUI: 0
+  freezing: 0
 --- !u!95 &1379326855
 Animator:
   serializedVersion: 3
@@ -246,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52aab9c9f22ffcb4c84b5a5f8d91a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 10
   strength: 1
   defense: 1
 --- !u!54 &1683750707
@@ -469,6 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dade51d1f499d214ab3aecb75055b8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 1
   DamageOverTime: 0
   dmgTick: 1

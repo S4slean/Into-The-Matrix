@@ -96,20 +96,14 @@ public class CharaController : MonoBehaviour
 			{
 				lastMove = Vector3.left;
 				if (!unableToRotate)
-				{
 					transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
-					StartCoroutine(FreezePlayer());
-				}
 			}
 
 			if (Mathf.Sign(step) > 0)
 			{
 				lastMove = Vector3.right;
 				if (!unableToRotate)
-				{
 					transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-					StartCoroutine(FreezePlayer());
-				}
 			}
 
 
@@ -127,20 +121,14 @@ public class CharaController : MonoBehaviour
 			{
 				lastMove = Vector3.back;
 				if (!unableToRotate)
-				{
 					transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-					StartCoroutine(FreezePlayer());
-				}
 			}
 
 			if (Mathf.Sign(step) > 0)
 			{
 				lastMove = Vector3.forward;
 				if (!unableToRotate)
-				{
 					transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-					StartCoroutine(FreezePlayer());
-				}
 			}
 		}
 
