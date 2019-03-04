@@ -40,6 +40,7 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		//Si relaché dans la scène: Drop l'item 
 		if(Input.mousePosition.y > 285)
 		{
+			skillBar.PlayerSkills[index].OnDesequip();
 			skillBar.PlayerSkills[index] = null; ;
 
 			GameObject instance = Instantiate(itemPrefab, player.transform.position + Vector3.up, Quaternion.Euler(0,0,0));							//Instancie l'objet

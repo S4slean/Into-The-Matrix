@@ -14,14 +14,18 @@ public class FireBall : Skill
 	public override void Activate(GameObject user)
 	{
 		if (cooldown > 0)
+		{
+			if (user.GetComponent<SimpleEnemy>() != null)
+				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 			return;
+		}
 
 		cooldown = coolDownDuration;
 
 		Instantiate(fireballPrefab, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation);
 
 		if (user.GetComponent<SimpleEnemy>() != null)
-			StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+			user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 	}
 
 }

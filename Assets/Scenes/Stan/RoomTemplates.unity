@@ -547,18 +547,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
-      propertyPath: description
-      value: Un laser qui blesse les ennemis pris dedans
+      propertyPath: skills.Array.size
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
-      propertyPath: duration
-      value: 2.5
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 1960749311}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[4]
+      value: 
+      objectReference: {fileID: 1960749311}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: cost
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: coolDownDuration
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+--- !u!114 &1960749311 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1923360413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2048728925
 GameObject:
   m_ObjectHideFlags: 0

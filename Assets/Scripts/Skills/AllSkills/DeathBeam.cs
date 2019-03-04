@@ -20,7 +20,11 @@ public class DeathBeam : Skill
 	{
 
 		if (cooldown > 0)
+		{
+			if (user.GetComponent<SimpleEnemy>() != null)
+				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 			return;
+		}
 
 		cooldown = coolDownDuration;
 
@@ -38,26 +42,10 @@ public class DeathBeam : Skill
 
 
 		instance = Instantiate(beam, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation, user.transform);
-		StartCoroutine(DesactiveAfterTime(user));
+		instance.GetComponent<DealDamage>().StartCoroutine(instance.GetComponent<DealDamage>().DesactiveAfterTime(duration, user, enemyRecoverTime));
 	}
 
-	IEnumerator DesactiveAfterTime(GameObject user)
-	{
-		yield return new WaitForSeconds(duration);
-		Destroy(instance);
-
-		if(user.tag == "Player" )
-			player.GetComponent<CharaController>().SetPlayerMovement(true, true);
-
-		if (user.GetComponent<SimpleEnemy>() != null)
-		{
-			simpleEnemy.isAttacking = false;
-			simpleEnemy.unableToRotate = false;
-			StartCoroutine(simpleEnemy.WaitForNewCycle(enemyRecoverTime));
-		}
-
-		yield break;
-	}
+	
 
 
 }

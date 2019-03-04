@@ -40,7 +40,7 @@ public class SimpleEnemy : MonoBehaviour
 
 	int step;
 	private GameObject player;
-	private Vector3 enemyToPlayer;
+	public Vector3 enemyToPlayer;
 	private Skill selectedSkill;
 
 	[Header("Skills")]

@@ -31,7 +31,7 @@ public class CharaController : MonoBehaviour
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
-	private Vector3 swipe;
+	public Vector3 swipe;
 	private float holdedTime;
 
 	private void Start()

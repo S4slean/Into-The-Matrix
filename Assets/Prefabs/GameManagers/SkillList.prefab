@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2884519329243807486}
   - component: {fileID: 2884519329243807487}
   - component: {fileID: 4998082544893357717}
+  - component: {fileID: 1960749311}
   m_Layer: 0
   m_Name: SkillList
   m_TagString: Untagged
@@ -48,6 +49,7 @@ MonoBehaviour:
   skills:
   - {fileID: 2884519329243807487}
   - {fileID: 4998082544893357717}
+  - {fileID: 1960749311}
 --- !u!114 &2884519329243807487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +68,9 @@ MonoBehaviour:
   cost: 10
   coolDownDuration: 5
   requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
   cooldown: 0
 --- !u!114 &4998082544893357717
 MonoBehaviour:
@@ -81,8 +86,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Death Beam
   icon: {fileID: 0}
-  description: 
+  description: Un laser qui blesse les ennemis pris dedans
   cost: 0
   coolDownDuration: 10
   requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
   cooldown: 0
+  beam: {fileID: 0}
+  duration: 2.5
+--- !u!114 &1960749311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2884519329243807484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Glitch Out
+  icon: {fileID: 0}
+  description: Un glitch permettant de d'esquiver les attaques et de traverser les
+    obstacles
+  cost: 10
+  coolDownDuration: 10
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
+  cooldown: 0
+  distance: 3

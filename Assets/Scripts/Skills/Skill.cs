@@ -45,6 +45,11 @@ public class Skill : MonoBehaviour
 		yield break;
 	}
 
+	public virtual void OnDesequip()
+	{
+
+	}
+
 	private void Update()
 	{
 		if (cooldown > 0)

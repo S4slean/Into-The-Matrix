@@ -46,7 +46,7 @@ public class DealDamage : MonoBehaviour
 		}
 
 		//Deal damage to ennemies
-		if (other.tag == "Enemy")
+		if (other.tag == "Enemy" && !other.isTrigger)
 		{
 			other.GetComponent<SimpleEnemy>().health -= damage;
 		}
@@ -61,6 +61,25 @@ public class DealDamage : MonoBehaviour
 	public void DestroySelf()
 	{
 		Destroy(gameObject);
+	}
+
+	public IEnumerator DesactiveAfterTime(float duration,GameObject user, float enemyRecoverTime)
+	{
+		yield return new WaitForSeconds(duration);
+		Destroy(gameObject);
+
+		if (user.tag == "Player")
+			user.gameObject.GetComponent<CharaController>().SetPlayerMovement(true, true);
+
+		if (user.GetComponent<SimpleEnemy>() != null)
+		{
+			SimpleEnemy simpleEnemy = user.GetComponent<SimpleEnemy>();
+			simpleEnemy.isAttacking = false;
+			simpleEnemy.unableToRotate = false;
+			simpleEnemy.StartCoroutine(simpleEnemy.WaitForNewCycle(enemyRecoverTime));
+		}
+
+		yield break;
 	}
 
 
