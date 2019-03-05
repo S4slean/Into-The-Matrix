@@ -125,7 +125,6 @@ public class DodgeRoll : Skill
 
 			if (user.GetComponent<SimpleEnemy>() != null)
 				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
-
 		}
 
 
