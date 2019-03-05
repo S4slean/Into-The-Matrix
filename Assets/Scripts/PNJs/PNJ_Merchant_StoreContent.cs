@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Contient les boutons des objets en vente dans le magasin
-
 /* !!! POUR AJOUTER DE NOUVEAUX OBJETS !!!  
- * Ajouter le script de l'objet (ex: LongSword) au gameobject "StoreContent"
- * puis ajouter un bouton avec le nom du script en enfant. 
- * !!! POUR AJOUTER DES OBJETS AU STORE !!! 
- * Activer le script de l'objet contenu sur ce gameobject puis activer la fonction AdditemToShopContent*/
+ * Ajouter le script de l'objet (ex: LongSword) au gameobject "EquipmentList" pour les objets du dongeon et "StoreContentList" pour les objets du store
+ * puis ajouter un bouton avec le nom du script en enfant aux gameobjects "StoreContent" et "StuffContent" dans "HubUI".
+ * Pour rendre disponible ou non un item, activer ou désactiver son script sur le gameobject "StoreContentList"*/
  
+    // ! ! ! Pour voir l'opération d'achat, voir le script "PNJ_DoorKeeper_MyStuff", fonction "UnlockItem"
+
 public class PNJ_Merchant_StoreContent : MonoBehaviour
 {
     public GameObject StoreContent; // Assigner le gameobject du même nom -> UI du marchand
+    public GameObject StoreContentList; // Assigner le gameobject du même nom
 
     [Header("System elements - Ignore please")]
 
     public Transform[] childObjects; // Sert à récupérer la liste des object en enfant
-    public List<GameObject> ShopContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du shop.
+    public List<GameObject> ShopButtonsContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du shop.
     public List<Equipment> equipmentsForSale; // Liste des équipements à vendre
 
     // Start is called before the first frame update
@@ -33,37 +33,37 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
 
     }
 
-    public void InitiateLists()
+    public void InitiateLists() // Récupère les listes de boutons et d'équipements à vendre
     {
         childObjects = StoreContent.GetComponentsInChildren<Transform>(true);
-        ShopContentList = new List<GameObject>();
+        ShopButtonsContentList = new List<GameObject>();
 
         // Récupère les boutons du store
         foreach (Transform child in childObjects)
         {
             if (child.name != "Text")
             {
-                ShopContentList.Add(child.gameObject);
+                ShopButtonsContentList.Add(child.gameObject);
             }
 
         }
-        ShopContentList.Remove(StoreContent.gameObject);
+        ShopButtonsContentList.Remove(StoreContent.gameObject);
 
         // Récupère les équipements et les ajoute à la liste 
-        equipmentsForSale = new List<Equipment>(StoreContent.GetComponents<Equipment>());
+        equipmentsForSale = new List<Equipment>(StoreContentList.GetComponents<Equipment>());
     }
 
-    public void AddItemToShopContent()
+    public void AddItemToShopContent() // Active les boutons du Store selon que leur script est actif ou non
     {
         for (int i = 0; i < equipmentsForSale.Count; i++)
         {
             if (equipmentsForSale[i].enabled == true)
             {
-                for (int ii = 0; ii < ShopContentList.Count; ii++)
+                for (int ii = 0; ii < ShopButtonsContentList.Count; ii++)
                 {
-                    if (ShopContentList[ii].name == equipmentsForSale[i].GetType().Name)
+                    if (ShopButtonsContentList[ii].name == equipmentsForSale[i].GetType().Name)
                     {
-                        ShopContentList[ii].SetActive(true);
+                        ShopButtonsContentList[ii].SetActive(true);
                     }
                 }
             }
