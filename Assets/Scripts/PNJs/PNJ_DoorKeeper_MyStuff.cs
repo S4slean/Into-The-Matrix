@@ -8,7 +8,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
 {
     public GameObject StuffContent; // Assigner le gameobject du même nom -> UI du doorkeeper
     public MoneyBank money; // La banque
-    public EquipmentList equipmentListReference;
+    public EquipmentList equipmentListReference; // Liste des équipements à vendre, assigner "StoreContentList"
 
     [Header("System elements - Ignore please")]
 
@@ -30,7 +30,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
 
     }
 
-    public void InitiateLists()
+    public void InitiateLists() // Récupère les boutons de l'inventaire
     {
         childObjects = StuffContent.GetComponentsInChildren<Transform>(true);
         StuffContentList = new List<GameObject>();
@@ -47,9 +47,9 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
         StuffContentList.Remove(StuffContent.gameObject);
     }
 
-    public void UnlockItem()
+    public void UnlockItem() // Permet d'acheter des objets dasn le store
     {
-        for (int i = 0; i < equipmentListReference.equipments.Count; i++)
+        for (int i = 0; i < equipmentListReference.equipments.Count; i++) // Désactive les boutons des objets déjà utilisés
         {
             if (equipmentListReference.equipments[i].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
             {
@@ -57,13 +57,14 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
             }
         }
     
-        if (EquipmentToUnlock.cost < money.BankMoney)
+        if (EquipmentToUnlock.cost < money.BankMoney) // Procède à l'achat
         {
             money.BankMoney -= EquipmentToUnlock.cost;
             money.ActualizeBankMoney();
             SelectedButton = EventSystem.current.currentSelectedGameObject;
             Debug.Log("object bought !");
             SelectedButton.GetComponent<Button>().interactable = false;
+
             for (int ii = 0; ii < StuffContentList.Count; ii++)
             {
                 if (StuffContentList[ii].name == SelectedButton.name)
@@ -72,7 +73,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
                 }
             }
         }
-        else
+        else // SI le joueur n'as pas assez d'argent
         {
             Debug.Log("Not enough money !");
         }
