@@ -6,31 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class CabineTéléphonique : MonoBehaviour
 {
-    public GameObject cabineUI;
-    public Button tpButton;
-    public Button returnButton;
+    private CabineUIScript cabineScript;
 
     private void Start()
     {
-        tpButton.onClick.AddListener(TP);
-        returnButton.onClick.AddListener(Exit);
+        cabineScript = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
     }
 
     void OnColliderEnter(Collider collider)
     {
         if (collider.tag == "Player")
         {
-            cabineUI.SetActive(true);
+            cabineScript.Activate();
         }
-    }
-
-    void TP()
-    {
-        SceneManager.LoadScene(0);
-    }
-
-    void Exit()
-    {
-        cabineUI.SetActive(false);
     }
 }
