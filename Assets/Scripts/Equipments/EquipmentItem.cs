@@ -25,8 +25,12 @@ public class EquipmentItem : MonoBehaviour
     //en cas de collision avec le joueur
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        
+
+        if (other.gameObject.tag == "Player")
         {
+            
+
             FindObjectOfType<EquipmentBar>().AddPlayerEquipment(equipment);                                                                                                                               //sinon Crée le boutton et détruit l'objet
             Destroy(gameObject);
         }
