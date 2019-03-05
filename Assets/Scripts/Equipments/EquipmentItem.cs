@@ -7,7 +7,7 @@ public class EquipmentItem : MonoBehaviour
     //Animator anim; Désactivé si besoin plus tard
     GameObject itemPrefab;
     GameObject player;
-    EquipmentList list;
+    public EquipmentList list;
     public Equipment equipment;
 
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class EquipmentItem : MonoBehaviour
     {
         player = FindObjectOfType<CharaController>().gameObject;
         itemPrefab = Resources.Load("EquipmentItem") as GameObject;
-        list = FindObjectOfType<EquipmentList>();
+        list = GameObject.Find("EquipmentList").GetComponent<EquipmentList>();
         //anim = GetComponent<Animator>(); Désactivé si besoin plus tard
 
         if (equipment == null)
