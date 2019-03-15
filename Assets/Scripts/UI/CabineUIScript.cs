@@ -22,7 +22,7 @@ public class CabineUIScript : MonoBehaviour
     public void Activate()
     {
         tpButton.gameObject.SetActive(true);
-        tpButton.gameObject.SetActive(true);
+        returnButton.gameObject.SetActive(true);
     }
 
     void TP()
@@ -33,6 +33,6 @@ public class CabineUIScript : MonoBehaviour
     void Exit()
     {
         tpButton.gameObject.SetActive(false);
-        tpButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
     }
 }
