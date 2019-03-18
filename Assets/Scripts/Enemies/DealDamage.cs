@@ -41,7 +41,7 @@ public class DealDamage : MonoBehaviour
 		//Deal Damage to player
 		if (other.tag == "Player")
 		{
-			FindObjectOfType<PlayerStats>().health -= damage;
+			FindObjectOfType<PlayerStats>().TakeDamage(damage);
 			//Ajouter Feedbacks visuels !!								<=============
 		}
 

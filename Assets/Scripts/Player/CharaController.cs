@@ -62,11 +62,13 @@ public class CharaController : MonoBehaviour
 		{
 			if (swipe.magnitude < swipeTolerance)
 			{
+				if (HandleTargetting())
+					return;
+
 				Attack();
 				return;
 			}
 			HandleMove();
-			HandleTargetting();
 		}
 
 		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !inUI)
@@ -198,7 +200,7 @@ public class CharaController : MonoBehaviour
 		freezing = false;
 	}
 
-	public void HandleTargetting()
+	public bool HandleTargetting()
 	{
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		Debug.DrawRay(ray.origin, ray.direction, Color.green, 1);
@@ -208,16 +210,15 @@ public class CharaController : MonoBehaviour
 		if (hit.transform == null)
 		{
 			print("chier");
-			return;
+			return false;
 		}
-		else
-		{
-			Debug.Log(hit.transform.name);
-		}
-
-		if(hit.transform.tag == "skillTarget")
+		else if (hit.transform.tag == "skillTarget")
 		{
 			hit.transform.GetComponent<caseTarget>().ActivateTarget();
+			return true;
 		}
+		else return false;
+		
+
 	}
 }

@@ -26,10 +26,10 @@ public class DodgeRoll : Skill
 		skillUser = user;
 
 		collider = skillUser.GetComponent<CapsuleCollider>();
-		collider.enabled = false;
+		//collider.enabled = false;
 
 
-		instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
+		//instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
 		isActive = true;
 		
 
@@ -66,7 +66,7 @@ public class DodgeRoll : Skill
 	public void WaitForTarget()
 	{
 		CharaController player = skillUser.GetComponent<CharaController>();
-		GameObject instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.1f , Quaternion.identity, player.transform);
+		GameObject instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
 		instance.GetComponent<crossTarget>().distance = 3;
 		instance.GetComponent<SelectionArea>().skill = this;
 	}
@@ -105,7 +105,6 @@ public class DodgeRoll : Skill
 		else
 		{
 			Vector3 dodgeStep = (dodgePos - skillUser.transform.position) / 5;
-			Debug.Log(distance);
 
 			for (int i = 0; i < 5; i++)
 			{
