@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class crossTarget : MonoBehaviour
+public class crossTarget : SelectionArea
 {
-
 	public int distance;
 	public GameObject targetCase;
 
@@ -20,9 +19,6 @@ public class crossTarget : MonoBehaviour
 		}
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
 }

@@ -11,12 +11,10 @@ public class CabineTéléphonique : MonoBehaviour
     private void Start()
     {
         cabineScript = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
-		Debug.Log(cabineScript.name);
     }
 
 	private void OnTriggerEnter(Collider other)
 	{
-		print("wo");
 		if (other.tag == "Player")
 		{
 			cabineScript.Activate();
