@@ -26,13 +26,38 @@ public class Equipment : MonoBehaviour
     [Tooltip("Attack width bonus")]
     public int attackWidthBonus;
 
+    [Header("System")]
+    public PlayerStats PS;
+    public CharaController CC;
+    public DealDamage DD;
+
+    public void Start()
+    {
+        PS = FindObjectOfType<PlayerStats>();
+        CC = FindObjectOfType<CharaController>();
+        DD = FindObjectOfType<DealDamage>();
+    }
+
     public virtual void OnEquip(GameObject user)
     {
+        Debug.Log(name + " equipped");
+        DD.damage += attackBonus;
+        PS.strength += strenghtBonus;
+        PS.defense += defenceBonus;
+        CC.moveStep -= speedBonus;
+        CC.attackLength += attackLenghtBonus;
+        CC.attackWidth += attackWidthBonus;
 
     }
 
     public virtual void OnUnequip(GameObject user)
     {
-
+        Debug.Log(name + " unequipped");
+        DD.damage -= attackBonus;
+        PS.strength -= strenghtBonus;
+        PS.defense -= defenceBonus;
+        CC.moveStep += speedBonus;
+        CC.attackLength -= attackLenghtBonus;
+        CC.attackWidth -= attackWidthBonus;
     }
 }

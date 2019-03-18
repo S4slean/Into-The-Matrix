@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6330220203298117299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6330220203298117262}
+  - component: {fileID: 6330220203298117263}
+  - component: {fileID: 6330220203298117296}
+  - component: {fileID: 6330220203298117297}
+  - component: {fileID: 6330220203298117298}
+  m_Layer: 0
+  m_Name: EquipmentList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6330220203298117262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330220203298117299}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6330220203298117263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330220203298117299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4ab96f953c83345ba2df507d8816d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Allequipments: []
+  equipments: []
+--- !u!114 &6330220203298117296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330220203298117299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c16b4c065e5664a98a915650588d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Armor
+  icon: {fileID: 0}
+  description: Basic armor item
+  cost: 25
+  attackBonus: 0
+  strenghtBonus: 5
+  defenceBonus: 10
+  speedBonus: 0
+  attackLenghtBonus: 0
+  attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
+--- !u!114 &6330220203298117297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330220203298117299}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0aaaf3e3bec1a46bdb4ed86c8df7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Boots
+  icon: {fileID: 0}
+  description: Basic boots item
+  cost: 20
+  attackBonus: 0
+  strenghtBonus: 2
+  defenceBonus: 2
+  speedBonus: 4
+  attackLenghtBonus: 0
+  attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
+--- !u!114 &6330220203298117298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6330220203298117299}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b7e6e0d7843db49b47c5e6f05189bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Long Sword
+  icon: {fileID: 0}
+  description: Basic sword item
+  cost: 10
+  attackBonus: 5
+  strenghtBonus: 2
+  defenceBonus: 0
+  speedBonus: 0
+  attackLenghtBonus: 0
+  attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
