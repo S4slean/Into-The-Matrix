@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+	Animator anim;
+
 	public int health = 3;
 	public int strength = 1;
 	public int defense = 1;
+
+	private void Start()
+	{
+		anim = GetComponent<Animator>();
+	}
 
 	public void Update()
 	{
@@ -20,5 +27,11 @@ public class PlayerStats : MonoBehaviour
 		{
 			gameObject.SetActive(false);
 		}
+	}
+
+	public void TakeDamage(int dmg)
+	{
+		health -= dmg;
+		anim.Play("TakeDamage");
 	}
 }

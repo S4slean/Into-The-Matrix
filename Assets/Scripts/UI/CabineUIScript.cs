@@ -9,6 +9,7 @@ public class CabineUIScript : MonoBehaviour
     private GameObject cabineUI;
     private Button tpButton;
     private Button returnButton;
+	private bool UIvisible = false;
 
     private void Start()
     {
@@ -21,8 +22,11 @@ public class CabineUIScript : MonoBehaviour
 
     public void Activate()
     {
+		if (UIvisible)
+			return;
         tpButton.gameObject.SetActive(true);
-        tpButton.gameObject.SetActive(true);
+        returnButton.gameObject.SetActive(true);
+		UIvisible = true;
     }
 
     void TP()
@@ -33,6 +37,13 @@ public class CabineUIScript : MonoBehaviour
     void Exit()
     {
         tpButton.gameObject.SetActive(false);
-        tpButton.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+		StartCoroutine(DesactiveUI());
     }
+
+	IEnumerator DesactiveUI()
+	{
+		yield return new WaitForSeconds(.1f);
+		UIvisible = false;
+	}
 }

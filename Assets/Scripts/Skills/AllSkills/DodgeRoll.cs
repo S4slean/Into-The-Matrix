@@ -5,6 +5,7 @@ using UnityEngine;
 public class DodgeRoll : Skill
 {
 	public int distance = 3;
+	public GameObject selectionArea;
 	GameObject skillUser;
 	GameObject instance;
 	Vector3 dodgeDir;
@@ -25,12 +26,24 @@ public class DodgeRoll : Skill
 		skillUser = user;
 
 		collider = skillUser.GetComponent<CapsuleCollider>();
-		collider.enabled = false;
+		//collider.enabled = false;
 
 
-		instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
+		//instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
 		isActive = true;
-		cooldown = coolDownDuration;
+		
+
+		if (skillUser.tag == "Player")
+		{
+			//skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
+
+			WaitForTarget();
+		}
+
+		if (skillUser.tag == "Enemy")
+		{
+			StartCoroutine(WaitForAttack());
+		}
 
 		StartCoroutine(WaitForDesactivation());
 	}
@@ -44,38 +57,18 @@ public class DodgeRoll : Skill
 		if (!isActive)
 			return;
 
-		if (skillUser.tag == "Player")
-		{
-			skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
 
-			WaitForSwipe();
-		}
 
-		if(skillUser.tag == "Enemy")
-		{
-			StartCoroutine(WaitForAttack());
-		}
 
 
 	}
 
-	public void WaitForSwipe()
+	public void WaitForTarget()
 	{
 		CharaController player = skillUser.GetComponent<CharaController>();
-		if(player.swipe.magnitude > player.swipeTolerance && Input.GetMouseButtonUp(0))
-		{
-
-			isActive = false;
-			if (Mathf.Abs(player.swipe.x) > Mathf.Abs(player.swipe.y))
-			{
-				dodgeDir = Vector3.right * Mathf.Sign(player.swipe.x);
-			}
-			else
-			{
-				dodgeDir = Vector3.forward * Mathf.Sign(player.swipe.y);
-			}
-			StartCoroutine(Dodge(skillUser));
-		}
+		GameObject instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
+		instance.GetComponent<crossTarget>().distance = 3;
+		instance.GetComponent<SelectionArea>().skill = this;
 	}
 
 	public IEnumerator WaitForAttack()
@@ -93,39 +86,41 @@ public class DodgeRoll : Skill
 			dodgeDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
 			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z / 2));
 		}
-		
-		StartCoroutine(Dodge(skillUser));
+
+		Vector3 dodgePos = skillUser.transform.position + dodgeDir * distance;
+		StartCoroutine(useSkill(dodgePos));
 		yield break;
 	}
 
-	public IEnumerator Dodge(GameObject user)
+	public override IEnumerator useSkill(Vector3 dodgePos)
 	{
-		if(Physics.Raycast(user.transform.position,dodgeDir, distance * 2, 9))
+		cooldown = coolDownDuration;
+
+		if (Physics.Raycast(skillUser.transform.position,dodgeDir, distance * 2, 9))
 		{
 			distance -= 1;
-			StartCoroutine(Dodge(user));
+			StartCoroutine(useSkill(dodgePos-(dodgeDir*2)));
 			yield break;
 		}
 		else
 		{
-
+			Vector3 dodgeStep = (dodgePos - skillUser.transform.position) / 5;
 
 			for (int i = 0; i < 5; i++)
 			{
-				user.transform.position += dodgeDir*distance*2/5 ;
+				skillUser.transform.position += dodgeStep ;
 				yield return new WaitForEndOfFrame();
 			}
 
-			if(user.tag == "Player")
+			if(skillUser.tag == "Player")
 			{
-				skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
+				this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
 			}
 			Destroy(instance);
 			collider.enabled = true;
 
-			if (user.GetComponent<SimpleEnemy>() != null)
-				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
-
+			if (skillUser.GetComponent<SimpleEnemy>() != null)
+				skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 		}
 
 

@@ -45,6 +45,11 @@ public class Skill : MonoBehaviour
 		yield break;
 	}
 
+	public virtual IEnumerator useSkill(Vector3 pos)
+	{
+		yield break;
+	}
+
 	public virtual void OnDesequip()
 	{
 

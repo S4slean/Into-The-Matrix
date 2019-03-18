@@ -25,7 +25,7 @@ public class CharaController : MonoBehaviour
 	[Header ("States")]
 	[SerializeField] bool unableToMove = false;
 	[SerializeField] bool unableToRotate = false;
-	[SerializeField] bool isMoving = false;
+	[SerializeField] public bool isMoving = false;
 	[SerializeField] bool inUI = false;
 	[SerializeField] private bool freezing = false;
 
@@ -51,7 +51,8 @@ public class CharaController : MonoBehaviour
 				inUI = true;
 			else
 				inUI = false;
-	
+
+		
 		}
 
 		hitPosition = Input.mousePosition;
@@ -61,10 +62,13 @@ public class CharaController : MonoBehaviour
 		{
 			if (swipe.magnitude < swipeTolerance)
 			{
+				if (HandleTargetting())
+					return;
+
 				Attack();
 				return;
 			}
-			HandleMove();			
+			HandleMove();
 		}
 
 		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !inUI)
@@ -194,5 +198,27 @@ public class CharaController : MonoBehaviour
 		yield return new WaitForSeconds(0.05f);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;
+	}
+
+	public bool HandleTargetting()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Debug.DrawRay(ray.origin, ray.direction, Color.green, 1);
+		RaycastHit hit;
+		Physics.Raycast(ray.origin, ray.direction , out hit, 10000,9);
+
+		if (hit.transform == null)
+		{
+			print("chier");
+			return false;
+		}
+		else if (hit.transform.tag == "skillTarget")
+		{
+			hit.transform.GetComponent<caseTarget>().ActivateTarget();
+			return true;
+		}
+		else return false;
+		
+
 	}
 }
