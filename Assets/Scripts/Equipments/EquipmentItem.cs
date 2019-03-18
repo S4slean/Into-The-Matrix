@@ -7,6 +7,7 @@ public class EquipmentItem : MonoBehaviour
     //Animator anim; Désactivé si besoin plus tard
     GameObject itemPrefab;
     GameObject player;
+    public EquipmentBar PlayerEquipments;
     public EquipmentList list;
     public Equipment equipment;
 
@@ -14,6 +15,7 @@ public class EquipmentItem : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<CharaController>().gameObject;
+        PlayerEquipments = FindObjectOfType<EquipmentBar>();
         itemPrefab = Resources.Load("EquipmentItem") as GameObject;
         list = GameObject.Find("EquipmentList").GetComponent<EquipmentList>();
         //anim = GetComponent<Animator>(); Désactivé si besoin plus tard
@@ -25,13 +27,10 @@ public class EquipmentItem : MonoBehaviour
     //en cas de collision avec le joueur
     private void OnTriggerEnter(Collider other)
     {
-        
-
         if (other.gameObject.tag == "Player")
         {
-            
 
-            FindObjectOfType<EquipmentBar>().AddPlayerEquipment(equipment);                                                                                                                               //sinon Crée le boutton et détruit l'objet
+            PlayerEquipments.AddPlayerEquipment(equipment);                                                                                                                            //sinon Crée le boutton et détruit l'objet
             Destroy(gameObject);
         }
     }

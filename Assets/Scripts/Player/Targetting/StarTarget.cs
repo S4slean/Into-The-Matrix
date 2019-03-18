@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarTarget : MonoBehaviour
+public class StarTarget : SelectionArea
 {
 	public int distance;
 	public GameObject tier1;

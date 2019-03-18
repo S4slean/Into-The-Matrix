@@ -112,11 +112,14 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Un glitch permettant de d'esquiver les attaques et de traverser les
     obstacles
-  cost: 10
-  coolDownDuration: 10
+  cost: 0
+  coolDownDuration: 6
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 0.75
   enemyRecoverTime: 1
   cooldown: 0
   distance: 3
+  selectionArea: {fileID: 4400377515056969667, guid: 50fe166c8c1a9ab46b148bed9e8cb659,
+    type: 3}
+  isActive: 0

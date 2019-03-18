@@ -9,6 +9,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
     public GameObject StuffContent; // Assigner le gameobject du même nom -> UI du doorkeeper
     public MoneyBank money; // La banque
     public EquipmentList equipmentListReference; // Liste des équipements à vendre, assigner "StoreContentList"
+    public int HowManyEquipmentsCanITakeInTheHub; // Combien d'équipements je peux prendre sur moi dans le hub
 
     [Header("System elements - Ignore please")]
 
@@ -16,18 +17,27 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
     public Transform[] childObjects; // Sert à récupérer la liste des object en enfant
     public List<GameObject> StuffContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du Stuff.
     public GameObject SelectedButton;
+    public EquipmentBar EB;
+    public Text equipmentText;
 
 
     // Start is called before the first frame update
     void Start()
     {
         InitiateLists();
+        equipmentText.text = "Equipments : " + (HowManyEquipmentsCanITakeInTheHub - EB.PlayerEquipments.Count);
     }
 
     // Update is called once per frame
     void Update()
     {
+        SelectedButton = EventSystem.current.currentSelectedGameObject;
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log("test");
+            EquipToPlayer();
+        }
     }
 
     public void InitiateLists() // Récupère les boutons de l'inventaire
@@ -53,7 +63,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
         {
             if (equipmentListReference.equipments[i].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
             {
-                EquipmentToUnlock = equipmentListReference.equipments[i];   
+                EquipmentToUnlock = equipmentListReference.equipments[i];
             }
         }
     
@@ -77,5 +87,33 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
         {
             Debug.Log("Not enough money !");
         }
+    }
+
+    public void EquipToPlayer()
+    {
+
+        for (int ii = 0; ii < equipmentListReference.equipments.Count; ii++)
+        {
+            if (EB.PlayerEquipments.Count < HowManyEquipmentsCanITakeInTheHub && EB.PlayerEquipments.IndexOf(equipmentListReference.equipments[ii]) == -1)
+            {
+                Debug.Log("YES");
+                if (equipmentListReference.equipments[ii].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
+                {
+                    EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 0.5f, 0);
+                    EB.AddPlayerEquipment(equipmentListReference.equipments[ii]);
+                }
+            }
+            else if(EB.PlayerEquipments.IndexOf(equipmentListReference.equipments[ii]) != -1)
+            {
+                Debug.Log("NO");
+                if (equipmentListReference.equipments[ii].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
+                {
+                    EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 1f, 1);
+                    EB.RemovePlayerEquipment(equipmentListReference.equipments[ii]);
+                }
+            }
+        }
+        
+        equipmentText.text = "Equipments : " + (HowManyEquipmentsCanITakeInTheHub - EB.PlayerEquipments.Count);
     }
 }

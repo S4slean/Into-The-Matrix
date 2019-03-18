@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8895951615410799097}
   - component: {fileID: 8895951615410798854}
   - component: {fileID: 8895951615410799098}
+  - component: {fileID: 1707933961}
   m_Layer: 0
   m_Name: PNJ_Merchant
   m_TagString: Untagged
@@ -106,6 +107,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MerchantInterface: {fileID: 0}
+  PlayerCC: {fileID: 0}
+--- !u!114 &1707933961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8895951615410798855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a38971bdc6953c49aeb1754e2c6b779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoreContent: {fileID: 0}
+  StoreContentList: {fileID: 0}
+  childObjects: []
+  ShopButtonsContentList: []
+  equipmentsForSale: []
 --- !u!1 &8895951616232364086
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +202,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8895951616232364086}
-  m_Text: "Bernard-Henry \nL\xE9vy"
+  m_Text: La Boule
   m_OffsetZ: 0
   m_CharacterSize: 0.15
   m_LineSpacing: 1

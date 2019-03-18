@@ -31,15 +31,15 @@ RectTransform:
   m_GameObject: {fileID: 3187219676117380386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.5951004, y: 5.7449102, z: 0.32843998}
+  m_LocalScale: {x: 7.5951, y: 5.74491, z: 0.32843998}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 4.9139433, y: 216.3834}
-  m_SizeDelta: {x: 131.04, y: 0}
+  m_AnchoredPosition: {x: 4.9139404, y: 216.38354}
+  m_SizeDelta: {x: 131.03998, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3187219676117380388
 MonoBehaviour:
@@ -106,14 +106,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Boots
   icon: {fileID: 0}
-  description: Basic boots
-  cost: 15
+  description: Basic boots item
+  cost: 20
   attackBonus: 0
-  strenghtBonus: 0
-  defenceBonus: 0
-  speedBonus: 0
+  strenghtBonus: 2
+  defenceBonus: 2
+  speedBonus: 4
   attackLenghtBonus: 0
   attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
 --- !u!114 &3187219676117380384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,14 +131,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Armor
   icon: {fileID: 0}
-  description: Basic armor
+  description: Basic armor item
   cost: 25
   attackBonus: 0
-  strenghtBonus: 0
-  defenceBonus: 0
+  strenghtBonus: 5
+  defenceBonus: 10
   speedBonus: 0
   attackLenghtBonus: 0
   attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
 --- !u!114 &3187219676117380387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,3 +164,6 @@ MonoBehaviour:
   speedBonus: 0
   attackLenghtBonus: 0
   attackWidthBonus: 0
+  PS: {fileID: 0}
+  CC: {fileID: 0}
+  DD: {fileID: 0}
