@@ -43,6 +43,8 @@ public class CharaController : MonoBehaviour
 
 	private void Update()
 	{
+		HandleFall();
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			startMousePos = Input.mousePosition;
@@ -82,6 +84,15 @@ public class CharaController : MonoBehaviour
 		}
 
 		holdedTime += Time.deltaTime;
+	}
+
+	private void HandleFall()
+	{
+		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down)/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
+		{
+			anim.Play("Fall");
+			GetComponent<PlayerStats>().KillPlayer();
+		}
 	}
 
 	public void HandleMove()

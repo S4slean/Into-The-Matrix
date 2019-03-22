@@ -15,6 +15,9 @@ public class DodgeRoll : Skill
 
 	public override void Activate(GameObject user)
 	{
+		if (Input.mousePosition.y > 285)
+			return;
+
 		if (cooldown > 0)
 		{
 			if (user.GetComponent<SimpleEnemy>() != null)
@@ -146,11 +149,14 @@ public class DodgeRoll : Skill
 
 	public override void OnDesequip()
 	{
+		if (instance == null)
+			return;
+
 		Destroy(instance);
-		if (skillUser.tag == "Player")
-		{
-			skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-		}
+
+
+		FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
+
 		collider.enabled = true;
 		isActive = false;
 	}

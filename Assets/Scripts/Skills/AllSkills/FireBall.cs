@@ -13,6 +13,9 @@ public class FireBall : Skill
 
 	public override void Activate(GameObject user)
 	{
+		if (Input.mousePosition.y > 285)
+			return;
+
 		if (cooldown > 0)
 		{
 			if (user.GetComponent<SimpleEnemy>() != null)
