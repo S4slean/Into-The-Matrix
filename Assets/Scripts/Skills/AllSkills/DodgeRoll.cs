@@ -15,7 +15,7 @@ public class DodgeRoll : Skill
 
 	public override void Activate(GameObject user)
 	{
-		if (Input.mousePosition.y > 285)
+		if (user.tag == "Player" && Input.mousePosition.y > 285)
 			return;
 
 		if (cooldown > 0)
@@ -78,7 +78,7 @@ public class DodgeRoll : Skill
 	{
 		isActive = false;
 		SimpleEnemy enemy = skillUser.GetComponent<SimpleEnemy>();
-		yield return new WaitForSeconds(.6f);
+		yield return new WaitForSeconds(enemyLaunchTime);
 		if(Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
 		{
 			dodgeDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
@@ -87,7 +87,7 @@ public class DodgeRoll : Skill
 		else
 		{
 			dodgeDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
-			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z / 2));
+			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z/2 ));
 		}
 
 		Vector3 dodgePos = skillUser.transform.position + dodgeDir * distance;
