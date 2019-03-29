@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaitForDungeonGeneration : MonoBehaviour
+public class WaitDunGen: MonoBehaviour
 {
 	TempsPlongee diveTime;
 	GameObject player;
