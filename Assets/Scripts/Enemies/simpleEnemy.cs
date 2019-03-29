@@ -276,7 +276,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
 		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving )
 		{
-			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) <2)
+			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) >2)
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 			else
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
@@ -284,7 +284,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
-			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) <2)
+			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) >2)
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 			else
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));

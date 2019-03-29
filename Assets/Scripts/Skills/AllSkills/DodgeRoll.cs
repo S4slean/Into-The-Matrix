@@ -82,12 +82,12 @@ public class DodgeRoll : Skill
 		if(Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
 		{
 			dodgeDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
-			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x/2));
+			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x));
 		}
 		else
 		{
 			dodgeDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
-			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z/2 ));
+			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z));
 		}
 
 		Vector3 dodgePos = skillUser.transform.position + dodgeDir * distance;
