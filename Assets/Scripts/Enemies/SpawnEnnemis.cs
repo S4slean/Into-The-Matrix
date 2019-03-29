@@ -8,6 +8,13 @@ public class SpawnEnnemis : MonoBehaviour
     public bool spawned;
     public PoolingEnnemis poolScript;
 
+    //fonction de test
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        { Spawn(); }
+    }
+
     void Spawn()
     {
         if (!spawned)
@@ -17,13 +24,13 @@ public class SpawnEnnemis : MonoBehaviour
         }
     }
 }
-/* 1 : Drain
- * 2 : Charge
- * 3 : Counter
- * 4 : Mur
- * 5 : Roulade
- * 6 : Grappin
- * 7 : Decoy
- * 8 : Racine
- * 9 : BouleDeFeu
+/* 0 : Drain
+ * 1 : Charge
+ * 2 : Counter
+ * 3 : Mur
+ * 4 : Roulade
+ * 5 : Grappin
+ * 6 : Decoy
+ * 7 : Racine
+ * 8 : BouleDeFeu
  */

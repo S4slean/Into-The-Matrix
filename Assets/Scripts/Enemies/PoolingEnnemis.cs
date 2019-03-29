@@ -20,19 +20,21 @@ public class PoolingEnnemis : MonoBehaviour
 
     void Start()
     {
-        for (int i = 1; i < 10; i++)
+        ennemisArray = new GameObject[9][];
+        ennemisIndex = new int[9];
+        for (int i = 0; i < 9; i++)
         {
-            ennemisIndex[i] = i;
+            ennemisIndex[i] = 0; ;
         }
-        ennemisArray[1] = ennemisDrainArray;
-        ennemisArray[2] = ennemisChargeArray;
-        ennemisArray[3] = ennemisCounterArray;
-        ennemisArray[4] = ennemisMurArray;
-        ennemisArray[5] = ennemisRouladeArray;
-        ennemisArray[6] = ennemisGrappinArray;
-        ennemisArray[7] = ennemisDecoyArray;
-        ennemisArray[8] = ennemisRacineArray;
-        ennemisArray[9] = ennemisBouleDeFeuArray;
+        ennemisArray[0] = ennemisDrainArray;
+        ennemisArray[1] = ennemisChargeArray;
+        ennemisArray[2] = ennemisCounterArray;
+        ennemisArray[3] = ennemisMurArray;
+        ennemisArray[4] = ennemisRouladeArray;
+        ennemisArray[5] = ennemisGrappinArray;
+        ennemisArray[6] = ennemisDecoyArray;
+        ennemisArray[7] = ennemisRacineArray;
+        ennemisArray[8] = ennemisBouleDeFeuArray;
     }
 
     public void PoolEnnemi(Vector3 spawnLocation,int typeEnnemi)
@@ -40,11 +42,15 @@ public class PoolingEnnemis : MonoBehaviour
         spawnedEnemy = ennemisArray[typeEnnemi][ennemisIndex[typeEnnemi]];
         spawnedEnemy.GetComponent<Transform>().position = spawnLocation;
         spawnedEnemy.SetActive(true);
+        if (ennemisIndex[typeEnnemi] < ennemisArray[typeEnnemi].Length-1)
+        { ennemisIndex[typeEnnemi]++; }
+        else
+        { ennemisIndex[typeEnnemi] = 0; }
     }
 }
-/* 1 : Drain 
- * 2 : Charge
- * 3 : Counter
+/* 0 : Drain 
+ * 1 : Charge
+ * 2 : Counter
  * 4 : Mur
  * 5 : Roulade
  * 6 : Grappin
