@@ -12,6 +12,7 @@ public class TempsPlongee : MonoBehaviour
 
     void Start()
     {
+		timeBar = GetComponent<Image>();
         timer = timeMax;
     }
     
