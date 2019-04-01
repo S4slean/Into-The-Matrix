@@ -29,15 +29,17 @@ public class RoomTemplates : MonoBehaviour
 
 
 
-	private void Awake()
+
+	Component CopyComponent(Component original, GameObject destination)
 	{
-		AvailableRunes runes = FindObjectOfType<AvailableRunes>();
-
-		for(int i = 0; i < runes.equippedRunes.Count; i++)
+		System.Type type = original.GetType();
+		Component copy = destination.AddComponent(type);
+		// Copied fields can be restricted with BindingFlags
+		System.Reflection.FieldInfo[] fields = type.GetFields();
+		foreach (System.Reflection.FieldInfo field in fields)
 		{
-			gameObject.AddComponent(runes.equippedRunes[i].GetType());
-				
+			field.SetValue(copy, field.GetValue(original));
 		}
-
+		return copy;
 	}
 }

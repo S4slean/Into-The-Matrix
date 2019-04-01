@@ -8,4 +8,9 @@ public class Rune : MonoBehaviour
 	public string description;
 
 
+	public virtual void Active()
+	{
+
+	}
+
 }
