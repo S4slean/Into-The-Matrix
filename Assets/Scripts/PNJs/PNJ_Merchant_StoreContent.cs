@@ -63,7 +63,7 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
                 {
                     if (ShopButtonsContentList[ii].name == equipmentsForSale[i].GetType().Name)
                     {
-                        ShopButtonsContentList[ii].SetActive(true);
+                        ShopButtonsContentList[ii].GetComponent<Button>().interactable = true;
                     }
                 }
             }

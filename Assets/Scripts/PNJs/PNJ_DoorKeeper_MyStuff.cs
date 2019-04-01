@@ -15,7 +15,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
 
     public Equipment EquipmentToUnlock;
     public Transform[] childObjects; // Sert à récupérer la liste des object en enfant
-    public List<GameObject> StuffContentList; // Liste des objets en enfants. Configuré pour contenir chaque bouton du Stuff.
+    public List<GameObject> StuffContentList; // Liste des objets de l'inventaire en enfants. Configuré pour contenir chaque bouton du Stuff.
     public GameObject SelectedButton;
     public EquipmentBar EB;
     public Text equipmentText;
@@ -57,9 +57,9 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
         StuffContentList.Remove(StuffContent.gameObject);
     }
 
-    public void UnlockItem() // Permet d'acheter des objets dasn le store
+    public void UnlockItem() // Permet d'acheter des objets dans le store
     {
-        for (int i = 0; i < equipmentListReference.equipments.Count; i++) // Désactive les boutons des objets déjà utilisés
+        for (int i = 0; i < equipmentListReference.equipments.Count; i++) // Trouve l'objet à acheter
         {
             if (equipmentListReference.equipments[i].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
             {
@@ -75,7 +75,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
             Debug.Log("object bought !");
             SelectedButton.GetComponent<Button>().interactable = false;
 
-            for (int ii = 0; ii < StuffContentList.Count; ii++)
+            for (int ii = 0; ii < StuffContentList.Count; ii++) 
             {
                 if (StuffContentList[ii].name == SelectedButton.name)
                 {                 
@@ -92,7 +92,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
     public void EquipToPlayer()
     {
 
-        for (int ii = 0; ii < equipmentListReference.equipments.Count; ii++)
+        for (int ii = 0; ii < equipmentListReference.equipments.Count; ii++) // équipe l'équipement sélectionné
         {
             if (EB.PlayerEquipments.Count < HowManyEquipmentsCanITakeInTheHub && EB.PlayerEquipments.IndexOf(equipmentListReference.equipments[ii]) == -1)
             {
@@ -103,7 +103,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
                     EB.AddPlayerEquipment(equipmentListReference.equipments[ii]);
                 }
             }
-            else if(EB.PlayerEquipments.IndexOf(equipmentListReference.equipments[ii]) != -1)
+            else if(EB.PlayerEquipments.IndexOf(equipmentListReference.equipments[ii]) != -1) // Déséquipe l'équipement sélectionné
             {
                 Debug.Log("NO");
                 if (equipmentListReference.equipments[ii].GetType().Name == EventSystem.current.currentSelectedGameObject.name)

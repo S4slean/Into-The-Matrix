@@ -44,4 +44,6 @@ public class SkillBar : MonoBehaviour
 		}
 		return copy;
 	}
+
+
 }
