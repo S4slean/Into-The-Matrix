@@ -125,9 +125,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                             UpdateMySkillNumber();
                             return;
                         }
-                        
                     }
- 
             }
         }
 
@@ -158,7 +156,8 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                 {
                     return jj;
                 }
-                else return -1;
+                else return 2;
+                //else return -1;
             }
             Debug.Log("retourrrr");
         }
