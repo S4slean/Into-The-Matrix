@@ -8,7 +8,7 @@ public class EquipmentBar : MonoBehaviour
     public GameObject EquipmentIconPrefab;
     public List<Equipment> PlayerEquipments = new List<Equipment>();
 
-    public void AddPlayerEquipment(Equipment equipment)
+    public void AddPlayerEquipment(Equipment equipment) // Ajoute un équipement au joueur
     {
         Debug.Log("Equipment added");
         if (PlayerEquipments.IndexOf(equipment) < 0)
@@ -23,7 +23,7 @@ public class EquipmentBar : MonoBehaviour
         }
     }
 
-    public void RemovePlayerEquipment(Equipment equipment)
+    public void RemovePlayerEquipment(Equipment equipment) // Retire un équipement au joueur
     {
         Debug.Log("Equipment removed");
         PlayerEquipments.Remove(equipment);
