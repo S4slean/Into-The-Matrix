@@ -10,7 +10,7 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	public GameObject virtualCam;
 	public Sprite minimapSprite;
-	//public List<>
+	public List<SpawnEnnemis> enemySpawn;
 	GameObject minimap;
 	GameObject minimapRoomPrefab;
 	RoomTemplates roomTemplate;
@@ -45,7 +45,11 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 		if (roomTemplate.enemiesRespawn)
 		{
-
+			foreach(SpawnEnnemis spawner in enemySpawn)
+			{
+				if(spawner.spawned == false)
+					spawner.Spawn();
+			}
 		}
 	}
 }

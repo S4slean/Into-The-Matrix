@@ -6,7 +6,7 @@ public class Rune_EnemiesRespawn : MonoBehaviour
 {
 	private void Awake()
 	{
-		RoomTemplates roomTemplate = GetComponent<RoomTemplates>();
+		RoomTemplates roomTemplate = FindObjectOfType<RoomTemplates>();
 
 		roomTemplate.enemiesRespawn = true;
 	}
