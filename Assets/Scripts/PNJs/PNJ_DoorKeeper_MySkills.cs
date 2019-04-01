@@ -134,7 +134,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
             }
         }
 
-        equipmentText.text = "Skills : " + (HowManySkillsCanITakeInTheHub - HowManySkillsIHave);
+        
     }
 
     void UpdateMySkillNumber()
@@ -147,6 +147,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                 HowManySkillsIHave += 1;
             }
         }
+        equipmentText.text = "Skills : " + (HowManySkillsCanITakeInTheHub - HowManySkillsIHave);
     }
 
     int CheckSimilarSkills(string skillName, List<Skill> skillList)
