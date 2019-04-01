@@ -15,7 +15,7 @@ public class SpawnEnnemis : MonoBehaviour
         { Spawn(); }
     }
 
-    void Spawn()
+    public void Spawn()
     {
         if (!spawned)
         {

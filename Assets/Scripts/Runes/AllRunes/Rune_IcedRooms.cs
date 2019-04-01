@@ -12,11 +12,16 @@ public class Rune_IcedRooms : Rune
 
 
 	// Start is called before the first frame update
-	void Awake()
+	public void Awake()
     {
+		RoomTemplates roomTemplate = FindObjectOfType<RoomTemplates>();
+
 		roomTemplate.LeftEntrances.AddRange(LeftIcedRooms);
 		roomTemplate.rightEntrances.AddRange(RightIcedRooms);
 		roomTemplate.upEntrances.AddRange(UpIcedRooms);
 		roomTemplate.downEntrances.AddRange(DownIcedRooms);
+		Debug.Log("Ice rooms generated");
     }
+
+
 }
