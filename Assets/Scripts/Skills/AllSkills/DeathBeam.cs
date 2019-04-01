@@ -47,7 +47,11 @@ public class DeathBeam : Skill
 		instance.GetComponent<DealDamage>().StartCoroutine(instance.GetComponent<DealDamage>().DesactiveAfterTime(duration, user, enemyRecoverTime));
 	}
 
-	
+	public override void OnDesequip()
+	{
+		base.OnDesequip();
+	}
+
 
 
 }

@@ -95,13 +95,13 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
     public void EquipToPlayer()
     {
-        Debug.Log(CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills));
+        //Debug.Log(CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills));
         for (int ii = 0; ii < skillListReference.skills.Count; ii++) 
         {
             //Debug.Log(CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills));
             if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
             {
-                if (skillListReference.skills[ii].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
+                if (skillListReference.skills[ii].name == EventSystem.current.currentSelectedGameObject.name)
                 {
                     Debug.Log("Skill equipped");
                     EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 0.5f, 0);
@@ -114,13 +114,18 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                 {
                     if (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
                     {
-                        if (skillListReference.skills[ii].GetType().Name == EventSystem.current.currentSelectedGameObject.name)
+                        if (skillListReference.skills[ii].name == EventSystem.current.currentSelectedGameObject.name)
                         {
                             Debug.Log("Skill Unequipped");
                             EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 1f, 1);
-                            SB.PlayerSkills[j].OnDesequip();
-                            Destroy(SB.PlayerSkills[j].gameObject);
-                            SB.PlayerSkills[j] = null;
+
+							if (SB.PlayerSkills[j] != null)
+							{
+								SB.PlayerSkills[j].OnDesequip();
+								Destroy(SB.PlayerSkills[j].gameObject);
+								SB.PlayerSkills[j] = null;
+							}
+
 
                             UpdateMySkillNumber();
                             return;
@@ -151,17 +156,18 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         {
             if(skillList[jj] != null)
             {
-                Debug.Log("DANS LA BOUCLE");
                 if (skillList[jj].name == skillName)
                 {
-                Debug.Log(skillList[jj].name == skillName);
-                return jj;
+					Debug.Log(jj);
+					
+
+	                return jj;
                 }
                 
                 //else return -1;
             }
-            Debug.Log("retourrrr");
         }
+		Debug.Log(-1);
         return -1;
     }
 }

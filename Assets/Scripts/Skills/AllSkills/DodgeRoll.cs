@@ -157,7 +157,7 @@ public class DodgeRoll : Skill
 
 		FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
 
-		collider.enabled = true;
+		
 		isActive = false;
 	}
 }
