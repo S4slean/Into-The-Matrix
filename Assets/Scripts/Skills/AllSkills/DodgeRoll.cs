@@ -15,6 +15,9 @@ public class DodgeRoll : Skill
 
 	public override void Activate(GameObject user)
 	{
+		if (user.tag == "Player" && Input.mousePosition.y > 285)
+			return;
+
 		if (cooldown > 0)
 		{
 			if (user.GetComponent<SimpleEnemy>() != null)
@@ -75,16 +78,16 @@ public class DodgeRoll : Skill
 	{
 		isActive = false;
 		SimpleEnemy enemy = skillUser.GetComponent<SimpleEnemy>();
-		yield return new WaitForSeconds(.6f);
+		yield return new WaitForSeconds(enemyLaunchTime);
 		if(Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
 		{
 			dodgeDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
-			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x/2));
+			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x));
 		}
 		else
 		{
 			dodgeDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
-			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z / 2));
+			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z));
 		}
 
 		Vector3 dodgePos = skillUser.transform.position + dodgeDir * distance;
@@ -146,11 +149,14 @@ public class DodgeRoll : Skill
 
 	public override void OnDesequip()
 	{
+		if (instance == null)
+			return;
+
 		Destroy(instance);
-		if (skillUser.tag == "Player")
-		{
-			skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-		}
+
+
+		FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
+
 		collider.enabled = true;
 		isActive = false;
 	}

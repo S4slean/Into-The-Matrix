@@ -10,12 +10,21 @@ public class PressurePlate : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+
+
+		if (other.tag == "RoomSpawner")
+			return;
+
+		
 		Activate.Invoke();
 		anim.SetTrigger("Impulse");
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
+		if (other.tag == "RoomSpawner")
+			return;
+
 		Activate.Invoke();
 		anim.SetTrigger("Impulse");
 	}

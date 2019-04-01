@@ -87,7 +87,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6598718311641613363}
   - component: {fileID: 7110198968217804827}
-  - component: {fileID: 7558728670030792966}
   - component: {fileID: 6598718311641613362}
   - component: {fileID: 6598718311641613364}
   - component: {fileID: 5448769747869891572}
@@ -129,22 +128,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &7558728670030792966
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598718311641613361}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &6598718311641613362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,7 +198,7 @@ MonoBehaviour:
   cost: 0
   coolDownDuration: 10
   requireTarget: 0
-  enemyActivationRange: 5
+  enemyActivationRange: 6
   enemyLaunchTime: 0.75
   enemyRecoverTime: 1
   cooldown: 0
@@ -240,11 +223,12 @@ MonoBehaviour:
   cost: 0
   coolDownDuration: 6
   requireTarget: 0
-  enemyActivationRange: 5
+  enemyActivationRange: 8
   enemyLaunchTime: 0.75
   enemyRecoverTime: 1
   cooldown: 0
   distance: 3
+  selectionArea: {fileID: 0}
   isActive: 0
 --- !u!1 &6598718311761539347
 GameObject:

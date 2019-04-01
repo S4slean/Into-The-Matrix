@@ -179,6 +179,7 @@ public class SimpleEnemy : MonoBehaviour
 					{
 						FacePlayer();
 						state = State.wait;
+						Debug.Log("enemy use" + selectedSkill.name);
 						useSkill();
 						return;
 					}
@@ -275,7 +276,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
 		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving )
 		{
-			if( Mathf.RoundToInt(enemyToPlayer.x) <20)
+			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) >2)
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 			else
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
@@ -283,7 +284,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
-			if (Mathf.RoundToInt(enemyToPlayer.z) <2)
+			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) >2)
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 			else
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
@@ -318,7 +319,7 @@ public class SimpleEnemy : MonoBehaviour
 		ismoving = true;
 
 		//Detection des obstacles. Si le chemin est obstrué le déplacement est annulé
-		if (Physics.Raycast(transform.position + Vector3.up, axe,2) || unableToMove)						
+		if (Physics.Raycast(transform.position + Vector3.up, axe,2,9) || unableToMove)						
 		{
 			ismoving = false;
 			yield break;

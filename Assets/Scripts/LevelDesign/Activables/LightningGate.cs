@@ -56,6 +56,7 @@ public class LightningGate : MonoBehaviour
 		{
 			if (isActive)
 			{
+				count += Time.deltaTime;
 				if(count > activeDelay)
 				{
 					isActive = !isActive;
@@ -64,10 +65,10 @@ public class LightningGate : MonoBehaviour
 					count = 0;
 				}
 
-				count += Time.deltaTime;
 			}
 			else
 			{
+				count += Time.deltaTime;
 				if(count > inactiveDelay)
 				{
 					isActive = !isActive;
@@ -76,7 +77,6 @@ public class LightningGate : MonoBehaviour
 					count = 0;
 				}
 
-				count += Time.deltaTime;
 			}
 		}
 	}
