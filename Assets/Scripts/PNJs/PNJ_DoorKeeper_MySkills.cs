@@ -118,9 +118,14 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                         {
                             Debug.Log("Skill Unequipped");
                             EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 1f, 1);
-                            SB.PlayerSkills[j].OnDesequip();
-                            Destroy(SB.PlayerSkills[j].gameObject);
-                            SB.PlayerSkills[j] = null;
+
+							if (SB.PlayerSkills[j] != null)
+							{
+								SB.PlayerSkills[j].OnDesequip();
+								Destroy(SB.PlayerSkills[j].gameObject);
+								SB.PlayerSkills[j] = null;
+							}
+
 
                             UpdateMySkillNumber();
                             return;
@@ -150,9 +155,6 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         {
             if(skillList[jj] != null)
             {
-                Debug.Log("DANS LA BOUCLE");
-				Debug.Log(skillList[jj].name);
-				Debug.Log(skillName);
                 if (skillList[jj].name == skillName)
                 {
 					Debug.Log(jj);
@@ -163,7 +165,6 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                 
                 //else return -1;
             }
-            Debug.Log("retourrrr");
         }
 		Debug.Log(-1);
         return -1;
