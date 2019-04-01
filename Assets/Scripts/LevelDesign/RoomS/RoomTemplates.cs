@@ -24,4 +24,20 @@ public class RoomTemplates : MonoBehaviour
 	public bool seedGenerated = false;					// si le donjon est généré par seed
 
 	public string seed = "";
+
+	public bool enemiesRespawn = false;
+
+
+
+	private void Awake()
+	{
+		AvailableRunes runes = FindObjectOfType<AvailableRunes>();
+
+		for(int i = 0; i < runes.equippedRunes.Count; i++)
+		{
+			gameObject.AddComponent(runes.equippedRunes[i].GetType());
+				
+		}
+
+	}
 }

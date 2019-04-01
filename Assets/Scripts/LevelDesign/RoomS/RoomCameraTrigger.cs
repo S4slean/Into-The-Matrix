@@ -10,13 +10,16 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	public GameObject virtualCam;
 	public Sprite minimapSprite;
+	//public List<>
 	GameObject minimap;
 	GameObject minimapRoomPrefab;
+	RoomTemplates roomTemplate;
 
 	private void Start()
 	{
 		minimap = GameObject.FindObjectOfType<minimap>().gameObject;
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
+		roomTemplate = FindObjectOfType<RoomTemplates>();
 		
 	}
 
@@ -35,6 +38,14 @@ public class RoomCameraTrigger : MonoBehaviour
 
 			minimap.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
 			minimap.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-transform.position.x * 21 / 14, -transform.position.z * 31.5f / 20);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (roomTemplate.enemiesRespawn)
+		{
+
 		}
 	}
 }

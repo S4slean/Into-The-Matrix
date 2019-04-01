@@ -6,7 +6,7 @@ public class AvailableRunes : MonoBehaviour
 {
 	public List<Rune> unlockedRunes;
 
-	public List<Rune> equippedRune;
+	public List<Rune> equippedRunes;
 
 
 }
