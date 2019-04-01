@@ -15,7 +15,7 @@ public class CharaController : MonoBehaviour
 	public int moveStep = 30;
 	public float stepDuration = 1;
 	public float delayBeforeRun = .7f;
-	private Vector3 lastMove;
+	public Vector3 lastMove;
 
 	[Header ("Attack Stats")]
 	public float attackLength = 1;
@@ -27,7 +27,7 @@ public class CharaController : MonoBehaviour
 	[SerializeField] bool unableToRotate = false;
 	[SerializeField] public bool isMoving = false;
 	[SerializeField] bool inUI = false;
-	[SerializeField] private bool freezing = false;
+	[SerializeField] public bool freezing = false;
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
@@ -150,7 +150,7 @@ public class CharaController : MonoBehaviour
 
 	}
 
-	IEnumerator Move(Vector3 axe)
+	public IEnumerator Move(Vector3 axe)
 	{
 		if (unableToMove || isMoving)
 			yield break;
