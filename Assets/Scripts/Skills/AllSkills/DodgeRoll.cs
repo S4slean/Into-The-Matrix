@@ -69,7 +69,7 @@ public class DodgeRoll : Skill
 	public void WaitForTarget()
 	{
 		CharaController player = skillUser.GetComponent<CharaController>();
-		GameObject instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
+		instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
 		instance.GetComponent<crossTarget>().distance = 3;
 		instance.GetComponent<SelectionArea>().skill = this;
 	}

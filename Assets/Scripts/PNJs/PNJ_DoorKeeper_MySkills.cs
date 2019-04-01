@@ -151,12 +151,12 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
             if(skillList[jj] != null)
             {
                 Debug.Log("DANS LA BOUCLE");
-                Debug.Log(skillList[jj].name == skillName);
                 if (skillList[jj].name == skillName)
                 {
-                    return jj;
+                Debug.Log(skillList[jj].name == skillName);
+                return jj;
                 }
-                else return 2;
+                
                 //else return -1;
             }
             Debug.Log("retourrrr");

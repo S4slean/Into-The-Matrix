@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Longsword : Equipment
+public class LongSword : Equipment
 {
 
 }
