@@ -32,12 +32,6 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
     void Update()
     {
         SelectedButton = EventSystem.current.currentSelectedGameObject;
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Debug.Log("test");
-            EquipToPlayer();
-        }
     }
 
     public void InitiateLists() // Récupère les boutons de l'inventaire
@@ -67,7 +61,7 @@ public class PNJ_DoorKeeper_MyStuff : MonoBehaviour
             }
         }
     
-        if (EquipmentToUnlock.cost < money.BankMoney) // Procède à l'achat
+        if (EquipmentToUnlock.cost <= money.BankMoney) // Procède à l'achat
         {
             money.BankMoney -= EquipmentToUnlock.cost;
             money.ActualizeBankMoney();

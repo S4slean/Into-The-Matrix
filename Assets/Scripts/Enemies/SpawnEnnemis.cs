@@ -6,7 +6,12 @@ public class SpawnEnnemis : MonoBehaviour
 {
     public int typeEnnemi;
     public bool spawned;
-    public PoolingEnnemis poolScript;
+    private PoolingEnnemis poolScript;
+
+    private void Start()
+    {
+        poolScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PoolingEnnemis>();
+    }
 
     //fonction de test
     private void Update()

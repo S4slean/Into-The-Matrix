@@ -17074,7 +17074,7 @@ MonoBehaviour:
   StuffContent: {fileID: 1290883362}
   money: {fileID: 531928858}
   skillListReference: {fileID: 1755828273}
-  HowManySkillsCanITakeInTheHub: 2
+  HowManySkillsCanITakeInTheHub: 1
   EquipmentToUnlock: {fileID: 0}
   childObjects: []
   StuffContentList: []
@@ -25062,7 +25062,7 @@ PrefabInstance:
     - target: {fileID: 2999640287589304289, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1876258195333935913, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
@@ -25745,7 +25745,7 @@ PrefabInstance:
     - target: {fileID: 5787952460627565782, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5787952460627565782, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
@@ -25760,7 +25760,7 @@ PrefabInstance:
     - target: {fileID: 3476477281037655470, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3476477281037655470, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
@@ -25775,7 +25775,7 @@ PrefabInstance:
     - target: {fileID: 67182556802775484, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 67182556802775484, guid: 920275eefd4094943b12bf97f85d2dda,
         type: 3}
@@ -25811,6 +25811,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735442234130633130, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_Name
+      value: Glitch Out
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106669847606125102, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4854838122734031923, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_Name
+      value: Death Beam
+      objectReference: {fileID: 0}
+    - target: {fileID: 9161705332105131606, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1331575644}
+    - target: {fileID: 9161705332105131606, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnlockItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095200947693342196, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1331575644}
+    - target: {fileID: 5095200947693342196, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnlockItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601837090111413217, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1331575644}
+    - target: {fileID: 5601837090111413217, guid: 920275eefd4094943b12bf97f85d2dda,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UnlockItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 920275eefd4094943b12bf97f85d2dda, type: 3}
