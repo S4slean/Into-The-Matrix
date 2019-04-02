@@ -36,6 +36,8 @@ public class CharaController : MonoBehaviour
 
 	private void Start()
 	{
+		DontDestroyOnLoad(this.gameObject);
+
 		if (AttackBox == null)
 			AttackBox = transform.GetChild(1).gameObject;
 		anim = GetComponent<Animator>();

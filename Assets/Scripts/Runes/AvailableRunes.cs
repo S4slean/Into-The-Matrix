@@ -10,6 +10,12 @@ public class AvailableRunes : MonoBehaviour
 
 	public List<Rune> equippedRunes;
 
+
+	private void Start()
+	{
+		DontDestroyOnLoad(this.gameObject);
+	}
+
 	public void EquipRune(Rune rune)
 	{
 		rune.enabled = true;

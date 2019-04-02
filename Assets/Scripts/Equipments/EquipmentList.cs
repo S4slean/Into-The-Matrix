@@ -11,6 +11,7 @@ public class EquipmentList : MonoBehaviour
 
     private void Start()
     {
+		DontDestroyOnLoad(this.gameObject);
         EnableItemIntheList();
     }
 
