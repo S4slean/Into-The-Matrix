@@ -179,6 +179,9 @@ public class CharaController : MonoBehaviour
 
 	void Attack()
 	{
+		if (freezing)
+			return;
+
 		AttackBox.SetActive(true);
 		anim.Play("Attack");
 	}

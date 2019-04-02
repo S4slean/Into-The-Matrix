@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rune_EnemiesRespawn : MonoBehaviour
+public class Rune_EnemiesRespawn : Rune
 {
-	private void Awake()
+	public override void Active()
 	{
 		RoomTemplates roomTemplate = FindObjectOfType<RoomTemplates>();
 

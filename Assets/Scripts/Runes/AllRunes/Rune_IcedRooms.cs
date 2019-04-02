@@ -12,7 +12,7 @@ public class Rune_IcedRooms : Rune
 
 
 	// Start is called before the first frame update
-	public void Awake()
+	public override void Active()
     {
 		RoomTemplates roomTemplate = FindObjectOfType<RoomTemplates>();
 
