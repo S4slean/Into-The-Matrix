@@ -90,7 +90,7 @@ namespace UnityEditor
 			m_SerializedObject.UpdateIfRequiredOrScript();
 			prefabBrush.m_PerlinScale = EditorGUILayout.Slider("Perlin Scale", prefabBrush.m_PerlinScale, 0.001f, 0.999f);
 			prefabBrush.m_Z = EditorGUILayout.IntField("Position Z", prefabBrush.m_Z);
-			prefabBrush.m_index = EditorGUILayout.IntField("Selected Prefab", prefabBrush.m_index);
+			prefabBrush.m_index = EditorGUILayout.IntSlider("Selected Prefab", prefabBrush.m_index, 0, 10);
 				
 			EditorGUILayout.PropertyField(m_Prefabs, true);
 			m_SerializedObject.ApplyModifiedPropertiesWithoutUndo();

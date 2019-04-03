@@ -10,6 +10,14 @@ public class AvailableRunes : MonoBehaviour
 
 	public List<Rune> equippedRunes;
 
+
+	private void Start()
+	{
+		if (FindObjectsOfType<AvailableRunes>().Length > 1)
+			Destroy(this.gameObject);
+		DontDestroyOnLoad(this.gameObject);
+	}
+
 	public void EquipRune(Rune rune)
 	{
 		rune.enabled = true;
