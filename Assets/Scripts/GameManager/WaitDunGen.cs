@@ -17,6 +17,9 @@ public class WaitDunGen: MonoBehaviour
     {
         if(FindObjectOfType<RoomSpawner>() == null)
 		{
+			if(player == null)
+				player = FindObjectOfType<CharaController>().gameObject;
+
 			player.SetActive(true);
 			diveTime.plongee = true;
 

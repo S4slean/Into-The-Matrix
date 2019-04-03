@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class PNJ_Merchant : MonoBehaviour
 {
     public GameObject MerchantInterface; // Interface du marchand sur l'UI, qui doit s'activer quand le joueur interragit avec le PNJ
-    public CharaController PlayerCC;
+    CharaController PlayerCC;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+		PlayerCC = FindObjectOfType<CharaController>();
     }
 
     private void OnTriggerEnter(Collider other)

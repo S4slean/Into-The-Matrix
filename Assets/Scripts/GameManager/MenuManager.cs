@@ -17,11 +17,17 @@ public class MenuManager : MonoBehaviour
     public GameObject PorteMyStuff;
     public GameObject PorteMySkills;
     public GameObject PorteMap;
-    public CharaController PlayerCC;
+    CharaController PlayerCC;
 
-    // ::: SCRIPTS INTERFACES GENERAUX :::
+	private void Start()
+	{
+		PlayerCC = FindObjectOfType<CharaController>();
+	}
 
-    public void ExitAllPanels() //Ferme toutes les interfaces
+
+	// ::: SCRIPTS INTERFACES GENERAUX :::
+
+	public void ExitAllPanels() //Ferme toutes les interfaces
     {
         MarchandPanel.SetActive(false);
         PortePanel.SetActive(false);
