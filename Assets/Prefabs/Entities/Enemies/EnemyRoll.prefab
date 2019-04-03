@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3572101026370545260}
   - component: {fileID: 1152997084218086745}
+  - component: {fileID: 892641310279466103}
+  - component: {fileID: 7466204137910319580}
   m_Layer: 0
   m_Name: EnemyRoll
   m_TagString: Enemy
@@ -46,6 +48,56 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &892641310279466103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600328182188410281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  health: 1
+  strength: 1
+  moveStep: 8
+  patrolWidth: 0
+  patrolHeight: 0
+  detectionRange: 6
+  state: 0
+  ismoving: 0
+  isAttacking: 0
+  unableToMove: 0
+  unableToRotate: 0
+  enemyToPlayer: {x: 0, y: 0, z: 0}
+  meleeSkills: []
+  rangedSkills:
+  - {fileID: 7466204137910319580}
+--- !u!114 &7466204137910319580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600328182188410281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff488d6e237fd04f9a023ae4a763559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fire Ball
+  icon: {fileID: 0}
+  description: Throw an explosive fireball
+  cost: 10
+  coolDownDuration: 3
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
+  cooldown: 0
 --- !u!1 &2008879617248182472
 GameObject:
   m_ObjectHideFlags: 0
