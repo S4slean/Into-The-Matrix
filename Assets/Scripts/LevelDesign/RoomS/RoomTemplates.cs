@@ -16,6 +16,12 @@ public class RoomTemplates : MonoBehaviour
 	public List<GameObject> downEnds;
 	public List<GameObject> rightEnds;
 
+	[Header("Safe Rooms")]
+	public List<GameObject> leftSafeRooms;
+	public List<GameObject> upSaferooms;
+	public List<GameObject> rightSafeRooms;
+	public List<GameObject> downSafeRooms;
+
 
 	[Header ("Dungeon Properties")]			
 	public List<GameObject> spawnedRooms;       //liste des salles du donjons
