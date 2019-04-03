@@ -11,6 +11,9 @@ public class EquipmentList : MonoBehaviour
 
     private void Start()
     {
+		if (FindObjectsOfType<EquipmentList>().Length > 2)
+			Destroy(this.gameObject);
+
 		DontDestroyOnLoad(this.gameObject);
         EnableItemIntheList();
     }

@@ -13,6 +13,8 @@ public class AvailableRunes : MonoBehaviour
 
 	private void Start()
 	{
+		if (FindObjectsOfType<AvailableRunes>().Length > 1)
+			Destroy(this.gameObject);
 		DontDestroyOnLoad(this.gameObject);
 	}
 

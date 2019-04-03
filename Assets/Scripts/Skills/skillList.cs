@@ -8,6 +8,9 @@ public class skillList : MonoBehaviour
 
 	private void Start()
 	{
+		if (FindObjectsOfType<skillList>().Length > 1)
+			Destroy(this.gameObject);
+
 		DontDestroyOnLoad(this.gameObject);
 	}
 }
