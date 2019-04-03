@@ -210,6 +210,8 @@ MonoBehaviour:
   moveStep: 10
   stepDuration: 0
   delayBeforeRun: 0.17
+  lastMove: {x: 0, y: 0, z: 0}
+  attackStrength: 1
   attackLength: 1
   attackWidth: 1
   unableToMove: 0
@@ -249,6 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52aab9c9f22ffcb4c84b5a5f8d91a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LifeBarFilled: {fileID: 0}
+  MaxHealth: 10
   health: 10
   strength: 1
   defense: 1
@@ -395,7 +399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2801400328254659283
 Transform:
   m_ObjectHideFlags: 0

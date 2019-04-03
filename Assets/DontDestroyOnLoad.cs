@@ -8,7 +8,7 @@ public class DontDestroyOnLoad : MonoBehaviour
 	{
 		if (GameObject.Find(gameObject.name) != gameObject)
 			Destroy(gameObject);
-
-		DontDestroyOnLoad(this.gameObject);
+		else
+			DontDestroyOnLoad(this.gameObject);
 	}
 }

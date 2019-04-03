@@ -100,10 +100,11 @@ public class CharaController : MonoBehaviour
 
 	private void HandleFall()
 	{
-		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down)/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
+		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2)/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
 			anim.Play("Fall");
 			GetComponent<PlayerStats>().KillPlayer();
+			GetComponent<PlayerStats>().CheckDeath();
 		}
 	}
 

@@ -10,6 +10,7 @@ public class PlayerMoneyManager : MonoBehaviour
 
     void Start()
     {
+
         if (PlayerPrefs.HasKey("PlayerCurrentMoney"))
         {
             currentMoney = PlayerPrefs.GetInt("PlayerCurrentMoney");
