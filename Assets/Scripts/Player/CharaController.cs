@@ -17,7 +17,8 @@ public class CharaController : MonoBehaviour
 	public float delayBeforeRun = .7f;
 	public Vector3 lastMove;
 
-	[Header ("Attack Stats")]
+	[Header("Attack Stats")]
+	public int attackStrength = 1;
 	public float attackLength = 1;
 	public float attackWidth = 1;
 	public static Collider[] targets;
@@ -184,6 +185,7 @@ public class CharaController : MonoBehaviour
 		if (freezing)
 			return;
 
+		AttackBox.GetComponent<DealDamage>().damage = attackStrength;
 		AttackBox.SetActive(true);
 		anim.Play("Attack");
 	}

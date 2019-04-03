@@ -9,11 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6598718311641613363}
-  - component: {fileID: 2312344349881672132}
   - component: {fileID: 7110198968217804827}
-  - component: {fileID: 6598718311641613364}
-  - component: {fileID: 5448769747869891572}
-  - component: {fileID: 7237839427579531907}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Enemy
@@ -36,36 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2312344349881672132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598718311641613361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficulty: 1
-  health: 3
-  strength: 1
-  moveStep: 16
-  patrolWidth: 2
-  patrolHeight: 2
-  detectionRange: 6
-  state: 0
-  ismoving: 0
-  isAttacking: 0
-  unableToMove: 0
-  unableToRotate: 0
-  enemyToPlayer: {x: 0, y: 0, z: 0}
-  meleeSkills: []
-  rangedSkills:
-  - {fileID: 6598718311641613364}
-  - {fileID: 5448769747869891572}
-  - {fileID: 7237839427579531907}
 --- !u!136 &7110198968217804827
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -80,78 +46,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &6598718311641613364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598718311641613361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff488d6e237fd04f9a023ae4a763559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Fire Ball
-  icon: {fileID: 0}
-  description: Throw a fireball !
-  cost: 10
-  coolDownDuration: 0
-  requireTarget: 0
-  enemyActivationRange: 10
-  enemyLaunchTime: 0.75
-  enemyRecoverTime: 1
-  cooldown: 0
---- !u!114 &5448769747869891572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598718311641613361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f26d75c0eefd4fb3c619c93fd9249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Death Beam
-  icon: {fileID: 0}
-  description: Un laser qui blesse les ennemis pris dedans
-  cost: 0
-  coolDownDuration: 10
-  requireTarget: 0
-  enemyActivationRange: 6
-  enemyLaunchTime: 0.75
-  enemyRecoverTime: 1
-  cooldown: 0
-  beam: {fileID: 0}
-  duration: 2.5
---- !u!114 &7237839427579531907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6598718311641613361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  name: Glitch Out
-  icon: {fileID: 0}
-  description: Un glitch permettant de d'esquiver les attaques et de traverser les
-    obstacles
-  cost: 0
-  coolDownDuration: 6
-  requireTarget: 0
-  enemyActivationRange: 8
-  enemyLaunchTime: 0.75
-  enemyRecoverTime: 1
-  cooldown: 0
-  distance: 3
-  selectionArea: {fileID: 0}
-  isActive: 0
 --- !u!1 &6598718311761539347
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,14 +70,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6598718311761539347}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000032782552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5989503869574998679}
   m_Father: {fileID: 6598718311641613363}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4454303605704395239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -218,7 +112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
       propertyPath: m_LocalRotation.x
@@ -251,6 +145,18 @@ PrefabInstance:
     - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
