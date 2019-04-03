@@ -9,13 +9,14 @@ public class EquipmentList : MonoBehaviour
     public List<Equipment> Allequipments;
     public List<Equipment> equipments;
 
-    private void Start()
+    private void Awake()
     {
-		if (FindObjectsOfType<EquipmentList>().Length > 2)
+        EnableItemIntheList();
+        if (FindObjectsOfType<EquipmentList>().Length > 2)
 			Destroy(this.gameObject);
 
 		DontDestroyOnLoad(this.gameObject);
-        EnableItemIntheList();
+
     }
 
     public void EnableItemIntheList()
