@@ -21,7 +21,7 @@ public class PlayerMoneyManager : MonoBehaviour
         }
 
         //Line where to set the UI element for money
-        //CoinsText.text = "Coins:" + currentMoney;
+        CoinsText.text = currentMoney.ToString();
     }
 
     void Update()
@@ -33,6 +33,7 @@ public class PlayerMoneyManager : MonoBehaviour
     public void AddMoney(int MoneyToAdd)
     {
         currentMoney += MoneyToAdd;
+        CoinsText.text = currentMoney.ToString();
         PlayerPrefs.SetInt("PlayerCurrentMoney", currentMoney);
         //Line where to update the UI element for money
         //CoinsText.text = "Coins:"+currentMoney;
