@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Rune : MonoBehaviour
 {
-	public string title;
+	public new string name;
 	public string description;
 	AvailableRunes runeSet;
 	GameObject unequipBtn;
@@ -20,6 +21,9 @@ public class Rune : MonoBehaviour
 
 	public void OnEnable()
 	{
+		if (SceneManager.GetActiveScene().buildIndex == 1)
+			return;
+
 		runeSet = FindObjectOfType<AvailableRunes>();
 		unequipBtn = Resources.Load("UI/RuneUnequipButton") as GameObject;
 
@@ -27,7 +31,7 @@ public class Rune : MonoBehaviour
 		{
 			runeSet.equippedRunes.Add(this);
 			unequipBtn = Instantiate(unequipBtn, GameObject.Find("RuneSlot1").transform);
-			unequipBtn.GetComponentInChildren<Text>().text = title;
+			unequipBtn.GetComponentInChildren<Text>().text = name;
 			unequipBtn.GetComponent<Button>().onClick.AddListener(Unequip);
 
 		}
