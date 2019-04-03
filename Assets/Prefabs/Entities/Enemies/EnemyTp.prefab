@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6095128917533090526}
   - component: {fileID: 311278319851006930}
+  - component: {fileID: 6639038202435648248}
+  - component: {fileID: 5702413782511917572}
   m_Layer: 0
   m_Name: EnemyTp
   m_TagString: Enemy
@@ -46,6 +48,58 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6639038202435648248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856051764720216211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  health: 1
+  strength: 1
+  moveStep: 8
+  patrolWidth: 0
+  patrolHeight: 0
+  detectionRange: 6
+  state: 0
+  ismoving: 0
+  isAttacking: 0
+  unableToMove: 0
+  unableToRotate: 0
+  enemyToPlayer: {x: 0, y: 0, z: 0}
+  meleeSkills: []
+  rangedSkills: []
+--- !u!114 &5702413782511917572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856051764720216211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Glitch Out
+  icon: {fileID: 0}
+  description: Use a spatial glitch to teleport on the selected area
+  cost: 20
+  coolDownDuration: 8
+  requireTarget: 1
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
+  cooldown: 0
+  distance: 3
+  selectionArea: {fileID: 0}
+  isActive: 0
 --- !u!1 &8464237526600273101
 GameObject:
   m_ObjectHideFlags: 0
