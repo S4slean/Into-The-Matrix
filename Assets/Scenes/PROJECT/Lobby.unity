@@ -1103,11 +1103,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DungeonUI
       objectReference: {fileID: 0}
-    - target: {fileID: 1283746727194788141, guid: 51abff4104b17214eb588ef22ba76657,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1283746727194788177, guid: 51abff4104b17214eb588ef22ba76657,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2811,7 +2806,6 @@ MonoBehaviour:
   PorteMyStuff: {fileID: 1344149799}
   PorteMySkills: {fileID: 2014956194}
   PorteMap: {fileID: 1541865711}
-  PlayerCC: {fileID: 747828598}
 --- !u!114 &650809785 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8809446941164037650, guid: 51abff4104b17214eb588ef22ba76657,
@@ -3125,31 +3119,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PNJ_Porte
       objectReference: {fileID: 0}
-    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
-        type: 3}
-      propertyPath: StuffContent
-      value: 
-      objectReference: {fileID: 67946604}
-    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
-        type: 3}
-      propertyPath: skillListReference
-      value: 
-      objectReference: {fileID: 856573904}
-    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
-        type: 3}
-      propertyPath: SB
-      value: 
-      objectReference: {fileID: 1372626671}
-    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
-        type: 3}
-      propertyPath: equipmentText
-      value: 
-      objectReference: {fileID: 38555581}
-    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
-        type: 3}
-      propertyPath: money
-      value: 
-      objectReference: {fileID: 1893441852}
     - target: {fileID: 403976600, guid: 2bb68b7d8526b6543a060f28bbb69fcb, type: 3}
       propertyPath: StuffContent
       value: 
@@ -3234,6 +3203,31 @@ PrefabInstance:
       propertyPath: m_Text
       value: Inventaire
       objectReference: {fileID: 0}
+    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
+        type: 3}
+      propertyPath: StuffContent
+      value: 
+      objectReference: {fileID: 67946604}
+    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
+        type: 3}
+      propertyPath: skillListReference
+      value: 
+      objectReference: {fileID: 856573904}
+    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
+        type: 3}
+      propertyPath: SB
+      value: 
+      objectReference: {fileID: 1372626671}
+    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
+        type: 3}
+      propertyPath: equipmentText
+      value: 
+      objectReference: {fileID: 38555581}
+    - target: {fileID: 779853255586408141, guid: 2bb68b7d8526b6543a060f28bbb69fcb,
+        type: 3}
+      propertyPath: money
+      value: 
+      objectReference: {fileID: 1893441852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb68b7d8526b6543a060f28bbb69fcb, type: 3}
 --- !u!4 &792515757 stripped
@@ -6932,6 +6926,64 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1380904673}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1646527550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646527553}
+  - component: {fileID: 1646527552}
+  - component: {fileID: 1646527551}
+  m_Layer: 0
+  m_Name: DungeonDoor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1646527551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646527550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb6fa0044341c5438b5a20c8e92f7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &1646527552
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646527550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1646527553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646527550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1665220051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7522,6 +7574,31 @@ PrefabInstance:
       propertyPath: BankMoneyDisplays.Array.data[0]
       value: 
       objectReference: {fileID: 67946602}
+    - target: {fileID: 1466037015596579288, guid: 1e8ae6e94838d094fb0e3622b124874e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659258
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466037015596579288, guid: 1e8ae6e94838d094fb0e3622b124874e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2588191
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466037015596579288, guid: 1e8ae6e94838d094fb0e3622b124874e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466037015596579288, guid: 1e8ae6e94838d094fb0e3622b124874e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466037015596579288, guid: 1e8ae6e94838d094fb0e3622b124874e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e8ae6e94838d094fb0e3622b124874e, type: 3}
 --- !u!4 &1754828651 stripped

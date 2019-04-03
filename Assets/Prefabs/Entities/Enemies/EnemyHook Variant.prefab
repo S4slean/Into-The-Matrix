@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2700253189553314444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586349517878894704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: 0
+  health: 3
+  strength: 1
+  moveStep: 8
+  patrolWidth: 0
+  patrolHeight: 0
+  detectionRange: 6
+  state: 0
+  ismoving: 0
+  isAttacking: 0
+  unableToMove: 0
+  unableToRotate: 0
+  enemyToPlayer: {x: 0, y: 0, z: 0}
+  meleeSkills: []
+  rangedSkills:
+  - {fileID: 4066399481959511013}
+--- !u!114 &4066399481959511013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586349517878894704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903f26d75c0eefd4fb3c619c93fd9249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Death Beam
+  icon: {fileID: 0}
+  description: Channel Energy in Ray of light dealing damage to those who tries to
+    go through
+  cost: 10
+  coolDownDuration: 6
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 0.75
+  enemyRecoverTime: 1
+  cooldown: 0
+  beam: {fileID: 0}
+  duration: 0
 --- !u!1001 &7221143502300062785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 6598718311641613361, guid: 4052b83a4d6ebc94fabb267b445453b3,
         type: 3}
       propertyPath: m_Name
-      value: EnemyRoll
+      value: EnemyHook Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6598718311641613363, guid: 4052b83a4d6ebc94fabb267b445453b3,
         type: 3}
@@ -79,3 +132,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1c79dc12d129b0e45b3a51401a89fba0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4052b83a4d6ebc94fabb267b445453b3, type: 3}
+--- !u!1 &4586349517878894704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6598718311641613361, guid: 4052b83a4d6ebc94fabb267b445453b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7221143502300062785}
+  m_PrefabAsset: {fileID: 0}

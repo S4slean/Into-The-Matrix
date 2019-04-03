@@ -2,13 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
 	Animator anim;
+    public Image LifeBarFilled;
 
-	public int health = 3;
+    public float MaxHealth = 3;
+    public float health = 3;
 	public int strength = 1;
 	public int defense = 1;
 
@@ -17,11 +20,15 @@ public class PlayerStats : MonoBehaviour
 	private void Start()
 	{
 		anim = GetComponent<Animator>();
-	}
+        health = MaxHealth;
+        LifeBarFilled = GameObject.Find("LifeBarFilled").GetComponent<Image>();
+        UpdateLifeBar();
+
+    }
 
 	public void Update()
 	{
-		CheckDeath();
+		
 	}
 
 	private void CheckDeath()
@@ -38,7 +45,9 @@ public class PlayerStats : MonoBehaviour
 	{
 		health -= dmg;
 		anim.Play("TakeDamage");
-	}
+        UpdateLifeBar();
+        CheckDeath();
+    }
 
 	public void KillPlayer()
 	{
@@ -50,4 +59,9 @@ public class PlayerStats : MonoBehaviour
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
 	}
+
+    public void UpdateLifeBar()
+    {
+        LifeBarFilled.fillAmount = health/MaxHealth;
+    }
 }
