@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 403976596}
   - component: {fileID: 403976595}
   - component: {fileID: 403976600}
+  - component: {fileID: 779853255586408141}
   m_Layer: 0
   m_Name: PNJ_Porte
   m_TagString: Untagged
@@ -123,10 +124,36 @@ MonoBehaviour:
   StuffContent: {fileID: 0}
   money: {fileID: 0}
   equipmentListReference: {fileID: 0}
+  HowManyEquipmentsCanITakeInTheHub: 0
   EquipmentToUnlock: {fileID: 0}
   childObjects: []
   StuffContentList: []
   SelectedButton: {fileID: 0}
+  EB: {fileID: 0}
+  equipmentText: {fileID: 0}
+--- !u!114 &779853255586408141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403976594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742ea009e304b464f98bbdb81ac4b2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StuffContent: {fileID: 0}
+  money: {fileID: 0}
+  skillListReference: {fileID: 0}
+  HowManySkillsCanITakeInTheHub: 1
+  EquipmentToUnlock: {fileID: 0}
+  childObjects: []
+  StuffContentList: []
+  SelectedButton: {fileID: 0}
+  SB: {fileID: 0}
+  equipmentText: {fileID: 0}
+  HowManySkillsIHave: 0
 --- !u!1 &1185402478
 GameObject:
   m_ObjectHideFlags: 0

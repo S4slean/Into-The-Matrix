@@ -38,7 +38,35 @@ public class RoomSpawner : MonoBehaviour
 
 	private void DefineNeededRoom()
 	{
+		if(roomTemplates.nonSaferoomspawned > roomTemplates.SafeRoomFrequency)
+		{
 
+			float safeRoomRandom = Random.Range(0, 100);
+			if (safeRoomRandom < roomTemplates.currentSafeRoomChances)
+			{
+				if (openingdir == OpeningDirection.Left)                            //si on a besoin d'un salle avec une ouverture vers la gauche, récupère une salle dans la liste des salle avec une ouverture à gauche
+					SpawnRoom(roomTemplates.leftSafeRooms);
+				if (openingdir == OpeningDirection.Top)                             //etc.
+					SpawnRoom(roomTemplates.upSaferooms);
+				if (openingdir == OpeningDirection.Right)
+					SpawnRoom(roomTemplates.rightSafeRooms);
+				if (openingdir == OpeningDirection.Bottom)
+					SpawnRoom(roomTemplates.downSafeRooms);
+
+				roomTemplates.nonSaferoomspawned = 0;
+				roomTemplates.currentSafeRoomChances = 0;
+				return;
+			}
+			else
+			{
+				roomTemplates.nonSaferoomspawned += 1;
+				roomTemplates.currentSafeRoomChances += roomTemplates.safeRoomIncreaseChance;
+			}
+		}
+		else
+		{
+			roomTemplates.nonSaferoomspawned += 1;
+		}
 
 		if (roomTemplates.spawnedRooms.Count > roomTemplates.dungeonSize)		//génère les salles du donjon tant qu'il n'a pas dépassé sa taille max
 		{

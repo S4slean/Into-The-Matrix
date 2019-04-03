@@ -16,9 +16,20 @@ public class RoomTemplates : MonoBehaviour
 	public List<GameObject> downEnds;
 	public List<GameObject> rightEnds;
 
+	[Header("Safe Rooms")]
+	public List<GameObject> leftSafeRooms;
+	public List<GameObject> upSaferooms;
+	public List<GameObject> rightSafeRooms;
+	public List<GameObject> downSafeRooms;
+
 
 	[Header ("Dungeon Properties")]			
-	public List<GameObject> spawnedRooms;		//liste des salles du donjons
+	public List<GameObject> spawnedRooms;       //liste des salles du donjons
+
+	public int SafeRoomFrequency = 5;
+	public float currentSafeRoomChances = 0;
+	[Range(0, 100)] public float safeRoomIncreaseChance = 15;
+	public int nonSaferoomspawned = 0;
 
 	public int dungeonSize = 15;						//lorsque le donjon dépasse ce nombre de salle, les prochaines salles instanciés seront des culs de sac
 	public bool seedGenerated = false;					// si le donjon est généré par seed
@@ -28,7 +39,17 @@ public class RoomTemplates : MonoBehaviour
 	public bool enemiesRespawn = false;
 
 
+	private void Awake()
+	{
+		AvailableRunes runeList = FindObjectOfType<AvailableRunes>();
+		
+		foreach(Rune rune in runeList.equippedRunes)
+		{
+			rune.Active();
+		}
 
+
+	}
 
 	Component CopyComponent(Component original, GameObject destination)
 	{

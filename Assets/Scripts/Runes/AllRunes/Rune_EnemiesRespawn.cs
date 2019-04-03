@@ -9,5 +9,6 @@ public class Rune_EnemiesRespawn : Rune
 		RoomTemplates roomTemplate = FindObjectOfType<RoomTemplates>();
 
 		roomTemplate.enemiesRespawn = true;
+		Debug.Log(name);
 	}
 }
