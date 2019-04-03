@@ -20,8 +20,8 @@ public class SimpleEnemy : MonoBehaviour
 
 	[Header ("Stats")]
 	[Range(1,1000)] public int difficulty;
-    public int maxHealth;
-	public int health = 3;
+    public int maxHealth =1;
+	public int health = 1;
 	public int strength = 1;
 
 	[Header ("Movement")]

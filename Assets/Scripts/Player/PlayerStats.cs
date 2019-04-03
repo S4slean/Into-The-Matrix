@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
 	Animator anim;
+	PlayerMoneyManager money;
     public Image LifeBarFilled;
 
     public float MaxHealth = 3;
@@ -20,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 	private void Start()
 	{
 		anim = GetComponent<Animator>();
+		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         LifeBarFilled = GameObject.Find("LifeBarFilled").GetComponent<Image>();
         UpdateLifeBar();
@@ -36,6 +38,7 @@ public class PlayerStats : MonoBehaviour
 		if(health < 1 && !dead)
 		{
 			dead = true;
+			money.currentMoney = 0;
 			StartCoroutine(BackToLobby());
 			gameObject.GetComponent<CharaController>().enabled = false;
 		}
@@ -58,6 +61,9 @@ public class PlayerStats : MonoBehaviour
 	{
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
+		transform.position = new Vector3(0, 0, 1);
+		transform.rotation = Quaternion.Euler(0, 180, 0);
+		health = MaxHealth;
 	}
 
     public void UpdateLifeBar()

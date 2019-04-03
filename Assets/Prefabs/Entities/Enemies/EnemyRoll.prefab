@@ -57,10 +57,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1600328182188410281}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
+  m_Script: {fileID: 11500000, guid: a79a650b35e15bb49a015eb966e8b20f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 0
+  maxHealth: 1
   health: 1
   strength: 1
   moveStep: 8
@@ -153,10 +154,6 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 28793447bb08b3c45808dc7b755782a3, type: 3}
       propertyPath: m_Name
       value: Agile_Roll01
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 28793447bb08b3c45808dc7b755782a3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28793447bb08b3c45808dc7b755782a3, type: 3}
       propertyPath: m_LocalPosition.x
