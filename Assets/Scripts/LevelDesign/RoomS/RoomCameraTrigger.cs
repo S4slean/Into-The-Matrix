@@ -28,6 +28,11 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
+			foreach(SpawnEnnemis spawner in enemySpawn)
+			{
+				spawner.Spawn();
+			}
+
 			if(Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
 				Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
 			virtualCam.SetActive(true);
