@@ -7,6 +7,8 @@ public class SpawnEnnemis : MonoBehaviour
     public int typeEnnemi;
     public bool spawned;
     private PoolingEnnemis poolScript;
+    public int patrolWidth;
+    public int patrolHeight;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class SpawnEnnemis : MonoBehaviour
         if (!spawned)
         {
             spawned = true;
-            poolScript.PoolEnnemi(transform.position, typeEnnemi);
+            poolScript.PoolEnnemi(transform.position, typeEnnemi, patrolWidth, patrolHeight);
         }
     }
 }
