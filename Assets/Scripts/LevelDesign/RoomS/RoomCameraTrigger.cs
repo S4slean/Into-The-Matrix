@@ -43,6 +43,9 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
+		if (FindObjectOfType<RoomTemplates>() == null)
+			return;
+
 		if (roomTemplate.enemiesRespawn)
 		{
 			foreach(SpawnEnnemis spawner in enemySpawn)

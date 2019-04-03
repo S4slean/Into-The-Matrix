@@ -7,7 +7,6 @@ public class DungeonEntrance : MonoBehaviour
 	public GameObject UI;
 	GameObject player;
 
-	bool UIvisible = false;
 
 	private void Start()
 	{
