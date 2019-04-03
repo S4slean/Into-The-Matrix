@@ -41,6 +41,7 @@ public class Equipment : MonoBehaviour
     public virtual void OnEquip(GameObject user)
     {
         Debug.Log(name + " equipped");
+        Debug.Log(DD);
         DD.damage += attackBonus;
         PS.strength += strenghtBonus;
         PS.defense += defenceBonus;
