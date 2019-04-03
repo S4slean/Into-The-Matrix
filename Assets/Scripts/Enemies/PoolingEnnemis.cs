@@ -17,6 +17,7 @@ public class PoolingEnnemis : MonoBehaviour
     public GameObject[][] ennemisArray;
     public int[] ennemisIndex;
     private GameObject spawnedEnemy;
+    private SimpleEnemy enemyScript;
 
     void Start()
     {
@@ -37,10 +38,14 @@ public class PoolingEnnemis : MonoBehaviour
         ennemisArray[8] = ennemisBouleDeFeuArray;
     }
 
-    public void PoolEnnemi(Vector3 spawnLocation,int typeEnnemi)
+    public void PoolEnnemi(Vector3 spawnLocation,int typeEnnemi, int patrolWidth, int patrolHeight)
     {
         spawnedEnemy = ennemisArray[typeEnnemi][ennemisIndex[typeEnnemi]];
         spawnedEnemy.GetComponent<Transform>().position = spawnLocation;
+        enemyScript = spawnedEnemy.GetComponent<SimpleEnemy>();
+        enemyScript.health = enemyScript.maxHealth;
+        enemyScript.patrolWidth = patrolWidth;
+        enemyScript.patrolHeight = patrolHeight;
         spawnedEnemy.SetActive(true);
         if (ennemisIndex[typeEnnemi] < ennemisArray[typeEnnemi].Length-1)
         { ennemisIndex[typeEnnemi]++; }

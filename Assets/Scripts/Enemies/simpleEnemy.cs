@@ -20,6 +20,7 @@ public class SimpleEnemy : MonoBehaviour
 
 	[Header ("Stats")]
 	[Range(1,1000)] public int difficulty;
+    public int maxHealth;
 	public int health = 3;
 	public int strength = 1;
 
@@ -260,7 +261,7 @@ public class SimpleEnemy : MonoBehaviour
 	{
 		if(health < 1)
 		{
-			Destroy(gameObject);
+			gameObject.SetActive(false);
 		}
 	}
 
