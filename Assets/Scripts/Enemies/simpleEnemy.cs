@@ -268,7 +268,8 @@ public class SimpleEnemy : MonoBehaviour
 	//Utiliser le skill et passer en attente de la prochaine action
 	public void useSkill()
 	{
-		StartCoroutine(selectedSkill.EnemyUse(this));
+		if(selectedSkill != null)
+			StartCoroutine(selectedSkill.EnemyUse(this));
 	}
 
 	//Permet au mob de se rapprocher du joueur

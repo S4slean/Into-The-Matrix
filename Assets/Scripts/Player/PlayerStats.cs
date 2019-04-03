@@ -10,6 +10,9 @@ public class PlayerStats : MonoBehaviour
 	Animator anim;
 	PlayerMoneyManager money;
     public Image LifeBarFilled;
+	public GameObject lifebar;
+	public GameObject minimap;
+	public GameObject loadingScreen;
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -33,14 +36,14 @@ public class PlayerStats : MonoBehaviour
 		
 	}
 
-	private void CheckDeath()
+	public void CheckDeath()
 	{
 		if(health < 1 && !dead)
 		{
 			dead = true;
 			money.currentMoney = 0;
 			StartCoroutine(BackToLobby());
-			gameObject.GetComponent<CharaController>().enabled = false;
+			GetComponent<CharaController>().enabled = false;
 		}
 	}
 
@@ -59,11 +62,25 @@ public class PlayerStats : MonoBehaviour
 
 	IEnumerator BackToLobby()
 	{
+		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
 		transform.position = new Vector3(0, 0, 1);
 		transform.rotation = Quaternion.Euler(0, 180, 0);
 		health = MaxHealth;
+		UpdateLifeBar();
+		yield return new WaitForSeconds(2);
+		foreach(Transform child in minimap.transform)
+		{
+			if (child.GetSiblingIndex() != 0)
+				Destroy(child.gameObject);
+
+		}
+		anim.Play("idle");
+		GetComponent<CharaController>().enabled = true;
+		lifebar.SetActive(false);
+		loadingScreen.GetComponent<Animator>().Play("Disappear");
+
 	}
 
     public void UpdateLifeBar()
