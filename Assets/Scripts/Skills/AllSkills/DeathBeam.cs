@@ -18,6 +18,9 @@ public class DeathBeam : Skill
 
 	public override void Activate(GameObject user)
 	{
+		if(CheckIfInLobby())
+			return;
+
 		if (user.tag == "Player" && Input.mousePosition.y > 285)
 			return;
 

@@ -15,6 +15,9 @@ public class DodgeRoll : Skill
 
 	public override void Activate(GameObject user)
 	{
+		if (CheckIfInLobby())
+			return;
+
 		if (user.tag == "Player" && Input.mousePosition.y > 285)
 			return;
 
@@ -97,6 +100,8 @@ public class DodgeRoll : Skill
 
 	public override IEnumerator useSkill(Vector3 dodgePos)
 	{
+
+
 		cooldown = coolDownDuration;
 
 		if (Physics.Raycast(skillUser.transform.position,dodgeDir, distance * 2, 9))

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Skill : MonoBehaviour
@@ -53,6 +54,14 @@ public class Skill : MonoBehaviour
 	public virtual void OnDesequip()
 	{
 
+	}
+
+	public bool CheckIfInLobby()
+	{
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+			return true;
+		else
+			return false;
 	}
 
 	private void Update()
