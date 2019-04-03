@@ -8,11 +8,11 @@ FBXHeaderExtension:  {
 		Version: 1000
 		Year: 2019
 		Month: 4
-		Day: 2
-		Hour: 10
-		Minute: 55
-		Second: 35
-		Millisecond: 254
+		Day: 3
+		Hour: 14
+		Minute: 23
+		Second: 16
+		Millisecond: 49
 	}
 	Creator: "FBX SDK/FBX Plugins version 2018.1"
 	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
@@ -28,21 +28,21 @@ FBXHeaderExtension:  {
 			Comment: ""
 		}
 		Properties70:  {
-			P: "DocumentUrl", "KString", "Url", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole_1x1.FBX"
-			P: "SrcDocumentUrl", "KString", "Url", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole_1x1.FBX"
+			P: "DocumentUrl", "KString", "Url", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole\Tile_Hole_1x1.FBX"
+			P: "SrcDocumentUrl", "KString", "Url", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole\Tile_Hole_1x1.FBX"
 			P: "Original", "Compound", "", ""
 			P: "Original|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "Original|ApplicationName", "KString", "", "", "3ds Max"
 			P: "Original|ApplicationVersion", "KString", "", "", "2018"
-			P: "Original|DateTime_GMT", "DateTime", "", "", "02/04/2019 08:55:35.251"
-			P: "Original|FileName", "KString", "", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole_1x1.FBX"
+			P: "Original|DateTime_GMT", "DateTime", "", "", "03/04/2019 12:23:16.022"
+			P: "Original|FileName", "KString", "", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\export\Tile_Hole\Tile_Hole_1x1.FBX"
 			P: "LastSaved", "Compound", "", ""
 			P: "LastSaved|ApplicationVendor", "KString", "", "", "Autodesk"
 			P: "LastSaved|ApplicationName", "KString", "", "", "3ds Max"
 			P: "LastSaved|ApplicationVersion", "KString", "", "", "2018"
-			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "02/04/2019 08:55:35.251"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", "03/04/2019 12:23:16.022"
 			P: "Original|ApplicationActiveProject", "KString", "", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3"
-			P: "Original|ApplicationNativeFile", "KString", "", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\autoback\AutoBackup03.max"
+			P: "Original|ApplicationNativeFile", "KString", "", "", "F:\Rubika\Année 2018-2019\JEU MOBILE 3X3\ItemsProjet3x3\scenes\Hub+Donjon.max"
 		}
 	}
 }
@@ -77,7 +77,7 @@ GlobalSettings:  {
 
 Documents:  {
 	Count: 1
-	Document: 2003565244720, "", "Scene" {
+	Document: 2707065771488, "", "Scene" {
 		Properties70:  {
 			P: "SourceObject", "object", "", ""
 			P: "ActiveAnimStackName", "KString", "", "", ""
@@ -239,7 +239,7 @@ Definitions:  {
 ;------------------------------------------------------------------
 
 Objects:  {
-	Geometry: 2003289108400, "Geometry::", "Mesh" {
+	Geometry: 2707184497872, "Geometry::", "Mesh" {
 		Properties70:  {
 			P: "Color", "ColorRGB", "Color", "",0.541176470588235,0.0313725490196078,0.431372549019608
 		}
@@ -323,23 +323,23 @@ Objects:  {
 			}
 		}
 	}
-	Model: 2003584943152, "Model::Object027", "Mesh" {
+	Model: 2707191543616, "Model::Object027", "Mesh" {
 		Version: 232
 		Properties70:  {
 			P: "PreRotation", "Vector3D", "Vector", "",-90,-0,0
 			P: "RotationActive", "bool", "", "",1
 			P: "InheritType", "enum", "", "",1
 			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
-			P: "GeometricTranslation", "Vector3D", "Vector", "",1.81319904327393,-1.05054986476898,-0.0277784764766693
+			P: "GeometricTranslation", "Vector3D", "Vector", "",2.81319546699524,-2.05055046081543,-0.0278279781341553
 			P: "DefaultAttributeIndex", "int", "Integer", "",0
-			P: "Lcl Translation", "Lcl Translation", "", "A",42.5640144348145,6.51367008686066e-06,15.3526058197021
+			P: "Lcl Translation", "Lcl Translation", "", "A",41.5640182495117,5.60283660888672e-05,14.3526048660278
 			P: "Lcl Rotation", "Lcl Rotation", "", "A",0,-0,-1.36603783400252e-05
 			P: "MaxHandle", "int", "Integer", "UH",1229
 		}
 		Shading: T
 		Culling: "CullingOff"
 	}
-	Material: 2003266118240, "Material::Material #28", "" {
+	Material: 2707827905056, "Material::Material #28", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -361,7 +361,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003266119200, "Material::Material #25", "" {
+	Material: 2707827909376, "Material::Material #25", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -384,7 +384,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003266119680, "Material::Material #39 Slot #3", "" {
+	Material: 2707808928928, "Material::Material #39 Slot #3", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -399,7 +399,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003266117760, "Material::Material #39 Slot #4", "" {
+	Material: 2707808932768, "Material::Material #39 Slot #4", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -414,7 +414,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003266120160, "Material::Material #39 Slot #5", "" {
+	Material: 2706277351744, "Material::Material #39 Slot #5", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -429,7 +429,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003266118720, "Material::Material #39 Slot #6", "" {
+	Material: 2706277342624, "Material::Material #39 Slot #6", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -444,7 +444,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003548452864, "Material::Material #39 Slot #7", "" {
+	Material: 2707797051936, "Material::Material #39 Slot #7", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -459,7 +459,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003548453344, "Material::Material #39 Slot #8", "" {
+	Material: 2707797050976, "Material::Material #39 Slot #8", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -474,7 +474,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003548453824, "Material::Material #39 Slot #9", "" {
+	Material: 2706451620224, "Material::Material #39 Slot #9", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -489,7 +489,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	Material: 2003548454304, "Material::Material #39 Slot #10", "" {
+	Material: 2707184607664, "Material::Material #39 Slot #10", "" {
 		Version: 102
 		ShadingModel: "phong"
 		MultiLayer: 0
@@ -504,7 +504,7 @@ Objects:  {
 			P: "Reflectivity", "double", "Number", "",0
 		}
 	}
-	AnimationStack: 2003576276736, "AnimStack::Take 001", "" {
+	AnimationStack: 2707184843280, "AnimStack::Take 001", "" {
 		Properties70:  {
 			P: "LocalStop", "KTime", "Time", "",153953860000
 			P: "ReferenceStop", "KTime", "Time", "",153953860000
@@ -518,38 +518,38 @@ Objects:  {
 Connections:  {
 	
 	;Model::Object027, Model::RootNode
-	C: "OO",2003584943152,0
+	C: "OO",2707191543616,0
 	
 	;Geometry::, Model::Object027
-	C: "OO",2003289108400,2003584943152
+	C: "OO",2707184497872,2707191543616
 	
 	;Material::Material #28, Model::Object027
-	C: "OO",2003266118240,2003584943152
+	C: "OO",2707827905056,2707191543616
 	
 	;Material::Material #25, Model::Object027
-	C: "OO",2003266119200,2003584943152
+	C: "OO",2707827909376,2707191543616
 	
 	;Material::Material #39 Slot #3, Model::Object027
-	C: "OO",2003266119680,2003584943152
+	C: "OO",2707808928928,2707191543616
 	
 	;Material::Material #39 Slot #4, Model::Object027
-	C: "OO",2003266117760,2003584943152
+	C: "OO",2707808932768,2707191543616
 	
 	;Material::Material #39 Slot #5, Model::Object027
-	C: "OO",2003266120160,2003584943152
+	C: "OO",2706277351744,2707191543616
 	
 	;Material::Material #39 Slot #6, Model::Object027
-	C: "OO",2003266118720,2003584943152
+	C: "OO",2706277342624,2707191543616
 	
 	;Material::Material #39 Slot #7, Model::Object027
-	C: "OO",2003548452864,2003584943152
+	C: "OO",2707797051936,2707191543616
 	
 	;Material::Material #39 Slot #8, Model::Object027
-	C: "OO",2003548453344,2003584943152
+	C: "OO",2707797050976,2707191543616
 	
 	;Material::Material #39 Slot #9, Model::Object027
-	C: "OO",2003548453824,2003584943152
+	C: "OO",2706451620224,2707191543616
 	
 	;Material::Material #39 Slot #10, Model::Object027
-	C: "OO",2003548454304,2003584943152
+	C: "OO",2707184607664,2707191543616
 }

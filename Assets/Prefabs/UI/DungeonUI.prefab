@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 1283746727194788176}
   - component: {fileID: 1283746727194788143}
   - component: {fileID: 1283746727194788142}
+  - component: {fileID: 216658735}
   m_Layer: 5
   m_Name: DungeonUI
   m_TagString: Untagged
@@ -400,6 +401,7 @@ RectTransform:
   - {fileID: 5347143866907282827}
   - {fileID: 5670327174396962998}
   - {fileID: 1680270673769813575}
+  - {fileID: 7584364561624962978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -468,6 +470,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &216658735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283746727194788141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a24d92836423d4bafd834ef8268238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &1641797782
 Animator:
   serializedVersion: 3

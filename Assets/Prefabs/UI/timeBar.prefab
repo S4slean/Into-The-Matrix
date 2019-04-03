@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7447258838433527875}
   - component: {fileID: 7447258838433527873}
   - component: {fileID: 7447258838433527872}
+  - component: {fileID: 6597831334192368276}
   m_Layer: 5
   m_Name: timeBar
   m_TagString: Untagged
@@ -74,3 +75,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &6597831334192368276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7447258838433527874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37215e4f7818f9f44bdd7c28da60a790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plongee: 0
+  timeMax: 180
+  timer: 0
+  timeBar: {fileID: 0}
