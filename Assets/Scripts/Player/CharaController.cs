@@ -35,9 +35,18 @@ public class CharaController : MonoBehaviour
 	public Vector3 swipe;
 	private float holdedTime;
 
+	private void Awake()
+	{
+		if (FindObjectsOfType<CharaController>().Length > 1)
+			Destroy(this.gameObject);
+	}
+
 	private void Start()
 	{
+
+
 		DontDestroyOnLoad(this.gameObject);
+
 
 		if (AttackBox == null)
 			AttackBox = transform.GetChild(1).gameObject;
