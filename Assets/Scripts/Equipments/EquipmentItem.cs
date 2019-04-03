@@ -17,11 +17,13 @@ public class EquipmentItem : MonoBehaviour
         player = FindObjectOfType<CharaController>().gameObject;
         PlayerEquipments = FindObjectOfType<EquipmentBar>();
         itemPrefab = Resources.Load("EquipmentItem") as GameObject;
-        list = GameObject.Find("EquipmentList").GetComponent<EquipmentList>();
+        list = GameObject.Find("StoreContentList").GetComponent<EquipmentList>();
         //anim = GetComponent<Animator>(); Désactivé si besoin plus tard
 
         if (equipment == null)
-            equipment = list.equipments[Random.Range(0, list.equipments.Count)];
+        {
+            equipment = list.Allequipments[Random.Range(0, list.Allequipments.Count)];
+        }
     }
 
     //en cas de collision avec le joueur
