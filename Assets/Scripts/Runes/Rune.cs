@@ -9,9 +9,23 @@ public class Rune : MonoBehaviour
 	public new string name;
 	public string description;
 	AvailableRunes runeSet;
+	Rune rune;
 	GameObject unequipBtn;
 
+	private void Start()
+	{
+		runeSet = FindObjectOfType<AvailableRunes>();
+		rune = runeSet.GetComponent(this.GetType()) as Rune;
+		Debug.Log(rune.name);
+		if(GetComponent<Button>() != null)
+		GetComponent<Button>().onClick.AddListener(ActiveRune);
+	}
 
+	public void ActiveRune()
+	{
+		rune.enabled = true;
+		rune.EquipRune();
+	}
 
 	public virtual void Active()
 	{
@@ -19,12 +33,12 @@ public class Rune : MonoBehaviour
 	}
 
 
-	public void OnEnable()
+	public void EquipRune()
 	{
 		if (SceneManager.GetActiveScene().buildIndex == 1)
 			return;
-
 		runeSet = FindObjectOfType<AvailableRunes>();
+
 		unequipBtn = Resources.Load("UI/RuneUnequipButton") as GameObject;
 
 		if (runeSet.equippedRunes.Count < runeSet.runeSlot)

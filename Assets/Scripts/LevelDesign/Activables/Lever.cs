@@ -11,7 +11,7 @@ public class Lever : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player" && other.GetComponent<CharaController>())
+		if(other.tag == "Player" && other.GetComponent<DealDamage>())
 		{
 			Activate.Invoke();
 			anim.SetTrigger("Impulse");
