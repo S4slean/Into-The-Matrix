@@ -175,7 +175,7 @@ public class CharaController : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe,out hit, 2, 9))
 		{
-			Debug.Log(hit.transform.name);
+
 			isMoving = false;
 			yield break;
 		}
