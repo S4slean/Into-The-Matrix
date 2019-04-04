@@ -390,6 +390,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1489421610249684715}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3094847569774389952 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4492453223048358955, guid: 8432ed6ec37aa074e857072142786f04,
+    type: 3}
+  m_PrefabInstance: {fileID: 1489421610249684715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d39333c011d95349a1448653daa220f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1734422763051922923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1280,7 +1292,7 @@ PrefabInstance:
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: enemySpawn.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -1297,7 +1309,7 @@ PrefabInstance:
         type: 3}
       propertyPath: enemySpawn.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3094847569774389952}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: enemySpawn.Array.data[1]
