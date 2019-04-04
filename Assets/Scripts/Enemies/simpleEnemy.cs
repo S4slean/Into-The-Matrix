@@ -59,8 +59,12 @@ public class SimpleEnemy : MonoBehaviour
 	private void Update()
 	{
 
+		CheckHole();
+
 		CheckDeath();																//Vérifie si il est pas mort
 		enemyToPlayer = player.transform.position - transform.position;				//vérifie la position relative du joueur par rapport à l'ennemie (permettra de récupérer la distance et l'axe le plus court jusqu'à lui)
+		
+
 
 		switch (state)
 		{
@@ -203,11 +207,10 @@ public class SimpleEnemy : MonoBehaviour
 		}
 	}
 
-
-
-
-
-
+	private void CheckHole()
+	{
+		//if (Physics.Raycast(transform.position, Vector3.down, ))
+	}
 
 	private bool DetectPlayerInLine(float range)
 	{
