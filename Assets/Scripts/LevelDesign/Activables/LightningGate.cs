@@ -19,6 +19,7 @@ public class LightningGate : MonoBehaviour
 	public void Activate()
 	{
 		lineR.enabled = !lineR.enabled;
+		capsule.enabled = !capsule.enabled;
 		isActive = !isActive;
 	}
 

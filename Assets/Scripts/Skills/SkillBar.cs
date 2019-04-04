@@ -45,5 +45,14 @@ public class SkillBar : MonoBehaviour
 		return copy;
 	}
 
-
+	public void DesequipAll()
+	{
+		for(int i = 0; i < 3; i++)
+		{
+					
+			if(PlayerSkills[i] != null)
+				Destroy(PlayerSkills[i].gameObject);
+		}
+		
+	}
 }

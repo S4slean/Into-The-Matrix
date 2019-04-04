@@ -7,6 +7,7 @@ public class CharaController : MonoBehaviour
 {
 	[Header("References")]
 	public GameObject AttackBox;
+	public GameObject MoveBox;
 	private Animator anim;
 
 	[Header ("Move Stats")]
@@ -171,18 +172,22 @@ public class CharaController : MonoBehaviour
 		lastMove = axe;
 		isMoving = true;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position + Vector3.up, axe,out hit, 2, 9))
 		{
+			Debug.Log(hit.transform.name);
 			isMoving = false;
 			yield break;
 		}
 
+		MoveBox.SetActive(true);
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
-
-			yield return new WaitForSeconds(0);
+			if (i == Mathf.CeilToInt( Mathf.Abs(moveStep) / 2))
+				MoveBox.SetActive(false);
+			yield return new WaitForSeconds(stepDuration);
 		}
 		
 		isMoving = false;
