@@ -20,8 +20,8 @@ public class SimpleEnemy : MonoBehaviour
 
 	[Header ("Stats")]
 	[Range(1,1000)] public int difficulty;
-    public int maxHealth;
-	public int health = 3;
+    public int maxHealth =1;
+	public int health = 1;
 	public int strength = 1;
 
 	[Header ("Movement")]
@@ -59,8 +59,12 @@ public class SimpleEnemy : MonoBehaviour
 	private void Update()
 	{
 
+		CheckHole();
+
 		CheckDeath();																//Vérifie si il est pas mort
 		enemyToPlayer = player.transform.position - transform.position;				//vérifie la position relative du joueur par rapport à l'ennemie (permettra de récupérer la distance et l'axe le plus court jusqu'à lui)
+		
+
 
 		switch (state)
 		{
@@ -203,11 +207,10 @@ public class SimpleEnemy : MonoBehaviour
 		}
 	}
 
-
-
-
-
-
+	private void CheckHole()
+	{
+		//if (Physics.Raycast(transform.position, Vector3.down, ))
+	}
 
 	private bool DetectPlayerInLine(float range)
 	{
@@ -268,7 +271,8 @@ public class SimpleEnemy : MonoBehaviour
 	//Utiliser le skill et passer en attente de la prochaine action
 	public void useSkill()
 	{
-		StartCoroutine(selectedSkill.EnemyUse(this));
+		if(selectedSkill != null)
+			StartCoroutine(selectedSkill.EnemyUse(this));
 	}
 
 	//Permet au mob de se rapprocher du joueur

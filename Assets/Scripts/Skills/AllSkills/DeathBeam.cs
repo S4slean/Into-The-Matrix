@@ -47,6 +47,7 @@ public class DeathBeam : Skill
 
 
 		instance = Instantiate(beam, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation, user.transform);
+		instance.GetComponent<DealDamage>().user = user.tag;
 		instance.GetComponent<DealDamage>().StartCoroutine(instance.GetComponent<DealDamage>().DesactiveAfterTime(duration, user, enemyRecoverTime));
 	}
 

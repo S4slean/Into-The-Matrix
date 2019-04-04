@@ -11,10 +11,10 @@ public class Lever : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "Player" && other.GetComponent<DealDamage>())
 		{
-		Activate.Invoke();
-		anim.SetTrigger("Impulse");
+			Activate.Invoke();
+			anim.SetTrigger("Impulse");
 		}
 	}
 }

@@ -89,6 +89,8 @@ public class RoomSpawner : MonoBehaviour
 				SpawnRoom(roomTemplates.rightEntrances);
 			if (openingdir == OpeningDirection.Bottom)
 				SpawnRoom(roomTemplates.downEntrances);
+
+			GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Disappear");
 		}
 	}
 

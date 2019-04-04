@@ -5,6 +5,7 @@ using UnityEngine;
 public class DealDamage : MonoBehaviour
 {
 	public int damage = 1;
+	public string user = "Player";
 	public bool DamageOverTime = false;
 
 	public float dmgTick = 1;
@@ -13,7 +14,7 @@ public class DealDamage : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		tick = dmgTick;
-		ApplyDamage(other);
+		ApplyDamage( other);
 
 	}
 
@@ -39,8 +40,11 @@ public class DealDamage : MonoBehaviour
 			return;
 
 		//Deal Damage to player
-		if (other.tag == "Player")
+		if (other.tag == "Player" && other.GetComponent<CharaController>() != null)
 		{
+			if (user == "Player")
+				return;
+
 			FindObjectOfType<PlayerStats>().TakeDamage(damage);
 			//Ajouter Feedbacks visuels !!								<=============
 		}
@@ -48,6 +52,9 @@ public class DealDamage : MonoBehaviour
 		//Deal damage to ennemies
 		if (other.tag == "Enemy" && !other.isTrigger)
 		{
+			if (user == "Enemy")
+				return;
+
 			other.GetComponent<SimpleEnemy>().health -= damage;
 		}
 

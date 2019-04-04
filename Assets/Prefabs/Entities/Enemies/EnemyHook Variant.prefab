@@ -1,33 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2700253189553314444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4586349517878894704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dd172ba6d0b75e4d8cb591a7b301777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  difficulty: 0
-  health: 3
-  strength: 1
-  moveStep: 8
-  patrolWidth: 0
-  patrolHeight: 0
-  detectionRange: 6
-  state: 0
-  ismoving: 0
-  isAttacking: 0
-  unableToMove: 0
-  unableToRotate: 0
-  enemyToPlayer: {x: 0, y: 0, z: 0}
-  meleeSkills: []
-  rangedSkills:
-  - {fileID: 4066399481959511013}
 --- !u!114 &4066399481959511013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 6598718311641613363, guid: 4052b83a4d6ebc94fabb267b445453b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6598718311641613363, guid: 4052b83a4d6ebc94fabb267b445453b3,
         type: 3}
@@ -118,6 +90,46 @@ PrefabInstance:
     - target: {fileID: 6598718311641613363, guid: 4052b83a4d6ebc94fabb267b445453b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: rangedSkills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: rangedSkills.Array.data[0]
+      value: 
+      objectReference: {fileID: 4066399481959511013}
+    - target: {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: moveStep
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: detectionRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5989503869574998679, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454303605704395239, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454303605704395239, guid: 4052b83a4d6ebc94fabb267b445453b3,
+        type: 3}
+      propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5989503869577422965, guid: 4052b83a4d6ebc94fabb267b445453b3,

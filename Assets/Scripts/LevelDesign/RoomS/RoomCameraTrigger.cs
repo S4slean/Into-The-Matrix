@@ -14,12 +14,14 @@ public class RoomCameraTrigger : MonoBehaviour
 	GameObject minimap;
 	GameObject minimapRoomPrefab;
 	RoomTemplates roomTemplate;
+	TempsPlongee timeBar;
 
 	private void Start()
 	{
 		minimap = GameObject.FindObjectOfType<minimap>().gameObject;
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
+		timeBar = FindObjectOfType<TempsPlongee>();
 		
 	}
 
@@ -28,10 +30,13 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
+
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
 				spawner.Spawn();
 			}
+
+			timeBar.plongee = false;
 
 			if(Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
 				Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
@@ -48,6 +53,8 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
+		timeBar.plongee = true;
+
 		if (FindObjectOfType<RoomTemplates>() == null)
 			return;
 

@@ -7,6 +7,7 @@ public class CharaController : MonoBehaviour
 {
 	[Header("References")]
 	public GameObject AttackBox;
+	public GameObject MoveBox;
 	private Animator anim;
 
 	[Header ("Move Stats")]
@@ -100,10 +101,11 @@ public class CharaController : MonoBehaviour
 
 	private void HandleFall()
 	{
-		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down)/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
+		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2)/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
 			anim.Play("Fall");
 			GetComponent<PlayerStats>().KillPlayer();
+			GetComponent<PlayerStats>().CheckDeath();
 		}
 	}
 
@@ -170,18 +172,22 @@ public class CharaController : MonoBehaviour
 		lastMove = axe;
 		isMoving = true;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, 2, 9))
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position + Vector3.up, axe,out hit, 2, 9))
 		{
+
 			isMoving = false;
 			yield break;
 		}
 
+		MoveBox.SetActive(true);
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
-
-			yield return new WaitForSeconds(0);
+			if (i == Mathf.CeilToInt( Mathf.Abs(moveStep) / 2))
+				MoveBox.SetActive(false);
+			yield return new WaitForSeconds(stepDuration);
 		}
 		
 		isMoving = false;
