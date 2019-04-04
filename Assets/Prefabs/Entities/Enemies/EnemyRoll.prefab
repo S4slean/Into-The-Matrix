@@ -64,10 +64,10 @@ MonoBehaviour:
   maxHealth: 1
   health: 1
   strength: 1
-  moveStep: 8
+  moveStep: 16
   patrolWidth: 0
   patrolHeight: 0
-  detectionRange: 6
+  detectionRange: 10
   state: 0
   ismoving: 0
   isAttacking: 0
@@ -143,7 +143,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2.95}
-  m_Center: {x: 0, y: 0, z: -0.5}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!1001 &2108547165475574147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28793447bb08b3c45808dc7b755782a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28793447bb08b3c45808dc7b755782a3, type: 3}
       propertyPath: m_LocalRotation.x

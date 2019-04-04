@@ -18,7 +18,7 @@ public class DungeonDoor : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "Player" && other.GetComponent<DealDamage>() != null)
 		{
 			StartCoroutine(Wait());
 		}
@@ -37,6 +37,7 @@ public class DungeonDoor : MonoBehaviour
 	{
 		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
+		player.GetComponent<PlayerStats>().BackToDungeon();
 		LoadDungeon();
 	}
 }

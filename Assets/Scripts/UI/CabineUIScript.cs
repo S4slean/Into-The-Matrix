@@ -9,6 +9,7 @@ public class CabineUIScript : MonoBehaviour
     private GameObject cabineUI;
     private Button tpButton;
     private Button returnButton;
+	private CharaController player;
 	private bool UIvisible = false;
 
     private void Start()
@@ -16,6 +17,7 @@ public class CabineUIScript : MonoBehaviour
         cabineUI = GameObject.FindGameObjectWithTag("CabineUI");
         tpButton = transform.GetChild(0).GetComponent<Button>();
         returnButton = transform.GetChild(1).GetComponent<Button>();
+		player = FindObjectOfType<CharaController>();
         tpButton.onClick.AddListener(TP);
         returnButton.onClick.AddListener(Exit);
     }
@@ -27,17 +29,24 @@ public class CabineUIScript : MonoBehaviour
         tpButton.gameObject.SetActive(true);
         returnButton.gameObject.SetActive(true);
 		UIvisible = true;
+		player.freezing = true;
     }
 
     void TP()
     {
-        SceneManager.LoadScene(0);
-    }
+		player.freezing = false;
+		PlayerStats player = FindObjectOfType<PlayerStats>();
+		player.StartCoroutine(player.BackToLobby());
+		tpButton.gameObject.SetActive(false);
+		returnButton.gameObject.SetActive(false);
+		
+	}
 
     void Exit()
     {
         tpButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
+		player.freezing = false;
 		StartCoroutine(DesactiveUI());
     }
 

@@ -9,10 +9,13 @@ public class PlayerStats : MonoBehaviour
 {
 	Animator anim;
 	PlayerMoneyManager money;
+	SkillBar skillBar;
+	//CabineUIScript cabineUI;
     public Image LifeBarFilled;
 	public GameObject lifebar;
 	public GameObject minimap;
 	public GameObject loadingScreen;
+	public TempsPlongee timebar;
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -27,6 +30,9 @@ public class PlayerStats : MonoBehaviour
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         LifeBarFilled = GameObject.Find("LifeBarFilled").GetComponent<Image>();
+		timebar = FindObjectOfType<TempsPlongee>();
+		skillBar = FindObjectOfType<SkillBar>();
+		//cabineUI = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
         UpdateLifeBar();
 
     }
@@ -60,8 +66,10 @@ public class PlayerStats : MonoBehaviour
 		health = 0;
 	}
 
-	IEnumerator BackToLobby()
+	public IEnumerator BackToLobby()
 	{
+
+
 		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
@@ -69,8 +77,11 @@ public class PlayerStats : MonoBehaviour
 		transform.rotation = Quaternion.Euler(0, 180, 0);
 		health = MaxHealth;
 		UpdateLifeBar();
+		skillBar.DesequipAll();
 		yield return new WaitForSeconds(2);
-		foreach(Transform child in minimap.transform)
+		if (dead == true)
+			dead = false;
+		foreach (Transform child in minimap.transform)
 		{
 			if (child.GetSiblingIndex() != 0)
 				Destroy(child.gameObject);
@@ -79,8 +90,17 @@ public class PlayerStats : MonoBehaviour
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
 		lifebar.SetActive(false);
+		timebar.timer = timebar.timeMax;
+		timebar.plongee = false;
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 
+	}
+
+	public void BackToDungeon()
+	{
+		health = MaxHealth;
+		UpdateLifeBar();
+		lifebar.SetActive(true);
 	}
 
     public void UpdateLifeBar()
