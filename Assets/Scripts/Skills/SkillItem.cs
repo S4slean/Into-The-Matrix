@@ -24,7 +24,7 @@ public class SkillItem : MonoBehaviour
 	//en cas de collision avec le joueur
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player" && other.GetComponent<CharaController>() != null)
 		{
 			if(FindObjectOfType<SkillBar>().PlayerSkills[0] != null && FindObjectOfType<SkillBar>().PlayerSkills[1] != null && FindObjectOfType<SkillBar>().PlayerSkills[2] != null)			//Si le joueur est déjà full skill
 			{

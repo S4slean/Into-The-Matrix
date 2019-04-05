@@ -192,8 +192,12 @@ public class CharaController : MonoBehaviour
 		
 		isMoving = false;
 
-		//StartCoroutine(FreezePlayer());
-	}
+		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
+		{
+			freezing = false;
+		}
+			//StartCoroutine(FreezePlayer());
+		}
 
 	void Attack()
 	{

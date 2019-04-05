@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5975365840411535489}
   - component: {fileID: 5975365840411535494}
   m_Layer: 0
-  m_Name: LigthningGate
+  m_Name: LightningGate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 66f2548f36624054c80e6688fb2906ca, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f68ffb8e94ddc94a9f66471a053ec2b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f2548f36624054c80e6688fb2906ca, type: 3}
 --- !u!4 &7679108940068974141 stripped
