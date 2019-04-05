@@ -11,7 +11,7 @@ public class tuto : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		tutoSwipe.SetActive(true);
+		//tutoSwipe.SetActive(true);
     }
 
 }
