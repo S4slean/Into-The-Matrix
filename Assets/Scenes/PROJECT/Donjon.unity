@@ -1082,6 +1082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100000
+  user: Player
   DamageOverTime: 0
   dmgTick: 1
 --- !u!64 &724356775
@@ -2706,6 +2707,26 @@ PrefabInstance:
     - target: {fileID: 6644194411854614686, guid: d5e43c2960c53fa499284df3d3ef8f62,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745247399020590154, guid: d5e43c2960c53fa499284df3d3ef8f62,
+        type: 3}
+      propertyPath: LeftEntrances.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745247399020590154, guid: d5e43c2960c53fa499284df3d3ef8f62,
+        type: 3}
+      propertyPath: upEntrances.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745247399020590154, guid: d5e43c2960c53fa499284df3d3ef8f62,
+        type: 3}
+      propertyPath: rightEntrances.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745247399020590154, guid: d5e43c2960c53fa499284df3d3ef8f62,
+        type: 3}
+      propertyPath: downEntrances.Array.size
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
