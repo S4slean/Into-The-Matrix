@@ -15,6 +15,7 @@ public class RoomCameraTrigger : MonoBehaviour
 	GameObject minimapRoomPrefab;
 	RoomTemplates roomTemplate;
 	TempsPlongee timeBar;
+	GameObject grid;
 
 	private void Start()
 	{
@@ -22,14 +23,18 @@ public class RoomCameraTrigger : MonoBehaviour
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
 		timeBar = FindObjectOfType<TempsPlongee>();
+
 		
 	}
 
 	//Si le joueur entre dans le trigger: désactive la virtual cam actuelle et active celle de la salle
 	private void OnTriggerEnter(Collider other)
 	{
+
+
 		if(other.tag == "Player")
 		{
+
 
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
@@ -53,6 +58,7 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
+
 		timeBar.plongee = true;
 
 		if (FindObjectOfType<RoomTemplates>() == null)
