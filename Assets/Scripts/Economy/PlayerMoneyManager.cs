@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMoneyManager : MonoBehaviour
 {
@@ -22,13 +23,20 @@ public class PlayerMoneyManager : MonoBehaviour
         }
 
         //Line where to set the UI element for money
-        CoinsText.text = currentMoney.ToString();
+		if(SceneManager.GetActiveScene().buildIndex !=0)
+			CoinsText.text = currentMoney.ToString();
     }
 
     void Update()
     {
         
     }
+
+	public void GetDungeonMoney()
+	{
+		CoinsText.text = currentMoney.ToString();
+	}
+
 
     // Permet aux autres éléments d'ajouter/retirer de l'argent au joueur
     public void AddMoney(int MoneyToAdd)
