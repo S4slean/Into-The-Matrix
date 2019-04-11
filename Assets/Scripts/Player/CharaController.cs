@@ -113,7 +113,7 @@ public class CharaController : MonoBehaviour
 			startMousePos = Input.mousePosition;
 		}
 
-		Debug.Log(buffer);
+
 		if(TickManager.tick > TickManager.tickDuration)
 		{
 

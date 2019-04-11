@@ -70,7 +70,7 @@ public class DealDamage : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	public IEnumerator DesactiveAfterTime(float duration,GameObject user, float enemyRecoverTime)
+	public IEnumerator DesactiveAfterTime(float duration,GameObject user, int enemyRecoverTime)
 	{
 		yield return new WaitForSeconds(duration);
 		Destroy(gameObject);
