@@ -23,7 +23,7 @@ public class IceTile : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			//player.freezing = true;
+			player.freezing = true;
 			player.StartCoroutine(player.Move(player.lastMove));
 		}
 	}
@@ -32,7 +32,7 @@ public class IceTile : MonoBehaviour
 	{
 		if(other.tag == "Player")
 		{
-			//player.freezing = false;
+			player.freezing = false;
 		}
 	}
 }
