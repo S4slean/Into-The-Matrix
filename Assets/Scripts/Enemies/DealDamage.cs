@@ -11,6 +11,8 @@ public class DealDamage : MonoBehaviour
 	public float dmgTick = 1;
 	float tick;
 
+
+
 	private void OnTriggerEnter(Collider other)
 	{
 		tick = dmgTick;
@@ -24,25 +26,22 @@ public class DealDamage : MonoBehaviour
 		if (!DamageOverTime)
 			return;
 
-		tick -= Time.deltaTime;
-
-		if(tick <= 0)
+		if(TickManager.tick > TickManager.tickDuration)
 		{
 			ApplyDamage(other);
-			tick = dmgTick;
 		}
 	}
 
 	private void ApplyDamage(Collider other)
 	{
-
+		Debug.Log(user);
 		if (other.tag == null)
 			return;
 
 		//Deal Damage to player
 		if (other.tag == "Player" && other.GetComponent<CharaController>() != null)
 		{
-			if (user == "Player")
+			if (other.tag == gameObject.tag)
 				return;
 
 			FindObjectOfType<PlayerStats>().TakeDamage(damage);
@@ -52,7 +51,7 @@ public class DealDamage : MonoBehaviour
 		//Deal damage to ennemies
 		if (other.tag == "Enemy" && !other.isTrigger)
 		{
-			if (user == "Enemy")
+			if (other.tag == gameObject.tag)
 				return;
 
 			other.GetComponent<SimpleEnemy>().health -= damage;

@@ -23,6 +23,7 @@ public class SimpleEnemy : MonoBehaviour
 	[Header ("Movement")]
 	public int moveStep = 8;
 	public int stepDuration = 1;
+	public int stepFreeze = 2;
 	public int detectionRange = 6;
 
 	[Header("States")]
@@ -213,7 +214,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
 		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving )
 		{
-			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) >2)
+			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) != 0)
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 			else
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
@@ -221,7 +222,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
-			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) >2)
+			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) != 0)
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 			else
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
@@ -257,7 +258,7 @@ public class SimpleEnemy : MonoBehaviour
 		}
 		ismoving = false;
 
-		StartCoroutine(WaitForNewCycle(1));
+		StartCoroutine(WaitForNewCycle(stepFreeze));
 	}
 
 	//Phase d'attente après une attaque (Relance le patterne de l'ennemi)

@@ -38,7 +38,8 @@ public class Projectile : MonoBehaviour
 				{
 					if (explode)
 					{
-						Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, transform.position, transform.rotation);
+						GameObject instance = Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, transform.position, transform.rotation);
+						instance.tag = gameObject.tag;
 					}
 
 					Destroy();
