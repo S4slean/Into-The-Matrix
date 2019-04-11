@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Teleportation: Skill
 {
-	public int distance = 3;
+	public int distance = 4;
 	public GameObject selectionArea;
 	GameObject skillUser;
 	GameObject instance;
@@ -27,8 +27,7 @@ public class Teleportation: Skill
 				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 			return;
 		}
-
-		distance = 4;
+        
 		skillUser = user;
 
 		collider = skillUser.GetComponent<CapsuleCollider>();
@@ -50,8 +49,6 @@ public class Teleportation: Skill
 		{
 			StartCoroutine(WaitForAttack());
 		}
-
-		StartCoroutine(WaitForDesactivation());
 	}
 
 
@@ -73,7 +70,7 @@ public class Teleportation: Skill
 	{
 		CharaController player = skillUser.GetComponent<CharaController>();
 		instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
-		instance.GetComponent<crossTarget>().distance = 3;
+		instance.GetComponent<StarTarget>().distance = distance;
 		instance.GetComponent<SelectionArea>().skill = this;
 	}
 
@@ -100,47 +97,38 @@ public class Teleportation: Skill
 
 	public override IEnumerator useSkill(Vector3 dodgePos)
 	{
+		while(TickManager.tick < TickManager.tickDuration)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        cooldown = coolDownDuration;
+        //Ici on mettra l'animation/FX de disparition
+        skillUser.SetActive(false);
+        if (skillUser.tag == "Player")
+        { skillUser.GetComponent<CharaController>().lastMove = Vector3.zero; }
+        yield return new WaitForSeconds(TickManager.tickDuration);
+        //Ici on mettra l'animation/FX de réapparition
+        skillUser.transform.position = dodgePos;
+        skillUser.SetActive(true);
 
-
-		cooldown = coolDownDuration;
-
-		if (Physics.Raycast(skillUser.transform.position,dodgeDir, distance * 2, 9))
+		if(skillUser.tag == "Player")
 		{
-			distance -= 1;
-			StartCoroutine(useSkill(dodgePos-(dodgeDir*2)));
-			yield break;
+			this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
 		}
-		else
-		{
-			Vector3 dodgeStep = (dodgePos - skillUser.transform.position) / 5;
+		Destroy(instance);
+		collider.enabled = true;
 
-			for (int i = 0; i < 5; i++)
-			{
-				skillUser.transform.position += dodgeStep ;
-				yield return new WaitForEndOfFrame();
-			}
+		if (skillUser.GetComponent<SimpleEnemy>() != null)
+			skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
-			if(skillUser.tag == "Player")
-			{
-				this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-			}
-			Destroy(instance);
-			collider.enabled = true;
-
-			if (skillUser.GetComponent<SimpleEnemy>() != null)
-				skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
-		}
-
+        yield break;
 
 	}
 
-	IEnumerator WaitForDesactivation()
+	public void Desactivation()
 	{
-
-		yield return new WaitForSeconds(1f);
-
-		if (!isActive)
-			yield break;
+		//if (!isActive)
+			//break;
 
 		Destroy(instance);
 		if (skillUser.tag == "Player")

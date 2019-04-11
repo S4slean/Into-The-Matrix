@@ -8,6 +8,8 @@ public class StarTarget : SelectionArea
 	public GameObject tier1;
 	public GameObject tier2;
 	public GameObject tier3;
+    public GameObject tier4;
+    public GameObject tier5;
 
     // Start is called before the first frame update
     void Start()
@@ -18,5 +20,9 @@ public class StarTarget : SelectionArea
 			tier2.SetActive(true);
 		if (distance > 2)
 			tier3.SetActive(true);
+        if (distance > 3)
+            tier4.SetActive(true);
+        if (distance > 4)
+            tier5.SetActive(true);
     }
 }
