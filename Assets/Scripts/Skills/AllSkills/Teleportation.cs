@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DodgeRoll : Skill
+public class Teleportation: Skill
 {
 	public int distance = 3;
 	public GameObject selectionArea;
@@ -28,7 +28,7 @@ public class DodgeRoll : Skill
 			return;
 		}
 
-		distance = 3;
+		distance = 4;
 		skillUser = user;
 
 		collider = skillUser.GetComponent<CapsuleCollider>();

@@ -4816,12 +4816,26 @@ PrefabInstance:
     - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: cooldown
-      value: 15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
       propertyPath: cost
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: name
+      value: TP
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: description
+      value: "Un pouvoir qui vous transporte en un clin d'oeil l\xE0 o\xF9 vous voulez
+        dans la salle"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: selectionArea
+      value: 
+      objectReference: {fileID: 3610966103437665526, guid: 329fd1cef233d91449fbebb6db094934,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
 --- !u!4 &1165639947 stripped
