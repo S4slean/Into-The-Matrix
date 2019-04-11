@@ -4756,6 +4756,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillList
       objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 2118170987}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 2118170987}
     - target: {fileID: 2884519329243807457, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4849,6 +4864,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3610966103437665526, guid: 329fd1cef233d91449fbebb6db094934,
         type: 3}
+    - target: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+      propertyPath: distance
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
 --- !u!4 &1165639947 stripped
@@ -10029,6 +10048,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8e121ebafacd4341aaee9ba7499af9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2118170987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147417899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2131713132
