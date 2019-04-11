@@ -8,10 +8,10 @@ public class Spikes : MonoBehaviour
 
 	public bool isActive = true;
 	public bool cycling = true;
-	public float activeTime = 3;
-	public float inactiveTime = 3;
+	public int activeTime = 3;
+	public int inactiveTime = 3;
 
-	[SerializeField] float count;
+	[SerializeField] int count;
 
 	private void Start()
 	{ 
@@ -23,17 +23,17 @@ public class Spikes : MonoBehaviour
 		if (!cycling)
 			return;
 
-		if (isActive && count > activeTime || !isActive && count > inactiveTime)
-			Activate();
+		if (TickManager.tick > TickManager.tickDuration)
+			count += 1;
 
-		count += Time.deltaTime;
+		if (isActive && count > activeTime*TickManager.tickDuration || !isActive && count > inactiveTime * TickManager.tickDuration)
+			Activate();
 	}
 
 	public void Activate()
 	{
 		isActive = !isActive;	
 		anim.SetBool("isActive", isActive);
-		count = 0;
 	}
 
 }

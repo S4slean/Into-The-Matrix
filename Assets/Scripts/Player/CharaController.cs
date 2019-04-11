@@ -10,13 +10,14 @@ public class CharaController : MonoBehaviour
 	public GameObject MoveBox;
 	private Animator anim;
 
-	[Header ("Move Stats")]
-	[Range (0, 300) ]public int swipeTolerance = 30;
+	[Header("Move Stats")]
+	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
 	public int moveStep = 30;
 	public float stepDuration = 1;
 	public float delayBeforeRun = .7f;
-	public Vector3 lastMove;
+	public float stepFreeze = .2f;
+	public Vector3 lastMove = Vector3.forward;
 
 	[Header("Attack Stats")]
 	public int attackStrength = 1;
@@ -24,12 +25,14 @@ public class CharaController : MonoBehaviour
 	public float attackWidth = 1;
 	public static Collider[] targets;
 
-	[Header ("States")]
+	[Header("States")]
 	[SerializeField] bool unableToMove = false;
 	[SerializeField] bool unableToRotate = false;
 	[SerializeField] public bool isMoving = false;
 	[SerializeField] bool inUI = false;
 	[SerializeField] public bool freezing = false;
+	public enum Buffer { None, Attack, Move, Rotate	};
+	public Buffer buffer = Buffer.None;
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
@@ -51,11 +54,19 @@ public class CharaController : MonoBehaviour
 
 		if (AttackBox == null)
 			AttackBox = transform.GetChild(1).gameObject;
+		if (MoveBox == null)
+			MoveBox = transform.GetChild(2).gameObject;
+
+		stepDuration = TickManager.tickDuration;
+		stepFreeze = TickManager.tickDuration;
+
 		anim = GetComponent<Animator>();
 	}
 
 	private void Update()
 	{
+
+
 		HandleFall();
 
 		if (Input.GetMouseButtonDown(0))
@@ -80,21 +91,50 @@ public class CharaController : MonoBehaviour
 				if (HandleTargetting())
 					return;
 
-				Attack();
+				buffer = Buffer.Attack;
 				return;
 			}
-			HandleMove();
+			else
+			{
+				HandleMove();
+				buffer = Buffer.Move;
+			}
+			
 		}
 
 		if (Input.GetMouseButton(0) && holdedTime > delayBeforeRun && !inUI)
 		{
 			if (swipe.magnitude > swipeTolerance)
+			{
 				HandleMove();
-			else if(!isMoving)
-				StartCoroutine(Move(lastMove));
-
+			}
+				
+			buffer = Buffer.Move;
 			startMousePos = Input.mousePosition;
 		}
+
+		Debug.Log(buffer);
+		if(TickManager.tick > TickManager.tickDuration)
+		{
+
+			switch (buffer)
+			{
+				case Buffer.Attack:
+					Attack();
+					break;
+
+				case Buffer.Move:
+					StartCoroutine(Move(lastMove));
+					break;
+
+				case Buffer.Rotate:
+					break;
+
+				case Buffer.None:
+					break;
+			}
+		}
+
 
 		holdedTime += Time.deltaTime;
 	}
@@ -111,6 +151,8 @@ public class CharaController : MonoBehaviour
 
 	public void HandleMove()
 	{
+		Debug.Log("HandleMove !");
+
 		if (freezing)
 			return;
 
@@ -119,24 +161,11 @@ public class CharaController : MonoBehaviour
 		{
 			int step = Mathf.RoundToInt(swipe.x / stepDistance);
 
-			if(transform.rotation == Quaternion.LookRotation(Vector3.right * Mathf.Sign(step)) && !isMoving)
-				StartCoroutine(Move(Vector3.right * Mathf.Sign(step)));
 			if (Mathf.Sign(step) < 0)
-			{
 				lastMove = Vector3.left;
-				if (!unableToRotate)
-					transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
-			}
 
 			if (Mathf.Sign(step) > 0)
-			{
 				lastMove = Vector3.right;
-				if (!unableToRotate)
-					transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-			}
-
-
-
 		}
 
 		//mouvement Vertical
@@ -144,21 +173,11 @@ public class CharaController : MonoBehaviour
 		{
 			int step = Mathf.RoundToInt(swipe.y / stepDistance);
 
-			if (transform.rotation == Quaternion.LookRotation(Vector3.forward * Mathf.Sign(step)) && !isMoving)
-				StartCoroutine(Move(Vector3.forward * Mathf.Sign(step)));
 			if (Mathf.Sign(step) < 0)
-			{
 				lastMove = Vector3.back;
-				if (!unableToRotate)
-					transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-			}
 
 			if (Mathf.Sign(step) > 0)
-			{
 				lastMove = Vector3.forward;
-				if (!unableToRotate)
-					transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-			}
 		}
 
 
@@ -169,14 +188,18 @@ public class CharaController : MonoBehaviour
 		if (unableToMove || isMoving)
 			yield break;
 
+		if (!unableToRotate)
+			transform.LookAt(transform.position + lastMove);
+
 		lastMove = axe;
 		isMoving = true;
 
+		Debug.Log("Move !");
 		RaycastHit hit;
-		if (Physics.Raycast(transform.position + Vector3.up, axe,out hit, 2, 9))
+		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
 		{
-
 			isMoving = false;
+			freezing = false;
 			yield break;
 		}
 
@@ -185,19 +208,17 @@ public class CharaController : MonoBehaviour
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
-			if (i == Mathf.CeilToInt( Mathf.Abs(moveStep) / 2))
+			if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
 				MoveBox.SetActive(false);
-			yield return new WaitForSeconds(stepDuration);
+			yield return new WaitForSeconds(stepDuration / moveStep);
 		}
-		
-		isMoving = false;
 
-		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
-		{
-			freezing = false;
-		}
-			//StartCoroutine(FreezePlayer());
-		}
+		isMoving = false;
+		buffer = Buffer.None;
+		if (!freezing)
+			StartCoroutine(FreezePlayer(stepFreeze));
+
+	}
 
 	void Attack()
 	{
@@ -207,6 +228,7 @@ public class CharaController : MonoBehaviour
 		AttackBox.GetComponent<DealDamage>().damage = attackStrength;
 		AttackBox.SetActive(true);
 		anim.Play("Attack");
+		buffer = Buffer.None;
 	}
 
 	public void SetPlayerMovement(bool canMove, bool canRotate)
@@ -221,7 +243,7 @@ public class CharaController : MonoBehaviour
 		canRotate = !unableToRotate;
 	}
 
-	IEnumerator FreezePlayer()
+	IEnumerator FreezePlayer(float duration)
 	{
 		if (freezing)
 			yield break;
@@ -232,7 +254,7 @@ public class CharaController : MonoBehaviour
 
 		GetPlayerMovement(out canMove, out canRotate);
 		SetPlayerMovement(false, false);
-		yield return new WaitForSeconds(0.05f);
+		yield return new WaitForSeconds(duration);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;
 	}
@@ -246,7 +268,6 @@ public class CharaController : MonoBehaviour
 
 		if (hit.transform == null)
 		{
-			print("chier");
 			return false;
 		}
 		else if (hit.transform.tag == "skillTarget")
