@@ -40,12 +40,12 @@ public class GlitchOut : Skill
         {
             //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
 
-            WaitForTarget();
+            //WaitForTarget();
         }
 
         if (skillUser.tag == "Enemy")
         {
-            StartCoroutine(WaitForAttack());
+            //StartCoroutine(WaitForAttack());
         }
     }
 
