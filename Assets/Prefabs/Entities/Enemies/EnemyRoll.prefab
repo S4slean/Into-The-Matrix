@@ -65,8 +65,8 @@ MonoBehaviour:
   health: 1
   strength: 1
   moveStep: 16
-  patrolWidth: 0
-  patrolHeight: 0
+  stepDuration: 1
+  stepFreeze: 2
   detectionRange: 10
   state: 0
   ismoving: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   coolDownDuration: 3
   requireTarget: 0
   enemyActivationRange: 5
-  enemyLaunchTime: 0.75
+  enemyLaunchTime: 0
   enemyRecoverTime: 1
   cooldown: 0
 --- !u!1 &2008879617248182472

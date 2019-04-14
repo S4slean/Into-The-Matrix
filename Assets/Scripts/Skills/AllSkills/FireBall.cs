@@ -30,6 +30,7 @@ public class FireBall : Skill
 
 		GameObject Instance = Instantiate(fireballPrefab, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation);
 		Instance.GetComponent<DealDamage>().user = user.tag;
+		Instance.tag = user.tag;
 
 		if (user.GetComponent<SimpleEnemy>() != null)
 			user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));

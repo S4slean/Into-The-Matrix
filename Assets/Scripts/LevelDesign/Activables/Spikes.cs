@@ -11,7 +11,7 @@ public class Spikes : MonoBehaviour
 	public int activeTime = 3;
 	public int inactiveTime = 3;
 
-	[SerializeField] int count;
+	[SerializeField] int count =0;
 
 	private void Start()
 	{ 
@@ -26,7 +26,7 @@ public class Spikes : MonoBehaviour
 		if (TickManager.tick > TickManager.tickDuration)
 			count += 1;
 
-		if (isActive && count > activeTime*TickManager.tickDuration || !isActive && count > inactiveTime * TickManager.tickDuration)
+		if (isActive && count > activeTime*100*TickManager.tickDuration || !isActive && count > inactiveTime*100 * TickManager.tickDuration)
 			Activate();
 	}
 
@@ -34,6 +34,7 @@ public class Spikes : MonoBehaviour
 	{
 		isActive = !isActive;	
 		anim.SetBool("isActive", isActive);
+		count = 0;
 	}
 
 }

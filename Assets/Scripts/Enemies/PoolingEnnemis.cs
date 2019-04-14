@@ -44,8 +44,6 @@ public class PoolingEnnemis : MonoBehaviour
         spawnedEnemy.GetComponent<Transform>().position = spawnLocation;
         enemyScript = spawnedEnemy.GetComponent<SimpleEnemy>();
         enemyScript.health = enemyScript.maxHealth;
-        enemyScript.patrolWidth = patrolWidth;
-        enemyScript.patrolHeight = patrolHeight;
         spawnedEnemy.SetActive(true);
         if (ennemisIndex[typeEnnemi] < ennemisArray[typeEnnemi].Length-1)
         { ennemisIndex[typeEnnemi]++; }
