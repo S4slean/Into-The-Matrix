@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TickManager : MonoBehaviour
 {
-	public static float tickDuration = 0.085f;
+	public static float tickDuration = 0.15f;
 	CharaController player;
 	public static float tick = 0;
 
@@ -19,6 +19,7 @@ public class TickManager : MonoBehaviour
     {
         if(tick > tickDuration)
 		{
+			Debug.Log("Tick");
 			tick = 0;
 		}
 

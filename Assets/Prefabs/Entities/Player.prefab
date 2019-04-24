@@ -207,12 +207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackBox: {fileID: 0}
   MoveBox: {fileID: 0}
-  swipeTolerance: 30
-  stepDistance: 8
-  moveStep: 30
-  stepDuration: 1
-  delayBeforeRun: 0.7
-  lastMove: {x: 0, y: 0, z: 0}
+  swipeTolerance: 14
+  stepDistance: 16
+  lastMove: {x: 0, y: 0, z: 1}
   attackStrength: 1
   attackLength: 1
   attackWidth: 1
@@ -221,6 +218,7 @@ MonoBehaviour:
   isMoving: 0
   inUI: 0
   freezing: 0
+  buffer: 0
   swipe: {x: 0, y: 0, z: 0}
 --- !u!95 &1379326855
 Animator:

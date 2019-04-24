@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
 	public enum Behaviour { oneHit, goThrough, bounce, split}
 
-	public float projectileSpeed = 1;
+	public float projectileSpeed = .5f;
 	public float range = 10;
 	public bool explode = false;
 	public Behaviour behaviour = Behaviour.oneHit;
@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
 				{
 					if (explode)
 					{
-						GameObject instance = Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, transform.position, transform.rotation);
+						GameObject instance = Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, other.transform.position, transform.rotation);
 						instance.tag = gameObject.tag;
 					}
 
