@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class PNJ_Merchant_StoreContent : MonoBehaviour
 {
-    public GameObject StoreContent; // Assigner le gameobject du même nom -> UI du marchand
+    public GameObject StoreButtonsParentObject; // Assigner le gameobject du même nom -> UI du marchand
     public GameObject StoreContentList; // Assigner le gameobject du même nom
 
     [Header("System elements - Ignore please")]
@@ -35,7 +35,7 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
 
     public void InitiateLists() // Récupère les listes de boutons et d'équipements à vendre
     {
-        childObjects = StoreContent.GetComponentsInChildren<Transform>(true);
+        childObjects = StoreButtonsParentObject.GetComponentsInChildren<Transform>(true);
         ShopButtonsContentList = new List<GameObject>();
 
         // Récupère les boutons du store
@@ -47,10 +47,10 @@ public class PNJ_Merchant_StoreContent : MonoBehaviour
             }
 
         }
-        ShopButtonsContentList.Remove(StoreContent.gameObject);
+        ShopButtonsContentList.Remove(StoreButtonsParentObject.gameObject);
 
         // Récupère les équipements et les ajoute à la liste 
-        equipmentsForSale = new List<Equipment>(StoreContentList.GetComponents<Equipment>());
+        //equipmentsForSale = new List<Equipment>(StoreContentList.GetComponents<Equipment>());
     }
 
     public void AddItemToShopContent() // Active les boutons du Store selon que leur script est actif ou non
