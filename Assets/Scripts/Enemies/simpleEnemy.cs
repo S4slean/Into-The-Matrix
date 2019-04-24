@@ -21,9 +21,9 @@ public class SimpleEnemy : MonoBehaviour
 	public int strength = 1;
 
 	[Header ("Movement")]
-	public int moveStep = 8;
-	public int stepDuration = 1;
-	public int stepFreeze = 2;
+	int moveStep = 12;
+	float stepDuration = TickManager.tickDuration/2;
+	float stepFreeze = TickManager.tickDuration;
 	public int detectionRange = 6;
 
 	[Header("States")]
@@ -48,7 +48,13 @@ public class SimpleEnemy : MonoBehaviour
 	private void Start()
 	{
 		player = FindObjectOfType<CharaController>().gameObject;
-		state = State.SelectSkill;
+		state = State.wait;
+	}
+
+	private void OnEnable()
+	{
+		state = State.wait;
+		StartCoroutine(WaitForNewCycle(1));
 	}
 
 	private void Update()
@@ -113,7 +119,10 @@ public class SimpleEnemy : MonoBehaviour
 
 			case State.rangedAttack:
 				{
-					if(DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
+					if (TickManager.tick < TickManager.tickDuration)
+						return;
+
+					if (DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
 					{
 						FacePlayer();
 						state = State.wait;
@@ -129,6 +138,9 @@ public class SimpleEnemy : MonoBehaviour
 
 			case State.follow:
 				{
+					if (TickManager.tick < TickManager.tickDuration)
+						return;
+
 					GetClose();
 					break;
 				}
@@ -254,7 +266,7 @@ public class SimpleEnemy : MonoBehaviour
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 
-			yield return new WaitForSeconds(stepDuration*TickManager.tickDuration / moveStep);
+			yield return new WaitForSeconds(stepDuration / moveStep);
 		}
 		ismoving = false;
 
@@ -262,7 +274,7 @@ public class SimpleEnemy : MonoBehaviour
 	}
 
 	//Phase d'attente après une attaque (Relance le patterne de l'ennemi)
-	public IEnumerator WaitForNewCycle(int waitingTime)
+	public IEnumerator WaitForNewCycle(float waitingTime)
 	{
 		state = State.wait;
 		yield return new WaitForSeconds(waitingTime * TickManager.tickDuration);

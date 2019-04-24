@@ -13,10 +13,10 @@ public class CharaController : MonoBehaviour
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
-	public int moveStep = 30;
-	public float stepDuration = 1;
-	public float delayBeforeRun = .7f;
-	public float stepFreeze = .2f;
+	private int moveStep = 8;
+	private float stepDuration = 1;
+	private float delayBeforeRun = .7f;
+	private float stepFreeze = .2f;
 	public Vector3 lastMove = Vector3.forward;
 
 	[Header("Attack Stats")]
@@ -33,6 +33,7 @@ public class CharaController : MonoBehaviour
 	[SerializeField] public bool freezing = false;
 	public enum Buffer { None, Attack, Move, Rotate	};
 	public Buffer buffer = Buffer.None;
+	float debugTick = 0;
 
 	private Vector3 startMousePos;
 	private Vector3 hitPosition;
@@ -57,15 +58,15 @@ public class CharaController : MonoBehaviour
 		if (MoveBox == null)
 			MoveBox = transform.GetChild(2).gameObject;
 
-		stepDuration = TickManager.tickDuration;
-		stepFreeze = TickManager.tickDuration;
+		stepDuration = TickManager.tickDuration/2;
+		stepFreeze = TickManager.tickDuration/2.1f;
 
 		anim = GetComponent<Animator>();
 	}
 
 	private void Update()
 	{
-
+		debugTick += Time.deltaTime;
 
 		HandleFall();
 
@@ -185,6 +186,8 @@ public class CharaController : MonoBehaviour
 
 	public IEnumerator Move(Vector3 axe)
 	{
+		debugTick = 0;
+
 		if (unableToMove || isMoving)
 			yield break;
 
@@ -204,6 +207,10 @@ public class CharaController : MonoBehaviour
 		}
 
 		MoveBox.SetActive(true);
+
+		if(!freezing)
+			anim.Play("Walk");
+
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
@@ -213,11 +220,12 @@ public class CharaController : MonoBehaviour
 			yield return new WaitForSeconds(stepDuration / moveStep);
 		}
 
-		isMoving = false;
+		
 		buffer = Buffer.None;
 		if (!freezing)
 			StartCoroutine(FreezePlayer(stepFreeze));
 
+		isMoving = false;
 	}
 
 	void Attack()
@@ -243,7 +251,7 @@ public class CharaController : MonoBehaviour
 		canRotate = !unableToRotate;
 	}
 
-	IEnumerator FreezePlayer(float duration)
+	public IEnumerator FreezePlayer(float duration)
 	{
 		if (freezing)
 			yield break;
@@ -257,6 +265,7 @@ public class CharaController : MonoBehaviour
 		yield return new WaitForSeconds(duration);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;
+		Debug.Log(debugTick);
 	}
 
 	public bool HandleTargetting()

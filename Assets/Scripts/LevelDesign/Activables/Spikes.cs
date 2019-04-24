@@ -8,8 +8,8 @@ public class Spikes : MonoBehaviour
 
 	public bool isActive = true;
 	public bool cycling = true;
-	public int activeTime = 3;
-	public int inactiveTime = 3;
+	int activeTime = 2;
+	int inactiveTime = 3;
 
 	[SerializeField] int count =0;
 
@@ -26,7 +26,7 @@ public class Spikes : MonoBehaviour
 		if (TickManager.tick > TickManager.tickDuration)
 			count += 1;
 
-		if (isActive && count > activeTime*100*TickManager.tickDuration || !isActive && count > inactiveTime*100 * TickManager.tickDuration)
+		if (isActive && count > activeTime*10*TickManager.tickDuration || !isActive && count > inactiveTime*10*TickManager.tickDuration)
 			Activate();
 	}
 

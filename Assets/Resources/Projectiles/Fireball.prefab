@@ -36,7 +36,7 @@ Transform:
 --- !u!199 &7995383143352647585
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4762,6 +4762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  user: Player
   DamageOverTime: 0
   dmgTick: 1
 --- !u!135 &498708390642883515
@@ -9393,7 +9394,7 @@ ParticleSystem:
 --- !u!199 &5836518534666399433
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -9464,8 +9465,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03207fd42e756ff4f9a7b35560bfad17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 15
-  range: 15
+  projectileSpeed: 8
+  range: 10
   explode: 1
   behaviour: 0
 --- !u!54 &3063077974897122901
