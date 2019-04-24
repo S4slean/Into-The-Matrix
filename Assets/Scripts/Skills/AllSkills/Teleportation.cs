@@ -33,10 +33,8 @@ public class Teleportation: Skill
 		collider = skillUser.GetComponent<CapsuleCollider>();
 		//collider.enabled = false;
 
-
 		//instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
 		isActive = true;
-		
 
 		if (skillUser.tag == "Player")
 		{
