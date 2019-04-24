@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GlitchOut : Skill
 {
-    public int distance = 4;
-    public GameObject selectionArea;
+    public bool glitching;
     GameObject skillUser;
     GameObject instance;
     Vector3 dodgeDir;
@@ -29,7 +28,7 @@ public class GlitchOut : Skill
         }
 
         skillUser = user;
-
+        glitching = true;
         collider = skillUser.GetComponent<CapsuleCollider>();
         //collider.enabled = false;
 
@@ -41,6 +40,8 @@ public class GlitchOut : Skill
             //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
 
             //WaitForTarget();
+
+            glitching = true;
         }
 
         if (skillUser.tag == "Enemy")
@@ -56,5 +57,76 @@ public class GlitchOut : Skill
 
         if (!isActive)
             return;
+    }
+
+    public void WaitForTarget()
+    {
+        CharaController player = skillUser.GetComponent<CharaController>();
+        instance.GetComponent<SelectionArea>().skill = this;
+    }
+
+    public IEnumerator WaitForAttack()
+    {
+        yield return new WaitForSeconds(enemyLaunchTime);
+    }
+
+    public override IEnumerator useSkill(Vector3 dodgePos)
+    {
+        Debug.Log("SkillUse");
+        while (TickManager.tick < TickManager.tickDuration)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        cooldown = coolDownDuration;
+        //Ici on mettra l'animation/FX de disparition
+        skillUser.SetActive(false);
+        if (skillUser.tag == "Player")
+        {skillUser.GetComponent<CharaController>().lastMove = Vector3.zero;}
+        yield return new WaitForSeconds(TickManager.tickDuration);
+        //Ici on mettra l'animation/FX de réapparition
+        skillUser.transform.position = dodgePos;
+        skillUser.SetActive(true);
+
+        if (skillUser.tag == "Player")
+        {
+            this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
+        }
+        Destroy(instance);
+        collider.enabled = true;
+
+        if (skillUser.GetComponent<SimpleEnemy>() != null)
+            skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+
+        yield break;
+
+    }
+
+    public void Desactivation()
+    {
+        //if (!isActive)
+        //break;
+
+        Destroy(instance);
+        if (skillUser.tag == "Player")
+        {
+            skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
+        }
+        collider.enabled = true;
+        isActive = false;
+
+    }
+
+    public override void OnDesequip()
+    {
+        if (instance == null)
+            return;
+
+        Destroy(instance);
+
+
+        FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
+
+
+        isActive = false;
     }
 }
