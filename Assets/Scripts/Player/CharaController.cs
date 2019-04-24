@@ -86,7 +86,7 @@ public class CharaController : MonoBehaviour
 
 		if (Input.GetMouseButtonUp(0) && !isMoving && !inUI)
 		{
-			if (swipe.magnitude < swipeTolerance)
+			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun)
 			{
 				if (HandleTargetting())
 					return;

@@ -41,7 +41,7 @@ public class Skill : MonoBehaviour
 	//Activation by enemy, contains placement functions if needed
 	public virtual IEnumerator EnemyUse(SimpleEnemy enemy)
 	{
-		yield return new WaitForSeconds(enemyLaunchTime);
+		yield return new WaitForSeconds(enemyLaunchTime * TickManager.tickDuration);
 		Activate(enemy.gameObject);
 		yield break;
 	}
