@@ -8,10 +8,10 @@ public class Spikes : MonoBehaviour
 
 	public bool isActive = true;
 	public bool cycling = true;
-	public float activeTime = 3;
-	public float inactiveTime = 3;
+	int activeTime = 2;
+	int inactiveTime = 3;
 
-	[SerializeField] float count;
+	[SerializeField] int count =0;
 
 	private void Start()
 	{ 
@@ -23,10 +23,11 @@ public class Spikes : MonoBehaviour
 		if (!cycling)
 			return;
 
-		if (isActive && count > activeTime || !isActive && count > inactiveTime)
-			Activate();
+		if (TickManager.tick > TickManager.tickDuration)
+			count += 1;
 
-		count += Time.deltaTime;
+		if (isActive && count > activeTime*10*TickManager.tickDuration || !isActive && count > inactiveTime*10*TickManager.tickDuration)
+			Activate();
 	}
 
 	public void Activate()

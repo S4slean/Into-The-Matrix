@@ -202,17 +202,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3487912421492915326}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e5af7ba7d6f0b458c134c8af86e3d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c6c1c1031f93734a9cd68a33d0dde25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AttackBox: {fileID: 0}
-  MoveBox: {fileID: 8673526615949745432}
-  swipeTolerance: 20
-  stepDistance: 2
-  moveStep: 10
-  stepDuration: 0.01
-  delayBeforeRun: 0.17
-  lastMove: {x: 0, y: 0, z: 0}
+  MoveBox: {fileID: 0}
+  swipeTolerance: 14
+  stepDistance: 16
+  lastMove: {x: 0, y: 0, z: 1}
   attackStrength: 1
   attackLength: 1
   attackWidth: 1
@@ -221,6 +218,7 @@ MonoBehaviour:
   isMoving: 0
   inUI: 0
   freezing: 0
+  buffer: 0
   swipe: {x: 0, y: 0, z: 0}
 --- !u!95 &1379326855
 Animator:
@@ -483,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  user: Player
   DamageOverTime: 0
   dmgTick: 1
 --- !u!1 &8673526615949745432

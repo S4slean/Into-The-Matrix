@@ -22,4 +22,10 @@ public class PNJ_Merchant : MonoBehaviour
             PlayerCC.enabled = false;
         }
     }
+
+    public void CloseInterface()
+    {
+        MerchantInterface.SetActive(false);
+        PlayerCC.enabled = true;
+    }
 }

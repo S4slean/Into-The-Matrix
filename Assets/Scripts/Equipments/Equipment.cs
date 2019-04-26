@@ -45,7 +45,7 @@ public class Equipment : MonoBehaviour
         DD.damage += attackBonus;
         PS.strength += strenghtBonus;
         PS.defense += defenceBonus;
-        CC.moveStep -= speedBonus;
+        //CC.moveStep -= speedBonus;
         CC.attackLength += attackLenghtBonus;
         CC.attackWidth += attackWidthBonus;
 
@@ -57,7 +57,7 @@ public class Equipment : MonoBehaviour
         DD.damage -= attackBonus;
         PS.strength -= strenghtBonus;
         PS.defense -= defenceBonus;
-        CC.moveStep += speedBonus;
+        //CC.moveStep += speedBonus;
         CC.attackLength -= attackLenghtBonus;
         CC.attackWidth -= attackWidthBonus;
     }

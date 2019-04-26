@@ -101,6 +101,7 @@ public class PlayerStats : MonoBehaviour
 		health = MaxHealth;
 		UpdateLifeBar();
 		lifebar.SetActive(true);
+		GetComponent<PlayerMoneyManager>().GetDungeonMoney();
 	}
 
     public void UpdateLifeBar()

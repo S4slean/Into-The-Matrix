@@ -11,12 +11,14 @@ public class MoneyBank : MonoBehaviour
 
     public int BankMoney; // Argent disponible dans la banque
     public PlayerMoneyManager PMM;
+	public Text UIMoneyDisplay; // Indicateur d'argent sur l'UI
     public List<Text> BankMoneyDisplays; // Liste de tous les textes montrant la somme dans la banque;
 
     // Start is called before the first frame update
     void Start()
     {
         PMM = GameObject.Find("Player").GetComponent<PlayerMoneyManager>();
+		UIMoneyDisplay = GameObject.Find("PlayerMoneyText").GetComponent<Text>();
 
         if (PlayerPrefs.HasKey("BankCurrentMoney"))
         {
@@ -28,23 +30,15 @@ public class MoneyBank : MonoBehaviour
             PlayerPrefs.SetInt("BankCurrentMoney", 0);
         }
 
-        ActualizeBankMoney();
+		// Met l'argent que le joueur a récupéré dans le donjon dans la banque.
+		DepositMoney();
+		ActualizeBankMoney();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) // DEBUG !!! A SUPPRIMER DES QUE NECESSAIRE
-        {
-            DepositMoney();
-            ActualizeBankMoney();
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            BankMoney = 0;
-            ActualizeBankMoney();
-            PlayerPrefs.SetInt("BankCurrentMoney", 0);
-        }
+
     }
 
     public void DepositMoney() // Ajoute à la banque l'argent que le player a sur lui
@@ -61,6 +55,8 @@ public class MoneyBank : MonoBehaviour
         {
             BankMoneyDisplays[i].text = "Money: " + BankMoney;
         }
+
+		UIMoneyDisplay.text = BankMoney.ToString();
     }
 
 

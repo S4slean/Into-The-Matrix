@@ -22,9 +22,9 @@ public class Skill : MonoBehaviour
 	[Tooltip("")]
 	public float enemyActivationRange = 5;
 	[Tooltip("The anticipation animation duration")]
-	public float enemyLaunchTime = .75f;
+	public int enemyLaunchTime = 1;
 	[Tooltip("The Recover animation duration (Vulnerability Frame)")]
-	public float enemyRecoverTime = 1;
+	public int enemyRecoverTime = 1;
 
 	[Header ("Debug Status (NE PAS MODIFIER)")]
 	public float cooldown;
@@ -41,7 +41,7 @@ public class Skill : MonoBehaviour
 	//Activation by enemy, contains placement functions if needed
 	public virtual IEnumerator EnemyUse(SimpleEnemy enemy)
 	{
-		yield return new WaitForSeconds(enemyLaunchTime);
+		yield return new WaitForSeconds(enemyLaunchTime * TickManager.tickDuration);
 		Activate(enemy.gameObject);
 		yield break;
 	}

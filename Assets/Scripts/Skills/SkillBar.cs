@@ -9,6 +9,7 @@ public class SkillBar : MonoBehaviour
 	public GameObject SkillButtonPrefab;
 	public List<Skill> PlayerSkills = new List<Skill>(3);
 
+
 	//Création du boutton
     public void CreateButton(Skill skill)
 	{

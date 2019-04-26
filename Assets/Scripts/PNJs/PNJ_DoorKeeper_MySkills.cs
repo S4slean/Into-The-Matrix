@@ -19,6 +19,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     public Transform[] childObjects; // Sert à récupérer la liste des object en enfant
     public List<GameObject> StuffContentList; // Liste des objets de l'inventaire en enfants. Configuré pour contenir chaque bouton du Stuff.
     public GameObject SelectedButton;
+    public GameObject InfoPopup;
     public SkillBar SB;
     public Text equipmentText;
     public int HowManySkillsIHave;
@@ -29,12 +30,14 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     {
         UpdateMySkillNumber();
         InitiateLists();
+
+        SB = FindObjectOfType<SkillBar>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SelectedButton = EventSystem.current.currentSelectedGameObject;
+        
     }
 
     public void InitiateLists() // Récupère les boutons de l'inventaire
@@ -45,7 +48,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         // Récupère les boutons du stuff
         foreach (Transform child in childObjects)
         {
-            if (child.name != "Text")
+            if (child.name != "SkillIcon" && child.name != "EquipCheck" && child.name != "CostText")
             {
                 StuffContentList.Add(child.gameObject);
             }
@@ -54,7 +57,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         StuffContentList.Remove(StuffContent.gameObject);
     }
 
-    public void UnlockItem() // Permet d'acheter des skill dans le store
+    public void UnlockItem() // Trouve le skill à acheter et ouvre le popup d'achat
     {
         for (int i = 0; i < skillListReference.skills.Count; i++) // Trouve le skill à acheter
         {
@@ -64,33 +67,54 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
             }
         }
 
+        SelectedButton = EventSystem.current.currentSelectedGameObject;
+
+        // Ouvre le popup d'achat et renseigne les champs de texte
+        InfoPopup.transform.GetChild(0).GetComponent<Image>().sprite = EquipmentToUnlock.icon;
+        InfoPopup.transform.GetChild(1).GetComponent<Text>().text = EquipmentToUnlock.name;
+        InfoPopup.transform.GetChild(2).GetComponent<Text>().text = EquipmentToUnlock.description;
+        InfoPopup.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "Buy for \n" + EquipmentToUnlock.cost + "$";
+        InfoPopup.SetActive(true);
+    }
+
+    public void BuySkill() // Achète le skill sélectionné par UnlockItem
+    {
         if (EquipmentToUnlock.cost <= money.BankMoney) // Procède à l'achat
         {
             money.BankMoney -= EquipmentToUnlock.cost;
             money.ActualizeBankMoney();
-            SelectedButton = EventSystem.current.currentSelectedGameObject;
             Debug.Log("object bought !");
-            SelectedButton.GetComponent<Button>().interactable = false;
 
-            for (int ii = 0; ii < StuffContentList.Count; ii++)
-            {
-                if (StuffContentList[ii].name == SelectedButton.name)
-                {
-                    StuffContentList[ii].GetComponent<Button>().interactable = true;
-                }
-            }
+            // Change le bouton en équiper/déséquiper
+
+            SelectedButton.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1);  // dégrise l'icone
+            SelectedButton.transform.GetChild(1).gameObject.SetActive(true);                        // Active l'icone équipé/déséquipé
+            SelectedButton.transform.GetChild(2).GetComponent<Text>().text = "";                    // Retire le coût
+
+            SelectedButton.GetComponent<Button>().onClick.RemoveAllListeners();
+            SelectedButton.GetComponent<Button>().onClick.AddListener(() => EquipToPlayer());
+
+            // Désactive le popup d'achat
+            InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+            InfoPopup.SetActive(false);
         }
         else // SI le joueur n'as pas assez d'argent
         {
+            InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
             Debug.Log("Not enough money !");
         }
     }
 
-    public void EquipToPlayer()
+    public void EquipToPlayer() // Equipe le skill au player // Need rework
     {
         Debug.Log("! BUTTON PRESSED: " + EventSystem.current.currentSelectedGameObject.name);
+
+        SelectedButton = EventSystem.current.currentSelectedGameObject;
+
         for (int ii = 0; ii < skillListReference.skills.Count; ii++) 
         {
+            // équipe le skill
+
             if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
             {
                 if (skillListReference.skills[ii].name == EventSystem.current.currentSelectedGameObject.name)
@@ -99,31 +123,38 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                     Debug.Log("Skill equipped: " + skillListReference.skills[ii].name);
                     SB.CreateButton(skillListReference.skills[ii]);
 
-                    EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 0.5f, 0);
-                    
+                    SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0,0.8f,0);
+
                     UpdateMySkillNumber();
                     return;
                 }
             }
+
+            // Déséquipe le skill
+
             else for (int j = 0; j < SB.PlayerSkills.Count; j++)
                 {
                     if (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
                     {                            
                         Debug.Log("Skill unequipped: " + SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].name);
 
+                        SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0.8f, 0, 0);
+
                         SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].OnDesequip();
                         Destroy(SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].gameObject);
                         SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)] = null;
-
-                        EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = new Color(1f, 1f, 1);
 
                         UpdateMySkillNumber();
                         return;
                     }
             }
-        }
+        }     
+    }
 
-        
+    public void ClosePopup() // Ferme le popup d'achat
+    {
+        InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+        InfoPopup.SetActive(false);
     }
 
     void UpdateMySkillNumber()
@@ -155,4 +186,6 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         }
         return -1;
     }
+
+    
 }

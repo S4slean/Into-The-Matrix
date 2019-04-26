@@ -65,8 +65,8 @@ MonoBehaviour:
   health: 1
   strength: 1
   moveStep: 16
-  patrolWidth: 0
-  patrolHeight: 0
+  stepDuration: 1
+  stepFreeze: 5
   detectionRange: 10
   state: 0
   ismoving: 0
@@ -95,9 +95,9 @@ MonoBehaviour:
   cost: 10
   coolDownDuration: 3
   requireTarget: 0
-  enemyActivationRange: 5
-  enemyLaunchTime: 0.75
-  enemyRecoverTime: 1
+  enemyActivationRange: 6
+  enemyLaunchTime: 4
+  enemyRecoverTime: 2
   cooldown: 0
 --- !u!1 &2008879617248182472
 GameObject:
