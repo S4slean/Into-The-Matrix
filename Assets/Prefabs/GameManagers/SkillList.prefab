@@ -63,13 +63,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Fire Ball
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
   description: Throw a fireball !
-  cost: 10
+  cost: 50
   coolDownDuration: 5
   requireTarget: 0
   enemyActivationRange: 5
-  enemyLaunchTime: 0.75
+  enemyLaunchTime: 1
   enemyRecoverTime: 1
   cooldown: 0
 --- !u!114 &4998082544893357717
@@ -85,15 +85,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Death Beam
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
   description: Un laser qui blesse les ennemis pris dedans
-  cost: 0
+  cost: 20
   coolDownDuration: 10
   requireTarget: 0
   enemyActivationRange: 5
-  enemyLaunchTime: 0.75
+  enemyLaunchTime: 1
   enemyRecoverTime: 1
-  cooldown: 0
+  cooldown: 15
   beam: {fileID: 0}
   duration: 2.5
 --- !u!114 &1960749311
@@ -109,14 +109,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Glitch Out
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
   description: Un glitch permettant de d'esquiver les attaques et de traverser les
     obstacles
-  cost: 0
+  cost: 15
   coolDownDuration: 6
   requireTarget: 0
   enemyActivationRange: 5
-  enemyLaunchTime: 0.75
+  enemyLaunchTime: 1
   enemyRecoverTime: 1
   cooldown: 0
   distance: 3

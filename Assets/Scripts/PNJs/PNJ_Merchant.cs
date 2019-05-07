@@ -12,6 +12,7 @@ public class PNJ_Merchant : MonoBehaviour
     void Start()
     {
 		PlayerCC = FindObjectOfType<CharaController>();
+        MerchantInterface = GameObject.Find("HubUIv2").transform.GetChild(0).gameObject ;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,5 +22,11 @@ public class PNJ_Merchant : MonoBehaviour
             MerchantInterface.SetActive(true);
             PlayerCC.enabled = false;
         }
+    }
+
+    public void CloseInterface()
+    {
+        MerchantInterface.SetActive(false);
+        PlayerCC.enabled = true;
     }
 }

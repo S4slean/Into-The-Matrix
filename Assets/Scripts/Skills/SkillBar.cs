@@ -7,7 +7,10 @@ public class SkillBar : MonoBehaviour
 {
 
 	public GameObject SkillButtonPrefab;
+    public PNJ_DoorKeeper_MySkills skillsShop;
+    public PNJ_Merchant_InstantiateButtons buttonsShop;
 	public List<Skill> PlayerSkills = new List<Skill>(3);
+
 
 	//Création du boutton
     public void CreateButton(Skill skill)
@@ -49,10 +52,19 @@ public class SkillBar : MonoBehaviour
 	{
 		for(int i = 0; i < 3; i++)
 		{
+            
+            
 					
 			if(PlayerSkills[i] != null)
 				Destroy(PlayerSkills[i].gameObject);
-		}
-		
-	}
+            PlayerSkills[i] = null;
+
+            
+        }
+
+        skillsShop = FindObjectOfType<PNJ_DoorKeeper_MySkills>();
+        buttonsShop = GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(4).GetChild(0).GetChild(0).GetComponent<PNJ_Merchant_InstantiateButtons>();
+        skillsShop.UpdateMySkillNumber();
+        buttonsShop.ResetShopButtons();
+    }
 }

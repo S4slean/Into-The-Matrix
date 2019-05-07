@@ -7,10 +7,6 @@ public class SimpleEnemy : MonoBehaviour
 {
 	public enum State
 	{
-		patrolRight,
-		patrolDown,
-		patrolLeft,
-		patrolUp,
 		SelectSkill,
 		rangedAttack,
 		meleeAttack,
@@ -25,9 +21,9 @@ public class SimpleEnemy : MonoBehaviour
 	public int strength = 1;
 
 	[Header ("Movement")]
-	public int moveStep = 8;
-	public int patrolWidth ;
-	public int patrolHeight ;
+	int moveStep = 12;
+	float stepDuration = TickManager.tickDuration/2;
+	float stepFreeze = TickManager.tickDuration;
 	public int detectionRange = 6;
 
 	[Header("States")]
@@ -52,8 +48,13 @@ public class SimpleEnemy : MonoBehaviour
 	private void Start()
 	{
 		player = FindObjectOfType<CharaController>().gameObject;
-		state = State.patrolUp;
-		step = patrolWidth;
+		state = State.wait;
+	}
+
+	private void OnEnable()
+	{
+		state = State.wait;
+		StartCoroutine(WaitForNewCycle(1));
 	}
 
 	private void Update()
@@ -68,71 +69,6 @@ public class SimpleEnemy : MonoBehaviour
 
 		switch (state)
 		{
-			case State.patrolRight:													//Patrouille vers la droite
-				{
-					if (step > 0 && !ismoving)										//Si il lui reste des pas à faire il bouge à droite
-					{
-						step--;
-						StartCoroutine(Move( Vector3.right));
-					}
-					if( step <= 0)													//Sinon il change de direction
-					{
-						step = patrolHeight;
-						state = State.patrolDown;
-					}
-					DetectPlayer();													//Vérifie si le joueur est à portée de la zone de détection
-					break;
-				}
-
-			case State.patrolDown:													//Patrouille vers le bas
-				{
-					if (step > 0 && !ismoving)
-					{
-						step--;
-						StartCoroutine(Move(Vector3.back));
-					}
-					if(step <= 0)
-					{
-						step = patrolWidth;
-						state = State.patrolLeft;
-					}
-					DetectPlayer();
-					break;
-				}
-
-			case State.patrolLeft:													//Patrouille vers la gauche
-				{
-					if (step > 0 && !ismoving)
-					{
-						step--;
-						StartCoroutine(Move(Vector3.left));
-					}
-					if (step <= 0)
-					{
-						step = patrolHeight;
-						state = State.patrolUp;
-					}
-					DetectPlayer();
-				
-					break;
-				}
-
-			case State.patrolUp:													//Patrouille vers le haut
-				{
-					if (step > 0 && !ismoving)
-					{
-						step--;
-						StartCoroutine(Move(Vector3.forward));
-					}
-					if (step <= 0)
-					{
-						step = patrolWidth;
-						state = State.patrolRight;
-					}
-					DetectPlayer();
-					break;
-				}
-
 			case State.SelectSkill:																									//Determine quel skill le mob doit utiliser puis pass
 				{
 					
@@ -165,6 +101,9 @@ public class SimpleEnemy : MonoBehaviour
 
 			case State.meleeAttack:																									//Phase d'attaque au Cac
 				{
+					if (TickManager.tick < TickManager.tickDuration)
+						return;
+
 					if (enemyToPlayer.magnitude < 2.5f)																				//s'il est à portée il utilise le skill
 					{
 						FacePlayer();
@@ -180,7 +119,10 @@ public class SimpleEnemy : MonoBehaviour
 
 			case State.rangedAttack:
 				{
-					if(DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
+					if (TickManager.tick < TickManager.tickDuration)
+						return;
+
+					if (DetectPlayerInLine(selectedSkill.enemyActivationRange * 2))
 					{
 						FacePlayer();
 						state = State.wait;
@@ -196,6 +138,9 @@ public class SimpleEnemy : MonoBehaviour
 
 			case State.follow:
 				{
+					if (TickManager.tick < TickManager.tickDuration)
+						return;
+
 					GetClose();
 					break;
 				}
@@ -281,7 +226,7 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe horizontal se rapprocher horizontalement
 		if(Mathf.Abs(enemyToPlayer.x) > Mathf.Abs(enemyToPlayer.z) && !ismoving )
 		{
-			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) >2)
+			if( Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.z)) != 0)
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 			else
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
@@ -289,38 +234,20 @@ public class SimpleEnemy : MonoBehaviour
 		//si plus éloigné sur l'axe vertical se rapprocher verticalement
 		else if(!ismoving)
 		{
-			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) >2)
+			if (Mathf.RoundToInt(Mathf.Abs(enemyToPlayer.x)) != 0)
 				StartCoroutine(Move(Vector3.right * Mathf.Sign(enemyToPlayer.x)));
 			else
 				StartCoroutine(Move(Vector3.forward * Mathf.Sign(enemyToPlayer.z)));
 		}
 	}
 
-	//Detection du joueur si il est dans le detection range(distance en case)
-	private bool DetectPlayer()
-	{
-		if (enemyToPlayer.magnitude < detectionRange * 2)
-		{
-			RaycastHit hit;
-			if(!Physics.Raycast(transform.position, enemyToPlayer, out hit, 9)) return false;
 
-			if (hit.transform.name == "Player")
-			{
-				if(!isAttacking)
-					state = State.SelectSkill;
-
-				return true;
-			}
-			else return false;
-
-		}
-		else
-			return false;
-	}
 
 	//Coroutine de mouvement sur une case. Prend en paramètre la direction du dépacement.
 	IEnumerator Move(Vector3 axe)
 	{
+		
+
 		ismoving = true;
 
 		//Detection des obstacles. Si le chemin est obstrué le déplacement est annulé
@@ -339,19 +266,19 @@ public class SimpleEnemy : MonoBehaviour
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 
-			yield return new WaitForSeconds(0);
+			yield return new WaitForSeconds(stepDuration / moveStep);
 		}
 		ismoving = false;
+
+		StartCoroutine(WaitForNewCycle(stepFreeze));
 	}
 
 	//Phase d'attente après une attaque (Relance le patterne de l'ennemi)
 	public IEnumerator WaitForNewCycle(float waitingTime)
 	{
 		state = State.wait;
-		yield return new WaitForSeconds(waitingTime);
-		if (!DetectPlayer())
-		{
-			state = State.patrolUp;
-		}
+		yield return new WaitForSeconds(waitingTime * TickManager.tickDuration);
+
+		state = State.SelectSkill;
 	}
 }

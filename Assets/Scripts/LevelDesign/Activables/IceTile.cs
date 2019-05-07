@@ -18,21 +18,26 @@ public class IceTile : MonoBehaviour
         
     }
 
+	private void OnTriggerEnter(Collider other)
+	{
+		player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration));
+	}
 
 	private void OnTriggerStay(Collider other)
 	{
-		if(other.tag == "Player")
+		if(other.tag == "Player" && other.GetComponent<CharaController>())
 		{
-			//player.freezing = true;
+			player.freezing = true;
 			player.StartCoroutine(player.Move(player.lastMove));
+	
 		}
 	}
 
-	private void OnTriggerExit(Collider other)
-	{
-		if(other.tag == "Player")
-		{
-			//player.freezing = false;
-		}
-	}
+	//private void OnTriggerExit(Collider other)
+	//{
+	//	if(other.tag == "Player")
+	//	{
+	//		player.freezing = false;
+	//	}
+	//}
 }

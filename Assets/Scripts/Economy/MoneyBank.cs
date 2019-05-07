@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MoneyBank : MonoBehaviour
 {
-    //DEBUG
-    //Appuyer sur A pour déposer l'argent du joueur dans la banque
-    //Appuyer sur Z pour reset la banque 
-
     public int BankMoney; // Argent disponible dans la banque
     public PlayerMoneyManager PMM;
 	public Text UIMoneyDisplay; // Indicateur d'argent sur l'UI
@@ -31,8 +28,13 @@ public class MoneyBank : MonoBehaviour
         }
 
 		// Met l'argent que le joueur a récupéré dans le donjon dans la banque.
-		DepositMoney();
-		ActualizeBankMoney();
+
+        if(SceneManager.GetActiveScene().name == "Lobby")
+        {
+            DepositMoney();
+            GetAllMoneyDisplays();
+            ActualizeBankMoney();
+        }
     }
 
     // Update is called once per frame
@@ -51,23 +53,17 @@ public class MoneyBank : MonoBehaviour
 
     public void ActualizeBankMoney() // Actualise les display du solde de la banque
     {
+
         for (int i = 0; i < BankMoneyDisplays.Count; i++)
         {
             BankMoneyDisplays[i].text = "Money: " + BankMoney;
         }
 
-		UIMoneyDisplay.text = BankMoney.ToString();
+        UIMoneyDisplay.text = BankMoney.ToString();
     }
 
-
-
-    // !!! DEBUG !!! 
-    private void OnTriggerEnter(Collider other)
+    public void GetAllMoneyDisplays()
     {
-        if (other.name == "AttackCollider")
-        {
-            BankMoney += 50;
-            ActualizeBankMoney();
-        }
+        BankMoneyDisplays.Add(GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>() ) ;
     }
 }
