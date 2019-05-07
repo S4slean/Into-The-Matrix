@@ -66,6 +66,13 @@ public class CharaController : MonoBehaviour
 
 	private void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.U))
+		{
+			PlayerPrefs.DeleteAll();
+			PlayerPrefs.Save();
+			Debug.Log("playerprefCleared");
+		}
+
 		debugTick += Time.deltaTime;
 
 		HandleFall();
@@ -152,7 +159,6 @@ public class CharaController : MonoBehaviour
 
 	public void HandleMove()
 	{
-		Debug.Log("HandleMove !");
 
 		if (freezing)
 			return;
@@ -197,7 +203,6 @@ public class CharaController : MonoBehaviour
 		lastMove = axe;
 		isMoving = true;
 
-		Debug.Log("Move !");
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
 		{
@@ -265,7 +270,6 @@ public class CharaController : MonoBehaviour
 		yield return new WaitForSeconds(duration);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;
-		Debug.Log(debugTick);
 	}
 
 	public bool HandleTargetting()

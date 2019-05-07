@@ -35,17 +35,37 @@ public class RoomTemplates : MonoBehaviour
 	public bool seedGenerated = false;					// si le donjon est généré par seed
 
 	public string seed = "";
+	public string tempSeed = "";
 
 	public bool enemiesRespawn = false;
+	
+
 
 
 	private void Awake()
 	{
 		AvailableRunes runeList = FindObjectOfType<AvailableRunes>();
-		
-		foreach(Rune rune in runeList.equippedRunes)
+
+		if (PlayerPrefs.HasKey("LastDay"))
+		{
+			if(PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day)
+			{
+				Debug.Log(System.DateTime.Now.Day);
+				seedGenerated = false;
+				
+			}
+			else
+			{
+				seedGenerated = true;
+				seed = PlayerPrefs.GetString("Seed");
+				tempSeed = seed;
+			}
+		}
+
+		foreach (Rune rune in runeList.equippedRunes)
 		{
 			rune.Active();
+			
 		}
 
 
@@ -62,5 +82,21 @@ public class RoomTemplates : MonoBehaviour
 			field.SetValue(copy, field.GetValue(original));
 		}
 		return copy;
+	}
+
+	public IEnumerator activeSeed()
+	{
+
+		if (seedGenerated)
+			yield break;
+
+		yield return new WaitForSeconds(5);
+		int day = System.DateTime.Now.Day;
+		PlayerPrefs.SetInt("LastDay", day);
+		PlayerPrefs.SetString("Seed", seed);
+		PlayerPrefs.Save();
+		Debug.Log(PlayerPrefs.GetInt("LastDay"));
+		seedGenerated = true;
+		Debug.Log("seedActivated");
 	}
 }
