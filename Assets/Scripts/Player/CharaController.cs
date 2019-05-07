@@ -15,7 +15,7 @@ public class CharaController : MonoBehaviour
 	public float stepDistance;
 	private int moveStep = 8;
 	private float stepDuration = 1;
-	private float delayBeforeRun = .7f;
+	private float delayBeforeRun = 0.19f;
 	private float stepFreeze = .2f;
 	public Vector3 lastMove = Vector3.forward;
 
