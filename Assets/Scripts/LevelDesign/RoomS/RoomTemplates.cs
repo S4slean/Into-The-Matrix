@@ -90,7 +90,7 @@ public class RoomTemplates : MonoBehaviour
 		if (seedGenerated)
 			yield break;
 
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(1);
 		int day = System.DateTime.Now.Day;
 		PlayerPrefs.SetInt("LastDay", day);
 		PlayerPrefs.SetString("Seed", seed);
