@@ -15,6 +15,7 @@ public class Teleportation: Skill
 
 	public override void Activate(GameObject user)
 	{
+
 		if (CheckIfInLobby())
 			return;
 
@@ -34,7 +35,7 @@ public class Teleportation: Skill
 		//collider.enabled = false;
 
 		//instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
-		isActive = true;
+		/*isActive = true;*/
 
 		if (skillUser.tag == "Player")
 		{
@@ -57,19 +58,22 @@ public class Teleportation: Skill
 
 		if (!isActive)
 			return;
-
-
-
-
-
 	}
 
 	public void WaitForTarget()
 	{
-		CharaController player = skillUser.GetComponent<CharaController>();
-		instance = Instantiate(selectionArea, player.transform.position + Vector3.up*.01f , Quaternion.identity, player.transform);
-		instance.GetComponent<StarTarget>().distance = distance;
-		instance.GetComponent<SelectionArea>().skill = this;
+        if (!isActive)
+        {
+            CharaController player = skillUser.GetComponent<CharaController>();
+            instance = Instantiate(selectionArea, player.transform.position + Vector3.up * .05f, Quaternion.identity, player.transform);
+            instance.GetComponent<StarTarget>().distance = distance;
+            instance.GetComponent<SelectionArea>().skill = this;
+            isActive = true;
+        }
+        else if (isActive)
+        {
+            Desactivation();
+        }
 	}
 
 	public IEnumerator WaitForAttack()

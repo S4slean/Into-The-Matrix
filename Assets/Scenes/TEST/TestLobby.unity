@@ -2367,7 +2367,7 @@ PrefabInstance:
         type: 3}
       propertyPath: PDMS
       value: 
-      objectReference: {fileID: 1685204762}
+      objectReference: {fileID: 0}
     - target: {fileID: 2426781859094577481, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2412,7 +2412,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1685204762}
+      objectReference: {fileID: 0}
     - target: {fileID: 2426781858652113496, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -2422,7 +2422,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1685204762}
+      objectReference: {fileID: 0}
     - target: {fileID: 2426781858323088986, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5674,13 +5674,12 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: 
   cost: 15
-  coolDownDuration: 8
+  coolDownDuration: 5
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
   cooldown: 0
-  glitching: 0
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
@@ -7591,18 +7590,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c78884a267fb94b967f262b3a4820b, type: 3}
---- !u!114 &1685204762 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 518951913, guid: c1a2ba383740d8b459b74b9eaeb2735e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2064192152}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 742ea009e304b464f98bbdb81ac4b2b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1690553999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 992380398658425434, guid: 96c78884a267fb94b967f262b3a4820b,
