@@ -21,6 +21,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     public GameObject SelectedButton;
     public GameObject InfoPopup;
     public SkillBar SB;
+    public CharaController CC;
     public Text equipmentText;
     public int HowManySkillsIHave;
 
@@ -87,6 +88,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         if (EquipmentToUnlock.cost <= money.BankMoney) // Procède à l'achat
         {
             money.BankMoney -= EquipmentToUnlock.cost;
+            PlayerPrefs.SetInt("BankCurrentMoney", money.BankMoney);
             money.ActualizeBankMoney();
             Debug.Log("object bought !");
 
@@ -198,5 +200,10 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         return -1;
     }
 
+    public void CloseStore()
+    {
+        CC.enabled = true;
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
     
 }
