@@ -31,13 +31,16 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         UpdateMySkillNumber();
         InitiateLists();
 
-        SB = FindObjectOfType<SkillBar>();
+        SB = FindObjectOfType<SkillBar>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("DEBUG How many skills I have: " + HowManySkillsIHave);
+        }
     }
 
     public void InitiateLists() // Récupère les boutons de l'inventaire
@@ -79,6 +82,8 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
     public void BuySkill() // Achète le skill sélectionné par UnlockItem
     {
+        money = FindObjectOfType<MoneyBank>();
+
         if (EquipmentToUnlock.cost <= money.BankMoney) // Procède à l'achat
         {
             money.BankMoney -= EquipmentToUnlock.cost;
@@ -114,12 +119,18 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         for (int ii = 0; ii < skillListReference.skills.Count; ii++) 
         {
             // équipe le skill
+            //Debug.Log("YES 1");
+            Debug.Log("skillcount: " + (HowManySkillsIHave < HowManySkillsCanITakeInTheHub));
+            Debug.Log( "How many skills I have: " + HowManySkillsIHave);
+            Debug.Log("How many skills I can take in the hub: " + HowManySkillsCanITakeInTheHub);
+            //Debug.Log("checkskills: " + (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1));
 
             if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
             {
+                Debug.Log("YES 2");
+
                 if (skillListReference.skills[ii].name == EventSystem.current.currentSelectedGameObject.name)
                 {
-
                     Debug.Log("Skill equipped: " + skillListReference.skills[ii].name);
                     SB.CreateButton(skillListReference.skills[ii]);
 
@@ -157,10 +168,10 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         InfoPopup.SetActive(false);
     }
 
-    void UpdateMySkillNumber()
+    public void UpdateMySkillNumber()
     {
         HowManySkillsIHave = 0;
-        for (int y = 0; y < SB.PlayerSkills.Count; y++)
+        for (int y = 0; y < 3; y++)
         {
             if (SB.PlayerSkills[y] != null)
             {
@@ -172,7 +183,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
     int CheckSimilarSkills(string skillName, List<Skill> skillList)
     {
-        for(int jj = 0; jj < SB.PlayerSkills.Count; jj++)
+        for(int jj = 0; jj < 3; jj++)
         {
             if(skillList[jj] != null)
             {

@@ -8,7 +8,7 @@ public class Teleportation: Skill
 	public GameObject selectionArea;
 	GameObject skillUser;
 	GameObject instance;
-	Vector3 dodgeDir;
+	Vector3 tpDir;
 	private new Collider collider;
 
 	[SerializeField]bool isActive = false;
@@ -79,21 +79,21 @@ public class Teleportation: Skill
 		yield return new WaitForSeconds(enemyLaunchTime);
 		if(Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
 		{
-			dodgeDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
+			tpDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
 			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x));
 		}
 		else
 		{
-			dodgeDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
+			tpDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
 			distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z));
 		}
 
-		Vector3 dodgePos = skillUser.transform.position + dodgeDir * distance;
+		Vector3 dodgePos = skillUser.transform.position + tpDir * distance;
 		StartCoroutine(useSkill(dodgePos));
 		yield break;
 	}
 
-	public override IEnumerator useSkill(Vector3 dodgePos)
+	public override IEnumerator useSkill(Vector3 tpPos)
 	{
 		while(TickManager.tick < TickManager.tickDuration)
         {
@@ -106,7 +106,7 @@ public class Teleportation: Skill
         { skillUser.GetComponent<CharaController>().lastMove = Vector3.zero; }
         yield return new WaitForSeconds(TickManager.tickDuration);
         //Ici on mettra l'animation/FX de réapparition
-        skillUser.transform.position = dodgePos;
+        skillUser.transform.position = tpPos;
         skillUser.SetActive(true);
 
 		if(skillUser.tag == "Player")
