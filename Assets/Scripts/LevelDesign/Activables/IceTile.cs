@@ -20,7 +20,7 @@ public class IceTile : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration));
+		player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration/2));
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -33,11 +33,11 @@ public class IceTile : MonoBehaviour
 		}
 	}
 
-	//private void OnTriggerExit(Collider other)
-	//{
-	//	if(other.tag == "Player")
-	//	{
-	//		player.freezing = false;
-	//	}
-	//}
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.tag == "Player")
+		{
+			player.freezing = false;
+		}
+	}
 }

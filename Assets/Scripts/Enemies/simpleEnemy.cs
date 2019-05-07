@@ -23,7 +23,7 @@ public class SimpleEnemy : MonoBehaviour
 	[Header ("Movement")]
 	int moveStep = 12;
 	float stepDuration = TickManager.tickDuration/2;
-	float stepFreeze = TickManager.tickDuration;
+	float stepFreeze = TickManager.tickDuration*3;
 	public int detectionRange = 6;
 
 	[Header("States")]

@@ -8,8 +8,8 @@ public class Spikes : MonoBehaviour
 
 	public bool isActive = true;
 	public bool cycling = true;
-	int activeTime = 2;
-	int inactiveTime = 3;
+	int activeTime = 4;
+	int inactiveTime = 6;
 
 	[SerializeField] int count =0;
 

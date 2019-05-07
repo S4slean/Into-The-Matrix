@@ -41,7 +41,7 @@ public class RoomSpawner : MonoBehaviour
 		if(roomTemplates.nonSaferoomspawned > roomTemplates.SafeRoomFrequency)
 		{
 
-			float safeRoomRandom = Random.Range(0, 100);
+			float safeRoomRandom = UnityEngine.Random.Range(0, 100);
 			if (safeRoomRandom < roomTemplates.currentSafeRoomChances)
 			{
 				if (openingdir == OpeningDirection.Left)                            //si on a besoin d'un salle avec une ouverture vers la gauche, récupère une salle dans la liste des salle avec une ouverture à gauche
@@ -78,6 +78,9 @@ public class RoomSpawner : MonoBehaviour
 				SpawnRoom(roomTemplates.rightEnds);
 			if (openingdir == OpeningDirection.Bottom)
 				SpawnRoom(roomTemplates.downEnds);
+
+			Debug.Log("hey");
+			roomTemplates.StartCoroutine(roomTemplates.activeSeed());
 		}
 		else																	//si le donjon a dépassé la taille max, place des salles issues d'une liste de cul de sac pour le fermer
 		{
@@ -107,8 +110,8 @@ public class RoomSpawner : MonoBehaviour
 		}
 		else																	//si le donjon est généré via une seed
 		{
-			roomID = int.Parse(roomTemplates.seed.Substring(0, 1));				//on récupère le premier caractère de la seed et on s'en sert d'id pour instancier la salle du donjon
-			roomTemplates.seed = roomTemplates.seed.Remove(0, 1);				//et on retire le charactère de la chaîne pour la prochaine génération
+			roomID = int.Parse(roomTemplates.tempSeed.Substring(0, 1));				//on récupère le premier caractère de la seed et on s'en sert d'id pour instancier la salle du donjon
+			roomTemplates.tempSeed = roomTemplates.tempSeed.Remove(0, 1);				//et on retire le charactère de la chaîne pour la prochaine génération
 		}
 
 		roomTemplates.spawnedRooms.Add( Instantiate(roomList[roomID], transform.position, Quaternion.identity));			//on ajoute la salle istancié à la liste des salle du donjon
@@ -132,6 +135,7 @@ public class RoomSpawner : MonoBehaviour
 			}
 		}
 	}
+
 
 	public void Destroy()
 	{

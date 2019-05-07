@@ -19,7 +19,6 @@ public class TickManager : MonoBehaviour
     {
         if(tick > tickDuration)
 		{
-			Debug.Log("Tick");
 			tick = 0;
 		}
 

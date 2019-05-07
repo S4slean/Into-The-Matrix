@@ -10,6 +10,7 @@ public class DealDamage : MonoBehaviour
 
 	public float dmgTick = 1;
 	float tick;
+	int count = 0;
 
 
 
@@ -28,13 +29,17 @@ public class DealDamage : MonoBehaviour
 
 		if(TickManager.tick > TickManager.tickDuration)
 		{
-			ApplyDamage(other);
+			count++;
+			if (count > dmgTick)
+			{
+				ApplyDamage(other);
+				count = 0;
+			}
 		}
 	}
 
 	private void ApplyDamage(Collider other)
 	{
-		Debug.Log(user);
 		if (other.tag == null)
 			return;
 

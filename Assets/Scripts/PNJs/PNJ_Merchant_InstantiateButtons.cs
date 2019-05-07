@@ -29,6 +29,7 @@ public class PNJ_Merchant_InstantiateButtons : MonoBehaviour
             Debug.Log("instantiated a shop button");
             GameObject instance = Instantiate(ShopButtonPrefab, transform);
 
+            // Utiliser les playerprefs et un if pour indiquer si le bouton a déjà été acheté ou pas
             instance.GetComponent<Button>().onClick.AddListener( () => PDMS.UnlockItem() );
 
             instance.name = SL.skills[i].name;                                                              //Donne le nom du skill au bouton (nécéssaire pour le script d'achat)
