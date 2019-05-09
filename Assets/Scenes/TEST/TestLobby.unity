@@ -2638,11 +2638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerMain
-      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2698,10 +2693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
-      propertyPath: m_Size.y
-      value: 10
+      propertyPath: m_Name
+      value: CameraTriggerMain
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -2709,6 +2704,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &680562704 stripped
@@ -4208,6 +4208,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillList
       objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 1467309938}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 1467309936}
     - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: cost
@@ -4228,21 +4243,6 @@ PrefabInstance:
       propertyPath: cost
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.data[0]
-      value: 
-      objectReference: {fileID: 1467309937}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.data[1]
-      value: 
-      objectReference: {fileID: 1467309936}
     - target: {fileID: 2884519329243807457, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5680,6 +5680,36 @@ MonoBehaviour:
   enemyLaunchTime: 1
   enemyRecoverTime: 1
   cooldown: 0
+  distGlitch: 3
+  isActive: 0
+--- !u!114 &1467309938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a4b9d0fcd27074888143e285eb1084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Bomb
+  icon: {fileID: 0}
+  description: Throw a bomb on a square, and make it explode when you want
+  cost: 60
+  coolDownDuration: 7
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  cooldown: 0
+  distance: 4
+  selectionArea: {fileID: 3610966103437665526, guid: 329fd1cef233d91449fbebb6db094934,
+    type: 3}
+  bombPrefab: {fileID: 7320402274289172999, guid: 6018db05b9f59084e9d0c7c28b175211,
+    type: 3}
+  bombThrown: 0
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
@@ -6258,11 +6288,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerSide
-      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6318,10 +6343,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
-      propertyPath: m_Size.y
-      value: 10
+      propertyPath: m_Name
+      value: CameraTriggerSide
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -6329,6 +6354,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &1511091641 stripped

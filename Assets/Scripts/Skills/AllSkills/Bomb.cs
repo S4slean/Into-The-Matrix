@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bomb : Skill
 {
@@ -8,8 +9,11 @@ public class Bomb : Skill
     public GameObject selectionArea;
     GameObject skillUser;
     GameObject instance;
-    Vector3 tpDir;
-    private new Collider collider;
+    Vector3 bombPosition;
+    public GameObject bombPrefab;
+    private BombBehavior instantiatedBombScript;
+    public bool bombThrown;
+   
 
     [SerializeField] bool isActive = false;
 
@@ -31,17 +35,16 @@ public class Bomb : Skill
 
         skillUser = user;
 
-        collider = skillUser.GetComponent<CapsuleCollider>();
-        //collider.enabled = false;
-
-        //instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
-        /*isActive = true;*/
-
-        if (skillUser.tag == "Player")
+        if (skillUser.tag == "Player" && !bombThrown)
         {
-            //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
-
             WaitForTarget();
+        }
+        else
+        {
+            instantiatedBombScript.Detonation();
+            cooldown = coolDownDuration;
+            bombThrown = false;
+            transform.GetChild(0).GetComponent<Text>().text = this.name;
         }
 
         if (skillUser.tag == "Enemy")
@@ -64,11 +67,11 @@ public class Bomb : Skill
     {
         if (!isActive)
         {
+            isActive = true;
             CharaController player = skillUser.GetComponent<CharaController>();
             instance = Instantiate(selectionArea, player.transform.position + Vector3.up * .05f, Quaternion.identity, player.transform);
             instance.GetComponent<StarTarget>().distance = distance;
             instance.GetComponent<SelectionArea>().skill = this;
-            isActive = true;
         }
         else if (isActive)
         {
@@ -83,42 +86,28 @@ public class Bomb : Skill
         yield return new WaitForSeconds(enemyLaunchTime);
         if (Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
         {
-            tpDir = Vector3.right * Mathf.Sign(enemy.enemyToPlayer.x);
             distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.x));
         }
         else
         {
-            tpDir = Vector3.forward * Mathf.Sign(enemy.enemyToPlayer.z);
             distance = Mathf.Abs(Mathf.RoundToInt(enemy.enemyToPlayer.z));
         }
-
-        Vector3 dodgePos = skillUser.transform.position + tpDir * distance;
-        StartCoroutine(useSkill(dodgePos));
+        StartCoroutine(useSkill(bombPosition));
         yield break;
     }
 
-    public override IEnumerator useSkill(Vector3 tpPos)
+    public override IEnumerator useSkill(Vector3 bombThrow)
     {
         while (TickManager.tick < TickManager.tickDuration)
         {
             yield return new WaitForEndOfFrame();
         }
-        cooldown = coolDownDuration;
-        //Ici on mettra l'animation/FX de disparition
-        skillUser.SetActive(false);
-        if (skillUser.tag == "Player")
-        { skillUser.GetComponent<CharaController>().lastMove = Vector3.zero; }
-        yield return new WaitForSeconds(TickManager.tickDuration);
-        //Ici on mettra l'animation/FX de réapparition
-        skillUser.transform.position = tpPos;
-        skillUser.SetActive(true);
-
-        if (skillUser.tag == "Player")
-        {
-            this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-        }
+        GameObject instantiatedBomb = Instantiate(bombPrefab, bombThrow, Quaternion.identity);
+        instantiatedBombScript = instantiatedBomb.GetComponent<BombBehavior>();
+        bombThrown = true;
         Destroy(instance);
-        collider.enabled = true;
+        transform.GetChild(0).GetComponent<Text>().text = "BOOM";
+
 
         if (skillUser.GetComponent<SimpleEnemy>() != null)
             skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
@@ -137,7 +126,6 @@ public class Bomb : Skill
         {
             skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
         }
-        collider.enabled = true;
         isActive = false;
 
     }
@@ -149,8 +137,9 @@ public class Bomb : Skill
 
         Destroy(instance);
 
-
-        FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
+        instantiatedBombScript.Detonation();
+        bombThrown = false;
+        transform.GetChild(0).GetComponent<Text>().text = this.name;
 
 
         isActive = false;
