@@ -11,7 +11,7 @@ public class Bomb : Skill
     GameObject instance;
     Vector3 bombPosition;
     public GameObject bombPrefab;
-    private BombBehavior instantiatedBombScript;
+    public BombBehavior instantiatedBombScript;
     public bool bombThrown;
    
 
@@ -102,7 +102,7 @@ public class Bomb : Skill
         {
             yield return new WaitForEndOfFrame();
         }
-        GameObject instantiatedBomb = Instantiate(bombPrefab, bombThrow, Quaternion.identity);
+        GameObject instantiatedBomb = Instantiate(bombPrefab, bombThrow + Vector3.up, Quaternion.identity);
         instantiatedBombScript = instantiatedBomb.GetComponent<BombBehavior>();
         bombThrown = true;
         Destroy(instance);

@@ -71,7 +71,7 @@ public class GlitchOut : Skill
         collider.enabled = false;
         this.skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
         RaycastHit hit;
-        Physics.Raycast(skillUser.transform.position, glitchDir, out hit, 6, 9);
+        Physics.Raycast(skillUser.transform.position, glitchDir, out hit, distGlitch*2, 9);
         if (hit.distance > 0)
         {
             skillUser.transform.position += glitchDir * hit.distance + glitchDir*-1;
