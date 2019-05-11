@@ -66,28 +66,33 @@ public class Hook : Skill
     {
         RaycastHit hit;
         Physics.Raycast(skillUser.transform.position, hookDir, out hit, distGrap*2, 9);
-        GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + hookDir * 2, Quaternion.identity);
-
+        GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + hookDir * 2, Quaternion.identity,transform);
+        //this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
         while (TickManager.tick < TickManager.tickDuration)
         {
             yield return new WaitForEndOfFrame();
         }
-        this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-
+        if (hit.distance > 0)
+        { hook.GetComponent<HookBehavior>().HookThrow(Mathf.FloorToInt(hit.distance/2), hookDir); }
+        else
+        { hook.GetComponent<HookBehavior>().StartCoroutine(HookThrow(distGrap,hookDir)); }
         if (skillUser.GetComponent<SimpleEnemy>() != null)
             skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
         isActive = false;
-        cooldown = coolDownDuration;
         yield break;
 
+    }
+
+    public void HookReturned()
+    {
+
+        cooldown = coolDownDuration;
     }
 
     public override void OnDesequip()
     {
         FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
-
-
         isActive = false;
     }
 }
