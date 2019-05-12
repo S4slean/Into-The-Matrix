@@ -73,9 +73,9 @@ public class Hook : Skill
             yield return new WaitForEndOfFrame();
         }
         if (hit.distance > 0)
-        { hook.GetComponent<HookBehavior>().HookThrow(Mathf.FloorToInt(hit.distance/2), hookDir); }
+        { StartCoroutine(hook.GetComponent<HookBehavior>().HookThrow(Mathf.FloorToInt(hit.distance/2 + 1), hookDir)); }
         else
-        { hook.GetComponent<HookBehavior>().StartCoroutine(HookThrow(distGrap,hookDir)); }
+        { StartCoroutine(hook.GetComponent<HookBehavior>().HookThrow(distGrap,hookDir)); }
         if (skillUser.GetComponent<SimpleEnemy>() != null)
             skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
@@ -86,7 +86,7 @@ public class Hook : Skill
 
     public void HookReturned()
     {
-
+        FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
         cooldown = coolDownDuration;
     }
 
