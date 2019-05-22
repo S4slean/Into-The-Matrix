@@ -4217,7 +4217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[0]
       value: 
-      objectReference: {fileID: 1467309939}
+      objectReference: {fileID: 1467309940}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[1]
@@ -5737,6 +5737,31 @@ MonoBehaviour:
   distGrap: 4
   hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
     type: 3}
+  isActive: 0
+--- !u!114 &1467309940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc4127ac7e1b38147afc1119d3be758e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Charge
+  icon: {fileID: 0}
+  description: Vous donne le pouvoir de repousser vos ennemis
+  cost: 25
+  coolDownDuration: 0
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  cooldown: 8
+  chargedTimerMax: 0
+  chargedTimer: 0
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
