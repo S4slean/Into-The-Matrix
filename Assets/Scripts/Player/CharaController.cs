@@ -13,7 +13,7 @@ public class CharaController : MonoBehaviour
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
-	private int moveStep = 8;
+	private int moveStep = 10;
 	private float stepDuration = 1;
 	private float delayBeforeRun = .19f;
 	private float stepFreeze = .2f;
@@ -96,7 +96,7 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0) && !isMoving && !inUI)
+		if (Input.GetMouseButtonUp(0) && !inUI)
 		{
 			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun)
 			{
@@ -236,13 +236,13 @@ public class CharaController : MonoBehaviour
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 			if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
 				MoveBox.SetActive(false);
-			yield return new WaitForSeconds(stepDuration / moveStep);
+			yield return new WaitForSeconds(TickManager.tickDuration/2 / moveStep);
 		}
 
 		
 		buffer = Buffer.None;
 		if (!freezing)
-			StartCoroutine(FreezePlayer(stepFreeze));
+			StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
 	}
