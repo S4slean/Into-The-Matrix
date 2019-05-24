@@ -56,12 +56,12 @@ public class RoomTemplates : MonoBehaviour
 
 		if (PlayerPrefs.HasKey("LastDay"))
 		{
-			if(PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day)
+			if (PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day)
 			{
 				Debug.Log("new Dungeon !");
 				Debug.Log(System.DateTime.Now.Day);
 				seedGenerated = false;
-				
+
 			}
 			else
 			{
@@ -71,8 +71,14 @@ public class RoomTemplates : MonoBehaviour
 				Debug.Log("same Dungeon !");
 				LoadDungeon();
 
-	
+
 			}
+		}
+		else
+		{
+			Debug.Log("new Dungeon !");
+			Debug.Log(System.DateTime.Now.Day);
+			seedGenerated = false;
 		}
 
 		foreach (Rune rune in runeList.equippedRunes)
@@ -111,13 +117,14 @@ public class RoomTemplates : MonoBehaviour
 		Debug.Log(PlayerPrefs.GetInt("LastDay"));
 		seedGenerated = true;
 		SaveDungeon();
-		Debug.Log("seedActivated");
+		Debug.Log("DungeonSaved");
 	}
 
 
 	public void SaveDungeon()
 	{
 		Dungeon dj = new Dungeon();
+		dj.rooms = spawnedRooms;
 		dj.roomNames = spawnedRoomsName;
 		dj.roomPos = spawnedPos;
 
@@ -156,7 +163,14 @@ public class RoomTemplates : MonoBehaviour
 
 		for (int i = 0; i < dj.roomNames.Count; i++)
 		{
-			Instantiate(allRooms.Find(obj => obj.name == dj.roomNames[i]), dj.roomPos[i], Quaternion.identity);
+			for(int j = 0; j < allRooms.Count; j++)
+			{
+				if(dj.roomNames[i] == allRooms[j].name)
+				{
+					Instantiate(allRooms[j], dj.roomPos[i], Quaternion.identity);
+
+				}
+			}
 		}
 
 		Debug.Log("dungeon loaded !");
@@ -164,6 +178,7 @@ public class RoomTemplates : MonoBehaviour
 
 	public class Dungeon
 	{
+		public List<GameObject> rooms;
 		public List<string> roomNames;
 		public List<Vector3> roomPos;
 	}
