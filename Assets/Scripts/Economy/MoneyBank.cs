@@ -32,7 +32,6 @@ public class MoneyBank : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Lobby")
         {
             DepositMoney();
-            GetAllMoneyDisplays();
             ActualizeBankMoney();
         }
     }
@@ -62,8 +61,5 @@ public class MoneyBank : MonoBehaviour
         UIMoneyDisplay.text = BankMoney.ToString();
     }
 
-    public void GetAllMoneyDisplays()
-    {
-        BankMoneyDisplays.Add(GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>() ) ;
-    }
+
 }
