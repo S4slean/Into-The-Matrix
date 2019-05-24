@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class RoomTemplates : MonoBehaviour
 {
@@ -22,9 +23,14 @@ public class RoomTemplates : MonoBehaviour
 	public List<GameObject> rightSafeRooms;
 	public List<GameObject> downSafeRooms;
 
+	[Header("AllRooms")]
+	public List<GameObject> allRooms;
+
 
 	[Header ("Dungeon Properties")]			
 	public List<GameObject> spawnedRooms;       //liste des salles du donjons
+	public List<Vector3> spawnedPos;
+	public List<string> spawnedRoomsName;
 
 	public int SafeRoomFrequency = 5;
 	public float currentSafeRoomChances = 0;
@@ -38,6 +44,8 @@ public class RoomTemplates : MonoBehaviour
 	public string tempSeed = "";
 
 	public bool enemiesRespawn = false;
+
+	public string savePath;
 	
 
 
@@ -48,18 +56,29 @@ public class RoomTemplates : MonoBehaviour
 
 		if (PlayerPrefs.HasKey("LastDay"))
 		{
-			if(PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day)
+			if (PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day)
 			{
+				Debug.Log("new Dungeon !");
 				Debug.Log(System.DateTime.Now.Day);
 				seedGenerated = false;
-				
+
 			}
 			else
 			{
 				seedGenerated = true;
 				seed = PlayerPrefs.GetString("Seed");
 				tempSeed = seed;
+				Debug.Log("same Dungeon !");
+				LoadDungeon();
+
+
 			}
+		}
+		else
+		{
+			Debug.Log("new Dungeon !");
+			Debug.Log(System.DateTime.Now.Day);
+			seedGenerated = false;
 		}
 
 		foreach (Rune rune in runeList.equippedRunes)
@@ -68,7 +87,7 @@ public class RoomTemplates : MonoBehaviour
 			
 		}
 
-
+		StartCoroutine(activeSeed());
 	}
 
 	Component CopyComponent(Component original, GameObject destination)
@@ -86,17 +105,81 @@ public class RoomTemplates : MonoBehaviour
 
 	public IEnumerator activeSeed()
 	{
+		yield return new WaitForSeconds(10);
 
 		if (seedGenerated)
 			yield break;
 
-		yield return new WaitForSeconds(1);
 		int day = System.DateTime.Now.Day;
 		PlayerPrefs.SetInt("LastDay", day);
 		PlayerPrefs.SetString("Seed", seed);
 		PlayerPrefs.Save();
 		Debug.Log(PlayerPrefs.GetInt("LastDay"));
 		seedGenerated = true;
-		Debug.Log("seedActivated");
+		SaveDungeon();
+		Debug.Log("DungeonSaved");
+	}
+
+
+	public void SaveDungeon()
+	{
+		Dungeon dj = new Dungeon();
+		dj.rooms = spawnedRooms;
+		dj.roomNames = spawnedRoomsName;
+		dj.roomPos = spawnedPos;
+
+#if UNITY_EDITOR
+		savePath = Application.dataPath;
+#endif
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+
+		savePath = Application.persistentDataPath;
+#endif
+
+		string json = JsonUtility.ToJson(dj);
+		File.WriteAllText(savePath + "/dungeon.json", json);
+		Debug.Log("dungeon saved !");
+	}
+
+	public void LoadDungeon()
+	{
+		Dungeon dj = new Dungeon();
+
+
+#if UNITY_EDITOR
+
+		savePath = Application.dataPath;
+#endif
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+
+		savePath = Application.persistentDataPath;
+#endif
+
+		string json = File.ReadAllText(savePath + "/dungeon.json");
+		JsonUtility.FromJsonOverwrite(json, dj);
+
+
+		for (int i = 0; i < dj.roomNames.Count; i++)
+		{
+			for(int j = 0; j < allRooms.Count; j++)
+			{
+				if(dj.roomNames[i] == allRooms[j].name)
+				{
+					Instantiate(allRooms[j], dj.roomPos[i], Quaternion.identity);
+
+				}
+			}
+		}
+
+		Debug.Log("dungeon loaded !");
+	}
+
+	public class Dungeon
+	{
+		public List<GameObject> rooms;
+		public List<string> roomNames;
+		public List<Vector3> roomPos;
 	}
 }

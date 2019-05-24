@@ -29,6 +29,7 @@ public class CabineUIScript : MonoBehaviour
         tpButton.gameObject.SetActive(true);
         returnButton.gameObject.SetActive(true);
 		UIvisible = true;
+		controller.enabled = false;
 		controller.freezing = true;
     }
 
@@ -39,6 +40,7 @@ public class CabineUIScript : MonoBehaviour
 		player.StartCoroutine(player.BackToLobby());
 		tpButton.gameObject.SetActive(false);
 		returnButton.gameObject.SetActive(false);
+		StartCoroutine(DesactiveUI());
 		
 	}
 
@@ -54,5 +56,6 @@ public class CabineUIScript : MonoBehaviour
 	{
 		yield return new WaitForSeconds(.1f);
 		UIvisible = false;
+		controller.enabled = true;
 	}
 }

@@ -24,13 +24,13 @@ public class RoomSpawner : MonoBehaviour
 		roomTemplates = FindObjectOfType<RoomTemplates>();
 
 		if (openingdir == OpeningDirection.Left)					//application de différents délai en fonction de la direction (permet de ne pas avoir de génération simultanée de salle et garanti que la seed génère toujours le même donjon)
-			delay = .2f;
+			delay = .21f;
 		if (openingdir == OpeningDirection.Top)
-			delay = .3f;
+			delay = .32f;
 		if (openingdir == OpeningDirection.Right)
-			delay = .5f;
+			delay = .54f;
 		if (openingdir == OpeningDirection.Bottom)
-			delay = .7f;
+			delay = .79f;
 
 		Invoke("DefineNeededRoom",delay);							//Execute la fonction après un certain délai
 
@@ -79,8 +79,6 @@ public class RoomSpawner : MonoBehaviour
 			if (openingdir == OpeningDirection.Bottom)
 				SpawnRoom(roomTemplates.downEnds);
 
-			Debug.Log("hey");
-			roomTemplates.StartCoroutine(roomTemplates.activeSeed());
 		}
 		else																	//si le donjon a dépassé la taille max, place des salles issues d'une liste de cul de sac pour le fermer
 		{
@@ -114,7 +112,10 @@ public class RoomSpawner : MonoBehaviour
 			roomTemplates.tempSeed = roomTemplates.tempSeed.Remove(0, 1);				//et on retire le charactère de la chaîne pour la prochaine génération
 		}
 
-		roomTemplates.spawnedRooms.Add( Instantiate(roomList[roomID], transform.position, Quaternion.identity));			//on ajoute la salle istancié à la liste des salle du donjon
+		GameObject instance = Instantiate(roomList[roomID], transform.position, Quaternion.identity);
+		roomTemplates.spawnedRooms.Add( instance);          //on ajoute la salle istancié à la liste des salle du donjon
+		roomTemplates.spawnedRoomsName.Add(roomList[roomID].name);
+		roomTemplates.spawnedPos.Add(transform.position);
 		spawned = true;															//la salle a été spawned
 		Destroy(gameObject);													//on détruit le spawner
 	}
