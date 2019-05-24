@@ -40,6 +40,10 @@ public class CharaController : MonoBehaviour
 	public Vector3 swipe;
 	private float holdedTime;
 
+    public Vector3 enemyDir;
+    public bool moveTowardsEnemy;
+    public GameObject enemyConfronted;
+
 	private void Awake()
 	{
 		if (FindObjectsOfType<CharaController>().Length > 1)
@@ -208,6 +212,16 @@ public class CharaController : MonoBehaviour
 		{
 			isMoving = false;
 			freezing = false;
+            if (hit.transform.tag == "Enemy")
+            {
+                moveTowardsEnemy = true;
+                enemyConfronted = hit.transform.gameObject;
+                enemyDir = axe;
+                yield return new WaitForSecondsRealtime(0.5f);
+                moveTowardsEnemy = false;
+                enemyConfronted = null;
+            }
+
 			yield break;
 		}
 
