@@ -63,7 +63,7 @@ public class SkillBar : MonoBehaviour
         }
 
         skillsShop = FindObjectOfType<PNJ_DoorKeeper_MySkills>();
-        buttonsShop = GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(4).GetChild(0).GetChild(0).GetComponent<PNJ_Merchant_InstantiateButtons>();
+        //buttonsShop = GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(4).GetChild(0).GetChild(0).GetComponent<PNJ_Merchant_InstantiateButtons>();
         skillsShop.UpdateMySkillNumber();
         buttonsShop.ResetShopButtons();
     }

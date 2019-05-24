@@ -5754,14 +5754,14 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Vous donne le pouvoir de repousser vos ennemis
   cost: 25
-  coolDownDuration: 0
+  coolDownDuration: 8
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
-  cooldown: 8
-  chargedTimerMax: 0
-  chargedTimer: 0
+  cooldown: 0
+  chargedTimerMaxInTicks: 20
+  chargedTimerInTicks: 0
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
