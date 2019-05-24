@@ -89,11 +89,11 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         {
             money.BankMoney -= EquipmentToUnlock.cost;
             PlayerPrefs.SetInt("BankCurrentMoney", money.BankMoney);
+            PlayerPrefs.SetInt(EquipmentToUnlock.name, 1);
             money.ActualizeBankMoney();
             Debug.Log("object bought !");
 
             // Change le bouton en équiper/déséquiper
-
             SelectedButton.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1);  // dégrise l'icone
             SelectedButton.transform.GetChild(1).gameObject.SetActive(true);                        // Active l'icone équipé/déséquipé
             SelectedButton.transform.GetChild(2).GetComponent<Text>().text = "";                    // Retire le coût
@@ -204,6 +204,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     {
         CC.enabled = true;
         transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(false);
     }
     
 }
