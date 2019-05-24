@@ -241,8 +241,8 @@ public class CharaController : MonoBehaviour
 
 		
 		buffer = Buffer.None;
-		if (!freezing)
-			StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
+		//if (!freezing)
+		//	StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
 	}
