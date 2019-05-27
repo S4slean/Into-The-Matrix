@@ -10,6 +10,8 @@ public class Counter : Skill
     public float counterTimerMaxInTicks;
     public float counterTimerInTicks;
 
+    public PlayerStats playerStats;
+
     [SerializeField] bool isActive = false;
 
     public override void Activate(GameObject user)
@@ -34,6 +36,8 @@ public class Counter : Skill
 
         if (skillUser.tag == "Player" && !isActive)
         {
+            playerStats = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerStats>();
+            playerStats.counter = true;
             isActive = true;
             counterTimerInTicks = counterTimerMaxInTicks;
             //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
@@ -65,6 +69,7 @@ public class Counter : Skill
                 if (counterTimerInTicks == 0)
                 {
                     isActive = false;
+                    playerStats.counter = false;
                     cooldown = coolDownDuration;
                 }
             }

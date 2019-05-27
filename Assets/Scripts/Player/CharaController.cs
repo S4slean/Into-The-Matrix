@@ -44,6 +44,8 @@ public class CharaController : MonoBehaviour
     public bool moveTowardsEnemy;
     public GameObject enemyConfronted;
 
+    public bool moveIsOver;
+
 	private void Awake()
 	{
 		if (FindObjectsOfType<CharaController>().Length > 1)
@@ -239,13 +241,15 @@ public class CharaController : MonoBehaviour
 			yield return new WaitForSeconds(TickManager.tickDuration/2 / moveStep);
 		}
 
-		
 		buffer = Buffer.None;
 		if (!freezing)
 			StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
-	}
+        moveIsOver = true;
+        yield return new WaitForSeconds(0.05f);
+        moveIsOver = false;
+    }
 
 	void Attack()
 	{

@@ -4217,7 +4217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[0]
       value: 
-      objectReference: {fileID: 1467309941}
+      objectReference: {fileID: 1467309942}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[1]
@@ -5792,6 +5792,36 @@ MonoBehaviour:
   cooldown: 0
   counterTimerMaxInTicks: 8
   counterTimerInTicks: 0
+  playerStats: {fileID: 0}
+  isActive: 0
+--- !u!114 &1467309942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24217d9f65dd7054694e30e5f379f3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: FireWall
+  icon: {fileID: 0}
+  description: "Vous permet de cr\xE9er un mur de flammes"
+  cost: 40
+  coolDownDuration: 15
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  cooldown: 0
+  damages: 3
+  fireWallLength: 4
+  squaresCrossed: 0
+  playerController: {fileID: 0}
+  fireWallSquare: {fileID: 235256651392453069, guid: 6b4585546ee5fe74eab3187b6cc66dd4,
+    type: 3}
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
