@@ -17,6 +17,7 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 	{
 		if (isTP && SceneManager.GetActiveScene().buildIndex == 0)
 		{
+			FindObjectOfType<PlayerStats>().startingRoom = gameObject;
 			DJdoor.SelectRoom(this);
 		}
 	}
