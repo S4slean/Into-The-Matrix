@@ -87,6 +87,7 @@ public class Hook : Skill
     public void HookReturned()
     {
         FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
+        PowerUsed();
         cooldown = coolDownDuration;
     }
 

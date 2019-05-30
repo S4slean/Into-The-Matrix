@@ -72,6 +72,7 @@ public class Charge : Skill
                 if (chargedTimerInTicks == 0)
                 {
                     isActive = false;
+                    PowerUsed();
                     cooldown = coolDownDuration;
                 }
             }

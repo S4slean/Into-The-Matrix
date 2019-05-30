@@ -73,6 +73,7 @@ public class FireWall : Skill
                 {
                     isActive = false;
                     squaresCrossed = 0;
+                    PowerUsed();
                     cooldown = coolDownDuration;
                 }
                 playerController.moveIsOver = false;

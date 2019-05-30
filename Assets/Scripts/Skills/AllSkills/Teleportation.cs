@@ -103,7 +103,6 @@ public class Teleportation: Skill
         {
             yield return new WaitForEndOfFrame();
         }
-        cooldown = coolDownDuration;
         //Ici on mettra l'animation/FX de disparition
         skillUser.SetActive(false);
         if (skillUser.tag == "Player")
@@ -113,7 +112,7 @@ public class Teleportation: Skill
         skillUser.transform.position = tpPos;
         skillUser.SetActive(true);
 
-		if(skillUser.tag == "Player")
+        if (skillUser.tag == "Player")
 		{
 			this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
 		}
@@ -123,9 +122,12 @@ public class Teleportation: Skill
 		if (skillUser.GetComponent<SimpleEnemy>() != null)
 			skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
+        PowerUsed();
+        cooldown = coolDownDuration;
+
         yield break;
 
-	}
+    }
 
 	public void Desactivation()
 	{

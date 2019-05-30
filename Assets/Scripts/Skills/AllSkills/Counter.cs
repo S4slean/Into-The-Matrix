@@ -70,6 +70,7 @@ public class Counter : Skill
                 {
                     isActive = false;
                     playerStats.counter = false;
+                    PowerUsed();
                     cooldown = coolDownDuration;
                 }
             }

@@ -31,8 +31,6 @@ public class DeathBeam : Skill
 			return;
 		}
 
-		cooldown = coolDownDuration;
-
 		if(user.tag =="Player")
 			player.GetComponent<CharaController>().SetPlayerMovement(true, false);
 
@@ -49,7 +47,10 @@ public class DeathBeam : Skill
 		instance = Instantiate(beam, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation, user.transform);
 		instance.GetComponent<DealDamage>().user = user.tag;
 		instance.GetComponent<DealDamage>().StartCoroutine(instance.GetComponent<DealDamage>().DesactiveAfterTime(duration, user, enemyRecoverTime));
-	}
+
+        PowerUsed();
+        cooldown = coolDownDuration;
+    }
 
 	public override void OnDesequip()
 	{
