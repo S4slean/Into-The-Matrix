@@ -37,10 +37,6 @@ public class PlayerStats : MonoBehaviour
 
     }
 
-	public void Update()
-	{
-		
-	}
 
 	public void CheckDeath()
 	{
@@ -68,8 +64,6 @@ public class PlayerStats : MonoBehaviour
 
 	public IEnumerator BackToLobby()
 	{
-
-
 		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
@@ -81,12 +75,10 @@ public class PlayerStats : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		if (dead == true)
 			dead = false;
-		foreach (Transform child in minimap.transform)
-		{
-			if (child.GetSiblingIndex() != 0)
-				Destroy(child.gameObject);
 
-		}
+
+		minimap.SetActive(false);
+
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
 		lifebar.SetActive(false);
@@ -102,6 +94,7 @@ public class PlayerStats : MonoBehaviour
 		UpdateLifeBar();
 		lifebar.SetActive(true);
 		GetComponent<PlayerMoneyManager>().GetDungeonMoney();
+		minimap.SetActive(true);
 	}
 
     public void UpdateLifeBar()

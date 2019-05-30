@@ -98,7 +98,7 @@ public class CharaController : MonoBehaviour
 
 		if (Input.GetMouseButtonUp(0) && !inUI)
 		{
-			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun)
+			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun && !freezing)
 			{
 				if (HandleTargetting())
 					return;
@@ -281,6 +281,7 @@ public class CharaController : MonoBehaviour
 
 		GetPlayerMovement(out canMove, out canRotate);
 		SetPlayerMovement(false, false);
+		buffer = Buffer.None;
 		yield return new WaitForSeconds(duration);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;

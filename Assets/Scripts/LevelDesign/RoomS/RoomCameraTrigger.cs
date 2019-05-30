@@ -7,10 +7,11 @@ using Cinemachine;
 
 public class RoomCameraTrigger : MonoBehaviour
 {
-
+	public bool isTP = false;
 	public GameObject virtualCam;
 	public Sprite minimapSprite;
 	public List<SpawnEnnemis> enemySpawn;
+	public bool alreadyDraw = false;
 	GameObject minimap;
 	GameObject minimapRoomPrefab;
 	RoomTemplates roomTemplate;
@@ -19,7 +20,7 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	private void Start()
 	{
-		minimap = GameObject.FindObjectOfType<minimap>().gameObject;
+		minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
 		timeBar = FindObjectOfType<TempsPlongee>();
@@ -47,9 +48,20 @@ public class RoomCameraTrigger : MonoBehaviour
 				Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
 			virtualCam.SetActive(true);
 
-			GameObject instance = Instantiate(minimapRoomPrefab, minimap.transform);
-			instance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
-			instance.GetComponent<Image>().sprite = minimapSprite;
+			if (!alreadyDraw) {
+				foreach (GameObject room in GameObject.FindGameObjectsWithTag("minimapRoom"))
+				{
+					if (room.GetComponent<RectTransform>().anchoredPosition == new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20))
+						alreadyDraw = true;
+			} }
+
+			if (!alreadyDraw)
+			{
+				GameObject instance = Instantiate(minimapRoomPrefab, minimap.transform);
+				instance.GetComponent<minimapRoom>().isTP = isTP;
+				instance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
+				instance.GetComponent<Image>().sprite = minimapSprite;
+			}
 
 			minimap.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
 			minimap.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-transform.position.x * 21 / 14, -transform.position.z * 31.5f / 20);
