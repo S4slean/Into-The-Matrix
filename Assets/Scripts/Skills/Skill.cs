@@ -11,6 +11,7 @@ public class Skill : MonoBehaviour
 	public new string name;
 	public Sprite icon;
 	public string description;
+    public int itemSlot;
 
 	[Header ("Skill Stats")]
 	[Tooltip("The cost at the shop")]
@@ -25,12 +26,22 @@ public class Skill : MonoBehaviour
 	public int enemyLaunchTime = 1;
 	[Tooltip("The Recover animation duration (Vulnerability Frame)")]
 	public int enemyRecoverTime = 1;
+    [Tooltip("The number of times the player can use this ability")]
+    public int nbOfUse = 1;
 
 	[Header ("Debug Status (NE PAS MODIFIER)")]
 	public float cooldown;
 
-	//Active the skill
-	public virtual void Activate(GameObject user)
+    //public PNJ_DoorKeeper_MySkills skillsShop;
+    //public PNJ_Merchant_InstantiateButtons buttonsShop;
+
+    public void Start()
+    {
+        //buttonsShop = FindObjectOfType<PNJ_Merchant_InstantiateButtons>();
+    }
+
+    //Active the skill
+    public virtual void Activate(GameObject user)
 	{
 		if (cooldown > 0)
 			return;
@@ -69,5 +80,18 @@ public class Skill : MonoBehaviour
 		if (cooldown > 0)
 			cooldown -= Time.deltaTime;
 	}
+
+    public virtual void PowerUsed()
+    {
+        nbOfUse--;
+        if (nbOfUse == 0)
+        {
+            FindObjectOfType<SkillBar>().PlayerSkills[itemSlot] = null;
+            /*skillsShop = FindObjectOfType<PNJ_DoorKeeper_MySkills>();
+            skillsShop.UpdateMySkillNumber();
+            buttonsShop.ResetShopButtons();*/
+            Destroy(gameObject);
+        }
+    }
 
 }

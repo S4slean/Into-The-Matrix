@@ -24,6 +24,8 @@ public class PlayerStats : MonoBehaviour
 
 	bool dead = false;
 
+    public bool counter = false;
+
 	private void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -51,10 +53,13 @@ public class PlayerStats : MonoBehaviour
 
 	public void TakeDamage(int dmg)
 	{
-		health -= dmg;
-		anim.Play("TakeDamage");
-        UpdateLifeBar();
-        CheckDeath();
+        if (!counter)
+        {
+            health -= dmg;
+            anim.Play("TakeDamage");
+            UpdateLifeBar();
+            CheckDeath();
+        }
     }
 
 	public void KillPlayer()

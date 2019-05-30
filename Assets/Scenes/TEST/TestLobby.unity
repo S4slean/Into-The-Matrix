@@ -4217,7 +4217,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[0]
       value: 
-      objectReference: {fileID: 1467309940}
+      objectReference: {fileID: 1467309942}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[1]
@@ -5673,13 +5673,17 @@ MonoBehaviour:
   name: GlitchOut
   icon: {fileID: 0}
   description: 
+  itemSlot: 0
   cost: 15
   coolDownDuration: 5
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
   distGlitch: 3
   isActive: 0
 --- !u!114 &1467309938
@@ -5697,13 +5701,17 @@ MonoBehaviour:
   name: Bomb
   icon: {fileID: 0}
   description: Throw a bomb on a square, and make it explode when you want
+  itemSlot: 0
   cost: 60
   coolDownDuration: 7
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
   distance: 4
   selectionArea: {fileID: 3610966103437665526, guid: 329fd1cef233d91449fbebb6db094934,
     type: 3}
@@ -5727,13 +5735,17 @@ MonoBehaviour:
   name: Hook
   icon: {fileID: 0}
   description: Throw a hook to catch enemies or items
+  itemSlot: 0
   cost: 50
   coolDownDuration: 9
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
   distGrap: 4
   hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
     type: 3}
@@ -5753,15 +5765,87 @@ MonoBehaviour:
   name: Charge
   icon: {fileID: 0}
   description: Vous donne le pouvoir de repousser vos ennemis
+  itemSlot: 0
   cost: 25
   coolDownDuration: 8
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
+  damages: 0
+  chargeKnockbackInSquares: 0
+  squaresCrossed: 0
   chargedTimerMaxInTicks: 20
   chargedTimerInTicks: 0
+  playerController: {fileID: 0}
+  isActive: 0
+--- !u!114 &1467309941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Counter
+  icon: {fileID: 0}
+  description: "Vous donne pendant un court instant la capacit\xE9 de renvoyer les
+    coups \xE0 leur envoyeur"
+  itemSlot: 0
+  cost: 55
+  coolDownDuration: 15
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 1
+  cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
+  counterTimerMaxInTicks: 8
+  counterTimerInTicks: 0
+  playerStats: {fileID: 0}
+  isActive: 0
+--- !u!114 &1467309942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24217d9f65dd7054694e30e5f379f3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: FireWall
+  icon: {fileID: 0}
+  description: "Vous permet de cr\xE9er un mur de flammes"
+  itemSlot: 0
+  cost: 40
+  coolDownDuration: 3
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 2
+  cooldown: 0
+  skillsShop: {fileID: 0}
+  buttonsShop: {fileID: 0}
+  damages: 3
+  fireWallLength: 4
+  squaresCrossed: 0
+  playerController: {fileID: 0}
+  fireWallSquare: {fileID: 235256651392453069, guid: 6b4585546ee5fe74eab3187b6cc66dd4,
+    type: 3}
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
