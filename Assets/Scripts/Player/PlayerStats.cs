@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
 	public GameObject minimap;
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
+	public GameObject startingRoom;
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -39,6 +40,17 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+	public void SetStartPos()
+	{
+		Debug.Log("StartPosnotSet");
+		if (startingRoom != null)
+		{
+
+			Debug.Log("PlayerMoved");
+			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
+			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 / 14, 0, rTransform.anchoredPosition.y / 31.5f / 20);
+		}
+	}
 
 	public void CheckDeath()
 	{
