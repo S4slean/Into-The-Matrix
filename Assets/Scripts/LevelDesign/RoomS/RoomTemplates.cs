@@ -71,8 +71,7 @@ public class RoomTemplates : MonoBehaviour
 				tempSeed = seed;
 				Debug.Log("same Dungeon !");
 				LoadDungeon();
-
-
+				FindObjectOfType<PlayerStats>().SetStartPos();
 			}
 		}
 		else

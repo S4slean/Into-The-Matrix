@@ -93,7 +93,7 @@ public class PlayerStats : MonoBehaviour
 		if (dead == true)
 			dead = false;
 
-
+		//minimap.GetComponent<minimap>().SaveMap();
 		minimap.SetActive(false);
 
 		anim.Play("idle");

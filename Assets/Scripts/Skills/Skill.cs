@@ -90,7 +90,9 @@ public class Skill : MonoBehaviour
             /*skillsShop = FindObjectOfType<PNJ_DoorKeeper_MySkills>();
             skillsShop.UpdateMySkillNumber();
             buttonsShop.ResetShopButtons();*/
-            Destroy(gameObject);
+
+			if(gameObject.GetComponent<SimpleEnemy>() == null)
+				Destroy(gameObject);
         }
     }
 

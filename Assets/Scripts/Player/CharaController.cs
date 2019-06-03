@@ -13,7 +13,7 @@ public class CharaController : MonoBehaviour
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
-	private int moveStep = 10;
+	private int moveStep = 16;
 	private float stepDuration = 1;
 	private float delayBeforeRun = .19f;
 	private float stepFreeze = .2f;
