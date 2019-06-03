@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 {
-    // !!! CE SCRIPT EST DUPLIQUE DE PNJ_DoorKeeper_MyStuff  MERCI DE MODIFIER LES DEUX SCRIPTS POUR QU'ILS RESTENT SIMILAIRES !!! 
-
     public GameObject StuffContent; // Assigner le gameobject du même nom -> UI du doorkeeper
     public MoneyBank money; // La banque
-    public skillList skillListReference; // Liste des skills à vendre, assigner "StoreContentList"
+    public skillList skillListReference; // Liste des skills à vendre
     public int HowManySkillsCanITakeInTheHub; // Combien de skills je peux prendre sur moi dans le hub
 
     [Header("System elements - Ignore please")]
