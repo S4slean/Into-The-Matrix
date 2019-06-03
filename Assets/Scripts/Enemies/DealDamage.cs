@@ -77,7 +77,7 @@ public class DealDamage : MonoBehaviour
 	public IEnumerator DesactiveAfterTime(float duration,GameObject user, int enemyRecoverTime)
 	{
 		yield return new WaitForSeconds(duration);
-		Destroy(gameObject);
+		//Destroy(gameObject);
 
 		if (user.tag == "Player")
 			user.gameObject.GetComponent<CharaController>().SetPlayerMovement(true, true);
