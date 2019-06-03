@@ -733,6 +733,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3941940811781570388, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: timeMax
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
 --- !u!1001 &151576799
@@ -4217,7 +4222,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skills.Array.data[0]
       value: 
-      objectReference: {fileID: 1467309940}
+      objectReference: {fileID: 1467309942}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[1]
@@ -5034,6 +5039,98 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1289738920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289738924}
+  - component: {fileID: 1289738923}
+  - component: {fileID: 1289738922}
+  - component: {fileID: 1289738921}
+  m_Layer: 0
+  m_Name: TimeBonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!136 &1289738921
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289738920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1289738922
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289738920}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0945d0c2b309d6b449bf7d795129212a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1289738923
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289738920}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1289738924
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289738920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.86, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1303988577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 992380398658425434, guid: 96c78884a267fb94b967f262b3a4820b,
@@ -5673,12 +5770,14 @@ MonoBehaviour:
   name: GlitchOut
   icon: {fileID: 0}
   description: 
+  itemSlot: 0
   cost: 15
   coolDownDuration: 5
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
   distGlitch: 3
   isActive: 0
@@ -5697,12 +5796,14 @@ MonoBehaviour:
   name: Bomb
   icon: {fileID: 0}
   description: Throw a bomb on a square, and make it explode when you want
+  itemSlot: 0
   cost: 60
   coolDownDuration: 7
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
   distance: 4
   selectionArea: {fileID: 3610966103437665526, guid: 329fd1cef233d91449fbebb6db094934,
@@ -5727,12 +5828,14 @@ MonoBehaviour:
   name: Hook
   icon: {fileID: 0}
   description: Throw a hook to catch enemies or items
+  itemSlot: 0
   cost: 50
   coolDownDuration: 9
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
   distGrap: 4
   hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
@@ -5753,15 +5856,81 @@ MonoBehaviour:
   name: Charge
   icon: {fileID: 0}
   description: Vous donne le pouvoir de repousser vos ennemis
+  itemSlot: 0
   cost: 25
-  coolDownDuration: 0
+  coolDownDuration: 8
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
-  cooldown: 8
-  chargedTimerMax: 0
-  chargedTimer: 0
+  nbOfUse: 1
+  cooldown: 0
+  damages: 0
+  chargeKnockbackInSquares: 0
+  squaresCrossed: 0
+  chargedTimerMaxInTicks: 20
+  chargedTimerInTicks: 0
+  playerController: {fileID: 0}
+  isActive: 0
+--- !u!114 &1467309941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Counter
+  icon: {fileID: 0}
+  description: "Vous donne pendant un court instant la capacit\xE9 de renvoyer les
+    coups \xE0 leur envoyeur"
+  itemSlot: 0
+  cost: 55
+  coolDownDuration: 15
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 1
+  cooldown: 0
+  counterTimerMaxInTicks: 8
+  counterTimerInTicks: 0
+  playerStats: {fileID: 0}
+  isActive: 0
+--- !u!114 &1467309942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467309935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24217d9f65dd7054694e30e5f379f3fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: FireWall
+  icon: {fileID: 0}
+  description: "Vous permet de cr\xE9er un mur de flammes"
+  itemSlot: 0
+  cost: 40
+  coolDownDuration: 3
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 2
+  cooldown: 0
+  damages: 3
+  fireWallLength: 4
+  squaresCrossed: 0
+  playerController: {fileID: 0}
+  fireWallSquare: {fileID: 235256651392453069, guid: 6b4585546ee5fe74eab3187b6cc66dd4,
+    type: 3}
   isActive: 0
 --- !u!114 &1472567942 stripped
 MonoBehaviour:
@@ -7504,6 +7673,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeBar: {fileID: 190626042}
   loadingScreen: {fileID: 8522860418090502125}
+  dJSetupUI: {fileID: 0}
+  minimapBck: {fileID: 0}
+  availableTP: []
 --- !u!136 &1646527552
 CapsuleCollider:
   m_ObjectHideFlags: 0

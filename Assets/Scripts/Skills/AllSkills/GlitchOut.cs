@@ -13,36 +13,36 @@ public class GlitchOut : Skill
 
     public override void Activate(GameObject user)
     {
-        if (CheckIfInLobby())
-            return;
+            if (CheckIfInLobby())
+                return;
 
-        if (user.tag == "Player" && Input.mousePosition.y > 285)
-            return;
+            if (user.tag == "Player" && Input.mousePosition.y > 285)
+                return;
 
-        if (cooldown > 0)
-        {
-            if (user.GetComponent<SimpleEnemy>() != null)
-                user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
-            return;
-        }
+            if (cooldown > 0)
+            {
+                if (user.GetComponent<SimpleEnemy>() != null)
+                    user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+                return;
+            }
 
-        skillUser = user;
-        collider = skillUser.GetComponent<CapsuleCollider>();
-        //collider.enabled = false;
+            skillUser = user;
+            collider = skillUser.GetComponent<CapsuleCollider>();
+            //collider.enabled = false;
 
-        //instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
+            //instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
 
-        if (skillUser.tag == "Player")
-        {
-            //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
+            if (skillUser.tag == "Player")
+            {
+                //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
 
-            WaitForTarget();
-        }
+                WaitForTarget();
+            }
 
-        if (skillUser.tag == "Enemy")
-        {
-            //StartCoroutine(WaitForAttack());
-        }
+            if (skillUser.tag == "Enemy")
+            {
+                //StartCoroutine(WaitForAttack());
+            }
     }
 
     private void Update()
@@ -93,6 +93,7 @@ public class GlitchOut : Skill
             skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
         isActive = false;
+        PowerUsed();
         cooldown = coolDownDuration;
         yield break;
 

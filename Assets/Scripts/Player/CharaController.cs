@@ -13,7 +13,7 @@ public class CharaController : MonoBehaviour
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
-	private int moveStep = 8;
+	private int moveStep = 10;
 	private float stepDuration = 1;
 	private float delayBeforeRun = .19f;
 	private float stepFreeze = .2f;
@@ -39,6 +39,12 @@ public class CharaController : MonoBehaviour
 	private Vector3 hitPosition;
 	public Vector3 swipe;
 	private float holdedTime;
+
+    public Vector3 enemyDir;
+    public bool moveTowardsEnemy;
+    public GameObject enemyConfronted;
+
+    public bool moveIsOver;
 
 	private void Awake()
 	{
@@ -92,9 +98,9 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0) && !isMoving && !inUI)
+		if (Input.GetMouseButtonUp(0) && !inUI)
 		{
-			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun)
+			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun && !freezing)
 			{
 				if (HandleTargetting())
 					return;
@@ -208,6 +214,16 @@ public class CharaController : MonoBehaviour
 		{
 			isMoving = false;
 			freezing = false;
+            if (hit.transform.tag == "Enemy")
+            {
+                moveTowardsEnemy = true;
+                enemyConfronted = hit.transform.gameObject;
+                enemyDir = axe;
+                yield return new WaitForSecondsRealtime(0.5f);
+                moveTowardsEnemy = false;
+                enemyConfronted = null;
+            }
+
 			yield break;
 		}
 
@@ -222,16 +238,18 @@ public class CharaController : MonoBehaviour
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 			if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
 				MoveBox.SetActive(false);
-			yield return new WaitForSeconds(stepDuration / moveStep);
+			yield return new WaitForSeconds(TickManager.tickDuration/2 / moveStep);
 		}
 
-		
 		buffer = Buffer.None;
-		if (!freezing)
-			StartCoroutine(FreezePlayer(stepFreeze));
+		//if (!freezing)
+		//	StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
-	}
+        moveIsOver = true;
+        yield return new WaitForSeconds(0.05f);
+        moveIsOver = false;
+    }
 
 	void Attack()
 	{
@@ -267,6 +285,7 @@ public class CharaController : MonoBehaviour
 
 		GetPlayerMovement(out canMove, out canRotate);
 		SetPlayerMovement(false, false);
+		buffer = Buffer.None;
 		yield return new WaitForSeconds(duration);
 		SetPlayerMovement(canMove, canRotate);
 		freezing = false;

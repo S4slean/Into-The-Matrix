@@ -6,8 +6,13 @@ public class Charge : Skill
 {
     GameObject skillUser;
     private new Collider collider;
-    public float chargedTimerMax;
-    public float chargedTimer;
+
+    public int damages;
+    public int chargeKnockbackInSquares;
+    public int squaresCrossed;
+    public float chargedTimerMaxInTicks;
+    public float chargedTimerInTicks;
+    public CharaController playerController;
 
     [SerializeField] bool isActive = false;
 
@@ -31,17 +36,20 @@ public class Charge : Skill
 
         collider = skillUser.GetComponent<CapsuleCollider>();
         //instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
-        isActive = true;
 
-        if (skillUser.tag == "Player")
+        if (skillUser.tag == "Player" && !isActive)
         {
+            playerController = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<CharaController>();
+            CharaController player = skillUser.GetComponent<CharaController>();
+            isActive = true;
+            chargedTimerInTicks = chargedTimerMaxInTicks;
             //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
-            chargedTimer = chargedTimerMax;
             WaitForTarget();
         }
 
         if (skillUser.tag == "Enemy")
         {
+            isActive = true;
             StartCoroutine(WaitForAttack());
         }
     }
@@ -49,31 +57,54 @@ public class Charge : Skill
 
     private void Update()
     {
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
 
         if (!isActive)
             return;
         if (isActive)
         {
-            chargedTimer -= Time.deltaTime;
-            if (chargedTimer <= 0)
+            if (TickManager.tick > TickManager.tickDuration)
             {
-                isActive = false;
-                cooldown = coolDownDuration;
+                chargedTimerInTicks--;
+                if (chargedTimerInTicks == 0)
+                {
+                    isActive = false;
+                    PowerUsed();
+                    cooldown = coolDownDuration;
+                }
             }
+            if (playerController.moveTowardsEnemy)
+            {
+                collider.enabled = false;
+                print("ATTAQUE");
+                RaycastHit hit;
+                Physics.Raycast(playerController.enemyConfronted.transform.position, playerController.enemyDir,out hit, chargeKnockbackInSquares*2,9);
+                if (hit.distance > 0 )
+                { StartCoroutine(EnemyPushed(Mathf.FloorToInt(hit.distance/2 + 1))); }
+                else
+                { StartCoroutine(EnemyPushed(chargeKnockbackInSquares)); }
+                collider.enabled = true;
+                playerController.moveTowardsEnemy = false;
+            }
+        }
+    }
+
+    public IEnumerator EnemyPushed(int squareNb)
+    {
+        while (squaresCrossed < squareNb)
+        {
+            playerController.enemyConfronted.transform.position += playerController.enemyDir * 2;
+            squaresCrossed++;
+            yield return new WaitForSeconds(TickManager.tickDuration);
+            playerController.enemyConfronted.GetComponent<SimpleEnemy>().health -= damages;
         }
     }
 
     public void WaitForTarget()
     {
-        if (!isActive)
-        {
-            CharaController player = skillUser.GetComponent<CharaController>();
-            isActive = true;
-        }
-        else if (isActive)
-        {
-            Desactivation();
-        }
     }
 
     public IEnumerator WaitForAttack()
@@ -90,23 +121,11 @@ public class Charge : Skill
         yield break;
     }
 
-    public override IEnumerator useSkill(Vector3 tpPos)
+    public override IEnumerator useSkill(Vector3 pos)
     {
-        cooldown = coolDownDuration;
-        //Ici on mettra l'animation/FX de disparition
-        skillUser.SetActive(false);
         if (skillUser.tag == "Player")
-        { skillUser.GetComponent<CharaController>().lastMove = Vector3.zero; }
         yield return new WaitForSeconds(TickManager.tickDuration);
         //Ici on mettra l'animation/FX de réapparition
-        skillUser.transform.position = tpPos;
-        skillUser.SetActive(true);
-
-        if (skillUser.tag == "Player")
-        {
-            this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-        }
-        collider.enabled = true;
 
         if (skillUser.GetComponent<SimpleEnemy>() != null)
             skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));

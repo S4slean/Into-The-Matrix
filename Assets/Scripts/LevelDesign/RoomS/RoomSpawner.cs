@@ -79,6 +79,8 @@ public class RoomSpawner : MonoBehaviour
 			if (openingdir == OpeningDirection.Bottom)
 				SpawnRoom(roomTemplates.downEnds);
 
+			FindObjectOfType<PlayerStats>().SetStartPos();
+
 		}
 		else																	//si le donjon a dépassé la taille max, place des salles issues d'une liste de cul de sac pour le fermer
 		{

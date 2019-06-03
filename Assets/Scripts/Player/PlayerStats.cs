@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
 	public GameObject minimap;
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
+	public GameObject startingRoom;
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -23,6 +24,8 @@ public class PlayerStats : MonoBehaviour
 	public int defense = 1;
 
 	bool dead = false;
+
+    public bool counter = false;
 
 	private void Start()
 	{
@@ -37,9 +40,16 @@ public class PlayerStats : MonoBehaviour
 
     }
 
-	public void Update()
+	public void SetStartPos()
 	{
-		
+		Debug.Log("StartPosnotSet");
+		if (startingRoom != null)
+		{
+
+			Debug.Log("PlayerMoved");
+			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
+			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 / 14, 0, rTransform.anchoredPosition.y / 31.5f / 20);
+		}
 	}
 
 	public void CheckDeath()
@@ -55,10 +65,13 @@ public class PlayerStats : MonoBehaviour
 
 	public void TakeDamage(int dmg)
 	{
-		health -= dmg;
-		anim.Play("TakeDamage");
-        UpdateLifeBar();
-        CheckDeath();
+        if (!counter)
+        {
+            health -= dmg;
+            anim.Play("TakeDamage");
+            UpdateLifeBar();
+            CheckDeath();
+        }
     }
 
 	public void KillPlayer()
@@ -68,8 +81,6 @@ public class PlayerStats : MonoBehaviour
 
 	public IEnumerator BackToLobby()
 	{
-
-
 		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);
@@ -81,12 +92,10 @@ public class PlayerStats : MonoBehaviour
 		yield return new WaitForSeconds(2);
 		if (dead == true)
 			dead = false;
-		foreach (Transform child in minimap.transform)
-		{
-			if (child.GetSiblingIndex() != 0)
-				Destroy(child.gameObject);
 
-		}
+
+		minimap.SetActive(false);
+
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
 		lifebar.SetActive(false);
@@ -102,6 +111,7 @@ public class PlayerStats : MonoBehaviour
 		UpdateLifeBar();
 		lifebar.SetActive(true);
 		GetComponent<PlayerMoneyManager>().GetDungeonMoney();
+		minimap.SetActive(true);
 	}
 
     public void UpdateLifeBar()

@@ -164,8 +164,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4262676886393891575}
   - component: {fileID: 7232873465665355467}
+  - component: {fileID: 6122316380616999527}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223,7 +224,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d7ec4a911b7317e4b9e4b23255dfd093, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.23137255}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8117647}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -233,6 +234,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6122316380616999527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3138249497693131987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd13c5e90f1cb0546bf99b3cab6aad72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3487912421492915326
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackBox: {fileID: 0}
   MoveBox: {fileID: 0}
-  swipeTolerance: 14
+  swipeTolerance: 5
   stepDistance: 16
   lastMove: {x: 0, y: 0, z: 1}
   attackStrength: 1
@@ -300,6 +313,9 @@ MonoBehaviour:
   freezing: 0
   buffer: 0
   swipe: {x: 0, y: 0, z: 0}
+  enemyDir: {x: 0, y: 0, z: 0}
+  moveTowardsEnemy: 0
+  enemyConfronted: {fileID: 0}
 --- !u!95 &1379326855
 Animator:
   serializedVersion: 3

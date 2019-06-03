@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TickManager : MonoBehaviour
 {
-	public static float tickDuration = 0.15f;
+	public static float tickDuration = 0.33f;
 	CharaController player;
 	public static float tick = 0;
 
@@ -17,11 +17,11 @@ public class TickManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(tick > tickDuration)
+		tick += Time.deltaTime;
+        if(tick >= tickDuration+0.03f)
 		{
 			tick = 0;
 		}
 
-		tick += Time.deltaTime;
     }
 }

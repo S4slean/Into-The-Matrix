@@ -61,6 +61,7 @@ public class RoomTemplates : MonoBehaviour
 				Debug.Log("new Dungeon !");
 				Debug.Log(System.DateTime.Now.Day);
 				seedGenerated = false;
+				FindObjectOfType<minimap>().ClearMap();
 
 			}
 			else
@@ -79,6 +80,7 @@ public class RoomTemplates : MonoBehaviour
 			Debug.Log("new Dungeon !");
 			Debug.Log(System.DateTime.Now.Day);
 			seedGenerated = false;
+			FindObjectOfType<minimap>().ClearMap();
 		}
 
 		foreach (Rune rune in runeList.equippedRunes)
