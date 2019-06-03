@@ -9,15 +9,18 @@ public class DJSetupUI : MonoBehaviour
 	public GameObject minimap;
 	public GameObject mapAnchor;
 	GameObject instance;
+	PlayerMoneyManager money;
 
 	private void Start()
 	{
 		DJdoor = FindObjectOfType<DungeonDoor>();
+		money = FindObjectOfType<PlayerMoneyManager>();
 	}
 
 	private void OnEnable()
 	{
 		instance = Instantiate(minimap, mapAnchor.transform);
+		instance.GetComponent<minimap>().enabled = false;
 		instance.SetActive(true);
 	}
 
@@ -32,6 +35,21 @@ public class DJSetupUI : MonoBehaviour
 		CharaController player = FindObjectOfType<CharaController>();
 		player.StartCoroutine(player.FreezePlayer(1));
 		gameObject.SetActive(false);
+	}
+
+	public void RerollDJ()
+	{
+		if(money.currentMoney > 1000)
+		{
+			money.currentMoney -= 1000;
+			minimap.GetComponent<minimap>().ClearMap();
+			PlayerPrefs.DeleteKey("LastDay");
+		}
+		else
+		{
+			//Play anim : not enough money
+			Debug.Log("not enough money ! ");
+		}
 	}
 
 	public void Return()

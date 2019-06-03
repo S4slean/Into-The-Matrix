@@ -209,6 +209,7 @@ public class SimpleEnemy : MonoBehaviour
 	{
 		if(health < 1)
 		{
+			Debug.Log("aie!");
 			gameObject.SetActive(false);
 		}
 	}
