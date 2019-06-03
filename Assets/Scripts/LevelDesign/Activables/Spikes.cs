@@ -10,12 +10,14 @@ public class Spikes : MonoBehaviour
 	public bool cycling = true;
 	int activeTime = 4;
 	int inactiveTime = 6;
+	public int delay = 0;
 
 	[SerializeField] int count =0;
 
 	private void Start()
 	{ 
 		anim = GetComponent<Animator>();
+		StartCoroutine(Delay());
 	}
 
 	private void Update()
@@ -23,10 +25,8 @@ public class Spikes : MonoBehaviour
 		if (!cycling)
 			return;
 
-		if (TickManager.tick > TickManager.tickDuration)
-			count += 1;
 
-		if (isActive && count > activeTime*10*TickManager.tickDuration || !isActive && count > inactiveTime*10*TickManager.tickDuration)
+		if (isActive && count > activeTime || !isActive && count > inactiveTime)
 			Activate();
 	}
 
@@ -35,6 +35,15 @@ public class Spikes : MonoBehaviour
 		isActive = !isActive;	
 		anim.SetBool("isActive", isActive);
 		count = 0;
+	}
+
+	IEnumerator Delay()
+	{
+		yield return new WaitForSeconds(TickManager.tickDuration * delay);
+		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
+		{
+			count++;
+		};
 	}
 
 }

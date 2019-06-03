@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TickManager : MonoBehaviour
 {
+	public class OnTickEventArgs : EventArgs
+	{
+		public float tick;
+	}
+	public static event EventHandler<OnTickEventArgs> OnTick;
+
 	public static float tickDuration = 0.33f;
 	CharaController player;
 	public static float tick = 0;
@@ -20,7 +27,8 @@ public class TickManager : MonoBehaviour
 		tick += Time.deltaTime;
         if(tick >= tickDuration+0.03f)
 		{
-			tick = 0;
+			tick -= tickDuration;
+			OnTick?.Invoke(this, new OnTickEventArgs { tick = tick });
 		}
 
     }

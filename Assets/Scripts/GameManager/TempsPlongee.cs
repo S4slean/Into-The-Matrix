@@ -47,7 +47,7 @@ public class TempsPlongee : MonoBehaviour
         }
     }
 
-    public IEnumerator TimeLoss(int timeLost)
+    public IEnumerator TimeLoss(float timeLost)
     {
         timer -= timeLost;
         timeChange = true;
@@ -62,7 +62,7 @@ public class TempsPlongee : MonoBehaviour
         timeChange = false;
     }
 
-    public IEnumerator TimeGain(int timeGained)
+    public IEnumerator TimeGain(float timeGained)
     {
         timer += timeGained;
         timeChange = true;
