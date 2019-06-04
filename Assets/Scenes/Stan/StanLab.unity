@@ -852,6 +852,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4546595688849596547}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1339321652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3043766294987573573, guid: 968fda8a50049c349b58c6723bbcb4e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3043766295061958364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1339321653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339321652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c27974459acfba6458aeda0082f30558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PatrolWayPoints:
+  - {x: 0, y: 0, z: -1}
+  - {x: 4, y: 0, z: -1}
+  - {x: 4, y: 0, z: -7}
+  - {x: 0, y: 0, z: -7}
+  patrol: 1
+  index: 0
+  isMoving: 0
+  enemyScript: {fileID: 0}
 --- !u!4 &1345994394 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6940210950560037416, guid: 69ddaeccdf1fe3c4a8f033bd85b3592c,
@@ -5775,11 +5802,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 744801957411476589}
     m_Modifications:
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraTrigger
-      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5834,6 +5856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}

@@ -251,7 +251,7 @@ public class SimpleEnemy : MonoBehaviour
 
 
 	//Coroutine de mouvement sur une case. Prend en paramètre la direction du dépacement.
-	IEnumerator Move(Vector3 axe)
+	public IEnumerator Move(Vector3 axe)
 	{
 		
 
