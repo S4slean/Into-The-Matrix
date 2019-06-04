@@ -21,6 +21,7 @@ public class DJSetupUI : MonoBehaviour
 	{
 		instance = Instantiate(minimap, mapAnchor.transform);
 		instance.GetComponent<minimap>().enabled = false;
+		instance.GetComponentsInChildren<minimapRoom>()[0].selected = true;
 		instance.SetActive(true);
 	}
 

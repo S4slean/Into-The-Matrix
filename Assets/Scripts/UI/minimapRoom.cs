@@ -8,7 +8,9 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 {
 	
 	public DungeonDoor DJdoor;
+	public RuneUI runeUI;
 	public bool isTP = false;
+	public bool isSelectable = false;
 	public bool selected = false;
 
 	Animator anim;
@@ -20,10 +22,15 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 			FindObjectOfType<PlayerStats>().startingRoom = gameObject;
 			DJdoor.SelectRoom(this);
 		}
+		if(isSelectable && SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			runeUI.SelectRoom(this);
+		}
 	}
 
 	public void Start()
 	{
+		runeUI = FindObjectOfType<RuneUI>();
 		DJdoor = FindObjectOfType<DungeonDoor>();
 		anim = GetComponent<Animator>();
 
@@ -36,7 +43,10 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 
 	private void Update()
 	{
-		if(transform.name != "PlayerOnMap")
-			anim.SetBool("Selected", selected);
+		if (transform.name != "PlayerOnMap" && selected == true && anim.GetBool("Selected") == false)
+			anim.SetBool("Selected", true);
+
+		if (transform.name != "PlayerOnMap" && selected == false && anim.GetBool("Selected") == true)
+			anim.SetBool("Selected", true);
 	}
 }
