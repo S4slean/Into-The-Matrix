@@ -119,11 +119,9 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         for (int ii = 0; ii < skillListReference.skills.Count; ii++) 
         {
             // équipe le skill
-            //Debug.Log("YES 1");
             Debug.Log("skillcount: " + (HowManySkillsIHave < HowManySkillsCanITakeInTheHub));
             Debug.Log( "How many skills I have: " + HowManySkillsIHave);
             Debug.Log("How many skills I can take in the hub: " + HowManySkillsCanITakeInTheHub);
-            //Debug.Log("checkskills: " + (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1));
 
             if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
             {
@@ -134,32 +132,46 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                     Debug.Log("Skill equipped: " + skillListReference.skills[ii].name);
                     SB.CreateButton(skillListReference.skills[ii]);
 
-                    SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0,0.8f,0);
+                    SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0, 0.8f, 0);
 
                     UpdateMySkillNumber();
                     return;
                 }
             }
 
-            // Déséquipe le skill
-
+            // Stack le nombre d'utilisation du skill
             else for (int j = 0; j < SB.PlayerSkills.Count; j++)
                 {
                     if (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
-                    {                            
-                        Debug.Log("Skill unequipped: " + SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].name);
+                    {
+                        Debug.Log("Skill stacked: " + SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].name);
 
-                        SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0.8f, 0, 0);
-
-                        SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].OnDesequip();
-                        Destroy(SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].gameObject);
-                        SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)] = null;
-
-                        UpdateMySkillNumber();
-                        return;
+                        if(SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].nbOfUse < 3)
+                        {
+                            SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].nbOfUse += 1;
+                        }
                     }
-            }
-        }     
+                }
+
+                        /* // Déséquipe le skill
+
+                        else for (int j = 0; j < SB.PlayerSkills.Count; j++)
+                            {
+                                if (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
+                                {                            
+                                    Debug.Log("Skill unequipped: " + SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].name);
+
+                                    SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0.8f, 0, 0);
+
+                                    SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].OnDesequip();
+                                    Destroy(SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].gameObject);
+                                    SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)] = null;
+
+                                    UpdateMySkillNumber();
+                                    return;
+                                }
+                        }*/
+                    }     
     }
 
     public void ClosePopup() // Ferme le popup d'achat
