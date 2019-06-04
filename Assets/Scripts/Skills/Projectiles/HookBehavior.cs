@@ -7,6 +7,7 @@ public class HookBehavior : MonoBehaviour
     public int squaresCrossed = 1;
     public bool aller;
     public bool contact;
+    public bool returned;
     public GameObject grabbedObject;
 
 
@@ -35,6 +36,17 @@ public class HookBehavior : MonoBehaviour
             GetComponentInParent<Hook>().HookReturned();
         }
 
+    }
+
+    public IEnumerator HookThro()
+    {
+        if (returned)
+        {
+            transform.GetChild(0).SetParent(null);
+            Destroy(gameObject);
+            GetComponentInParent<Hook>().HookReturned();
+        }
+        yield return new WaitForSeconds(TickManager.tickDuration);
     }
 
     private void OnTriggerEnter(Collider other)
