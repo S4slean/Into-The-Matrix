@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
+
     public float MaxHealth = 3;
     public float health = 3;
 	public int strength = 1;

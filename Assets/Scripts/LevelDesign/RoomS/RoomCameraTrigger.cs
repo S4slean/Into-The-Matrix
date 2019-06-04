@@ -18,6 +18,11 @@ public class RoomCameraTrigger : MonoBehaviour
 	TempsPlongee timeBar;
 	GameObject grid;
 
+	
+
+	public List<GameObject> traps;
+	public List<GameObject> enemies;
+
 	private void Start()
 	{
 		minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
@@ -31,7 +36,15 @@ public class RoomCameraTrigger : MonoBehaviour
 	//Si le joueur entre dans le trigger: désactive la virtual cam actuelle et active celle de la salle
 	private void OnTriggerEnter(Collider other)
 	{
+		if(other.GetComponent<Spikes>() != null || other.GetComponent<LightningGate>() != null)
+		{
+			traps.Add(other.gameObject);
+		}
 
+		if(other.GetComponent<SimpleEnemy>() != null)
+		{
+			enemies.Add(other.gameObject);
+		}
 
 		if(other.tag == "Player")
 		{
@@ -84,5 +97,35 @@ public class RoomCameraTrigger : MonoBehaviour
 					spawner.Spawn();
 			}
 		}
+	}
+
+	public void OverrideTraps()
+	{
+		foreach(GameObject trap in traps)
+		{
+			if(trap.GetComponent<Spikes>() != null)
+			{
+
+			}
+			else if(trap.GetComponent<LightningGate>()  != null)
+			{
+
+			}
+
+		}
+	}
+
+	public void OverrideEnemies()
+	{
+		foreach(GameObject enmy in enemies)
+		{
+			Destroy(enmy);
+		}
+	}
+
+	public void OverrideSpawn()
+	{
+		Instantiate(Resources.Load("Resources/LD/Spawner") as GameObject, transform.position, Quaternion.identity);
+		Destroy(transform.parent);
 	}
 }
