@@ -24,7 +24,10 @@ public class EnemyPatrol : MonoBehaviour
     {
         if (transform.position.x == nextWayPoint.x && transform.position.z == nextWayPoint.z)
         {
-            index++;
+            if (index == PatrolWayPoints.Length - 1)
+            { index = 0; }
+            else
+            { index++; }
             nextWayPoint = PatrolWayPoints[index];
         }
         else
