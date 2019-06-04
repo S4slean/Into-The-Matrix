@@ -16,12 +16,14 @@ MonoBehaviour:
   icon: {fileID: 0}
   description: Channel Energy in Ray of light dealing damage to those who tries to
     go through
+  itemSlot: 0
   cost: 10
   coolDownDuration: 6
   requireTarget: 0
   enemyActivationRange: 5
-  enemyLaunchTime: 0.75
+  enemyLaunchTime: 0
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
   beam: {fileID: 0}
   duration: 0
@@ -142,7 +144,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100004, guid: d8f9f7ad983d6ea44bc3432324c204fd, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7051343410043768479, guid: 4052b83a4d6ebc94fabb267b445453b3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4052b83a4d6ebc94fabb267b445453b3, type: 3}
 --- !u!1 &4586349517878894704 stripped
 GameObject:
