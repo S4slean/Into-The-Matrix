@@ -36,6 +36,7 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 
 	private void Update()
 	{
-		anim.SetBool("Selected", selected);
+		if(transform.name != "PlayerOnMap")
+			anim.SetBool("Selected", selected);
 	}
 }

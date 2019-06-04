@@ -29,6 +29,7 @@ public class SkillBar : MonoBehaviour
 				skillButton.index = i;																	//attribue au bouton son slot
 				PlayerSkills[i] = skill;																//ajoute le skill à la liste des skill équipé par le joueur
 				Instance.transform.GetChild(0).GetComponent<Text>().text = skill.name;                  //Edite le texte du bouton avec le nom du skill
+				Instance.transform.GetChild(2).GetComponent<Text>().text = skill.nbOfUse.ToString();
                 skill.itemSlot = i;
 				break;
 			}

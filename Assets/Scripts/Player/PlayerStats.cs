@@ -67,7 +67,9 @@ public class PlayerStats : MonoBehaviour
 	{
         if (!counter)
         {
-            health -= dmg;
+			//SPAWN PARTICLE -5S
+
+            //health -= dmg;
             anim.Play("TakeDamage");
             UpdateLifeBar();
             CheckDeath();

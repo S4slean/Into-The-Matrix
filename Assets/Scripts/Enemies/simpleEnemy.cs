@@ -49,6 +49,12 @@ public class SimpleEnemy : MonoBehaviour
 	{
 		player = FindObjectOfType<CharaController>().gameObject;
 		state = State.wait;
+
+		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e) 
+		{
+			//Le tick est appelé ici !!!!!
+
+		};
 	}
 
 	private void OnEnable()

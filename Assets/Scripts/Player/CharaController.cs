@@ -68,6 +68,26 @@ public class CharaController : MonoBehaviour
 		stepFreeze = TickManager.tickDuration/2.1f;
 
 		anim = GetComponent<Animator>();
+
+		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
+		{
+			switch (buffer)
+			{
+				case Buffer.Attack:
+					Attack();
+					break;
+
+				case Buffer.Move:
+					StartCoroutine(Move(lastMove));
+					break;
+
+				case Buffer.Rotate:
+					break;
+
+				case Buffer.None:
+					break;
+			}
+		};
 	}
 
 	private void Update()
@@ -128,26 +148,6 @@ public class CharaController : MonoBehaviour
 		}
 
 
-		if(TickManager.tick > TickManager.tickDuration)
-		{
-
-			switch (buffer)
-			{
-				case Buffer.Attack:
-					Attack();
-					break;
-
-				case Buffer.Move:
-					StartCoroutine(Move(lastMove));
-					break;
-
-				case Buffer.Rotate:
-					break;
-
-				case Buffer.None:
-					break;
-			}
-		}
 
 
 		holdedTime += Time.deltaTime;
@@ -222,7 +222,13 @@ public class CharaController : MonoBehaviour
                 yield return new WaitForSecondsRealtime(0.5f);
                 moveTowardsEnemy = false;
                 enemyConfronted = null;
-            }
+
+				yield break;
+			}
+			else if(hit.transform.tag == "PushableBloc")
+			{
+				hit.transform.GetComponent<PushableBloc>().StartCoroutine(hit.transform.GetComponent<PushableBloc>().MoveBloc(axe));
+			}
 
 			yield break;
 		}
