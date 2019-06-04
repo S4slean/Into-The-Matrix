@@ -945,7 +945,10 @@ MonoBehaviour:
   - {fileID: 744801958205460695, guid: e396f4fc2df4b2247a7db56abdf3a045, type: 3}
   downSafeRooms:
   - {fileID: 744801958205460695, guid: e396f4fc2df4b2247a7db56abdf3a045, type: 3}
+  allRooms: []
   spawnedRooms: []
+  spawnedPos: []
+  spawnedRoomsName: []
   SafeRoomFrequency: 5
   currentSafeRoomChances: 0
   safeRoomIncreaseChance: 15
@@ -953,7 +956,9 @@ MonoBehaviour:
   dungeonSize: 20
   seedGenerated: 0
   seed: 
+  tempSeed: 
   enemiesRespawn: 0
+  savePath: 
 --- !u!1 &531059199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4586349517878894704, guid: 87b93d28d365b9b4f8368abe32fbed0b,
