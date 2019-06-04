@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
+
     public float MaxHealth = 3;
     public float health = 3;
 	public int strength = 1;
@@ -26,6 +27,9 @@ public class PlayerStats : MonoBehaviour
 	bool dead = false;
 
     public bool counter = false;
+
+    public int runePieces = 0;
+    public int runePiecesToGet;
 
 	private void Start()
 	{
@@ -119,5 +123,15 @@ public class PlayerStats : MonoBehaviour
     public void UpdateLifeBar()
     {
         LifeBarFilled.fillAmount = health/MaxHealth;
+    }
+
+    public void AddRunePiece()
+    {
+        runePieces++;
+        //mettre un startAnimation avec un runePieces en paramètre, pour montrer la progression de la récupération des runes
+        if(runePieces == runePiecesToGet)
+        {
+            Debug.Log("Toutes les runes ont été collectées, la porte s'ouvre ");
+        }
     }
 }
