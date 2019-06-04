@@ -27,6 +27,9 @@ public class PlayerStats : MonoBehaviour
 
     public bool counter = false;
 
+    public int runePieces = 0;
+    public int runePiecesToGet;
+
 	private void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -119,5 +122,15 @@ public class PlayerStats : MonoBehaviour
     public void UpdateLifeBar()
     {
         LifeBarFilled.fillAmount = health/MaxHealth;
+    }
+
+    public void AddRunePiece()
+    {
+        runePieces++;
+        //mettre un startAnimation avec un runePieces en paramètre, pour montrer la progression de la récupération des runes
+        if(runePieces == runePiecesToGet)
+        {
+            Debug.Log("Toutes les runes ont été collectées, la porte s'ouvre ");
+        }
     }
 }
