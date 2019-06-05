@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4158611657601300119}
   - component: {fileID: 4158611657601300118}
   - component: {fileID: 4158611657601300117}
-  - component: {fileID: 4158611657601300113}
+  - component: {fileID: 5022173492797703851}
   m_Layer: 0
   m_Name: TimeBonus
   m_TagString: Untagged
@@ -93,7 +93,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4158611657601300113
+--- !u!114 &5022173492797703851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,8 +102,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4158611657601300116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e54e22cf88f3ff4cb60a7f646102b46, type: 3}
+  m_Script: {fileID: 11500000, guid: fe5d5ace8bcd3ba42b90620b42fc6169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBonus: 5
+  value: 5
+  moneyPickUp: 0
+  PMM: {fileID: 0}
+  timePickUp: 1
   timeScript: {fileID: 0}

@@ -5,15 +5,13 @@ using UnityEngine;
 public class HookBehavior : MonoBehaviour
 {
     public int squaresCrossed = 1;
-    public bool aller;
+    public bool aller = true;
     public bool contact;
     public bool returned;
     public GameObject grabbedObject;
+    public bool pickUpObjectGrabbed;
+    public PickUpScript pickedUpObjectScript;
 
-    private void Start()
-    {
-        
-    }
 
    /* public IEnumerator HookThrow(int squareNb,Vector3 hookDir)
     {
@@ -45,15 +43,16 @@ public class HookBehavior : MonoBehaviour
     {
         if (returned)
         {
-            transform.GetChild(0).SetParent(null);
-            Destroy(gameObject);
+            if (contact && !pickUpObjectGrabbed)
+            { transform.GetChild(0).SetParent(null); }
             GetComponentInParent<Hook>().HookReturned();
+            Destroy(gameObject);
         }
         if (squaresCrossed == 4)
         {
             aller = false;
         }
-        if (!contact)
+        if (!contact || aller)
         {
             transform.position += hookDir * 2;
             squaresCrossed++;
@@ -62,15 +61,31 @@ public class HookBehavior : MonoBehaviour
         {
             transform.position -= hookDir * 2;
             squaresCrossed--;
+            if (squaresCrossed == 1)
+            {
+                if (pickUpObjectGrabbed)
+                { pickedUpObjectScript.PickedUp(); }
+                returned = true;
+            }
         }
-        if (contact == true)
         yield return new WaitForSeconds(TickManager.tickDuration);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         contact = true;
-        other.transform.SetParent(this.transform);
+        if (other.tag == "PushableBloc")
+        { other.transform.SetParent(this.transform); }
+        else if (other.tag == "Pickup")
+        {
+            other.transform.SetParent(this.transform);
+            pickUpObjectGrabbed = true;
+            pickedUpObjectScript = other.GetComponent<PickUpScript>();
+        }
+        else if (other.tag == "Lever")
+        {
+            other.GetComponent<Lever>().ActivateLever();
+        }
         Debug.Log("grabbed");
     }
 }
