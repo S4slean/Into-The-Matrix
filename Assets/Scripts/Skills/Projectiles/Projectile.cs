@@ -59,10 +59,4 @@ public class Projectile : MonoBehaviour
 		Destroy(gameObject);
 
 	}
-
-
-	private void OnDestroy()
-	{
-		Debug.Log("jui là");
-	}
 }

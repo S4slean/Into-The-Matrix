@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 7405639107284139647}
   - component: {fileID: 7405639107284139646}
   - component: {fileID: 7405639107284139642}
-  - component: {fileID: 7405639107284139645}
+  - component: {fileID: 8742580359421042311}
   m_Layer: 9
   m_Name: Coin_5
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7405639107284139645
+--- !u!114 &8742580359421042311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,8 +118,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7405639107284139644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65a133a196057ee41b74ac3f3951d559, type: 3}
+  m_Script: {fileID: 11500000, guid: fe5d5ace8bcd3ba42b90620b42fc6169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
+  moneyPickUp: 1
   PMM: {fileID: 0}
+  timePickUp: 0
+  timeScript: {fileID: 0}

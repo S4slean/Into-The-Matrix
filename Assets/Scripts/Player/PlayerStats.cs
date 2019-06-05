@@ -53,8 +53,8 @@ public class PlayerStats : MonoBehaviour
 			Debug.Log("PlayerMoved");
 			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
 			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 / 14, 0, rTransform.anchoredPosition.y / 31.5f / 20);
+			loadingScreen.GetComponent<Animator>().Play("Disappear");
 		}
-		loadingScreen.GetComponent<Animator>().Play("Disappear");
 	}
 
 	public void CheckDeath()
@@ -67,6 +67,14 @@ public class PlayerStats : MonoBehaviour
 			GetComponent<CharaController>().enabled = false;
 		}
 	}
+
+    public void Death()
+    {
+        dead = true;
+        money.currentMoney = 0;
+        StartCoroutine(BackToLobby());
+        GetComponent<CharaController>().enabled = false;
+    }
 
 	public void TakeDamage(int dmg)
 	{
@@ -108,16 +116,9 @@ public class PlayerStats : MonoBehaviour
 		lifebar.SetActive(false);
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
-		TickManager.ClearDelegate();
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 
 	}
-
-	void ClearDelegate()
-	{
-
-	}
-
 
 	public void BackToDungeon()
 	{

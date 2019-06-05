@@ -13,8 +13,13 @@ public class Lever : MonoBehaviour
 	{
 		if(other.tag == "Player" && other.GetComponent<DealDamage>())
 		{
-			Activate.Invoke();
-			anim.SetTrigger("Impulse");
+            ActivateLever();
 		}
 	}
+
+    public void ActivateLever()
+    {
+        Activate.Invoke();
+        anim.SetTrigger("Impulse");
+    }
 }

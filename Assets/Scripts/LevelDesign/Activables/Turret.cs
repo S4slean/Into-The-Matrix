@@ -7,28 +7,33 @@ public class Turret : MonoBehaviour
 {
 	public bool quadDir = false;
 	public GameObject projectile;
-	private int tickDelay = 5;
+	public int tickDelay = 10;
 	public int tickCount = 0;
 
 
 	private void Start()
 	{
-
-		TickManager.OnTick += Fire;
-	}
-
-	private void Fire()
-	{
-			tickCount++;
-	}
-
-	private void Update()
-	{
-		if (tickCount >= tickDelay)
+		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
 		{
-			Instantiate(projectile, transform.position + transform.forward*1.2f + transform.up, transform.rotation);
-			tickCount = 0;
-		}
+			if (FindObjectOfType<Turret>()!= null )
+			{
+				tickCount++;
+
+				if (tickCount > tickDelay)
+				{
+					Instantiate(projectile, transform.position + transform.forward + transform.up, transform.rotation);
+
+					if (quadDir)
+					{
+						Instantiate(projectile, transform.position + transform.up + transform.right, transform.rotation * Quaternion.Euler(0, 90, 0));
+						Instantiate(projectile, transform.position + transform.up - transform.right, transform.rotation * Quaternion.Euler(0, -90, 0));
+						Instantiate(projectile, transform.position + transform.up - transform.forward, transform.rotation * Quaternion.Euler(0, 180, 0));
+
+					}
+					tickCount = 0;
+				}
+			}
+		};
 	}
 
 }
