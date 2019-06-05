@@ -635,7 +635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &61443884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2651,7 +2651,7 @@ PrefabInstance:
     - target: {fileID: 2426781859318984474, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2426781858725173835, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
@@ -2767,22 +2767,22 @@ PrefabInstance:
     - target: {fileID: 2426781858861946078, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781858861946078, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781858861946078, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781858861946078, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781860096958617, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
@@ -2797,22 +2797,22 @@ PrefabInstance:
     - target: {fileID: 2426781859094577481, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859094577481, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859453653220, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859453653220, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859453653220, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
@@ -2822,22 +2822,22 @@ PrefabInstance:
     - target: {fileID: 2426781858772725358, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781858772725358, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859615670344, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859615670344, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2426781859615670344, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
@@ -3194,7 +3194,7 @@ PrefabInstance:
     - target: {fileID: 2426781860096958620, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0000033676624
+      value: 0.000044003435
       objectReference: {fileID: 0}
     - target: {fileID: 2426781860096958620, guid: 74abbcab56abfd343a2219618a718e9a,
         type: 3}
@@ -5722,21 +5722,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillList
       objectReference: {fileID: 0}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.data[0]
-      value: 
-      objectReference: {fileID: 293659070}
-    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
-        type: 3}
-      propertyPath: skills.Array.data[1]
-      value: 
-      objectReference: {fileID: 293659069}
     - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: cost
@@ -5757,6 +5742,21 @@ PrefabInstance:
       propertyPath: cost
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 293659070}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 293659069}
     - target: {fileID: 2884519329243807457, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8183,6 +8183,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6253629763872370054, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_Name
+      value: MinimapBackGround
+      objectReference: {fileID: 0}
     - target: {fileID: 6442914721603904823, guid: 5079059a4cf384141b505ee3a814dace,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8427,11 +8432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6253629763872370054, guid: 5079059a4cf384141b505ee3a814dace,
-        type: 3}
-      propertyPath: m_Name
-      value: MinimapBackGround
       objectReference: {fileID: 0}
     - target: {fileID: 6442914721897385110, guid: 5079059a4cf384141b505ee3a814dace,
         type: 3}
@@ -9018,7 +9018,7 @@ MonoBehaviour:
   StuffContent: {fileID: 588744715}
   money: {fileID: 1893441852}
   skillListReference: {fileID: 856573904}
-  HowManySkillsCanITakeInTheHub: 1
+  HowManySkillsCanITakeInTheHub: 3
   EquipmentToUnlock: {fileID: 0}
   childObjects: []
   StuffContentList: []
