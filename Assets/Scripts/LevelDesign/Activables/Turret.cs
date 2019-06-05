@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Turret : MonoBehaviour
 {
@@ -14,20 +15,23 @@ public class Turret : MonoBehaviour
 	{
 		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
 		{
-			tickCount++;
-
-			if (tickCount > tickDelay)
+			if (FindObjectOfType<Turret>()!= null )
 			{
-				Instantiate(projectile, transform.position + transform.forward + transform.up, transform.rotation);
+				tickCount++;
 
-				if (quadDir)
+				if (tickCount > tickDelay)
 				{
-					Instantiate(projectile, transform.position + transform.up + transform.right, transform.rotation * Quaternion.Euler(0, 90, 0));
-					Instantiate(projectile, transform.position + transform.up - transform.right, transform.rotation * Quaternion.Euler(0, -90, 0));
-					Instantiate(projectile, transform.position + transform.up - transform.forward, transform.rotation * Quaternion.Euler(0, 180, 0));
+					Instantiate(projectile, transform.position + transform.forward + transform.up, transform.rotation);
 
+					if (quadDir)
+					{
+						Instantiate(projectile, transform.position + transform.up + transform.right, transform.rotation * Quaternion.Euler(0, 90, 0));
+						Instantiate(projectile, transform.position + transform.up - transform.right, transform.rotation * Quaternion.Euler(0, -90, 0));
+						Instantiate(projectile, transform.position + transform.up - transform.forward, transform.rotation * Quaternion.Euler(0, 180, 0));
+
+					}
+					tickCount = 0;
 				}
-				tickCount = 0;
 			}
 		};
 	}

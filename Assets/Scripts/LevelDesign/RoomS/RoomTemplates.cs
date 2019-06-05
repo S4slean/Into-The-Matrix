@@ -141,6 +141,7 @@ public class RoomTemplates : MonoBehaviour
 		string json = JsonUtility.ToJson(dj);
 		File.WriteAllText(savePath + "/dungeon.json", json);
 		Debug.Log("dungeon saved !");
+		Debug.Log(FindObjectsOfType<RoomTemplates>().Length);
 	}
 
 	public void LoadDungeon()
