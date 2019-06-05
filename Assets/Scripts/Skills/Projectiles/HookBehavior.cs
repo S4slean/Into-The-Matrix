@@ -82,6 +82,10 @@ public class HookBehavior : MonoBehaviour
             pickUpObjectGrabbed = true;
             pickedUpObjectScript = other.GetComponent<PickUpScript>();
         }
+        else if (other.tag == "Lever")
+        {
+            other.GetComponent<Lever>().ActivateLever();
+        }
         Debug.Log("grabbed");
     }
 }
