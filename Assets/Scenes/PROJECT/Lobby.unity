@@ -1696,30 +1696,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &293659069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
-    type: 3}
-  m_PrefabInstance: {fileID: 1147417899}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f26d75c0eefd4fb3c619c93fd9249, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &293659070 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2884519329243807487, guid: b363a48e5e96763489c289977a19dd56,
-    type: 3}
-  m_PrefabInstance: {fileID: 1147417899}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff488d6e237fd04f9a023ae4a763559, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &311035593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4515,7 +4491,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1147417899}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1626913225}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3556507709bc7c146958210d0c6b5dbd, type: 3}
@@ -5725,18 +5701,23 @@ PrefabInstance:
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[0]
       value: 
-      objectReference: {fileID: 293659070}
+      objectReference: {fileID: 1626913226}
     - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: skills.Array.data[1]
       value: 
-      objectReference: {fileID: 293659069}
+      objectReference: {fileID: 1626913227}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 1626913226}
     - target: {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: cost
@@ -5839,7 +5820,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0520f4d6d873da94bbdea5766e82c493,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4998082544893357717, guid: b363a48e5e96763489c289977a19dd56, type: 3}
+    - {fileID: 1960749311, guid: b363a48e5e96763489c289977a19dd56, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
 --- !u!1 &1163168767 stripped
 GameObject:
@@ -8957,6 +8940,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c78884a267fb94b967f262b3a4820b, type: 3}
+--- !u!1 &1626913225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2884519329243807484, guid: b363a48e5e96763489c289977a19dd56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147417899}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1626913226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626913225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b94e2019688c240beda83eec63306b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Hook
+  icon: {fileID: 0}
+  description: 'Grab '
+  itemSlot: 0
+  cost: 20
+  coolDownDuration: 8
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 1
+  cooldown: 0
+  distGrap: 4
+  hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
+    type: 3}
+  isActive: 0
+--- !u!114 &1626913227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626913225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: 
+  icon: {fileID: 0}
+  description: 
+  itemSlot: 0
+  cost: 0
+  coolDownDuration: 0
+  requireTarget: 0
+  enemyActivationRange: 5
+  enemyLaunchTime: 1
+  enemyRecoverTime: 1
+  nbOfUse: 1
+  cooldown: 0
+  counterTimerMaxInTicks: 0
+  counterTimerInTicks: 0
+  playerStats: {fileID: 0}
+  isActive: 0
 --- !u!1 &1629255441
 GameObject:
   m_ObjectHideFlags: 0
