@@ -11,12 +11,6 @@ public class MoneyCoins : MonoBehaviour
     {
         PMM = GameObject.Find("Player").GetComponent<PlayerMoneyManager>();
     }
-
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.name == "Player")
