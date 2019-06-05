@@ -6,10 +6,10 @@ public class Spikes : MonoBehaviour
 {
 	Animator anim;
 
-	public bool isActive = true;
+	private bool isActive = false;
 	public bool cycling = true;
-	int activeTime = 4;
-	int inactiveTime = 6;
+	int activeTime = 5;
+	int inactiveTime = 5;
 	public int delay = 0;
 
 	[SerializeField] int count =0;
@@ -26,7 +26,7 @@ public class Spikes : MonoBehaviour
 			return;
 
 
-		if (isActive && count > activeTime || !isActive && count > inactiveTime)
+		if (isActive && count >= activeTime || !isActive && count >= inactiveTime)
 			Activate();
 	}
 
@@ -40,10 +40,11 @@ public class Spikes : MonoBehaviour
 	IEnumerator Delay()
 	{
 		yield return new WaitForSeconds(TickManager.tickDuration * delay);
-		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
-		{
-			count++;
-		};
+		TickManager.OnTick += AddCount;
 	}
 
+	void AddCount()
+	{
+		count++;
+	}
 }
