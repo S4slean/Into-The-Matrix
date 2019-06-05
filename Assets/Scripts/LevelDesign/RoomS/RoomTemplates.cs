@@ -106,7 +106,7 @@ public class RoomTemplates : MonoBehaviour
 
 	public IEnumerator activeSeed()
 	{
-		yield return new WaitForSeconds(10);
+		yield return new WaitForSeconds(20);
 
 		if (seedGenerated)
 			yield break;
@@ -118,6 +118,7 @@ public class RoomTemplates : MonoBehaviour
 		Debug.Log(PlayerPrefs.GetInt("LastDay"));
 		seedGenerated = true;
 		SaveDungeon();
+
 		Debug.Log("DungeonSaved");
 	}
 
@@ -176,6 +177,9 @@ public class RoomTemplates : MonoBehaviour
 		}
 
 		Debug.Log("dungeon loaded !");
+
+
+		FindObjectOfType<PlayerStats>().ExecuteOverride();
 	}
 
 	public class Dungeon

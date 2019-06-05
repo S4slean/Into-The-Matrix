@@ -47,6 +47,6 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 			anim.SetBool("Selected", true);
 
 		if (transform.name != "PlayerOnMap" && selected == false && anim.GetBool("Selected") == true)
-			anim.SetBool("Selected", true);
+			anim.SetBool("Selected", false);
 	}
 }

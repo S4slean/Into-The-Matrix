@@ -15,9 +15,14 @@ public class LightningGate : MonoBehaviour
 	public bool isActive = true;
 	private float count;
 
+	public bool overrided = false;
+
 
 	public void Activate()
 	{
+		if (overrided)
+			return;
+
 		lineR.enabled = !lineR.enabled;
 		capsule.enabled = !capsule.enabled;
 		isActive = !isActive;
@@ -48,6 +53,14 @@ public class LightningGate : MonoBehaviour
 
 
 
+	}
+
+	public void Override()
+	{
+		isActive = false;
+		overrided = true;
+		lineR.enabled = false;
+		capsule.enabled = false;
 	}
 
 	private void Update()

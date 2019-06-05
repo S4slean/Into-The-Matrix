@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
+	public List<DungeonOverride> overrides;
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -116,15 +117,35 @@ public class PlayerStats : MonoBehaviour
 		lifebar.SetActive(false);
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
+		overrides = new List<DungeonOverride>();
 		TickManager.ClearDelegate();
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 
 	}
 
-	void ClearDelegate()
+	public void ExecuteOverride()
 	{
+		if (overrides == null)
+			return;  
 
-	}
+		Debug.Log("Début de l'override");
+		RoomCameraTrigger[] rooms = FindObjectsOfType<RoomCameraTrigger>();
+
+		foreach(DungeonOverride ovr in overrides)
+		{
+			foreach(RoomCameraTrigger room in rooms)
+			{
+				if(room.transform.position == new Vector3(ovr.spritePos.x/21 * 14 , 0, ovr.spritePos.y/ 31.5f * 20))
+				{
+					room.ApplyOverride(ovr.overridesIndex);
+					Debug.Log("Salles Overridée");
+				}
+			}
+		}
+		overrides.Clear();
+		Debug.Log("Fin des overrides");
+
+	} 
 
 
 	public void BackToDungeon()

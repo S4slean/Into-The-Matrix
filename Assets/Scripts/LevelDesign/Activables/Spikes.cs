@@ -12,6 +12,8 @@ public class Spikes : MonoBehaviour
 	int inactiveTime = 5;
 	public int delay = 0;
 
+	public bool overrided = false;
+
 	[SerializeField] int count =0;
 
 	private void Start()
@@ -22,7 +24,7 @@ public class Spikes : MonoBehaviour
 
 	private void Update()
 	{
-		if (!cycling)
+		if (!cycling || overrided)
 			return;
 
 
@@ -46,5 +48,11 @@ public class Spikes : MonoBehaviour
 	void AddCount()
 	{
 		count++;
+	}
+
+	public void Override()
+	{
+		overrided = true;
+		anim.SetBool("isActive", false);
 	}
 }
