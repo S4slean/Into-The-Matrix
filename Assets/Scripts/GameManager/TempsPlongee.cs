@@ -43,7 +43,7 @@ public class TempsPlongee : MonoBehaviour
         if (timer <= 0)
         {
             Debug.Log("Plus de temps");
-            statsScript.BackToLobby();
+            statsScript.Death();
         }
     }
 
