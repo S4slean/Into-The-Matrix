@@ -70,25 +70,35 @@ public class CharaController : MonoBehaviour
 
 		anim = GetComponent<Animator>();
 
-		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
+		GetInTick();
+	}
+
+	public void GetInTick()
+	{
+		TickManager.OnTick += ExecuteBuffer;
+	}
+
+	private void ExecuteBuffer()
+	{
+
+	
+		switch (buffer)
 		{
-			switch (buffer)
-			{
-				case Buffer.Attack:
-					Attack();
-					break;
+			case Buffer.Attack:
+				Attack();
+				break;
 
-				case Buffer.Move:
-					StartCoroutine(Move(lastMove));
-					break;
+			case Buffer.Move:
+				StartCoroutine(Move(lastMove));
+				break;
 
-				case Buffer.Rotate:
-					break;
+			case Buffer.Rotate:
+				break;
 
-				case Buffer.None:
-					break;
-			}
-		};
+			case Buffer.None:
+				break;
+		}
+	
 	}
 
 	private void Update()

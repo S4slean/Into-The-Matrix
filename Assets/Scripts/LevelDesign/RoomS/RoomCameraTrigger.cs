@@ -26,6 +26,7 @@ public class RoomCameraTrigger : MonoBehaviour
 	private void Start()
 	{
 		minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
+		Debug.Log(minimap);
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
 		timeBar = FindObjectOfType<TempsPlongee>();
