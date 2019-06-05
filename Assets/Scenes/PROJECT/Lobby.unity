@@ -1045,14 +1045,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.574997
-      objectReference: {fileID: 0}
     - target: {fileID: 2807159824067587320, guid: 51abff4104b17214eb588ef22ba76657,
         type: 3}
       propertyPath: m_IsActive
@@ -1062,6 +1054,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FillAmount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.574997
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8388913416194314678, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
@@ -3886,11 +3886,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerMain
-      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3945,6 +3940,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraTriggerMain
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -4675,7 +4675,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1147417899}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626913225}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3556507709bc7c146958210d0c6b5dbd, type: 3}
@@ -5882,6 +5882,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillList
       objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 1626913229}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 1626913228}
+    - target: {fileID: 2884519329243807486, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 1626913230}
     - target: {fileID: 2884519329243807457, guid: b363a48e5e96763489c289977a19dd56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7909,11 +7929,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerSide
-      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7968,6 +7983,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraTriggerSide
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -9076,68 +9096,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c78884a267fb94b967f262b3a4820b, type: 3}
---- !u!1 &1626913225 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2884519329243807484, guid: b363a48e5e96763489c289977a19dd56,
+--- !u!114 &1626913228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5154938837723931560, guid: b363a48e5e96763489c289977a19dd56,
     type: 3}
   m_PrefabInstance: {fileID: 1147417899}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1626913226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626913225}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3b94e2019688c240beda83eec63306b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Hook
-  icon: {fileID: 0}
-  description: 'Grab '
-  itemSlot: 0
-  cost: 20
-  coolDownDuration: 8
-  requireTarget: 0
-  enemyActivationRange: 5
-  enemyLaunchTime: 1
-  enemyRecoverTime: 1
-  nbOfUse: 1
-  cooldown: 0
-  distGrap: 4
-  hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
-    type: 3}
-  isActive: 0
---- !u!114 &1626913227
+--- !u!114 &1626913229 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147417899}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1626913225}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  icon: {fileID: 0}
-  description: 
-  itemSlot: 0
-  cost: 0
-  coolDownDuration: 0
-  requireTarget: 0
-  enemyActivationRange: 5
-  enemyLaunchTime: 1
-  enemyRecoverTime: 1
-  nbOfUse: 1
-  cooldown: 0
-  counterTimerMaxInTicks: 0
-  counterTimerInTicks: 0
-  playerStats: {fileID: 0}
-  isActive: 0
+--- !u!114 &1626913230 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2884519329243807487, guid: b363a48e5e96763489c289977a19dd56,
+    type: 3}
+  m_PrefabInstance: {fileID: 1147417899}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff488d6e237fd04f9a023ae4a763559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1629255441
 GameObject:
   m_ObjectHideFlags: 0
