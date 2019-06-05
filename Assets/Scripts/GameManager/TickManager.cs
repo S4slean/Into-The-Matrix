@@ -9,8 +9,7 @@ public class TickManager : MonoBehaviour
 	{
 		public float tick;
 	}
-	public delegate void Tick();
-	public static event Tick OnTick;
+	public static event EventHandler<OnTickEventArgs> OnTick;
 
 	public static float tickDuration = 0.33f;
 	CharaController player;
@@ -26,18 +25,11 @@ public class TickManager : MonoBehaviour
     void LateUpdate()
     {
 		tick += Time.deltaTime;
-        if(tick >= tickDuration)
+        if(tick >= tickDuration+0.03f)
 		{
 			tick -= tickDuration;
-			OnTick();
+			OnTick?.Invoke(this, new OnTickEventArgs { tick = tick });
 		}
 
     }
-
-	public static void ClearDelegate()
-	{
-		OnTick = null;
-		CharaController p = FindObjectOfType<CharaController>();
-		p.GetInTick();
-	}
 }

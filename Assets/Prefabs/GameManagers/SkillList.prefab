@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2884519329243807457}
   - component: {fileID: 2884519329243807486}
   - component: {fileID: 2884519329243807487}
-  - component: {fileID: 4998082544893357717}
-  - component: {fileID: 1960749311}
+  - component: {fileID: 2999350718471624534}
+  - component: {fileID: 5154938837723931560}
   m_Layer: 0
   m_Name: SkillList
   m_TagString: Untagged
@@ -47,9 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 2884519329243807487}
-  - {fileID: 4998082544893357717}
-  - {fileID: 1960749311}
+  - {fileID: 5154938837723931560}
 --- !u!114 &2884519329243807487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,14 +63,16 @@ MonoBehaviour:
   name: Fire Ball
   icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
   description: Throw a fireball !
+  itemSlot: 0
   cost: 50
   coolDownDuration: 5
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
---- !u!114 &4998082544893357717
+--- !u!114 &2999350718471624534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,22 +81,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2884519329243807484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903f26d75c0eefd4fb3c619c93fd9249, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Death Beam
-  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
-  description: Un laser qui blesse les ennemis pris dedans
-  cost: 20
-  coolDownDuration: 10
+  name: 
+  icon: {fileID: 0}
+  description: 
+  itemSlot: 0
+  cost: 0
+  coolDownDuration: 0
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
-  cooldown: 15
-  beam: {fileID: 0}
-  duration: 2.5
---- !u!114 &1960749311
+  nbOfUse: 1
+  cooldown: 0
+  counterTimerMaxInTicks: 0
+  counterTimerInTicks: 0
+  playerStats: {fileID: 0}
+  isActive: 0
+--- !u!114 &5154938837723931560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,21 +109,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 2884519329243807484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3b94e2019688c240beda83eec63306b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Glitch Out
-  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
-  description: Un glitch permettant de d'esquiver les attaques et de traverser les
-    obstacles
-  cost: 15
-  coolDownDuration: 6
+  name: Hook
+  icon: {fileID: 0}
+  description: GRAB
+  itemSlot: 0
+  cost: 50
+  coolDownDuration: 8
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
+  nbOfUse: 1
   cooldown: 0
-  distance: 3
-  selectionArea: {fileID: 4400377515056969667, guid: 50fe166c8c1a9ab46b148bed9e8cb659,
+  distGrap: 4
+  hookPrefab: {fileID: 4276584151563909784, guid: 521e3b6a36a95d845906865181f95b84,
     type: 3}
   isActive: 0

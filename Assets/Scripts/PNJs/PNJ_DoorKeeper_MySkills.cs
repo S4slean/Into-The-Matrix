@@ -38,7 +38,9 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Debug.Log("DEBUG How many skills I have: " + HowManySkillsIHave);
+            //Debug.Log("DEBUG How many skills I have: " + HowManySkillsIHave);
+            money.BankMoney += 100;
+            money.ActualizeBankMoney();
         }
     }
 
@@ -91,6 +93,9 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
             money.ActualizeBankMoney();
             Debug.Log("object bought !");
 
+            EquipToPlayer();
+
+            /*
             // Change le bouton en équiper/déséquiper
             SelectedButton.transform.GetChild(0).GetComponent<Image>().color = new Color(1, 1, 1);  // dégrise l'icone
             SelectedButton.transform.GetChild(1).gameObject.SetActive(true);                        // Active l'icone équipé/déséquipé
@@ -98,7 +103,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
             SelectedButton.GetComponent<Button>().onClick.RemoveAllListeners();
             SelectedButton.GetComponent<Button>().onClick.AddListener(() => EquipToPlayer());
-
+            */
             // Désactive le popup d'achat
             InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
             InfoPopup.SetActive(false);
@@ -112,27 +117,17 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
     public void EquipToPlayer() // Equipe le skill au player // Need rework
     {
-        Debug.Log("! BUTTON PRESSED: " + EventSystem.current.currentSelectedGameObject.name);
-
-        SelectedButton = EventSystem.current.currentSelectedGameObject;
-
         for (int ii = 0; ii < skillListReference.skills.Count; ii++) 
         {
             // équipe le skill
-            Debug.Log("skillcount: " + (HowManySkillsIHave < HowManySkillsCanITakeInTheHub));
-            Debug.Log( "How many skills I have: " + HowManySkillsIHave);
-            Debug.Log("How many skills I can take in the hub: " + HowManySkillsCanITakeInTheHub);
-
-            if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
+            if (HowManySkillsIHave < HowManySkillsCanITakeInTheHub && CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills) == -1) // équipe le skill sélectionné
             {
-                Debug.Log("YES 2");
-
-                if (skillListReference.skills[ii].name == EventSystem.current.currentSelectedGameObject.name)
+                if (skillListReference.skills[ii].name == SelectedButton.name)
                 {
                     Debug.Log("Skill equipped: " + skillListReference.skills[ii].name);
                     SB.CreateButton(skillListReference.skills[ii]);
 
-                    SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0, 0.8f, 0);
+                    //SelectedButton.transform.GetChild(1).GetComponent<Image>().color = new Color(0, 0.8f, 0);
 
                     UpdateMySkillNumber();
                     return;
@@ -142,15 +137,24 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
             // Stack le nombre d'utilisation du skill
             else for (int j = 0; j < SB.PlayerSkills.Count; j++)
                 {
-                    if (CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
+                    if (CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills) != -1) // déséquipe le skill sélectionné
                     {
-                        Debug.Log("Skill stacked: " + SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].name);
+                        Debug.Log("Skill stacked: " + SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].name);
 
-                        if(SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].nbOfUse < 3)
+                        if (SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse < 3)
                         {
-                            SB.PlayerSkills[CheckSimilarSkills(EventSystem.current.currentSelectedGameObject.name, SB.PlayerSkills)].nbOfUse += 1;
+                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse += 1;
+                            // Update le nombre d'usages sur le bouton
+                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].transform.GetChild(2).GetComponent<Text>().text = SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse.ToString();
+                            return;
+                        }
+                        else
+                        {
+                            money.BankMoney += EquipmentToUnlock.cost;
+                            return;
                         }
                     }
+
                 }
 
                         /* // Déséquipe le skill

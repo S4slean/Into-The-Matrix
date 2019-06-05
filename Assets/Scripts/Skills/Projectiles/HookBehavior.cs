@@ -57,7 +57,7 @@ public class HookBehavior : MonoBehaviour
             transform.position += hookDir * 2;
             squaresCrossed++;
         }
-        else
+        else if (contact || !aller)
         {
             transform.position -= hookDir * 2;
             squaresCrossed--;
@@ -69,6 +69,8 @@ public class HookBehavior : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(TickManager.tickDuration);
+        if (!returned)
+        { StartCoroutine(HookThrow(hookDir)); }
     }
 
     private void OnTriggerEnter(Collider other)

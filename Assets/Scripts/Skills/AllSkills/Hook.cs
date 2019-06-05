@@ -66,7 +66,7 @@ public class Hook : Skill
     {
         RaycastHit hit;
         Physics.Raycast(skillUser.transform.position, hookDir, out hit, distGrap*2, 9);
-        GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + hookDir * 2, Quaternion.identity,transform);
+        GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + hookDir * 2 + Vector3.up*1.5f, Quaternion.identity,transform);
         //this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
         while (TickManager.tick < TickManager.tickDuration)
         {
