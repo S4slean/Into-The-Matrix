@@ -10,8 +10,12 @@ public class HookBehavior : MonoBehaviour
     public bool returned;
     public GameObject grabbedObject;
 
+    private void Start()
+    {
+        
+    }
 
-    public IEnumerator HookThrow(int squareNb,Vector3 hookDir)
+   /* public IEnumerator HookThrow(int squareNb,Vector3 hookDir)
     {
         aller = true;
         while (squaresCrossed < squareNb && aller == true)
@@ -35,10 +39,9 @@ public class HookBehavior : MonoBehaviour
             Destroy(gameObject);
             GetComponentInParent<Hook>().HookReturned();
         }
+    }*/
 
-    }
-
-    public IEnumerator HookThro()
+    public IEnumerator HookThrow(Vector3 hookDir)
     {
         if (returned)
         {
@@ -46,6 +49,21 @@ public class HookBehavior : MonoBehaviour
             Destroy(gameObject);
             GetComponentInParent<Hook>().HookReturned();
         }
+        if (squaresCrossed == 4)
+        {
+            aller = false;
+        }
+        if (!contact)
+        {
+            transform.position += hookDir * 2;
+            squaresCrossed++;
+        }
+        else
+        {
+            transform.position -= hookDir * 2;
+            squaresCrossed--;
+        }
+        if (contact == true)
         yield return new WaitForSeconds(TickManager.tickDuration);
     }
 
