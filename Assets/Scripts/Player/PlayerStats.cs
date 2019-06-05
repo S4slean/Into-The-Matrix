@@ -53,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 			Debug.Log("PlayerMoved");
 			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
 			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 / 14, 0, rTransform.anchoredPosition.y / 31.5f / 20);
+			loadingScreen.GetComponent<Animator>().Play("Disappear");
 		}
 	}
 
