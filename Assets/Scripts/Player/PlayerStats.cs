@@ -68,6 +68,14 @@ public class PlayerStats : MonoBehaviour
 		}
 	}
 
+    public void Death()
+    {
+        dead = true;
+        money.currentMoney = 0;
+        StartCoroutine(BackToLobby());
+        GetComponent<CharaController>().enabled = false;
+    }
+
 	public void TakeDamage(int dmg)
 	{
         if (!counter)
