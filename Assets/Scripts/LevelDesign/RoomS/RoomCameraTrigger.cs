@@ -18,6 +18,8 @@ public class RoomCameraTrigger : MonoBehaviour
 	TempsPlongee timeBar;
 	GameObject grid;
 
+	public bool isTimeSafe = false;
+
 	
 
 	public List<GameObject> traps;
@@ -47,7 +49,6 @@ public class RoomCameraTrigger : MonoBehaviour
 				spawner.Spawn();
 			}
 
-			timeBar.plongee = false;
 
 			if(Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
 				Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
@@ -75,8 +76,6 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	private void OnTriggerExit(Collider other)
 	{
-
-		timeBar.plongee = true;
 
 		if (FindObjectOfType<RoomTemplates>() == null)
 			return;

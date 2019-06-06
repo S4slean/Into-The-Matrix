@@ -47,6 +47,17 @@ public class TempsPlongee : MonoBehaviour
         }
     }
 
+	public void LoseTime(int t)
+	{
+		StartCoroutine(TimeLoss(t));
+	}
+
+	public void GainTime(int t)
+	{
+		StartCoroutine(TimeGain(t));
+	}
+
+
     public IEnumerator TimeLoss(float timeLost)
     {
         timer -= timeLost;

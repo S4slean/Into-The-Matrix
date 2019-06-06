@@ -49,7 +49,8 @@ public class DealDamage : MonoBehaviour
 			if (other.tag == gameObject.tag)
 				return;
 
-			FindObjectOfType<TempsPlongee>().TimeLoss(5);
+			
+			Debug.Log("Temps perdu");
 			FindObjectOfType<PlayerStats>().TakeDamage(damage);
 			//Ajouter Feedbacks visuels !!								<=============
 		}

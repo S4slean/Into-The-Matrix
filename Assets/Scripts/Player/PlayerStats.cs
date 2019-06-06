@@ -59,18 +59,19 @@ public class PlayerStats : MonoBehaviour
 	{
 		if(health < 1 && !dead)
 		{
-			dead = true;
-			money.currentMoney = 0;
-			StartCoroutine(BackToLobby());
-			GetComponent<CharaController>().enabled = false;
+			Death();
 		}
 	}
 
     public void Death()
     {
+		if (dead)
+			return; 
         dead = true;
         money.currentMoney = 0;
-        StartCoroutine(BackToLobby());
+		money.UpdateDJMoneyUI();
+		skillBar.DesequipAll();
+		StartCoroutine(BackToLobby());
         GetComponent<CharaController>().enabled = false;
     }
 
@@ -82,7 +83,8 @@ public class PlayerStats : MonoBehaviour
 
             //health -= dmg;
             anim.Play("TakeDamage");
-            CheckDeath();
+			timebar.LoseTime(20);
+			CheckDeath();
         }
     }
 
@@ -99,7 +101,7 @@ public class PlayerStats : MonoBehaviour
 		transform.position = new Vector3(0, 0, 1);
 		transform.rotation = Quaternion.Euler(0, 180, 0);
 		health = MaxHealth;
-		skillBar.DesequipAll();
+
 		yield return new WaitForSeconds(2);
 		if (dead == true)
 			dead = false;
@@ -144,7 +146,8 @@ public class PlayerStats : MonoBehaviour
 	public void BackToDungeon()
 	{
 		health = MaxHealth;
-		GetComponent<PlayerMoneyManager>().GetDungeonMoney();
+		money.currentMoney = 0;
+		money.UpdateDJMoneyUI();
 		minimap.SetActive(true);
 	}
 
