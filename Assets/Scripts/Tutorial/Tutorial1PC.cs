@@ -6,13 +6,18 @@ public class Tutorial1PC : MonoBehaviour
 {
     public dialogueBox dialogue;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if(collision.name == "AttackCollider")
-        {
-            Debug.Log("tonch");
+        
+    }
 
-            if (dialogue.index >= dialogue.dialogueLines.Count)
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.name == "AttackCollider")
+        {
+
+            if (dialogue.index > dialogue.dialogueLines.Count - 1)
             {
                 Debug.Log("Player get teleported to the tutorial dungeon");
             }

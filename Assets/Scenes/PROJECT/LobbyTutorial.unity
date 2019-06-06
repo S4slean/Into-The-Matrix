@@ -389,6 +389,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96c78884a267fb94b967f262b3a4820b, type: 3}
+--- !u!1 &43714111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2299834069342505716, guid: f434489ad67110d4cad412c9dbf51b79,
+    type: 3}
+  m_PrefabInstance: {fileID: 606161594}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &43714112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43714111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ac8570ba80764491c2c0b35fecd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: {fileID: 569849068}
 --- !u!1001 &44912016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2552,6 +2571,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 44912016}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &569849068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2299834070562280854, guid: f434489ad67110d4cad412c9dbf51b79,
+    type: 3}
+  m_PrefabInstance: {fileID: 606161594}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c10fb2bb3894042bf90750fc5bb732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &588744713
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3684,6 +3715,36 @@ PrefabInstance:
     - target: {fileID: 2299834069342505713, guid: f434489ad67110d4cad412c9dbf51b79,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834070562280854, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834068948148057, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834070562280874, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834070562280874, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834070562280874, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2299834070562280874, guid: f434489ad67110d4cad412c9dbf51b79,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

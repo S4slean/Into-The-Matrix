@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class dialogueBox : MonoBehaviour
 {
 	Vector3 anchor;
+    public bool loop;
 	public List<string> dialogueLines;
 	RectTransform rt;
 	typewritterScript TypeWritter;
@@ -29,7 +30,7 @@ public class dialogueBox : MonoBehaviour
 		TypeWritter.NextText(dialogueLines[index]);
 
 		index++;
-		if (index > dialogueLines.Count - 1)
+		if (index > dialogueLines.Count - 1 && loop == true)
 			index = 0;
 	}
 

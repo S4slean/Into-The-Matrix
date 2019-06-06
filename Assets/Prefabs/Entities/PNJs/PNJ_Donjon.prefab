@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 2299834069342505713}
   - component: {fileID: 2667629565067353724}
   - component: {fileID: 2299834069342505719}
-  - component: {fileID: 1127405982}
   m_Layer: 0
   m_Name: PNJ_Donjon
   m_TagString: PNJ
@@ -160,19 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialBox: {fileID: 2299834070562280854}
---- !u!114 &1127405982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299834069342505716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a18ac8570ba80764491c2c0b35fecd8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue: {fileID: 2299834070562280854}
 --- !u!1 &2299834070018407360
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c10fb2bb3894042bf90750fc5bb732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loop: 0
   dialogueLines:
   - 2em ligbne
   - 3e ligne
