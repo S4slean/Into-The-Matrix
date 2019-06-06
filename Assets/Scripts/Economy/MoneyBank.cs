@@ -24,7 +24,7 @@ public class MoneyBank : MonoBehaviour
         else
         {
             BankMoney = 0;
-            PlayerPrefs.SetInt("BankCurrentMoney", 0);
+            PlayerPrefs.SetInt("BankCurrentMoney", BankMoney);
         }
 
 		// Met l'argent que le joueur a récupéré dans le donjon dans la banque.
@@ -36,18 +36,14 @@ public class MoneyBank : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void DepositMoney() // Ajoute à la banque l'argent que le player a sur lui
     {
         BankMoney += PMM.currentMoney;
+		Debug.Log(PMM.currentMoney + " Déposé à la bank");
+		Debug.Log("Total de " + BankMoney);
         PMM.currentMoney = 0;
         PlayerPrefs.SetInt("BankCurrentMoney", BankMoney);
-        PlayerPrefs.SetInt("PlayerCurrentMoney", 0);
     }
 
     public void ActualizeBankMoney() // Actualise les display du solde de la banque
