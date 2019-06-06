@@ -31,8 +31,7 @@ public class Hook : Skill
 
         if (skillUser.tag == "Player")
         {
-            skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
-            WaitForTarget();
+			StartCoroutine(useSkill(Vector3.zero));
         }
 
         if (skillUser.tag == "Enemy")
@@ -62,34 +61,16 @@ public class Hook : Skill
         yield return new WaitForSeconds(enemyLaunchTime);
     }
 
-    public override IEnumerator useSkill(Vector3 hookDir)
+    public override IEnumerator useSkill(Vector3 pos)
     {
         RaycastHit hit;
-        Physics.Raycast(skillUser.transform.position, hookDir, out hit, distGrap*2, 9);
-        GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + hookDir * 2 + Vector3.up*1.5f, Quaternion.identity,transform);
-        //this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
-        while (TickManager.tick < TickManager.tickDuration)
-        {
-            yield return new WaitForEndOfFrame();
-        }
-        if (hit.distance > 0)
-        { StartCoroutine(hook.GetComponent<HookBehavior>().HookThrow(hookDir)); }
-        else
-        { StartCoroutine(hook.GetComponent<HookBehavior>().HookThrow(hookDir)); }
-        if (skillUser.GetComponent<SimpleEnemy>() != null)
-            skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
-
-        isActive = false;
-        yield break;
+        Physics.Raycast(skillUser.transform.position + Vector3.up, skillUser.transform.forward, out hit, distGrap*2, 9);
+		GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + Vector3.up + skillUser.transform.forward * 1.2f, skillUser.transform.rotation);
+		yield break;
 
     }
 
-    public void HookReturned()
-    {
-        FindObjectOfType<CharaController>().SetPlayerMovement(true, true);
-        PowerUsed();
-        cooldown = coolDownDuration;
-    }
+
 
     public override void OnDesequip()
     {
