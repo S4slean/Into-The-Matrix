@@ -118,7 +118,6 @@ public class PlayerStats : MonoBehaviour
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
 		overrides = new List<DungeonOverride>();
-		TickManager.ClearDelegate();
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 
 	}
