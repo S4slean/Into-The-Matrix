@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Turret : MonoBehaviour
 {
-	public bool quadDir = false;
+
+	public BulletPool pool;
 	public GameObject projectile;
 	private int tickDelay = 5;
 	private int tickCount = 0;
@@ -14,6 +15,7 @@ public class Turret : MonoBehaviour
 	private void Start()
 	{
 		TickManager.OnTick += AddCount;
+		pool = GetComponentInChildren<BulletPool>();
 	}
 
 	public void AddCount()
@@ -26,15 +28,9 @@ public class Turret : MonoBehaviour
 
 			if (tickCount >= tickDelay)
 			{
-				Instantiate(projectile, transform.position + transform.forward*1.2f + transform.up, transform.rotation);
-
-				if (quadDir)
-				{
-					Instantiate(projectile, transform.position + transform.up + transform.right, transform.rotation * Quaternion.Euler(0, 90, 0));
-					Instantiate(projectile, transform.position + transform.up - transform.right, transform.rotation * Quaternion.Euler(0, -90, 0));
-					Instantiate(projectile, transform.position + transform.up - transform.forward, transform.rotation * Quaternion.Euler(0, 180, 0));
-
-				}
+				projectile = pool.GetBullet();
+				projectile.transform.position = transform.position + transform.forward * 1.2f + transform.up;
+			projectile.transform.rotation = transform.rotation;
 				tickCount = 0;
 			}
 		

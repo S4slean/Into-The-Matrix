@@ -41,6 +41,8 @@ public class CharaController : MonoBehaviour
 	public Vector3 swipe;
 	private float holdedTime;
 
+	private bool dosmthing = false;
+
     public Vector3 enemyDir;
     public bool moveTowardsEnemy;
     public GameObject enemyConfronted;
@@ -75,22 +77,8 @@ public class CharaController : MonoBehaviour
 
 	public void PlayerAction()
 	{
-		switch (buffer)
-		{
-			case Buffer.Attack:
-				Attack();
-				break;
-
-			case Buffer.Move:
-				StartCoroutine(Move(lastMove));
-				break;
-
-			case Buffer.Rotate:
-				break;
-
-			case Buffer.None:
-				break;
-		}
+		dosmthing = true;
+		
 	}
 
 	public void GetPlayerInTick()
@@ -158,7 +146,27 @@ public class CharaController : MonoBehaviour
 			startMousePos = Input.mousePosition;
 		}
 
+		if (dosmthing)
+		{
+			switch (buffer)
+			{
+				case Buffer.Attack:
+					Attack();
+					break;
 
+				case Buffer.Move:
+					StartCoroutine(Move(lastMove));
+					break;
+
+				case Buffer.Rotate:
+					break;
+
+				case Buffer.None:
+					break;
+			}
+
+			dosmthing = false;
+		}
 
 
 		holdedTime += Time.deltaTime;
