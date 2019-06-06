@@ -10,7 +10,7 @@ public class dialogueBox : MonoBehaviour
 	RectTransform rt;
 	typewritterScript TypeWritter;
 	Text text;
-	int index = 0;
+	public int index = 0;
 	float displayTime;
 
 	private void Awake()
