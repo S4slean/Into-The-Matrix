@@ -12,18 +12,20 @@ public class EnemyPatrol : MonoBehaviour
     public SimpleEnemy enemyScript;
 
     void Start()
-    {
-        enemyScript = gameObject.GetComponent<SimpleEnemy>();
-        nextWayPoint = PatrolWayPoints[index];
+	{
+		enemyScript = gameObject.GetComponent<SimpleEnemy>();
+		nextWayPoint = PatrolWayPoints[index];
+		if (patrol)
+			TickManager.OnTick += StartPatrol;
+	}
 
-        TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
-        {if(patrol)
-                StartCoroutine(Patrol());
-        };
-    }
+	private void StartPatrol()
+	{
+				StartCoroutine(Patrol());
+	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         
     }

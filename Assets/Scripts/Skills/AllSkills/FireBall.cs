@@ -6,7 +6,7 @@ public class FireBall : Skill
 {
 	GameObject fireballPrefab;
 
-	private void Start()
+	private new void Start()
 	{
 		fireballPrefab = Resources.Load("Projectiles/Fireball") as GameObject;
 	}
@@ -28,6 +28,7 @@ public class FireBall : Skill
 
 		GameObject Instance = Instantiate(fireballPrefab, user.transform.position + Vector3.up + user.transform.forward, user.transform.rotation);
 		Instance.GetComponent<DealDamage>().user = user.tag;
+		Instance.GetComponent<Projectile>().DestroyOnHit = true;
 		Instance.tag = user.tag;
 
 		if (user.GetComponent<SimpleEnemy>() != null)

@@ -8,8 +8,8 @@ public class Spikes : MonoBehaviour
 
 	public bool isActive = true;
 	public bool cycling = true;
-	int activeTime = 4;
-	int inactiveTime = 6;
+	private int activeTime = 5;
+	private int inactiveTime = 5;
 	public int delay = 0;
 
 	public bool overrided = false;
@@ -28,7 +28,7 @@ public class Spikes : MonoBehaviour
 			return;
 
 
-		if (isActive && count > activeTime || !isActive && count > inactiveTime)
+		if (isActive && count >= activeTime || !isActive && count >= inactiveTime)
 			Activate();
 	}
 
@@ -42,10 +42,7 @@ public class Spikes : MonoBehaviour
 	IEnumerator Delay()
 	{
 		yield return new WaitForSeconds(TickManager.tickDuration * delay);
-		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
-		{
-			count++;
-		};
+		TickManager.OnTick += AddCount;
 	}
 
 	void AddCount()
@@ -56,6 +53,7 @@ public class Spikes : MonoBehaviour
 	public void Override()
 	{
 		overrided = true;
+		anim = GetComponent<Animator>();
 		anim.SetBool("isActive", false);
 	}
 }

@@ -5,11 +5,8 @@ using System;
 
 public class TickManager : MonoBehaviour
 {
-	public class OnTickEventArgs : EventArgs
-	{
-		public float tick;
-	}
-	public static event EventHandler<OnTickEventArgs> OnTick;
+	public delegate void Tick();
+	public static event Tick OnTick;
 
 	public static float tickDuration = 0.33f;
 	CharaController player;
@@ -22,14 +19,20 @@ public class TickManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
 		tick += Time.deltaTime;
         if(tick >= tickDuration+0.03f)
 		{
 			tick -= tickDuration;
-			OnTick?.Invoke(this, new OnTickEventArgs { tick = tick });
+			OnTick();
 		}
 
     }
+
+	public static void ClearDelegate()
+	{
+		OnTick = null;
+		FindObjectOfType<CharaController>().GetPlayerInTick(); 
+	}
 }
