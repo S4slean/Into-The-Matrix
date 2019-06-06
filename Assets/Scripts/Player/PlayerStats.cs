@@ -11,8 +11,6 @@ public class PlayerStats : MonoBehaviour
 	PlayerMoneyManager money;
 	SkillBar skillBar;
 	//CabineUIScript cabineUI;
-    public Image LifeBarFilled;
-	public GameObject lifebar;
 	public GameObject minimap;
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
@@ -37,11 +35,10 @@ public class PlayerStats : MonoBehaviour
 		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
-        LifeBarFilled = GameObject.Find("LifeBarFilled").GetComponent<Image>();
+        
 		timebar = FindObjectOfType<TempsPlongee>();
 		skillBar = FindObjectOfType<SkillBar>();
 		//cabineUI = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
-        UpdateLifeBar();
 
     }
 
@@ -85,7 +82,6 @@ public class PlayerStats : MonoBehaviour
 
             //health -= dmg;
             anim.Play("TakeDamage");
-            UpdateLifeBar();
             CheckDeath();
         }
     }
@@ -103,7 +99,6 @@ public class PlayerStats : MonoBehaviour
 		transform.position = new Vector3(0, 0, 1);
 		transform.rotation = Quaternion.Euler(0, 180, 0);
 		health = MaxHealth;
-		UpdateLifeBar();
 		skillBar.DesequipAll();
 		yield return new WaitForSeconds(2);
 		if (dead == true)
@@ -114,7 +109,6 @@ public class PlayerStats : MonoBehaviour
 
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
-		lifebar.SetActive(false);
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
 		//overrides = new List<DungeonOverride>();
@@ -150,16 +144,10 @@ public class PlayerStats : MonoBehaviour
 	public void BackToDungeon()
 	{
 		health = MaxHealth;
-		UpdateLifeBar();
-		lifebar.SetActive(true);
 		GetComponent<PlayerMoneyManager>().GetDungeonMoney();
 		minimap.SetActive(true);
 	}
 
-    public void UpdateLifeBar()
-    {
-        LifeBarFilled.fillAmount = health/MaxHealth;
-    }
 
     public void AddRunePiece()
     {

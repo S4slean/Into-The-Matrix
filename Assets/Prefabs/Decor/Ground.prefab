@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &6940210950560037416
 Transform:
@@ -47,7 +47,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 16
   m_IsActive: 1
 --- !u!4 &8087967241761004393
 Transform:
@@ -87,6 +87,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 527fe9d60224d174fa0282ce4d048ace, type: 3}
       propertyPath: m_Name
       value: Tile_Sol_Base1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 527fe9d60224d174fa0282ce4d048ace, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 527fe9d60224d174fa0282ce4d048ace, type: 3}
       propertyPath: m_LocalPosition.x

@@ -67,7 +67,7 @@ public class CharaController : MonoBehaviour
 		if (MoveBox == null)
 			MoveBox = transform.GetChild(2).gameObject;
 
-		stepDuration = TickManager.tickDuration/2;
+		stepDuration = TickManager.tickDuration*2;
 		stepFreeze = TickManager.tickDuration/2.1f;
 
 		anim = GetComponent<Animator>();
@@ -215,6 +215,8 @@ public class CharaController : MonoBehaviour
 
 	}
 
+	private float stepState = 0;
+
 	public IEnumerator Move(Vector3 axe)
 	{
 		debugTick = 0;
@@ -257,13 +259,28 @@ public class CharaController : MonoBehaviour
 		if(!freezing)
 			anim.Play("Walk");
 
+		//stepState = 0;
+		//{
+		//	Vector3 startPos = transform.localPosition;
+
+		//	while(stepState < stepDuration)
+		//	{
+		//		transform.localPosition += axe * 2 * Time.deltaTime / stepDuration;
+		//		stepState += Time.deltaTime;
+		//		yield return new WaitForEndOfFrame();
+		//	}
+
+
+		//}
+
+
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 			if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
 				MoveBox.SetActive(false);
-			yield return new WaitForSeconds(TickManager.tickDuration/2 / moveStep);
+			yield return new WaitForSeconds(TickManager.tickDuration / 2 / moveStep);
 		}
 
 		buffer = Buffer.None;
