@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
-	public List<DungeonOverride> overrides;
+	public List<DungeonOverride> overrides = new List<DungeonOverride>();
 
     public float MaxHealth = 3;
     public float health = 3;
@@ -53,9 +53,9 @@ public class PlayerStats : MonoBehaviour
 
 			Debug.Log("PlayerMoved");
 			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
-			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 / 14, 0, rTransform.anchoredPosition.y / 31.5f / 20);
-			loadingScreen.GetComponent<Animator>().Play("Disappear");
+			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 * 14, 0, rTransform.anchoredPosition.y / 31.5f * 20);
 		}
+		loadingScreen.GetComponent<Animator>().Play("Disappear");
 	}
 
 	public void CheckDeath()
@@ -117,7 +117,8 @@ public class PlayerStats : MonoBehaviour
 		lifebar.SetActive(false);
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
-		overrides = new List<DungeonOverride>();
+		//overrides = new List<DungeonOverride>();
+		TickManager.ClearDelegate();
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 
 	}
@@ -141,7 +142,6 @@ public class PlayerStats : MonoBehaviour
 				}
 			}
 		}
-		overrides.Clear();
 		Debug.Log("Fin des overrides");
 
 	} 

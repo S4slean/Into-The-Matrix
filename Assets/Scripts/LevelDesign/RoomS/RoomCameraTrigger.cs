@@ -36,15 +36,7 @@ public class RoomCameraTrigger : MonoBehaviour
 	//Si le joueur entre dans le trigger: désactive la virtual cam actuelle et active celle de la salle
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.GetComponent<Spikes>() != null || other.GetComponent<LightningGate>() != null)
-		{
-			traps.Add(other.gameObject);
-		}
 
-		if(other.GetComponent<SimpleEnemy>() != null)
-		{
-			enemies.Add(other.gameObject);
-		}
 
 		if(other.tag == "Player")
 		{
@@ -89,14 +81,14 @@ public class RoomCameraTrigger : MonoBehaviour
 		if (FindObjectOfType<RoomTemplates>() == null)
 			return;
 
-		if (roomTemplate.enemiesRespawn)
-		{
-			foreach(SpawnEnnemis spawner in enemySpawn)
-			{
-				if(spawner.spawned == false)
-					spawner.Spawn();
-			}
-		}
+		//if (roomTemplate.enemiesRespawn)
+		//{
+		//	foreach(SpawnEnnemis spawner in enemySpawn)
+		//	{
+		//		if(spawner.spawned == false)
+		//			spawner.Spawn();
+		//	}
+		//}
 	}
 
 

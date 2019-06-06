@@ -9,8 +9,9 @@ public class Projectile : MonoBehaviour
 	public enum Behaviour { oneHit, goThrough, bounce, split}
 
 	public float projectileSpeed = .5f;
-	public float range = 10;
+	private float range = 20;
 	public bool explode = false;
+	public bool DestroyOnHit = false;
 	public Behaviour behaviour = Behaviour.oneHit;
 
 	private Vector3 startPos;
@@ -41,8 +42,10 @@ public class Projectile : MonoBehaviour
 						GameObject instance = Instantiate(Resources.Load("Projectiles/Explosion") as GameObject, other.transform.position, transform.rotation);
 						instance.tag = gameObject.tag;
 					}
+					if (DestroyOnHit)
+						Destroy(gameObject);
 
-					Destroy();
+					gameObject.SetActive(false);
 					break;
 				}
 		}
@@ -51,12 +54,8 @@ public class Projectile : MonoBehaviour
 	private void CheckRange()
 	{
 		if (Vector3.Magnitude(transform.position - startPos) > range)
-			Destroy();
-			
-	}
-	public void Destroy()
-	{
-		Destroy(gameObject);
+			gameObject.SetActive(false);
 
 	}
+
 }
