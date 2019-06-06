@@ -1080,6 +1080,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a, type: 3}
+--- !u!1 &8461418539647302680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7371343708639449484, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1378305275887824276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8461418539647302687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7371343708639449483, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a,
@@ -1315,6 +1321,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a, type: 3}
+--- !u!1 &8192922210791042131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7371343708639449484, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1729203431523515871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8192922210791042132 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7371343708639449483, guid: 6f5b2b6df6a8b864b9d908b2e25bbf8a,
@@ -6150,6 +6162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
+      propertyPath: traps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
       propertyPath: virtualCam
       value: 
       objectReference: {fileID: 0}
@@ -6159,6 +6176,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 896c0855381904941b763e5d122cb6e2,
         type: 3}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: traps.Array.data[0]
+      value: 
+      objectReference: {fileID: 8461418539647302680}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: traps.Array.data[1]
+      value: 
+      objectReference: {fileID: 8192922210791042131}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &2309109683626044262 stripped

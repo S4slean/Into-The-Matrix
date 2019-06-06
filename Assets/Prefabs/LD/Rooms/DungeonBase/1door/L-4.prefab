@@ -5331,6 +5331,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968fda8a50049c349b58c6723bbcb4e1, type: 3}
+--- !u!1 &5743399286227782941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3043766294987573573, guid: 968fda8a50049c349b58c6723bbcb4e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7316386117863621720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5743399286227782943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3043766294987573575, guid: 968fda8a50049c349b58c6723bbcb4e1,
@@ -5941,6 +5947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
       propertyPath: virtualCam
       value: 
       objectReference: {fileID: 0}
@@ -5950,6 +5961,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 919cc22b1cd0c3648a4daf689b693635,
         type: 3}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 5743399286227782941}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &2309109683626044262 stripped

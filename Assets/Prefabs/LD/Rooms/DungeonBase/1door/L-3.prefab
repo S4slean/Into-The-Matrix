@@ -3266,6 +3266,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4001f89896bbee64cac28c64b63a999e, type: 3}
+--- !u!1 &1995809856985288279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5975365840411535492, guid: 4001f89896bbee64cac28c64b63a999e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5286744304171050707}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1995809856985288275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5975365840411535488, guid: 4001f89896bbee64cac28c64b63a999e,
@@ -4532,13 +4538,19 @@ PrefabInstance:
       objectReference: {fileID: 1995809856985288275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4001f89896bbee64cac28c64b63a999e, type: 3}
+--- !u!1 &589133692607627450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5975365840411535492, guid: 4001f89896bbee64cac28c64b63a999e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6539726294260394046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &589133692607627448 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5975365840411535494, guid: 4001f89896bbee64cac28c64b63a999e,
     type: 3}
   m_PrefabInstance: {fileID: 6539726294260394046}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 589133692607627450}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53f90beb380e0f1498147268765e8586, type: 3}
@@ -5709,6 +5721,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
+      propertyPath: traps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
       propertyPath: virtualCam
       value: 
       objectReference: {fileID: 0}
@@ -5718,6 +5735,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 919cc22b1cd0c3648a4daf689b693635,
         type: 3}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: traps.Array.data[0]
+      value: 
+      objectReference: {fileID: 589133692607627450}
+    - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: traps.Array.data[1]
+      value: 
+      objectReference: {fileID: 1995809856985288279}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &2309109683626044262 stripped

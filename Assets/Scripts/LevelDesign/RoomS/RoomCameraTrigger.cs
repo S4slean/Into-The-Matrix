@@ -99,20 +99,37 @@ public class RoomCameraTrigger : MonoBehaviour
 		}
 	}
 
+
+	public void ApplyOverride(int i)
+	{
+		if (i == 0)
+			OverrideTraps();
+		else if (i == 1)
+			OverrideEnemies();
+		else if (i == 2)
+			OverrideSpawn();
+
+
+	}
+
 	public void OverrideTraps()
 	{
 		foreach(GameObject trap in traps)
 		{
 			if(trap.GetComponent<Spikes>() != null)
 			{
-
+				trap.GetComponent<Spikes>().Override();
+				Debug.Log("spikes overided");
 			}
 			else if(trap.GetComponent<LightningGate>()  != null)
 			{
-
+				trap.GetComponent<LightningGate>().Override();
+				Debug.Log("gate overided");
 			}
 
 		}
+
+		Debug.Log("traps overrided");
 	}
 
 	public void OverrideEnemies()
@@ -121,11 +138,15 @@ public class RoomCameraTrigger : MonoBehaviour
 		{
 			Destroy(enmy);
 		}
+
+		Debug.Log("enemies overrided ! ");
 	}
 
 	public void OverrideSpawn()
 	{
-		Instantiate(Resources.Load("Resources/LD/Spawner") as GameObject, transform.position, Quaternion.identity);
-		Destroy(transform.parent);
+		Instantiate(Resources.Load("LD/Spawner") as GameObject, transform.position, Quaternion.identity);
+		Destroy(transform.parent.gameObject);
+
+
 	}
 }

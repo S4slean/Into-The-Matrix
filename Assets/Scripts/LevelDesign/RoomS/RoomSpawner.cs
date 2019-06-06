@@ -13,6 +13,7 @@ public class RoomSpawner : MonoBehaviour
 		Bottom
 	}
 
+	public bool fromOverride = false;
 	public OpeningDirection openingdir;
 	bool spawned = false;								//si ce spawner a déjà fait spawn une room
 	bool destroying = false;							//si ce spawner attends d'être détruit
@@ -103,7 +104,7 @@ public class RoomSpawner : MonoBehaviour
 			return;
 
 		int roomID;																//index de la liste de salle
-		if (roomTemplates.seedGenerated == false)								//Si le donjon est généré sans seed
+		if (roomTemplates.seedGenerated == false || fromOverride)								//Si le donjon est généré sans seed
 		{
 			roomID = UnityEngine.Random.Range(0, roomList.Count);				//on choisit aléatoirement une salle et on stock l'ID
 			roomTemplates.seed += roomID;										//on ajoute l'id à la seed
