@@ -70,26 +70,35 @@ public class CharaController : MonoBehaviour
 
 		anim = GetComponent<Animator>();
 
-		TickManager.OnTick += delegate (object sender, TickManager.OnTickEventArgs e)
-		{
-			switch (buffer)
-			{
-				case Buffer.Attack:
-					Attack();
-					break;
-
-				case Buffer.Move:
-					StartCoroutine(Move(lastMove));
-					break;
-
-				case Buffer.Rotate:
-					break;
-
-				case Buffer.None:
-					break;
-			}
-		};
+		TickManager.OnTick += PlayerAction;
 	}
+
+	public void PlayerAction()
+	{
+		switch (buffer)
+		{
+			case Buffer.Attack:
+				Attack();
+				break;
+
+			case Buffer.Move:
+				StartCoroutine(Move(lastMove));
+				break;
+
+			case Buffer.Rotate:
+				break;
+
+			case Buffer.None:
+				break;
+		}
+	}
+
+	public void GetPlayerInTick()
+	{
+		TickManager.OnTick += PlayerAction;
+	}
+
+
 
 	private void Update()
 	{
@@ -98,6 +107,7 @@ public class CharaController : MonoBehaviour
 			PlayerPrefs.DeleteAll();
 			PlayerPrefs.Save();
 			Debug.Log("playerprefCleared");
+			TickManager.ClearDelegate();
 		}
 
 		debugTick += Time.deltaTime;

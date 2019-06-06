@@ -62,6 +62,7 @@ public class RoomTemplates : MonoBehaviour
 				Debug.Log(System.DateTime.Now.Day);
 				seedGenerated = false;
 				FindObjectOfType<minimap>().ClearMap();
+				FindObjectOfType<PlayerStats>().overrides.Clear();
 
 			}
 			else
@@ -71,7 +72,7 @@ public class RoomTemplates : MonoBehaviour
 				tempSeed = seed;
 				Debug.Log("same Dungeon !");
 				LoadDungeon();
-				FindObjectOfType<PlayerStats>().SetStartPos();
+
 			}
 		}
 		else
@@ -80,6 +81,7 @@ public class RoomTemplates : MonoBehaviour
 			Debug.Log(System.DateTime.Now.Day);
 			seedGenerated = false;
 			FindObjectOfType<minimap>().ClearMap();
+			FindObjectOfType<PlayerStats>().overrides.Clear();
 		}
 
 		foreach (Rune rune in runeList.equippedRunes)
@@ -180,6 +182,8 @@ public class RoomTemplates : MonoBehaviour
 
 
 		FindObjectOfType<PlayerStats>().ExecuteOverride();
+		FindObjectOfType<PlayerStats>().SetStartPos();
+
 	}
 
 	public class Dungeon
