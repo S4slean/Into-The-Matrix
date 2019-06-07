@@ -43,7 +43,7 @@ public class DJSetupUI : MonoBehaviour
 	{
 		if(money.currentMoney > 1000)
 		{
-			money.currentMoney -= 1000;
+			money.currentMoney -= 200;
 			minimap.GetComponent<minimap>().ClearMap();
 			PlayerPrefs.DeleteKey("LastDay");
 		}
