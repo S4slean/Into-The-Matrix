@@ -49,6 +49,7 @@ public class SkillItem : MonoBehaviour
 				{
 					skillBar.PlayerSkills[index].nbOfUse++;
 					skillBar.PlayerSkills[index].RefreshUI();
+					Destroy(gameObject);
 				}
 			}
 			else
