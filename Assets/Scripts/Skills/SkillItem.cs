@@ -32,7 +32,7 @@ public class SkillItem : MonoBehaviour
 			int index = 0;
 			for(int i = 0; i < skillBar.PlayerSkills.Count; i++ )
 			{
-				if (skillBar.PlayerSkills[i].name == skill.name)
+				if (skillBar.PlayerSkills[i] != null && skillBar.PlayerSkills[i].name == skill.name)
 				{
 					alreadyEquipped = true;
 					index = i;
