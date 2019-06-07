@@ -8,6 +8,7 @@ public class SkillItem : MonoBehaviour
 	GameObject itemPrefab;
 	GameObject player;
 	skillList list;
+	SkillBar skillBar;
 	public Skill skill;
 
 	private void Start()
@@ -16,6 +17,7 @@ public class SkillItem : MonoBehaviour
 		itemPrefab = Resources.Load("skillItem") as GameObject;
 		list = FindObjectOfType<skillList>();
 		anim = GetComponent<Animator>();
+		skillBar = FindObjectOfType<SkillBar>();
 
 		if(skill == null)
 			skill = list.skills[Random.Range(0, list.skills.Count)];
@@ -26,15 +28,61 @@ public class SkillItem : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player" && other.GetComponent<CharaController>() != null)
 		{
-			if(FindObjectOfType<SkillBar>().PlayerSkills[0] != null && FindObjectOfType<SkillBar>().PlayerSkills[1] != null && FindObjectOfType<SkillBar>().PlayerSkills[2] != null)			//Si le joueur est déjà full skill
+			bool alreadyEquipped = false;
+			int index = 0;
+			for(int i = 0; i < skillBar.PlayerSkills.Count; i++ )
 			{
-				StartCoroutine(Drop(8, -player.transform.forward));																																//Le drop derrière lui
+				if (skillBar.PlayerSkills[i] != null && skillBar.PlayerSkills[i].name == skill.name)
+				{
+					alreadyEquipped = true;
+					index = i;
+				}
+			}
+
+			if (alreadyEquipped)
+			{
+				if(skillBar.PlayerSkills[index].nbOfUse > 2)
+				{
+					StartCoroutine(Drop(8, -player.transform.forward));
+				}
+				else
+				{
+					skillBar.PlayerSkills[index].nbOfUse++;
+					skillBar.PlayerSkills[index].RefreshUI();
+					Destroy(gameObject);
+				}
 			}
 			else
 			{
-				FindObjectOfType<SkillBar>().CreateButton(skill);																																//sinon Crée le boutton et détruit l'objet
-				Destroy(gameObject);
+				bool listFull = true;
+				foreach(Skill sk in skillBar.PlayerSkills)
+				{
+					if(sk == null)
+					{
+						listFull = false;
+					}
+
+				}
+				if (!listFull)
+				{
+					FindObjectOfType<SkillBar>().CreateButton(skill);                                                                                                                               //sinon Crée le boutton et détruit l'objet
+					Destroy(gameObject);
+				}
+				else
+				{
+					StartCoroutine(Drop(8, -player.transform.forward));
+				}
 			}
+
+			//if(FindObjectOfType<SkillBar>().PlayerSkills[0] != skill && FindObjectOfType<SkillBar>().PlayerSkills[1] != null && FindObjectOfType<SkillBar>().PlayerSkills[2] != null)			//Si le joueur est déjà full skill
+			//{
+			//	StartCoroutine(Drop(8, -player.transform.forward));																																//Le drop derrière lui
+			//}
+			//else
+			//{
+			//	FindObjectOfType<SkillBar>().CreateButton(skill);																																//sinon Crée le boutton et détruit l'objet
+			//	Destroy(gameObject);
+			//}
 		}
 	}
 

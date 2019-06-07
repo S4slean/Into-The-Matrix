@@ -9,20 +9,25 @@ public class DJSetupUI : MonoBehaviour
 	public GameObject minimap;
 	public GameObject mapAnchor;
 	GameObject instance;
-	PlayerMoneyManager money;
+	MoneyBank money;
 
 	private void Start()
 	{
 		DJdoor = FindObjectOfType<DungeonDoor>();
-		money = FindObjectOfType<PlayerMoneyManager>();
+		money = FindObjectOfType<MoneyBank>();
 	}
 
 	private void OnEnable()
 	{
+		GenerateMap();
+	}
+
+	private void GenerateMap()
+	{
 		instance = Instantiate(minimap, mapAnchor.transform);
 		instance.SetActive(true);
 		instance.GetComponent<minimap>().enabled = false;
-		if(instance.GetComponentsInChildren<minimapRoom>().Length >0)
+		if (instance.GetComponentsInChildren<minimapRoom>().Length > 0)
 			instance.GetComponentsInChildren<minimapRoom>()[0].selected = true;
 	}
 
@@ -41,11 +46,16 @@ public class DJSetupUI : MonoBehaviour
 
 	public void RerollDJ()
 	{
-		if(money.currentMoney > 1000)
+		if(money.BankMoney > 200)
 		{
-			money.currentMoney -= 1000;
+			money.BankMoney -= 200;
+			money.ActualizeBankMoney();
 			minimap.GetComponent<minimap>().ClearMap();
+			Destroy(instance);
+			GenerateMap();
+
 			PlayerPrefs.DeleteKey("LastDay");
+			Debug.Log("Donjon rerolled !");
 		}
 		else
 		{
