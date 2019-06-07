@@ -7,6 +7,7 @@ public class dialogueBox : MonoBehaviour
 {
 	Vector3 anchor;
     public bool loop;
+    public bool OnPnjPosition;
 	public List<string> dialogueLines;
 	RectTransform rt;
 	typewritterScript TypeWritter;
@@ -19,8 +20,17 @@ public class dialogueBox : MonoBehaviour
 		rt = transform.parent.GetComponent<RectTransform>();
 		TypeWritter = GetComponent<typewritterScript>();
 		text = GetComponent<Text>();
-		anchor = transform.parent.parent.parent.position + Vector3.up * 3;
-		rt.anchoredPosition = Camera.main.WorldToScreenPoint(anchor);
+        anchor = transform.parent.parent.parent.position + Vector3.up * 3;
+
+        if (OnPnjPosition == true)
+        {
+            rt.anchoredPosition = Camera.main.WorldToScreenPoint(anchor);
+        }
+        else
+        {
+            //rt.anchoredPosition = 
+        }
+
 	}
 
 	public void DisplayDialogue()
@@ -36,13 +46,11 @@ public class dialogueBox : MonoBehaviour
 
 	private void Update()
 	{
-
-		rt.sizeDelta = new Vector2(Mathf.Ceil(text.text.Length * 10 ), Mathf.Ceil(text.text.Length / 40)+1 * 50);
+		rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400), (Mathf.Ceil(text.text.Length / 20)) * 50 +20);
 
 		if (displayTime > 5 && text.text.Length > 0)
 			TypeWritter.NextText("");
 
-	
 
 		if (text.text.Length == 0) 
 			rt.sizeDelta = Vector2.zero;

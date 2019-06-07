@@ -49,7 +49,10 @@ public class Tutorial1PC : MonoBehaviour
         player.transform.rotation = Quaternion.identity;
         player.GetComponent<CharaController>().enabled = true;
         yield return new WaitForSeconds(1f);
-        loadingScreen.Play("Disappear");
+        loadingScreen.Play("Disappear"); // Le loading screen disparaît
+        yield return new WaitForSeconds(1.5f);
+
+
         yield return null;
     }
 
