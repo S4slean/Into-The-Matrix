@@ -35,4 +35,9 @@ public class Turret : MonoBehaviour
 			}
 		
 	}
+
+	public void Kill()
+	{
+		Destroy(gameObject);
+	}
 }

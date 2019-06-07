@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PushableBloc : MonoBehaviour
+public class  PushableBloc : MonoBehaviour
 {
 	private int moveStep = 12;
 
@@ -46,5 +46,10 @@ public class PushableBloc : MonoBehaviour
 	public void DesactivateCollision()
 	{
 		boxCollider.enabled = false;
-	} 
+	}
+
+	private void OnDestroy()
+	{
+		Debug.Log("bye");
+	}
 }

@@ -14,6 +14,8 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 	Button btn;
 	Image cooldownIMG;
 	public Skill skill;
+	public Text chargeUI;
+
 
 	private void Start()
 	{

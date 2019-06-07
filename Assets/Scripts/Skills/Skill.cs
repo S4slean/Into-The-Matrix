@@ -12,12 +12,13 @@ public class Skill : MonoBehaviour
 	public Sprite icon;
 	public string description;
     public int itemSlot;
+	public int charge = 1;
 
 	[Header ("Skill Stats")]
 	[Tooltip("The cost at the shop")]
 	public int cost;
 	[Tooltip("The time between two successive activations by the player")]
-	public float coolDownDuration;
+	public float coolDownDuration = 1;
 	[Tooltip("The player needs to select a specific target ?")]
 	public bool requireTarget = false;
 	[Tooltip("")]
@@ -37,7 +38,7 @@ public class Skill : MonoBehaviour
 
     public void Start()
     {
-        //buttonsShop = FindObjectOfType<PNJ_Merchant_InstantiateButtons>();
+		coolDownDuration = 1;
     }
 
     //Active the skill
@@ -79,11 +80,15 @@ public class Skill : MonoBehaviour
 	{
 		if (cooldown > 0)
 			cooldown -= Time.deltaTime;
+
+
 	}
 
-    public virtual void PowerUsed()
+    public void PowerUsed()
     {
         nbOfUse--;
+		GetComponent<SkillButton>().chargeUI.text = nbOfUse.ToString();
+
         if (nbOfUse == 0)
         {
             FindObjectOfType<SkillBar>().PlayerSkills[itemSlot] = null;
