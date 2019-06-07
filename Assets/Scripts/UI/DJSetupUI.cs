@@ -19,10 +19,15 @@ public class DJSetupUI : MonoBehaviour
 
 	private void OnEnable()
 	{
+		GenerateMap();
+	}
+
+	private void GenerateMap()
+	{
 		instance = Instantiate(minimap, mapAnchor.transform);
 		instance.SetActive(true);
 		instance.GetComponent<minimap>().enabled = false;
-		if(instance.GetComponentsInChildren<minimapRoom>().Length >0)
+		if (instance.GetComponentsInChildren<minimapRoom>().Length > 0)
 			instance.GetComponentsInChildren<minimapRoom>()[0].selected = true;
 	}
 
@@ -44,8 +49,13 @@ public class DJSetupUI : MonoBehaviour
 		if(money.BankMoney > 200)
 		{
 			money.BankMoney -= 200;
+			money.ActualizeBankMoney();
 			minimap.GetComponent<minimap>().ClearMap();
+			Destroy(instance);
+			GenerateMap();
+
 			PlayerPrefs.DeleteKey("LastDay");
+			Debug.Log("Donjon rerolled !");
 		}
 		else
 		{
