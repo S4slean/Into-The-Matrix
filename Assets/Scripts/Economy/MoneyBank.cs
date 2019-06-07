@@ -48,6 +48,8 @@ public class MoneyBank : MonoBehaviour
 
     public void ActualizeBankMoney() // Actualise les display du solde de la banque
     {
+		PlayerPrefs.SetInt("BankCurrentMoney", BankMoney);
+
        foreach(Text txt in BankMoneyDisplays)
 		{
 			if(txt != null)
