@@ -20,9 +20,10 @@ public class DJSetupUI : MonoBehaviour
 	private void OnEnable()
 	{
 		instance = Instantiate(minimap, mapAnchor.transform);
-		instance.GetComponent<minimap>().enabled = false;
-		instance.GetComponentsInChildren<minimapRoom>()[0].selected = true;
 		instance.SetActive(true);
+		instance.GetComponent<minimap>().enabled = false;
+		if(instance.GetComponentsInChildren<minimapRoom>().Length >0)
+			instance.GetComponentsInChildren<minimapRoom>()[0].selected = true;
 	}
 
 	private void OnDisable()

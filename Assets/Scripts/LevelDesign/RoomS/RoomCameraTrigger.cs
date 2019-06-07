@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 
 public class RoomCameraTrigger : MonoBehaviour
@@ -61,7 +62,7 @@ public class RoomCameraTrigger : MonoBehaviour
 						alreadyDraw = true;
 			} }
 
-			if (!alreadyDraw)
+			if (!alreadyDraw && SceneManager.GetActiveScene().name.Contains("Donjon"))	
 			{
 				GameObject instance = Instantiate(minimapRoomPrefab, minimap.transform);
 				instance.GetComponent<minimapRoom>().isTP = isTP;
@@ -69,8 +70,10 @@ public class RoomCameraTrigger : MonoBehaviour
 				instance.GetComponent<Image>().sprite = minimapSprite;
 			}
 
-			minimap.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
-			minimap.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-transform.position.x * 21 / 14, -transform.position.z * 31.5f / 20);
+
+				minimap.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x * 21 / 14, transform.position.z * 31.5f / 20);
+				minimap.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(-transform.position.x * 21 / 14, -transform.position.z * 31.5f / 20);
+			
 		}
 	}
 
