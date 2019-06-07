@@ -69,6 +69,11 @@ public class DealDamage : MonoBehaviour
 		{
 			other.GetComponent<PNJ_Dialogue>().DisplayText();
 		}
+
+		if(other.GetComponent<Turret>() != null)
+		{
+			other.GetComponent<Turret>().Kill();
+		}
 	}
 
 	public void DestroySelf()
