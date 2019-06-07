@@ -9,12 +9,12 @@ public class DJSetupUI : MonoBehaviour
 	public GameObject minimap;
 	public GameObject mapAnchor;
 	GameObject instance;
-	PlayerMoneyManager money;
+	MoneyBank money;
 
 	private void Start()
 	{
 		DJdoor = FindObjectOfType<DungeonDoor>();
-		money = FindObjectOfType<PlayerMoneyManager>();
+		money = FindObjectOfType<MoneyBank>();
 	}
 
 	private void OnEnable()
@@ -41,9 +41,9 @@ public class DJSetupUI : MonoBehaviour
 
 	public void RerollDJ()
 	{
-		if(money.currentMoney > 1000)
+		if(money.BankMoney > 200)
 		{
-			money.currentMoney -= 200;
+			money.BankMoney -= 200;
 			minimap.GetComponent<minimap>().ClearMap();
 			PlayerPrefs.DeleteKey("LastDay");
 		}
