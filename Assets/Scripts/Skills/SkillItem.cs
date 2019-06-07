@@ -48,6 +48,7 @@ public class SkillItem : MonoBehaviour
 				else
 				{
 					skillBar.PlayerSkills[index].nbOfUse++;
+					skillBar.PlayerSkills[index].RefreshUI();
 				}
 			}
 			else

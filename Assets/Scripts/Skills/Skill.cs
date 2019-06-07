@@ -84,6 +84,11 @@ public class Skill : MonoBehaviour
 
 	}
 
+	public void RefreshUI()
+	{
+		GetComponent<SkillButton>().chargeUI.text = nbOfUse.ToString();
+	}
+
     public void PowerUsed()
     {
         nbOfUse--;
