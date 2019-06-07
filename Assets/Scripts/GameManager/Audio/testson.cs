@@ -13,6 +13,7 @@ public class testson : MonoBehaviour
     public AudioSource Reflect;
     public AudioSource PhoneRing;
     public AudioSource StartShield;
+    public AudioSource BruitdesPique;
 
     private void Start()
     {
@@ -61,6 +62,11 @@ public class testson : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             StartShield.Play();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            BruitdesPique.Play();
         }
     }
 }
