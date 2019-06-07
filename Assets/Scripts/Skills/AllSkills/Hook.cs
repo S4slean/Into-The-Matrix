@@ -34,10 +34,7 @@ public class Hook : Skill
 			StartCoroutine(useSkill(Vector3.zero));
         }
 
-        if (skillUser.tag == "Enemy")
-        {
-            //StartCoroutine(WaitForAttack());
-        }
+
     }
 
     private void Update()
@@ -49,23 +46,15 @@ public class Hook : Skill
             return;
     }
 
-    public void WaitForTarget()
-    {
-        CharaController player = skillUser.GetComponent<CharaController>();
-        isActive = true;
-        StartCoroutine(useSkill(player.gameObject.transform.forward));
-    }
-
-    public IEnumerator WaitForAttack()
-    {
-        yield return new WaitForSeconds(enemyLaunchTime);
-    }
 
     public override IEnumerator useSkill(Vector3 pos)
     {
+		charge--;
         RaycastHit hit;
         Physics.Raycast(skillUser.transform.position + Vector3.up, skillUser.transform.forward, out hit, distGrap*2, 9);
 		GameObject hook = Instantiate(hookPrefab, skillUser.transform.position + Vector3.up + skillUser.transform.forward * 1.2f, skillUser.transform.rotation);
+		cooldown = coolDownDuration;
+		PowerUsed();
 		yield break;
 
     }

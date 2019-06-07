@@ -5,7 +5,7 @@ using UnityEngine;
 public class HookBehavior : MonoBehaviour
 {
 	Vector3 startPos;
-	 float hookSpeed = 20;
+	 float hookSpeed =20 ;
 	public float range = 8;
 	public bool isObject = false;
 
@@ -24,7 +24,7 @@ public class HookBehavior : MonoBehaviour
 	{
 		startPos = transform.position;
 		player = FindObjectOfType<CharaController>().gameObject;
-		player.GetComponent<CharaController>().freezing = true;
+		player.GetComponent<CharaController>().FreezePlayer(1);
 	}
 
 	void Update()
@@ -37,7 +37,7 @@ public class HookBehavior : MonoBehaviour
 
 			
 			comparePos = catchPos - (player.transform.position);
-			if(comparePos.magnitude < .2f)
+			if(comparePos.magnitude < .1f)
 			{
 				Debug.Log("hooked to pos");
 				player.transform.position = catchPos;
@@ -51,15 +51,17 @@ public class HookBehavior : MonoBehaviour
 			transform.position -= transform.forward * hookSpeed * Time.deltaTime;
 			
 			comparePos = temp - transform.position;
-			if(comparePos.magnitude < .2f)
+			if(comparePos.magnitude < .1f)
 			{
 				if (objectCatched != null)
 				{
 					objectCatched.transform.parent = null;
 					objectCatched.transform.position = bringPos;
 					player.GetComponent<CharaController>().freezing = false;
+					Debug.Log(objectCatched.name + " of parent " + objectCatched.transform.parent);
 				}
 				Debug.Log("Object at pos");
+				Debug.Log(bringPos);
 				Destroy(gameObject);
 			}
 		}
@@ -71,12 +73,18 @@ public class HookBehavior : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == "Player" || gotSmthing )
 			return;
 
 
 		if (other.GetComponent<RoomCameraTrigger>() != null || other.GetComponent<DealDamage>() != null || other.GetComponent<TP>() != null )
-			return; 
+			return;
+
+		if (other.GetComponent<CapsuleCollider>() != null && other.tag != "Player")
+		{
+			Debug.Log("destroyed by capsule");
+			Destroy(gameObject);
+		}
 
 		objectCatched = other.gameObject;
 		gotSmthing = true; 
@@ -85,9 +93,15 @@ public class HookBehavior : MonoBehaviour
 		{
 			isObject = true;
 			other.transform.parent = transform;
+			
 			if(other.GetComponent<PushableBloc>() || other.GetComponent<Turret>() != null)
 			{
 				bringPos = player.transform.position + player.transform.forward * 2;
+				if(other.transform.position == bringPos)
+				{
+					other.transform.parent = null;
+					Destroy(gameObject);
+				}
 			}
 			else
 			{
@@ -100,9 +114,10 @@ public class HookBehavior : MonoBehaviour
 		}
 		else
 		{
+
 			catchPos = other.transform.position - (transform.forward*2);
 			catchPos = new Vector3(catchPos.x, 0, catchPos.z);
-			Debug.Log(catchPos);
+			Debug.Log(other.transform.name + catchPos);
 		}
 	}
 
@@ -119,6 +134,7 @@ public class HookBehavior : MonoBehaviour
 	void ResleaseObject()
 	{
 		objectCatched.transform.parent = null;
+		Debug.Log("destroy by release");
 		Destroy(gameObject);
 	}
 }
