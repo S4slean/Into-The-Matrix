@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class dialogueBox : MonoBehaviour
 {
 	Vector3 anchor;
-    public bool loop;
-    public bool OnPnjPosition;
-	public List<string> dialogueLines;
+    public bool loop; // Si le dialogue boucle ou pas
+    public bool OnPnjPosition; // Si la position de la bulle est relative au pnj ou pas
+    public List<string> dialogueLines;
 	RectTransform rt;
 	typewritterScript TypeWritter;
 	Text text;
@@ -22,26 +22,36 @@ public class dialogueBox : MonoBehaviour
 		text = GetComponent<Text>();
         anchor = transform.parent.parent.parent.position + Vector3.up * 3;
 
-        if (OnPnjPosition == true)
+        if (OnPnjPosition == true) // Si la position de la bulle est relative au pnj ou pas
         {
             rt.anchoredPosition = Camera.main.WorldToScreenPoint(anchor);
         }
         else
         {
-            //rt.anchoredPosition = 
+            rt.anchoredPosition = new Vector2(160, 1000);
         }
 
 	}
 
 	public void DisplayDialogue()
 	{
-		print(dialogueLines.Count);
+        Debug.Log("wait 1");
+        print(dialogueLines.Count);
 		displayTime = 0;
-		TypeWritter.NextText(dialogueLines[index]);
+        Debug.Log("wait 2");
+        //TypeWritter.NextText(dialogueLines[index]);
 
-		index++;
+        Debug.Log("index increasing ? : " + (index <= dialogueLines.Count - 1));
+        if(index <= dialogueLines.Count -1)
+        {
+            TypeWritter.NextText(dialogueLines[index]);
+            index++;
+        }
+
 		if (index > dialogueLines.Count - 1 && loop == true)
-			index = 0;
+        {
+            index = 0;
+        }
 	}
 
 	private void Update()

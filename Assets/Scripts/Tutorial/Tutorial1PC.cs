@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Tutorial1PC : MonoBehaviour
 {
-    public dialogueBox dialogue; // Le script du dialogue du pnj
+    public dialogueBox dialogue_pc; // Le script du dialogue du pc
+    public dialogueBox dialogue_donjon; // Le script du dialogue du donjon
     public GameObject player; // le joueur
     public GameObject cam; // la caméra
     public Transform tpPoint; // le point où le joueur est tp dans le donjon
@@ -23,7 +24,7 @@ public class Tutorial1PC : MonoBehaviour
         if (other.name == "AttackCollider")
         {
 
-            if (dialogue.index > dialogue.dialogueLines.Count - 1)
+            if (dialogue_pc.index > dialogue_pc.dialogueLines.Count - 1)
             {
                 Debug.Log("Player get teleported to the tutorial dungeon");
                 StartCoroutine("TutoTP");
@@ -51,7 +52,7 @@ public class Tutorial1PC : MonoBehaviour
         yield return new WaitForSeconds(1f);
         loadingScreen.Play("Disappear"); // Le loading screen disparaît
         yield return new WaitForSeconds(1.5f);
-
+        dialogue_donjon.DisplayDialogue(); // Affiche la première ligne du dialogue du donjon
 
         yield return null;
     }
