@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Counter : Skill
 {
+	public GameObject particles;
     GameObject skillUser;
     private new Collider collider;
+	GameObject instance;
 
     public float counterTimerMaxInTicks;
     public float counterTimerInTicks;
@@ -29,6 +31,13 @@ public class Counter : Skill
             return;
         }
 
+		TickManager.OnTick += DecreaseTick;
+
+		Debug.Log("Shield : ");
+		instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
+		instance.transform.localPosition = Vector3.up;
+
+
         skillUser = user;
 
         collider = skillUser.GetComponent<CapsuleCollider>();
@@ -51,29 +60,29 @@ public class Counter : Skill
         }
     }
 
+	public void DecreaseTick()
+	{
+		if (isActive)
+		{
+
+
+			counterTimerInTicks--;
+			if (counterTimerInTicks <= 0)
+			{
+				isActive = false;
+				playerStats.counter = false;
+				PowerUsed();
+				cooldown = coolDownDuration;
+				Destroy(instance);
+			}
+		}
+	}
 
     private void Update()
     {
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
-        }
-
-        if (!isActive)
-            return;
-        if (isActive)
-        {
-            if (TickManager.tick > TickManager.tickDuration)
-            {
-                counterTimerInTicks--;
-                if (counterTimerInTicks == 0)
-                {
-                    isActive = false;
-                    playerStats.counter = false;
-                    PowerUsed();
-                    cooldown = coolDownDuration;
-                }
-            }
         }
     }
 
