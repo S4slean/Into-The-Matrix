@@ -1066,7 +1066,7 @@ PrefabInstance:
     - target: {fileID: 2300142, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: abfb56dd4ec875a4eb6b9f9d4a98b983, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b812a39c5f43964fa75501ff03d198b, type: 2}
     - target: {fileID: 2300144, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1198,7 +1198,7 @@ PrefabInstance:
     - target: {fileID: 2300216, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 550d475fc36745646a291b06358b87ab, type: 2}
+      objectReference: {fileID: 2100000, guid: 29aaa39e357144845a62bf913000ed04, type: 2}
     - target: {fileID: 2300218, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1243,6 +1243,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7da054f57aba0734882c087ea787f627, type: 2}
+    - target: {fileID: 2300200, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01b2622028fa44946a7ed1f075f92852, type: 2}
+    - target: {fileID: 2300226, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 769c8836b2122fd418530cae65a6aa4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
 --- !u!4 &101228226 stripped
@@ -4400,17 +4408,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: minimapSprite
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &680562704 stripped
@@ -6384,6 +6392,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: name
+      value: Energy Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: description
+      value: Grants an invulnerability for a short period of time
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: coolDownDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 7317460460815458417, guid: 90fcfda57ae70534abfbfebd997b81f6,
+        type: 3}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: counterTimerInTicks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: counterTimerMaxInTicks
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
 --- !u!4 &1165639947 stripped
@@ -7908,17 +7952,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: minimapSprite
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &1511091641 stripped

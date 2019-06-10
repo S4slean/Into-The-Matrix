@@ -9,14 +9,45 @@ public class EnemyPatrol : MonoBehaviour
     private Vector3 nextWayPoint;
     public int index;
     public bool isMoving = false;
+	public bool attack = false;
     public SimpleEnemy enemyScript;
+	CharaController player;
+	Animator anim;
 
     void Start()
 	{
+		player = FindObjectOfType<CharaController>();
 		enemyScript = gameObject.GetComponent<SimpleEnemy>();
+		anim = GetComponent<Animator>();
 		nextWayPoint = PatrolWayPoints[index];
 		if (patrol)
 			TickManager.OnTick += StartPatrol;
+	}
+
+	public void EnemyDecision()
+	{
+		if (attack)
+		{
+			Attack();
+			return;
+		}
+
+		else if(Vector3.Magnitude(player.transform.position - transform.position) < 2.5f)
+		{
+			transform.LookAt(player.transform.position);
+			attack = true;
+		}
+
+		else
+		{
+			StartPatrol();
+		}
+	}
+
+	public void Attack()
+	{
+		anim.Play("Attack");
+		attack = false;
 	}
 
 	private void StartPatrol()
