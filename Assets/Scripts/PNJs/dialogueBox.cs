@@ -35,13 +35,10 @@ public class dialogueBox : MonoBehaviour
 
 	public void DisplayDialogue()
 	{
-        Debug.Log("wait 1");
         print(dialogueLines.Count);
 		displayTime = 0;
-        Debug.Log("wait 2");
         //TypeWritter.NextText(dialogueLines[index]);
 
-        Debug.Log("index increasing ? : " + (index <= dialogueLines.Count - 1));
         if(index <= dialogueLines.Count -1)
         {
             TypeWritter.NextText(dialogueLines[index]);
