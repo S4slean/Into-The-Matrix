@@ -13,12 +13,14 @@ public class EnemyPatrol : MonoBehaviour
     public SimpleEnemy enemyScript;
 	CharaController player;
 	Animator anim;
+    Vector3 startPos;
 
     void Start()
 	{
 		player = FindObjectOfType<CharaController>();
 		enemyScript = gameObject.GetComponent<SimpleEnemy>();
 		anim = GetComponent<Animator>();
+        startPos = transform.localPosition;
 		nextWayPoint = PatrolWayPoints[index];
 		if (patrol)
 			TickManager.OnTick += StartPatrol;
@@ -63,7 +65,7 @@ public class EnemyPatrol : MonoBehaviour
 
     public IEnumerator Patrol()
     {
-        if (transform.position.x == nextWayPoint.x && transform.position.z == nextWayPoint.z)
+        if (transform.position.x == startPos.x + nextWayPoint.x && transform.position.z == startPos.z + nextWayPoint.z)
         {
             if (index == PatrolWayPoints.Length - 1)
             { index = 0; }
