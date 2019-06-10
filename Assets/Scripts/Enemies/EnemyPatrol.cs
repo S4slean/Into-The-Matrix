@@ -7,23 +7,25 @@ public class EnemyPatrol : MonoBehaviour
     public Vector3[] PatrolWayPoints;
     public bool patrol = true;
     private Vector3 nextWayPoint;
-    public int index;
+    public int index = 0;
     public bool isMoving = false;
 	public bool attack = false;
     public SimpleEnemy enemyScript;
 	CharaController player;
 	Animator anim;
     Vector3 startPos;
+	Vector3 Dest;
 
     void Start()
 	{
 		player = FindObjectOfType<CharaController>();
-		enemyScript = gameObject.GetComponent<SimpleEnemy>();
+		enemyScript = GetComponent<SimpleEnemy>();
 		anim = GetComponent<Animator>();
-        startPos = transform.localPosition;
+        startPos = transform.position;
 		nextWayPoint = PatrolWayPoints[index];
+		Dest = startPos + nextWayPoint;
 		if (patrol)
-			TickManager.OnTick += StartPatrol;
+			TickManager.OnTick += EnemyDecision;
 	}
 
 	public void EnemyDecision()
@@ -34,7 +36,7 @@ public class EnemyPatrol : MonoBehaviour
 			return;
 		}
 
-		else if(Vector3.Magnitude(player.transform.position - transform.position) < 2.5f)
+		else if(Vector3.Magnitude(player.transform.position - transform.position) < 2.1f)
 		{
 			transform.LookAt(player.transform.position);
 			attack = true;
@@ -65,24 +67,49 @@ public class EnemyPatrol : MonoBehaviour
 
     public IEnumerator Patrol()
     {
-        if (transform.position.x == startPos.x + nextWayPoint.x && transform.position.z == startPos.z + nextWayPoint.z)
+		
+		
+		Debug.Log(index);
+        if (Vector3.Magnitude(Dest - transform.position) < .1f)
         {
-            if (index == PatrolWayPoints.Length - 1)
-            { index = 0; }
-            else
-            { index++; }
-            nextWayPoint = PatrolWayPoints[index];
+			index++;
+			if (index >= PatrolWayPoints.Length)
+			{
+				Debug.Log("index to 0");
+				index = 0;
+
+			}
+
+			nextWayPoint = PatrolWayPoints[index];
+			Dest = startPos + nextWayPoint;
         }
         else
         {
-            if (transform.position.x > nextWayPoint.x)
-            { StartCoroutine(enemyScript.Move(Vector3.left)); }
-            else if (transform.position.x < nextWayPoint.x)
-            { StartCoroutine(enemyScript.Move(Vector3.right)); }
-            else if (transform.position.z > nextWayPoint.z)
-            { StartCoroutine(enemyScript.Move(Vector3.back)); }
-            else if (transform.position.z < nextWayPoint.z)
-            { StartCoroutine(enemyScript.Move(Vector3.forward)); }
+			Vector3 compare = Dest - transform.position;
+
+			transform.LookAt(Dest);
+			if(Mathf.Abs(compare.x) > Mathf.Abs(compare.z))
+			{
+				if(compare.x > 0)
+				{
+					enemyScript.StartCoroutine(enemyScript.Move(Vector3.right));
+				}
+				else if(compare.x < 0)
+				{
+					enemyScript.StartCoroutine(enemyScript.Move(Vector3.left));
+				}
+			}
+			else
+			{
+				if (compare.z > 0)
+				{
+					enemyScript.StartCoroutine(enemyScript.Move(Vector3.forward));
+				}
+				else if(compare.z < 0)
+				{
+					enemyScript.StartCoroutine(enemyScript.Move(Vector3.back));
+				}
+			}
         }
 
         yield return new WaitForSeconds(TickManager.tickDuration);

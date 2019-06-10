@@ -11,15 +11,17 @@ public class TP : MonoBehaviour
 	{
 		if (active)
 		{
-			if (other.tag == "Player" || other.tag == "Enemy" || other.tag == "Projectile")
-				StartCoroutine(DelayTP(other));
+			if (other.tag == "Player" || other.tag == "Projectile")
+				StartCoroutine(DelayTP(other.transform));
+			if (other.tag == "Enemy")
+				StartCoroutine(DelayTP(other.transform.parent));
 		}
 	}
 
-	IEnumerator DelayTP(Collider other)
+	IEnumerator DelayTP(Transform other)
 	{
 		yield return new WaitForSeconds(.1f);
-		other.transform.position = new Vector3(linkedTP.transform.position.x, other.transform.position.y, linkedTP.transform.position.z);
+		other.position = new Vector3(linkedTP.transform.position.x, other.transform.position.y, linkedTP.transform.position.z);
 		linkedTP.GetComponent<TP>().active = false;
 	}
 
