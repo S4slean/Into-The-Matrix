@@ -10,6 +10,8 @@ public class  PushableBloc : MonoBehaviour
 	Animator anim;
 	BoxCollider boxCollider;
 
+	public Vector3 lastMove;
+
 	private void Start()
 	{
 		anim = GetComponent<Animator>();
@@ -27,12 +29,15 @@ public class  PushableBloc : MonoBehaviour
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 			yield return new WaitForSeconds(TickManager.tickDuration / 2 / moveStep);
 		}
+
+		lastMove = axe;
 	}
 
 	private void Update()
 	{
 		if(!Physics.Raycast(transform.position+Vector3.up, Vector3.down, 2))
 		{
+
 			StartCoroutine(DelayBeforeFall());
 		}
 	}
@@ -40,6 +45,7 @@ public class  PushableBloc : MonoBehaviour
 	IEnumerator DelayBeforeFall()
 	{
 		yield return new WaitForSeconds(.1f);
+		transform.parent = null;
 		anim.Play("Fall");
 	}
 

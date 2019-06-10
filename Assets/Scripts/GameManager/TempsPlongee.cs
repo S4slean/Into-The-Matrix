@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TempsPlongee : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class TempsPlongee : MonoBehaviour
 
         if (timer <= 0)
         {
+
             Debug.Log("Plus de temps");
             statsScript.Death();
         }

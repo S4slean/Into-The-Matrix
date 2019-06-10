@@ -16,6 +16,12 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
+	public int trapOvrd = 0;
+	public int enmyOvrd = 0;
+	public int phoneOvrd = 0;
+
+	public int key = 0;
+
 	public List<DungeonOverride> overrides = new List<DungeonOverride>();
 
     public float MaxHealth = 3;
@@ -63,16 +69,44 @@ public class PlayerStats : MonoBehaviour
 		}
 	}
 
+    IEnumerator TutoDelayBeforeTeleport()
+    {
+        loadingScreen.GetComponent<Animator>().Play("Appear");
+        yield return new WaitForSeconds(0.5f);
+        anim.Play("idle");
+        transform.position = new Vector3(-45, 0, -4);
+        transform.LookAt(transform.position + Vector3.forward);
+        yield return new WaitForSeconds(0.7f);
+        loadingScreen.GetComponent<Animator>().Play("Disappear");
+        yield break;
+    }
+
     public void Death()
     {
-		if (dead)
-			return; 
-        dead = true;
-        money.currentMoney = 0;
-		money.UpdateDJMoneyUI();
-		skillBar.DesequipAll();
-		StartCoroutine(BackToLobby());
-        GetComponent<CharaController>().enabled = false;
+        if (dead)
+			return;
+        if (SceneManager.GetActiveScene().name == "LobbyTutorial")
+        {
+            dead = true;
+            money.currentMoney = 0;
+            money.UpdateDJMoneyUI();
+            skillBar.DesequipAll();
+            GetComponent<CharaController>().enabled = false;
+            StartCoroutine(TutoDelayBeforeTeleport());
+            Debug.Log(transform.position);
+            GetComponent<CharaController>().enabled = true;
+            dead = false;
+        }
+        else
+        {
+            dead = true;
+            money.currentMoney = 0;
+            money.UpdateDJMoneyUI();
+            skillBar.DesequipAll();
+            StartCoroutine(BackToLobby());
+            GetComponent<CharaController>().enabled = false;
+        }
+
     }
 
 	public void TakeDamage(int dmg)
