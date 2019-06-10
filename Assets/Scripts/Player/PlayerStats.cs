@@ -17,6 +17,12 @@ public class PlayerStats : MonoBehaviour
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
 
+	public int trapOvrd = 0;
+	public int enmyOvrd = 0;
+	public int phoneOvrd = 0;
+
+	public int key = 0;
+
 	public List<DungeonOverride> overrides = new List<DungeonOverride>();
 
     public float MaxHealth = 3;

@@ -1066,7 +1066,7 @@ PrefabInstance:
     - target: {fileID: 2300142, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: abfb56dd4ec875a4eb6b9f9d4a98b983, type: 2}
+      objectReference: {fileID: 2100000, guid: 9b812a39c5f43964fa75501ff03d198b, type: 2}
     - target: {fileID: 2300144, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1198,7 +1198,7 @@ PrefabInstance:
     - target: {fileID: 2300216, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 550d475fc36745646a291b06358b87ab, type: 2}
+      objectReference: {fileID: 2100000, guid: 29aaa39e357144845a62bf913000ed04, type: 2}
     - target: {fileID: 2300218, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1243,6 +1243,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7da054f57aba0734882c087ea787f627, type: 2}
+    - target: {fileID: 2300200, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01b2622028fa44946a7ed1f075f92852, type: 2}
+    - target: {fileID: 2300226, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 769c8836b2122fd418530cae65a6aa4e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447cbbc4e42f5e044a2fad7aadad74fe, type: 3}
 --- !u!4 &101228226 stripped
@@ -1314,7 +1322,7 @@ PrefabInstance:
     - target: {fileID: 1283746727194788141, guid: 51abff4104b17214eb588ef22ba76657,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1283746727194788177, guid: 51abff4104b17214eb588ef22ba76657,
         type: 3}
@@ -1553,6 +1561,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 0.8356621
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283746727194788143, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283746727194788143, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 1283746727194788143, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1280
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8388913416194314678, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
@@ -6071,7 +6094,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Reroll Dungeon
 
-    Cost: 1000'
+    Cost: 200'
 --- !u!222 &1086453838
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6383,6 +6406,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: name
+      value: Energy Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: description
+      value: Grants an invulnerability for a short period of time
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: coolDownDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: particles
+      value: 
+      objectReference: {fileID: 7317460460815458417, guid: 90fcfda57ae70534abfbfebd997b81f6,
+        type: 3}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: cooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: counterTimerInTicks
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999350718471624534, guid: b363a48e5e96763489c289977a19dd56,
+        type: 3}
+      propertyPath: counterTimerMaxInTicks
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b363a48e5e96763489c289977a19dd56, type: 3}
@@ -8335,6 +8394,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6442914721084276211, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6442914722353899186, guid: 5079059a4cf384141b505ee3a814dace,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -8344,6 +8408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0.915
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442914722353899186, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6442914721936487669, guid: 5079059a4cf384141b505ee3a814dace,
         type: 3}
@@ -8383,6 +8452,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 29e8ae7f90e845440b328192c2b4bede,
         type: 3}
+    - target: {fileID: 6442914721603904821, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442914721603904821, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442914721603904821, guid: 5079059a4cf384141b505ee3a814dace,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1280
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5079059a4cf384141b505ee3a814dace, type: 3}
 --- !u!4 &1576473529 stripped

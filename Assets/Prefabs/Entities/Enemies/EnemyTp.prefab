@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6095128917533090526}
   - component: {fileID: 311278319851006930}
   - component: {fileID: 2885705272198561396}
-  - component: {fileID: 5702413782511917572}
+  - component: {fileID: 184507179111413651}
   m_Layer: 0
   m_Name: EnemyTp
   m_TagString: Enemy
@@ -64,9 +64,6 @@ MonoBehaviour:
   maxHealth: 1
   health: 1
   strength: 1
-  moveStep: 16
-  patrolWidth: 0
-  patrolHeight: 0
   detectionRange: 10
   state: 0
   ismoving: 0
@@ -76,8 +73,8 @@ MonoBehaviour:
   enemyToPlayer: {x: 0, y: 0, z: 0}
   meleeSkills: []
   rangedSkills:
-  - {fileID: 5702413782511917572}
---- !u!114 &5702413782511917572
+  - {fileID: 0}
+--- !u!114 &184507179111413651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,22 +83,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 856051764720216211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2729c5f18de79004883c49667fec3a5a, type: 3}
+  m_Script: {fileID: 11500000, guid: c27974459acfba6458aeda0082f30558, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Glitch Out
-  icon: {fileID: 0}
-  description: Use a spatial glitch to teleport on the selected area
-  cost: 20
-  coolDownDuration: 8
-  requireTarget: 1
-  enemyActivationRange: 5
-  enemyLaunchTime: 0.75
-  enemyRecoverTime: 1
-  cooldown: 0
-  distance: 3
-  selectionArea: {fileID: 0}
-  isActive: 0
+  PatrolWayPoints: []
+  patrol: 1
+  index: 0
+  isMoving: 0
+  attack: 0
+  enemyScript: {fileID: 0}
 --- !u!1 &8464237526600273101
 GameObject:
   m_ObjectHideFlags: 0
