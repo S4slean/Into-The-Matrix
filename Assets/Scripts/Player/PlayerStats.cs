@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    GameObject player;
 	Animator anim;
 	PlayerMoneyManager money;
 	SkillBar skillBar;
@@ -38,6 +39,7 @@ public class PlayerStats : MonoBehaviour
 
 	private void Start()
 	{
+        player = GameObject.Find("Player");
 		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
@@ -71,8 +73,16 @@ public class PlayerStats : MonoBehaviour
 
     public void Death()
     {
-		if (dead)
-			return; 
+        if (dead)
+			return;
+        if (SceneManager.GetActiveScene().name == "LobbyTutorial")
+        {
+            dead = true;
+            money.currentMoney = 0;
+            money.UpdateDJMoneyUI();
+            skillBar.DesequipAll();
+            player.transform.position = new Vector3(-45,0.1f,-4);
+        }
         dead = true;
         money.currentMoney = 0;
 		money.UpdateDJMoneyUI();
