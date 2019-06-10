@@ -6,10 +6,11 @@ public class BulletPool : MonoBehaviour
 {
 	public List<GameObject> bullets;
 	int i;
+	Transform parent;
 
 	public void Start()
 	{
-		transform.parent = null;
+
 	}
 
 	public GameObject GetBullet()
