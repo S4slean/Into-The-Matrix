@@ -43,10 +43,7 @@ public class TempsPlongee : MonoBehaviour
 
         if (timer <= 0)
         {
-            if (SceneManager.GetActiveScene().name == "LobbyTutorial")
-            {
-                timer = timeMax;
-            }
+
             Debug.Log("Plus de temps");
             statsScript.Death();
         }
