@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    GameObject player;
 	Animator anim;
 	PlayerMoneyManager money;
 	SkillBar skillBar;
@@ -39,7 +38,6 @@ public class PlayerStats : MonoBehaviour
 
 	private void Start()
 	{
-        player = GameObject.Find("Player");
 		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
@@ -71,6 +69,18 @@ public class PlayerStats : MonoBehaviour
 		}
 	}
 
+    IEnumerator TutoDelayBeforeTeleport()
+    {
+        loadingScreen.GetComponent<Animator>().Play("Appear");
+        yield return new WaitForSeconds(0.5f);
+        anim.Play("idle");
+        transform.position = new Vector3(-45, 0, -4);
+        transform.LookAt(transform.position + Vector3.forward);
+        yield return new WaitForSeconds(0.7f);
+        loadingScreen.GetComponent<Animator>().Play("Disappear");
+        yield break;
+    }
+
     public void Death()
     {
         if (dead)
@@ -81,14 +91,22 @@ public class PlayerStats : MonoBehaviour
             money.currentMoney = 0;
             money.UpdateDJMoneyUI();
             skillBar.DesequipAll();
-            player.transform.position = new Vector3(-45,0.1f,-4);
+            GetComponent<CharaController>().enabled = false;
+            StartCoroutine(TutoDelayBeforeTeleport());
+            Debug.Log(transform.position);
+            GetComponent<CharaController>().enabled = true;
+            dead = false;
         }
-        dead = true;
-        money.currentMoney = 0;
-		money.UpdateDJMoneyUI();
-		skillBar.DesequipAll();
-		StartCoroutine(BackToLobby());
-        GetComponent<CharaController>().enabled = false;
+        else
+        {
+            dead = true;
+            money.currentMoney = 0;
+            money.UpdateDJMoneyUI();
+            skillBar.DesequipAll();
+            StartCoroutine(BackToLobby());
+            GetComponent<CharaController>().enabled = false;
+        }
+
     }
 
 	public void TakeDamage(int dmg)
