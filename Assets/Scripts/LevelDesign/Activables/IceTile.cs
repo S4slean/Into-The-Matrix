@@ -26,6 +26,11 @@ public class IceTile : MonoBehaviour
 			player.StartCoroutine(player.Move(player.lastMove));
 	
 		}
+		if(other.GetComponent<PushableBloc>() != null)
+		{
+			PushableBloc bloc = other.GetComponent<PushableBloc>();
+			bloc.StartCoroutine(bloc.MoveBloc(bloc.lastMove));
+		}
 	}
 
 	private void OnTriggerExit(Collider other)

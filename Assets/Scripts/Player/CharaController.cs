@@ -272,16 +272,26 @@ public class CharaController : MonoBehaviour
 
 
 		//}
-
+		Vector3 startPos = transform.localPosition;
 
 		//Déplacement du perso sur chaque frame pendant "moveStep" frame
-		for (int i = 0; i < Mathf.Abs(moveStep); i++)
+		for (float count = 0; count < TickManager.tickDuration - .05f; count += Time.deltaTime)
 		{
-			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
-			if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
+			transform.localPosition = startPos + axe * (count/TickManager.tickDuration) * 2;
+			if (count/ TickManager.tickDuration > .5f)
 				MoveBox.SetActive(false);
-			yield return new WaitForSeconds(TickManager.tickDuration / 2 / moveStep);
+			yield return new WaitForEndOfFrame();
 		}
+		transform.localPosition = startPos + axe * 2;
+
+		////Déplacement du perso sur chaque frame pendant "moveStep" frame
+		//for (int i = 0; i < Mathf.Abs(moveStep); i++)
+		//{
+		//	transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
+		//	if (i == Mathf.CeilToInt(Mathf.Abs(moveStep) / 2))
+		//		MoveBox.SetActive(false);
+		//	yield return new WaitForSeconds(TickManager.tickDuration / 2 / moveStep);
+		//}
 
 		buffer = Buffer.None;
 		//if (!freezing)

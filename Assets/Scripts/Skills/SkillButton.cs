@@ -15,6 +15,7 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 	Image cooldownIMG;
 	public Skill skill;
 	public Text chargeUI;
+	public Image IconIMG;
 
 
 	private void Start()
@@ -26,6 +27,9 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 		btn = GetComponent<Button>();
 		cooldownIMG = transform.GetChild(1).GetComponent<Image>();
 		skill = GetComponent<Skill>();
+		IconIMG.sprite = skill.icon;
+		IconIMG.preserveAspect = true;
+
 
 		btn.onClick.AddListener(delegate { skill.Activate(player); });												//Ajout de la fonction du skill à l'event du bouton
 	}

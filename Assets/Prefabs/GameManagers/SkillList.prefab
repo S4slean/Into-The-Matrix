@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
+  - {fileID: 2884519329243807487}
+  - {fileID: 2999350718471624534}
   - {fileID: 5154938837723931560}
 --- !u!114 &2884519329243807487
 MonoBehaviour:
@@ -61,9 +63,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Fire Ball
-  icon: {fileID: 21300000, guid: 9a5c71d799200eb4fa99dc397d6f60a2, type: 3}
+  icon: {fileID: 21300000, guid: ed892e5932238cd4d8f37d4efd014087, type: 3}
   description: Throw a fireball !
   itemSlot: 0
+  charge: 1
   cost: 50
   coolDownDuration: 5
   requireTarget: 0
@@ -84,19 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c5cbd30add4f0f47b16c1fb0af47093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  icon: {fileID: 0}
-  description: 
+  name: Energy Shield
+  icon: {fileID: 21300000, guid: a780874af07360b469b4e16f6f4e8570, type: 3}
+  description: Grants an invulnerability for a short period of time
   itemSlot: 0
+  charge: 1
   cost: 0
-  coolDownDuration: 0
+  coolDownDuration: 2
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
   enemyRecoverTime: 1
   nbOfUse: 1
-  cooldown: 0
-  counterTimerMaxInTicks: 0
+  cooldown: 2
+  particles: {fileID: 7317460460815458417, guid: 90fcfda57ae70534abfbfebd997b81f6,
+    type: 3}
+  counterTimerMaxInTicks: 20
   counterTimerInTicks: 0
   playerStats: {fileID: 0}
   isActive: 0
@@ -113,9 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Hook
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6ea02c6c8f7ee45469e52c0e95af4120, type: 3}
   description: GRAB
   itemSlot: 0
+  charge: 1
   cost: 50
   coolDownDuration: 8
   requireTarget: 0
