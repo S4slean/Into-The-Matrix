@@ -31,33 +31,28 @@ public class Counter : Skill
             return;
         }
 
-		TickManager.OnTick += DecreaseTick;
-
-		Debug.Log("Shield : ");
-		instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
-		instance.transform.localPosition = Vector3.up;
 
 
         skillUser = user;
 
-        collider = skillUser.GetComponent<CapsuleCollider>();
         //instance = Instantiate(Resources.Load("Buffs/GlitchParticles") as GameObject, user.transform);
 
         if (skillUser.tag == "Player" && !isActive)
         {
+
+			collider = skillUser.GetComponent<CapsuleCollider>();
+			Debug.Log("Shield : ");
+			//instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
+			instance.transform.localPosition = Vector3.up;
+			TickManager.OnTick += DecreaseTick;
             playerStats = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerStats>();
             playerStats.counter = true;
             isActive = true;
             counterTimerInTicks = counterTimerMaxInTicks;
             //skillUser.GetComponent<CharaController>().SetPlayerMovement(false, false);
-            WaitForTarget();
+
         }
 
-        if (skillUser.tag == "Enemy")
-        {
-            isActive = true;
-            StartCoroutine(WaitForAttack());
-        }
     }
 
 	public void DecreaseTick()
@@ -86,9 +81,7 @@ public class Counter : Skill
         }
     }
 
-    public void WaitForTarget()
-    {
-    }
+ 
 
     public IEnumerator WaitForAttack()
     {

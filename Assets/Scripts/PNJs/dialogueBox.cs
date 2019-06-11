@@ -55,7 +55,7 @@ public class dialogueBox : MonoBehaviour
 	{
 		rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400), (Mathf.Ceil(text.text.Length / 20)) * 50 +20);
 
-		if (displayTime > 5 && text.text.Length > 0)
+		if (displayTime > 4 && text.text.Length > 0)
 			TypeWritter.NextText("");
 
 

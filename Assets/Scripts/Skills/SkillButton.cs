@@ -70,6 +70,7 @@ public class SkillButton : MonoBehaviour, IDragHandler, IEndDragHandler
 
 	private void Update()
 	{
-		cooldownIMG.fillAmount = Mathf.Clamp01(skill.cooldown/skill.coolDownDuration);									//Affiche le cooldown
+		if(cooldownIMG != null)
+			cooldownIMG.fillAmount = Mathf.Clamp01(skill.cooldown/skill.coolDownDuration);									//Affiche le cooldown
 	}
 }
