@@ -7,7 +7,7 @@ public class TP : MonoBehaviour
 	public GameObject linkedTP;
 	public bool active = true;
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
 		if (active)
 		{
@@ -20,9 +20,9 @@ public class TP : MonoBehaviour
 
 	IEnumerator DelayTP(Transform other)
 	{
+		linkedTP.GetComponent<TP>().active = false;
 		yield return new WaitForSeconds(.1f);
 		other.position = new Vector3(linkedTP.transform.position.x, other.transform.position.y, linkedTP.transform.position.z);
-		linkedTP.GetComponent<TP>().active = false;
 	}
 
 	private void OnTriggerExit(Collider other)

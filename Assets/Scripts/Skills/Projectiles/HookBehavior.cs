@@ -25,6 +25,7 @@ public class HookBehavior : MonoBehaviour
 		startPos = transform.position;
 		player = FindObjectOfType<CharaController>().gameObject;
 		player.GetComponent<CharaController>().FreezePlayer(1);
+		player.GetComponent<CharaController>().hooked = true;
 	}
 
 	void Update()
@@ -42,6 +43,7 @@ public class HookBehavior : MonoBehaviour
 				Debug.Log("hooked to pos");
 				player.transform.position = catchPos;
 				player.GetComponent<CharaController>().freezing = false;
+				player.GetComponent<CharaController>().hooked = false;
 				Destroy(gameObject);
 			}
 
@@ -62,6 +64,7 @@ public class HookBehavior : MonoBehaviour
 				}
 				Debug.Log("Object at pos");
 				Debug.Log(bringPos);
+				player.GetComponent<CharaController>().hooked = false;
 				Destroy(gameObject);
 			}
 		}
@@ -126,7 +129,9 @@ public class HookBehavior : MonoBehaviour
 		if (Vector3.Magnitude(transform.position - startPos) > range)
 		{
 			player.GetComponent<CharaController>().freezing = false;
+			player.GetComponent<CharaController>().hooked = false;
 			gameObject.SetActive(false);
+
 		}
 
 	}
@@ -135,6 +140,7 @@ public class HookBehavior : MonoBehaviour
 	{
 		objectCatched.transform.parent = null;
 		Debug.Log("destroy by release");
+		player.GetComponent<CharaController>().hooked = false;
 		Destroy(gameObject);
 	}
 }
