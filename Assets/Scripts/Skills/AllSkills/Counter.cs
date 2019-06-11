@@ -42,7 +42,7 @@ public class Counter : Skill
 
 			collider = skillUser.GetComponent<CapsuleCollider>();
 			Debug.Log("Shield : ");
-			instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
+			//instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
 			instance.transform.localPosition = Vector3.up;
 			TickManager.OnTick += DecreaseTick;
             playerStats = GameObject.FindGameObjectsWithTag("Player")[0].GetComponent<PlayerStats>();

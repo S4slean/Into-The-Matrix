@@ -51,7 +51,7 @@ public class LightningGate : MonoBehaviour
 
 		lineR.enabled = isActive;
 		capsule.enabled = isActive;
-
+        anim = transform.GetComponentInChildren<Animator>();
 
 
 	}
