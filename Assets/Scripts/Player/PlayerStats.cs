@@ -129,6 +129,11 @@ public class PlayerStats : MonoBehaviour
 
 	public IEnumerator BackToLobby()
 	{
+		PlayerPrefs.SetInt("trapOvrd", trapOvrd);
+		PlayerPrefs.SetInt("enmyOvrd", enmyOvrd);
+		PlayerPrefs.SetInt("spawnOvrd", phoneOvrd);
+		PlayerPrefs.SetInt("Keys", key);
+
 		loadingScreen.GetComponent<Animator>().Play("Appear");
 		yield return new WaitForSeconds(1);
 		SceneManager.LoadScene(0);

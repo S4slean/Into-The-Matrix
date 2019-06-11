@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RuneUI : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class RuneUI : MonoBehaviour
 	private GameObject instance;
 	minimapRoom selectedRoom;
 	PlayerStats stats;
+	public Text trapUse;
+	public Text enmyUse;
+	public Text spawnerUse;
 
 	private void Start()
 	{
@@ -20,6 +24,10 @@ public class RuneUI : MonoBehaviour
 		instance = Instantiate(minimap, minimapAnchor.transform);
 		instance.SetActive(true);
 		minimapRoom[] rooms = instance.GetComponentsInChildren<minimapRoom>();
+
+		trapUse.text = stats.trapOvrd.ToString();
+		enmyUse.text = stats.enmyOvrd.ToString();
+		spawnerUse.text = stats.phoneOvrd.ToString();
 
 		foreach(minimapRoom rm in rooms)
 		{
@@ -44,6 +52,7 @@ public class RuneUI : MonoBehaviour
 
 	public void UseOverride(int i)
 	{
+
 		if(selectedRoom == null)
 		{
 			Debug.Log("No room Selected ! ");
@@ -57,5 +66,50 @@ public class RuneUI : MonoBehaviour
 		Debug.Log("overrides stacks : " + stats.overrides.Count);
 	}
 
+
+	public void OvrTrap()
+	{
+		if(stats.trapOvrd  <= 0)
+		{
+
+		}
+		else
+		{
+			stats.trapOvrd--;
+			PlayerPrefs.SetInt("trapOvrd", stats.trapOvrd);
+			trapUse.text = stats.trapOvrd.ToString();
+			UseOverride(0);
+		}
+	}
+
+	public void OvrEnmy()
+	{
+		if(stats.enmyOvrd <= 0)
+		{
+
+		}
+		else
+		{
+			stats.enmyOvrd--;
+			PlayerPrefs.SetInt("enmyOvrd", stats.enmyOvrd);
+			enmyUse.text = stats.enmyOvrd.ToString();
+			UseOverride(1);
+		}
+	}
+
+	public void OvrSpawn()
+	{
+		if(stats.phoneOvrd <= 0)
+		{
+
+		}
+		else
+		{
+			stats.phoneOvrd--;
+			PlayerPrefs.SetInt("spawnOvrd", stats.phoneOvrd);
+			spawnerUse.text = stats.phoneOvrd.ToString();
+			UseOverride(2);
+		}
+	}
 
 }

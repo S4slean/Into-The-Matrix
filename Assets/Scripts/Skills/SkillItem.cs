@@ -10,6 +10,7 @@ public class SkillItem : MonoBehaviour
 	skillList list;
 	SkillBar skillBar;
 	public Skill skill;
+	public SpriteRenderer sprRendr;
 
 	private void Start()
 	{
@@ -21,6 +22,8 @@ public class SkillItem : MonoBehaviour
 
 		if(skill == null)
 			skill = list.skills[Random.Range(0, list.skills.Count)];
+
+		sprRendr.sprite = skill.icon;
 	}
 
 	//en cas de collision avec le joueur

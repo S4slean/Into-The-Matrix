@@ -16,7 +16,7 @@ public class LightningGate : MonoBehaviour
 	private float count;
 
 	public bool overrided = false;
-
+	public Animator anim;
 
 	public void Activate()
 	{
@@ -26,6 +26,7 @@ public class LightningGate : MonoBehaviour
 		lineR.enabled = !lineR.enabled;
 		capsule.enabled = !capsule.enabled;
 		isActive = !isActive;
+		anim.SetBool("isActive", isActive);
 	}
 
 	private void Start()
