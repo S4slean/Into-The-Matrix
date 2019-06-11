@@ -13,6 +13,10 @@ public class RuneUI : MonoBehaviour
 	public Text enmyUse;
 	public Text spawnerUse;
 
+	public GameObject noOvrd;
+	public GameObject rmOvrdd;
+	public GameObject noRmSelected;
+
 	private void Start()
 	{
 		stats = FindObjectOfType<PlayerStats>();
@@ -20,6 +24,8 @@ public class RuneUI : MonoBehaviour
 
 	private void OnEnable()
 	{
+		stats = FindObjectOfType<PlayerStats>();
+
 		GameObject minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
 		instance = Instantiate(minimap, minimapAnchor.transform);
 		instance.SetActive(true);
@@ -56,6 +62,7 @@ public class RuneUI : MonoBehaviour
 		if(selectedRoom == null)
 		{
 			Debug.Log("No room Selected ! ");
+			noRmSelected.SetActive(true);
 			return;
 		}
 		DungeonOverride ovrd = new DungeonOverride();
@@ -64,6 +71,7 @@ public class RuneUI : MonoBehaviour
 		Debug.Log(new Vector3(ovrd.spritePos.x / 21 * 14, 0, ovrd.spritePos.y / 31.5f * 20));
 		stats.overrides.Add(ovrd);
 		Debug.Log("overrides stacks : " + stats.overrides.Count);
+		rmOvrdd.SetActive(true);
 	}
 
 
@@ -71,7 +79,7 @@ public class RuneUI : MonoBehaviour
 	{
 		if(stats.trapOvrd  <= 0)
 		{
-
+			noOvrd.SetActive(true);
 		}
 		else
 		{
@@ -86,7 +94,7 @@ public class RuneUI : MonoBehaviour
 	{
 		if(stats.enmyOvrd <= 0)
 		{
-
+			noOvrd.SetActive(true);
 		}
 		else
 		{
@@ -101,7 +109,7 @@ public class RuneUI : MonoBehaviour
 	{
 		if(stats.phoneOvrd <= 0)
 		{
-
+			noOvrd.SetActive(true);
 		}
 		else
 		{

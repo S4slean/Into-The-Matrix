@@ -44,8 +44,9 @@ public class  PushableBloc : MonoBehaviour
 
 	IEnumerator DelayBeforeFall()
 	{
-		yield return new WaitForSeconds(.1f);
+		yield return new WaitForSeconds(.05f);
 		transform.parent = null;
+		transform.position = new Vector3(Mathf.Round(transform.position.x / 2) * 2, 0, (Mathf.Round(transform.position.z / 2) * 2)-1);
 		anim.Play("Fall");
 	}
 

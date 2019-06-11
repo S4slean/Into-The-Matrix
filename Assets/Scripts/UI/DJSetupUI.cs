@@ -19,6 +19,7 @@ public class DJSetupUI : MonoBehaviour
 
 	private void OnEnable()
 	{
+		Debug.Log("Ah");
 		GenerateMap();
 	}
 
@@ -40,7 +41,8 @@ public class DJSetupUI : MonoBehaviour
 	{
 		DJdoor.StartCoroutine(DJdoor.Wait());
 		CharaController player = FindObjectOfType<CharaController>();
-		player.StartCoroutine(player.FreezePlayer(1));
+		player.GetComponent<PlayerStats>().BackToDungeon();
+		player.StartCoroutine(player.FreezePlayer(2));
 		gameObject.SetActive(false);
 	}
 
