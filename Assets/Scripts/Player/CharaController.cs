@@ -14,7 +14,6 @@ public class CharaController : MonoBehaviour
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
 	public float stepDistance;
-	private int moveStep = 16;
 	private float stepDuration = 1;
 	private float delayBeforeRun = .19f;
 	private float stepFreeze = .2f;
@@ -40,6 +39,7 @@ public class CharaController : MonoBehaviour
 	private Vector3 hitPosition;
 	public Vector3 swipe;
 	private float holdedTime;
+	public bool hooked = false;
 
 	private bool dosmthing = false;
 
@@ -174,7 +174,7 @@ public class CharaController : MonoBehaviour
 
 	private void HandleFall()
 	{
-		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2 ) && !freezing/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
+		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2 ) && !freezing && !hooked/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
 			anim.Play("Fall");
 			GetComponent<PlayerStats>().KillPlayer();
