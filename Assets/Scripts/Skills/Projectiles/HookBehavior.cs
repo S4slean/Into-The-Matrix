@@ -80,7 +80,7 @@ public class HookBehavior : MonoBehaviour
 			return;
 
 
-		if (other.GetComponent<RoomCameraTrigger>() != null || other.GetComponent<DealDamage>() != null || other.GetComponent<TP>() != null )
+		if (other.GetComponent<RoomCameraTrigger>() != null || other.GetComponent<DealDamage>() != null || other.GetComponent<TP>() != null || other.GetComponent<PNJ_DialogueHint>()!= null)
 			return;
 
 		if (other.GetComponent<CapsuleCollider>() != null && other.tag != "Player")
