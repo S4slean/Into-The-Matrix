@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class VirtualCameraSpawner : MonoBehaviour
 {
@@ -12,7 +13,11 @@ public class VirtualCameraSpawner : MonoBehaviour
 		GameObject instance = Instantiate(virtualCamObject, transform.position, Quaternion.Euler(66,0,0), transform);
 		transform.parent.GetComponent<RoomCameraTrigger>().virtualCam = instance;
 		instance.SetActive(false);
-    }
+		CinemachineVirtualCamera virtualCam = instance.GetComponent<CinemachineVirtualCamera>();
+		virtualCam.Follow = FindObjectOfType<CharaController>().transform;
+		instance.GetComponent<CinemachineConfiner>().m_BoundingVolume = GetComponent<Collider>();
+
+	}
 
     // Update is called once per frame
     void Update()
