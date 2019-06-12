@@ -49,7 +49,7 @@ public class  PushableBloc : MonoBehaviour
 	{
 		Vector3 tempPos = transform.position;
 		felt = true;
-		yield return new WaitForSeconds(.5f);
+		yield return new WaitForSeconds(.05f);
 		transform.parent = null;
 		transform.position = new Vector3(Mathf.Round(tempPos.x / 2) * 2, 0, (Mathf.Round((tempPos.z) / 2) * 2) - 1);
 		Debug.Log(transform.position);
