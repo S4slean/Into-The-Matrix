@@ -21,6 +21,7 @@ public class PlayerStats : MonoBehaviour
 	public int phoneOvrd = 0;
 
 	public int key = 0;
+	public bool byPass = false;
 
 	public List<DungeonOverride> overrides = new List<DungeonOverride>();
 
