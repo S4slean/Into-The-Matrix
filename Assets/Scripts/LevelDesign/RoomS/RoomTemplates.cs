@@ -4,7 +4,10 @@ using UnityEngine;
 using System.IO;
 
 public class RoomTemplates : MonoBehaviour
+
 {
+	public bool runeSpawned = false;
+
 	[Header("First Area")]				//liste de salles de la zone
 	public List<GameObject> LeftEntrances;
 	public List<GameObject> upEntrances;
@@ -22,6 +25,12 @@ public class RoomTemplates : MonoBehaviour
 	public List<GameObject> upSaferooms;
 	public List<GameObject> rightSafeRooms;
 	public List<GameObject> downSafeRooms;
+
+	[Header ("Rune Rooms")]
+	public List<GameObject> leftRuneRooms;
+	public List<GameObject> upRuneRooms;
+	public List<GameObject> rightRuneRooms;
+	public List<GameObject> downRuneRooms;
 
 	[Header("AllRooms")]
 	public List<GameObject> allRooms;

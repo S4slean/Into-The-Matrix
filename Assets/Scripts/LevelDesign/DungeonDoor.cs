@@ -39,7 +39,12 @@ public class DungeonDoor : MonoBehaviour
 
 		player.position = new Vector3(0, 0, -7);
 		player.rotation = Quaternion.Euler(0, 0, 0);
-		SceneManager.LoadScene(1);
+		if (FindObjectOfType<PlayerStats>().byPass)
+		{
+			SceneManager.LoadScene(3);
+			return;
+		}
+		SceneManager.LoadScene(2);
 
 	}
 

@@ -10,6 +10,7 @@ public class  PushableBloc : MonoBehaviour
 	Animator anim;
 	BoxCollider boxCollider;
 
+	bool felt = false;
 	public Vector3 lastMove;
 
 	private void Start()
@@ -26,6 +27,8 @@ public class  PushableBloc : MonoBehaviour
 			//Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
+			if (felt)
+				yield break;
 			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 			yield return new WaitForSeconds(TickManager.tickDuration / 2 / moveStep);
 		}
@@ -35,18 +38,21 @@ public class  PushableBloc : MonoBehaviour
 
 	private void Update()
 	{
-		if(!Physics.Raycast(transform.position+Vector3.up, Vector3.down, 2))
+		if(!Physics.Raycast(transform.position+Vector3.up, Vector3.down, 2)&& !felt)
 		{
-
+			Debug.Log("Fall at " + transform.position);
 			StartCoroutine(DelayBeforeFall());
 		}
 	}
 
 	IEnumerator DelayBeforeFall()
 	{
+
+		felt = true;
+		transform.position = new Vector3(Mathf.Round(transform.position.x / 2) * 2, 0, (Mathf.Round((transform.position.z) / 2) * 2) + Mathf.Sign(transform.position.z));
 		yield return new WaitForSeconds(.05f);
 		transform.parent = null;
-		transform.position = new Vector3(Mathf.Round(transform.position.x / 2) * 2, 0, (Mathf.Round(transform.position.z / 2) * 2)-1);
+		Debug.Log(transform.position);
 		anim.Play("Fall");
 	}
 
