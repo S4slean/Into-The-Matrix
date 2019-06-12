@@ -77,7 +77,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         InfoPopup.transform.GetChild(0).GetComponent<Image>().sprite = EquipmentToUnlock.icon;
         InfoPopup.transform.GetChild(1).GetComponent<Text>().text = EquipmentToUnlock.name;
         InfoPopup.transform.GetChild(2).GetComponent<Text>().text = EquipmentToUnlock.description;
-        InfoPopup.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "" + EquipmentToUnlock.cost + "$";
+        InfoPopup.transform.GetChild(3).GetChild(0).GetComponent<Text>().text = "Buy for \n" + EquipmentToUnlock.cost + "$";
         InfoPopup.SetActive(true);
     }
 
@@ -145,7 +145,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                         {
                             SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse += 1;
                             // Update le nombre d'usages sur le bouton
-                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].transform.GetChild(2).GetComponent<Text>().text = SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse.ToString();
+                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].transform.GetChild(1).GetComponent<Text>().text = SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse.ToString();
                             return;
                         }
                         else
