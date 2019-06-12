@@ -64,11 +64,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Fire Ball
   icon: {fileID: 21300000, guid: ed892e5932238cd4d8f37d4efd014087, type: 3}
-  description: Throw a fireball !
+  description: Throw a Plasma Ball on your enemy !
   itemSlot: 0
   charge: 1
   cost: 50
-  coolDownDuration: 5
+  coolDownDuration: 1
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1
@@ -92,7 +92,7 @@ MonoBehaviour:
   description: Grants an invulnerability for a short period of time
   itemSlot: 0
   charge: 1
-  cost: 0
+  cost: 100
   coolDownDuration: 2
   requireTarget: 0
   enemyActivationRange: 5
@@ -120,11 +120,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hook
   icon: {fileID: 21300000, guid: 6ea02c6c8f7ee45469e52c0e95af4120, type: 3}
-  description: GRAB
+  description: Use a hook to overcome obstacles
   itemSlot: 0
   charge: 1
   cost: 50
-  coolDownDuration: 8
+  coolDownDuration: 2
   requireTarget: 0
   enemyActivationRange: 5
   enemyLaunchTime: 1

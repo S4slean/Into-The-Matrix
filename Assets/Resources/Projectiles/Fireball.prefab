@@ -4721,7 +4721,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 364576910138938384}
-  - component: {fileID: 4952491748813727942}
   - component: {fileID: 498708390642883515}
   - component: {fileID: 7781143995252007064}
   - component: {fileID: 5836518534666399433}
@@ -4750,22 +4749,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4952491748813727942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994906236700094254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dade51d1f499d214ab3aecb75055b8d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  user: Player
-  DamageOverTime: 0
-  dmgTick: 1
 --- !u!135 &498708390642883515
 SphereCollider:
   m_ObjectHideFlags: 0
