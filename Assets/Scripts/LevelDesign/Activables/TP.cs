@@ -11,7 +11,7 @@ public class TP : MonoBehaviour
 	{
 		if (active)
 		{
-			if (other.tag == "Player" || other.tag == "Projectile")
+			if (other.GetComponent<CharaController>() != null || other.tag == "Projectile")
 				StartCoroutine(DelayTP(other.transform));
 			if (other.tag == "Enemy")
 				StartCoroutine(DelayTP(other.transform.parent));
