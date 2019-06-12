@@ -44,6 +44,11 @@ public class DungeonDoor : MonoBehaviour
 			SceneManager.LoadScene(3);
 			return;
 		}
+
+		if(PlayerPrefs.HasKey("LastDay") && PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day || !PlayerPrefs.HasKey("LastDay"))
+		{
+			Debug.Log("changeLoadScreen");
+		}
 		SceneManager.LoadScene(2);
 
 	}
