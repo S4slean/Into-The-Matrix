@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackBox: {fileID: 0}
   MoveBox: {fileID: 0}
-  swipeTolerance: 5
+  swipeTolerance: 14
   stepDistance: 16
   lastMove: {x: 0, y: 0, z: 1}
   attackStrength: 1
@@ -313,6 +313,7 @@ MonoBehaviour:
   freezing: 0
   buffer: 0
   swipe: {x: 0, y: 0, z: 0}
+  hooked: 0
   enemyDir: {x: 0, y: 0, z: 0}
   moveTowardsEnemy: 0
   enemyConfronted: {fileID: 0}
@@ -348,12 +349,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52aab9c9f22ffcb4c84b5a5f8d91a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeBarFilled: {fileID: 0}
-  lifebar: {fileID: 0}
   minimap: {fileID: 0}
   loadingScreen: {fileID: 0}
   timebar: {fileID: 0}
   startingRoom: {fileID: 0}
+  trapOvrd: 0
+  enmyOvrd: 0
+  phoneOvrd: 0
+  key: 0
+  byPass: 0
   MaxHealth: 10
   health: 10
   strength: 1
@@ -504,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2801400328254659283
 Transform:
   m_ObjectHideFlags: 0
