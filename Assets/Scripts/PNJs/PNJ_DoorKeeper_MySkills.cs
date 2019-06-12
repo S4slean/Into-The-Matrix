@@ -145,7 +145,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
                         {
                             SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse += 1;
                             // Update le nombre d'usages sur le bouton
-                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].transform.GetChild(2).GetComponent<Text>().text = SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse.ToString();
+                            SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].transform.GetChild(1).GetComponent<Text>().text = SB.PlayerSkills[CheckSimilarSkills(SelectedButton.name, SB.PlayerSkills)].nbOfUse.ToString();
                             return;
                         }
                         else
