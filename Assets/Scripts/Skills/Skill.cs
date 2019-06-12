@@ -70,7 +70,7 @@ public class Skill : MonoBehaviour
 
 	public bool CheckIfInLobby()
 	{
-		if (SceneManager.GetActiveScene().buildIndex == 0)
+		if (SceneManager.GetActiveScene().name == "Lobby")
 			return true;
 		else
 			return false;
