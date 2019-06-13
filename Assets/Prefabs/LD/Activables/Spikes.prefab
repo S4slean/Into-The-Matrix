@@ -4797,6 +4797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade43e458432c80419eee50e89481770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meshAnim: {fileID: 1730918085924944239}
   isActive: 1
   cycling: 1
   delay: 0
@@ -5060,6 +5061,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: dbbdee9e49dc6eb43808448c72fb090c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: dbbdee9e49dc6eb43808448c72fb090c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 44.999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: dbbdee9e49dc6eb43808448c72fb090c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: dbbdee9e49dc6eb43808448c72fb090c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b93ffb8433845394aa3675d0e6836931, type: 2}
     - target: {fileID: 2300012, guid: dbbdee9e49dc6eb43808448c72fb090c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5093,6 +5110,12 @@ PrefabInstance:
 --- !u!4 &1730918085915580063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: dbbdee9e49dc6eb43808448c72fb090c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1730918085915446287}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1730918085924944239 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: dbbdee9e49dc6eb43808448c72fb090c,
     type: 3}
   m_PrefabInstance: {fileID: 1730918085915446287}
   m_PrefabAsset: {fileID: 0}
