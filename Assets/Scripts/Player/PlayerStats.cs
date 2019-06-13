@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerStats : MonoBehaviour
 {
-	Animator anim;
+	public Animator anim;
 	PlayerMoneyManager money;
 	SkillBar skillBar;
 	//CabineUIScript cabineUI;
@@ -15,6 +16,8 @@ public class PlayerStats : MonoBehaviour
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
+	public GameObject dmgUI;
+
 
 	public int trapOvrd = 0;
 	public int enmyOvrd = 0;
@@ -39,7 +42,6 @@ public class PlayerStats : MonoBehaviour
 
 	private void Start()
 	{
-		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
@@ -51,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 
 	public void SetStartPos()
 	{
+		anim.Play("idle");
 		Debug.Log("StartPosnotSet");
 		if (startingRoom != null)
 		{
@@ -117,8 +120,11 @@ public class PlayerStats : MonoBehaviour
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;
-            anim.Play("TakeDamage");
+            anim.CrossFade("TakeDamage", .1f);
 			timebar.LoseTime(20);
+			GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+			dmgUI.SetActive(true);
+
 			CheckDeath();
         }
     }

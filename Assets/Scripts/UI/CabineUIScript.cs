@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CabineUIScript : MonoBehaviour
 {
     private GameObject cabineUI;
+    private Image Fond;
     private Button tpButton;
     private Button returnButton;
 	private CharaController controller;
@@ -15,8 +16,9 @@ public class CabineUIScript : MonoBehaviour
     private void Start()
     {
         cabineUI = GameObject.FindGameObjectWithTag("CabineUI");
-        tpButton = transform.GetChild(0).GetComponent<Button>();
-        returnButton = transform.GetChild(1).GetComponent<Button>();
+        Fond = transform.GetChild(0).GetComponent<Image>();
+        tpButton = transform.GetChild(1).GetComponent<Button>();
+        returnButton = transform.GetChild(2).GetComponent<Button>();
 		controller = FindObjectOfType<CharaController>();
         tpButton.onClick.AddListener(TP);
         returnButton.onClick.AddListener(Exit);
@@ -26,6 +28,7 @@ public class CabineUIScript : MonoBehaviour
     {
 		if (UIvisible)
 			return;
+        Fond.gameObject.SetActive(true);
         tpButton.gameObject.SetActive(true);
         returnButton.gameObject.SetActive(true);
 		UIvisible = true;

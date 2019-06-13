@@ -12,6 +12,7 @@ public class TempsPlongee : MonoBehaviour
     public Image timeBar;
     public bool timeChange;
     public PlayerStats statsScript;
+	public Animator anim;
 
     void Start()
     {
@@ -41,7 +42,22 @@ public class TempsPlongee : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         { StartCoroutine(TimeLoss(5)); }
 
-        if (timer <= 0)
+		if (timer < 40)
+		{
+			anim.SetBool("Glitch", true);
+			if (timer < 20)
+			{
+				anim.SetBool("Hurry", true);
+			}
+		}
+		else
+		{
+			anim.SetBool("Glitch", false);
+			anim.SetBool("Hurry", false);
+			anim.Play("Empty");
+		}
+
+		if (timer <= 0)
         {
 
             Debug.Log("Plus de temps");

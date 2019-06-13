@@ -11,6 +11,9 @@ public class DungeonDoor : MonoBehaviour
 	public GameObject dJSetupUI;
 	public GameObject minimapBck;
 
+	public GameObject LoadingNewDj;
+	public GameObject LoadingClassic;
+
 	public List<GameObject> availableTP;
 
 	private void Start()
@@ -28,6 +31,7 @@ public class DungeonDoor : MonoBehaviour
 		if(other.tag == "Player" && other.GetComponent<DealDamage>() != null)
 		{
 			player.GetComponent<CharaController>().StartCoroutine(player.GetComponent<CharaController>().FreezePlayer(1));
+            
 			dJSetupUI.SetActive(true);
 		Debug.Log(dJSetupUI.name);
 			//StartCoroutine(Wait());
@@ -48,10 +52,19 @@ public class DungeonDoor : MonoBehaviour
 		if(PlayerPrefs.HasKey("LastDay") && PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day || !PlayerPrefs.HasKey("LastDay"))
 		{
 			Debug.Log("changeLoadScreen");
+			loadingScreen.transform.GetChild(0).gameObject.SetActive(true);
+			loadingScreen.transform.GetChild(1).gameObject.SetActive(false);
+
 		}
-		SceneManager.LoadScene(2);
+		else
+		{
+			loadingScreen.transform.GetChild(0).gameObject.SetActive(false);
+			loadingScreen.transform.GetChild(1).gameObject.SetActive(true);
+		}
+		SceneManager.LoadSceneAsync(2);
 
 	}
+
 
 	public IEnumerator Wait()
 	{
@@ -75,5 +88,8 @@ public class DungeonDoor : MonoBehaviour
 			rm.selected = false;
 		}
 		room.selected = true;
+		FindObjectOfType<PlayerStats>().startingRoom = room.gameObject;
+		Debug.Log("SpawnRoom : " + room.name);
+		
 	}
 }

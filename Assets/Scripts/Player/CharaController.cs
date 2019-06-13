@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class CharaController : MonoBehaviour
@@ -9,7 +10,7 @@ public class CharaController : MonoBehaviour
 	[Header("References")]
 	public GameObject AttackBox;
 	public GameObject MoveBox;
-	private Animator anim;
+	public Animator anim;
 
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
@@ -40,6 +41,7 @@ public class CharaController : MonoBehaviour
 	public Vector3 swipe;
 	private float holdedTime;
 	public bool hooked = false;
+	bool inDj = false;
 
 	private bool dosmthing = false;
 
@@ -70,7 +72,6 @@ public class CharaController : MonoBehaviour
 		stepDuration = TickManager.tickDuration*2;
 		stepFreeze = TickManager.tickDuration/2.1f;
 
-		anim = GetComponent<Animator>();
 
 		TickManager.OnTick += PlayerAction;
 	}
@@ -78,6 +79,12 @@ public class CharaController : MonoBehaviour
 	public void PlayerAction()
 	{
 		dosmthing = true;
+		if (SceneManager.GetActiveScene().name == "Lobby")
+			inDj = false;
+		else
+			inDj = true;
+
+		anim.SetBool("inDJ", inDj);
 		
 	}
 
@@ -116,6 +123,11 @@ public class CharaController : MonoBehaviour
 
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
+
+		if (!Input.GetMouseButton(0))
+		{
+			anim.SetBool("isMoving", false);
+		}
 
 		if (Input.GetMouseButtonUp(0) && !inUI)
 		{
@@ -169,6 +181,7 @@ public class CharaController : MonoBehaviour
 		}
 
 
+
 		holdedTime += Time.deltaTime;
 	}
 
@@ -176,7 +189,7 @@ public class CharaController : MonoBehaviour
 	{
 		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2 ) && !freezing && !hooked/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
-			anim.Play("Fall");
+			anim.CrossFade("Fall", .1f);
 			GetComponent<PlayerStats>().KillPlayer();
 			GetComponent<PlayerStats>().CheckDeath();
 		}
@@ -228,7 +241,7 @@ public class CharaController : MonoBehaviour
 			transform.LookAt(transform.position + lastMove);
 
 		lastMove = axe;
-		isMoving = true;
+
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
@@ -254,10 +267,25 @@ public class CharaController : MonoBehaviour
 			yield break;
 		}
 
+		isMoving = true;
+		anim.SetBool("isMoving", true);
+
 		MoveBox.SetActive(true);
 
 		if(!freezing)
-			anim.Play("Walk");
+		{
+			if(SceneManager.GetActiveScene().name == "Lobby")
+			{
+				anim.SetBool("isMoving", true);
+				
+
+			}
+			else
+			{
+				anim.SetBool("isMoving", true);
+			}
+				anim.SetBool("mirror", !anim.GetBool("mirror"));
+		}
 
 		//stepState = 0;
 		//{
@@ -298,6 +326,7 @@ public class CharaController : MonoBehaviour
 		//	StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
+
         moveIsOver = true;
         yield return new WaitForSeconds(0.05f);
         moveIsOver = false;
@@ -310,7 +339,7 @@ public class CharaController : MonoBehaviour
 
 		AttackBox.GetComponent<DealDamage>().damage = attackStrength;
 		AttackBox.SetActive(true);
-		anim.Play("Attack");
+		anim.CrossFade("Attack", .1f);
 		buffer = Buffer.None;
 	}
 

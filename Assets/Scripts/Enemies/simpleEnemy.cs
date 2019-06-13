@@ -182,14 +182,23 @@ public class SimpleEnemy : MonoBehaviour
 			transform.rotation = Quaternion.LookRotation(axe);
 
 
-		//Déplacement du perso sur chaque frame pendant "moveStep" frame
-		for (int i = 0; i < Mathf.Abs(moveStep); i++)
-		{
-			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
+		////Déplacement du perso sur chaque frame pendant "moveStep" frame
+		//for (int i = 0; i < Mathf.Abs(moveStep); i++)
+		//{
+		//	transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 
-			yield return new WaitForSeconds(stepDuration / moveStep);
+		//	yield return new WaitForSeconds(stepDuration / moveStep);
+		//}
+		//ismoving = false;
+		Vector3 startPos = transform.position;
+
+		for (float count = 0; count < TickManager.tickDuration - .05f; count += Time.deltaTime)
+		{
+			transform.localPosition = startPos + axe * (count / TickManager.tickDuration) * 2;
+
+			yield return new WaitForEndOfFrame();
 		}
-		ismoving = false;
+		transform.localPosition = startPos + axe * 2;
 
 		StartCoroutine(WaitForNewCycle(stepFreeze));
 	}
