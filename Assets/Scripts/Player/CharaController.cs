@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class CharaController : MonoBehaviour
@@ -9,7 +10,7 @@ public class CharaController : MonoBehaviour
 	[Header("References")]
 	public GameObject AttackBox;
 	public GameObject MoveBox;
-	private Animator anim;
+	public Animator anim;
 
 	[Header("Move Stats")]
 	[Range(0, 300)] public int swipeTolerance = 30;
@@ -40,6 +41,7 @@ public class CharaController : MonoBehaviour
 	public Vector3 swipe;
 	private float holdedTime;
 	public bool hooked = false;
+	bool inDj = false;
 
 	private bool dosmthing = false;
 
@@ -70,7 +72,6 @@ public class CharaController : MonoBehaviour
 		stepDuration = TickManager.tickDuration*2;
 		stepFreeze = TickManager.tickDuration/2.1f;
 
-		anim = GetComponent<Animator>();
 
 		TickManager.OnTick += PlayerAction;
 	}
@@ -78,6 +79,12 @@ public class CharaController : MonoBehaviour
 	public void PlayerAction()
 	{
 		dosmthing = true;
+		if (SceneManager.GetActiveScene().name == "Lobby")
+			inDj = false;
+		else
+			inDj = true;
+
+		anim.SetBool("inDJ", inDj);
 		
 	}
 
@@ -169,6 +176,7 @@ public class CharaController : MonoBehaviour
 		}
 
 
+
 		holdedTime += Time.deltaTime;
 	}
 
@@ -176,7 +184,7 @@ public class CharaController : MonoBehaviour
 	{
 		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2 ) && !freezing && !hooked/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
-			anim.Play("Fall");
+			anim.CrossFade("Fall", .1f);
 			GetComponent<PlayerStats>().KillPlayer();
 			GetComponent<PlayerStats>().CheckDeath();
 		}
@@ -229,6 +237,15 @@ public class CharaController : MonoBehaviour
 
 		lastMove = axe;
 		isMoving = true;
+		if(SceneManager.GetActiveScene().name == "Lobby")
+		{
+			anim.CrossFade("Walk", .1f);
+
+		}
+		else
+		{
+			anim.CrossFade("Run", .1f);
+		}
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
@@ -257,7 +274,17 @@ public class CharaController : MonoBehaviour
 		MoveBox.SetActive(true);
 
 		if(!freezing)
-			anim.Play("Walk");
+		{
+			if(SceneManager.GetActiveScene().name == "Lobby")
+			{
+				anim.CrossFade("Walk", 0);
+
+			}
+			else
+			{
+				anim.CrossFade("Run", 0);
+			}
+		}
 
 		//stepState = 0;
 		//{
@@ -298,6 +325,7 @@ public class CharaController : MonoBehaviour
 		//	StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
+	
         moveIsOver = true;
         yield return new WaitForSeconds(0.05f);
         moveIsOver = false;
@@ -310,7 +338,7 @@ public class CharaController : MonoBehaviour
 
 		AttackBox.GetComponent<DealDamage>().damage = attackStrength;
 		AttackBox.SetActive(true);
-		anim.Play("Attack");
+		anim.CrossFade("Attack", .1f);
 		buffer = Buffer.None;
 	}
 

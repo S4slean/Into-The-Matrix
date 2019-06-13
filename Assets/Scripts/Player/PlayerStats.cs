@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-	Animator anim;
+	public Animator anim;
 	PlayerMoneyManager money;
 	SkillBar skillBar;
 	//CabineUIScript cabineUI;
@@ -39,7 +39,6 @@ public class PlayerStats : MonoBehaviour
 
 	private void Start()
 	{
-		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
