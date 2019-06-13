@@ -21,7 +21,7 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	public bool isTimeSafe = false;
 
-	
+    public PlayerStats playerStatsScript;
 
 	public List<GameObject> traps;
 	public List<GameObject> enemies;
@@ -32,6 +32,7 @@ public class RoomCameraTrigger : MonoBehaviour
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
 		timeBar = FindObjectOfType<TempsPlongee>();
+        playerStatsScript = FindObjectOfType<PlayerStats>();
 
 		
 	}
@@ -46,7 +47,7 @@ public class RoomCameraTrigger : MonoBehaviour
 			if (other.GetComponent<DealDamage>() != null || other.GetComponent<Projectile>() != null)
 				return;
 
-            other.GetComponent<PlayerStats>().squareRoomEntered = new Vector3(Mathf.Ceil(other.transform.position.x / 2) * 2, 0, (Mathf.Ceil((other.transform.position.z) / 2) * 2) - 1) ;
+            StartCoroutine(GetSquareEntered());
 
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
@@ -147,7 +148,8 @@ public class RoomCameraTrigger : MonoBehaviour
 
     public IEnumerator GetSquareEntered()
     {
-        yield return new WaitForSecondsRealtime(TickManager.tickDuration/2);
+        yield return new WaitForSecondsRealtime(TickManager.tickDuration*0.75f);
 
+        playerStatsScript.squareRoomEntered = new Vector3(Mathf.Ceil(playerStatsScript.transform.position.x / 2) * 2, 0, (Mathf.Ceil((playerStatsScript.transform.position.z) / 2) * 2) - 1);
     }
 }
