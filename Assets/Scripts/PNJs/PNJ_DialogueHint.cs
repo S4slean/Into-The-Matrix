@@ -29,7 +29,7 @@ public class PNJ_DialogueHint : MonoBehaviour
         for (int i = 0; i < dialogue.dialogueLines.Count; i++)
         {
             dialogue.DisplayDialogue();
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(4);
         }
         yield break;
     }
