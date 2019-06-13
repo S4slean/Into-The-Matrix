@@ -31,6 +31,7 @@ public class DungeonDoor : MonoBehaviour
 		if(other.tag == "Player" && other.GetComponent<DealDamage>() != null)
 		{
 			player.GetComponent<CharaController>().StartCoroutine(player.GetComponent<CharaController>().FreezePlayer(1));
+            
 			dJSetupUI.SetActive(true);
 		Debug.Log(dJSetupUI.name);
 			//StartCoroutine(Wait());
