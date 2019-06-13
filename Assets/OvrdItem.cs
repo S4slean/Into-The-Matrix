@@ -15,9 +15,15 @@ public class OvrdItem : MonoBehaviour
 	{
 		player = FindObjectOfType<PlayerStats>();
 		int rd = Random.Range(0, 3);
-		if (ovrd == Ovrd.spawn)
+		if (ovrd == Ovrd.key)
 		{
-			sprite.sprite = spr[3];
+			if(player.key == 0)
+				sprite.sprite = spr[3];
+			else if(player.key == 1)
+				sprite.sprite = spr[4];
+			else
+				sprite.sprite = spr[5];
+
 			return;
 		}
 
