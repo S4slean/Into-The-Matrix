@@ -41,7 +41,7 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 
 
-		if(other.tag == "Player" && other.GetComponent<DealDamage>()==null)
+		if(other.tag == "Player" && other.GetComponent<Projectile>()==null)
 		{
 
 

@@ -15,7 +15,8 @@ public class IceTile : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration/2));
+		if(other.name == "Player")
+			player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration/2));
 	}
 
 	private void OnTriggerStay(Collider other)
