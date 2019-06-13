@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52aab9c9f22ffcb4c84b5a5f8d91a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 274159437709956833}
   minimap: {fileID: 0}
   loadingScreen: {fileID: 0}
   timebar: {fileID: 0}
@@ -713,6 +713,12 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 82dfb1b561249714d98c1c5fccfd1fd7, type: 2}
+    - target: {fileID: 9500000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tFrom animation clip 'TestFallingDonjon'"
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
