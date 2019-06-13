@@ -11,6 +11,9 @@ public class DungeonDoor : MonoBehaviour
 	public GameObject dJSetupUI;
 	public GameObject minimapBck;
 
+	public GameObject LoadingNewDj;
+	public GameObject LoadingClassic;
+
 	public List<GameObject> availableTP;
 
 	private void Start()
@@ -48,10 +51,19 @@ public class DungeonDoor : MonoBehaviour
 		if(PlayerPrefs.HasKey("LastDay") && PlayerPrefs.GetInt("LastDay") != System.DateTime.Now.Day || !PlayerPrefs.HasKey("LastDay"))
 		{
 			Debug.Log("changeLoadScreen");
+			loadingScreen.transform.GetChild(0).gameObject.SetActive(true);
+			loadingScreen.transform.GetChild(1).gameObject.SetActive(false);
+
 		}
-		SceneManager.LoadScene(2);
+		else
+		{
+			loadingScreen.transform.GetChild(0).gameObject.SetActive(false);
+			loadingScreen.transform.GetChild(1).gameObject.SetActive(true);
+		}
+		SceneManager.LoadSceneAsync(2);
 
 	}
+
 
 	public IEnumerator Wait()
 	{
