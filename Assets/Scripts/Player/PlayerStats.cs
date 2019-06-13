@@ -116,7 +116,7 @@ public class PlayerStats : MonoBehaviour
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;
-            anim.Play("TakeDamage");
+            anim.CrossFade("TakeDamage", .1f);
 			timebar.LoseTime(20);
 			CheckDeath();
         }

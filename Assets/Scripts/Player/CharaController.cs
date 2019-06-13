@@ -237,15 +237,7 @@ public class CharaController : MonoBehaviour
 
 		lastMove = axe;
 		isMoving = true;
-		if(SceneManager.GetActiveScene().name == "Lobby")
-		{
-			anim.CrossFade("Walk", .1f);
-
-		}
-		else
-		{
-			anim.CrossFade("Run", .1f);
-		}
+		anim.SetBool("isMoving", true);
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
