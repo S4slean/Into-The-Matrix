@@ -87,5 +87,8 @@ public class DungeonDoor : MonoBehaviour
 			rm.selected = false;
 		}
 		room.selected = true;
+		FindObjectOfType<PlayerStats>().startingRoom = room.gameObject;
+		Debug.Log("SpawnRoom : " + room.name);
+		
 	}
 }
