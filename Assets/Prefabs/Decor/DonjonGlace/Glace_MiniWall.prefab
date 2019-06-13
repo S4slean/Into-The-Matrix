@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 992380398658425434}
   m_Layer: 0
-  m_Name: MiniWall 1
+  m_Name: Glace_MiniWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +83,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 992380398658425434}
     m_Modifications:
+    - target: {fileID: 100004, guid: 62acd699f69be9840992a712528323d0, type: 3}
+      propertyPath: m_Name
+      value: Tile_Mur_Moyen2
+      objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 62acd699f69be9840992a712528323d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -127,18 +131,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 62acd699f69be9840992a712528323d0, type: 3}
-      propertyPath: m_Name
-      value: Tile_Mur_Moyen2
-      objectReference: {fileID: 0}
     - target: {fileID: 2300002, guid: 62acd699f69be9840992a712528323d0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6f68ffb8e94ddc94a9f66471a053ec2b, type: 2}
+      objectReference: {fileID: 2100000, guid: 60715602c2ab82848a5613cf0efe4d52, type: 2}
     - target: {fileID: 2300000, guid: 62acd699f69be9840992a712528323d0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9f87a352e6ab93b48b117acc096a947d, type: 2}
+      objectReference: {fileID: 2100000, guid: 2fc7f0846e974c64ab8f2f940e788ec0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62acd699f69be9840992a712528323d0, type: 3}
 --- !u!4 &741542244345076634 stripped
