@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-	Animator anim;
+	public Animator anim;
 	PlayerMoneyManager money;
 	SkillBar skillBar;
 	//CabineUIScript cabineUI;
@@ -39,7 +39,6 @@ public class PlayerStats : MonoBehaviour
 
 	private void Start()
 	{
-		anim = GetComponent<Animator>();
 		money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
@@ -117,7 +116,7 @@ public class PlayerStats : MonoBehaviour
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;
-            anim.Play("TakeDamage");
+            anim.CrossFade("TakeDamage", .1f);
 			timebar.LoseTime(20);
 			CheckDeath();
         }
