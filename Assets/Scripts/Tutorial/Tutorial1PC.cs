@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tutorial1PC : MonoBehaviour
 {
     public dialogueBox dialogue_pc; // Le script du dialogue du pc
-    public dialogueBox dialogue_donjon; // Le script du dialogue du donjon
+    public PNJ_DialogueHint dialogue_donjon; // Le script du dialogue du donjon
     public GameObject player; // le joueur
     public GameObject cam; // la caméra
     public Transform tpPoint; // le point où le joueur est tp dans le donjon
@@ -45,14 +45,14 @@ public class Tutorial1PC : MonoBehaviour
 
 
         loadingScreen.Play("Appear");// le joueur est téléporté (fade in écran noir) (fade out écran noir)
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1);
         player.transform.position = tpPoint.position;
         player.transform.rotation = Quaternion.identity;
         player.GetComponent<CharaController>().enabled = true;
         yield return new WaitForSeconds(1f);
         loadingScreen.Play("Disappear"); // Le loading screen disparaît
-        yield return new WaitForSeconds(1.5f);
-        dialogue_donjon.DisplayDialogue(); // Affiche la première ligne du dialogue du donjon
+        yield return new WaitForSeconds(1f);
+        dialogue_donjon.Activate(); // Affiche la première ligne du dialogue du donjon
 
         yield return null;
     }

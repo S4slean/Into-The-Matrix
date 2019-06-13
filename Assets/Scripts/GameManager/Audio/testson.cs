@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class testson : MonoBehaviour
 {
+
+    [Header("Donjon")]
     public AudioSource Bonus;
     public AudioSource Deathrobot;
     public AudioSource GetRuneSound;
@@ -14,6 +16,12 @@ public class testson : MonoBehaviour
     public AudioSource PhoneRing;
     public AudioSource StartShield;
     public AudioSource BruitdesPique;
+
+    [Header("Lobby")]
+
+    public AudioSource Dialogue;
+    public AudioSource BoutonSound;
+    public AudioSource UiInteface;
 
     private void Start()
     {

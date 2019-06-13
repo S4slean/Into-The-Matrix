@@ -33,4 +33,13 @@ public class PNJ_DialogueHint : MonoBehaviour
         }
         yield break;
     }
+
+    public void Activate()
+    {
+        if (Started == false)
+        {
+            StartCoroutine(NextLine());
+            Started = true;
+        }
+    }
 }
