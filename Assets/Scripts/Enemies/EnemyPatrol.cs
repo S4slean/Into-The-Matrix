@@ -75,7 +75,6 @@ public class EnemyPatrol : MonoBehaviour
 			index++;
 			if (index >= PatrolWayPoints.Length)
 			{
-				Debug.Log("index to 0");
 				index = 0;
 
 			}

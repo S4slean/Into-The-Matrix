@@ -39,9 +39,10 @@ public class dialogueBox : MonoBehaviour
 		displayTime = 0;
         //TypeWritter.NextText(dialogueLines[index]);
 
-        if(index <= dialogueLines.Count -1)
+        if (index <= dialogueLines.Count -1)
         {
             TypeWritter.NextText(dialogueLines[index]);
+            
             index++;
         }
 
@@ -49,12 +50,14 @@ public class dialogueBox : MonoBehaviour
         {
             index = 0;
         }
+
 	}
 
 	private void Update()
 	{
-		rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400),(Mathf.Ceil(text.text.Length / 20) * 50 +20));
 
+        //rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400),(Mathf.Ceil(text.text.Length / 20) * 50 +20));
+        /*
 		if (displayTime > 4 && text.text.Length > 0)
 			TypeWritter.NextText("");
 
@@ -63,5 +66,6 @@ public class dialogueBox : MonoBehaviour
 			rt.sizeDelta = Vector2.zero;
 		else
 			displayTime += Time.deltaTime;
-	}
+            */
+    }
 }

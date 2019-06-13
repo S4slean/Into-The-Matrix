@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tutorial1PC : MonoBehaviour
 {
@@ -11,11 +12,20 @@ public class Tutorial1PC : MonoBehaviour
     public Transform tpPoint; // le point où le joueur est tp dans le donjon
     public GameObject canvasPNJ; // le canvas du dialogue du pnj
     public GameObject machine; // la machine
+    public GameObject UI; // L'UI du donjon
     public Animator loadingScreen; // Animator de l'écran de chargement
 
-    private void Update()
+    private void Start()
     {
-        
+        if (PlayerPrefs.GetInt("TutoDone") != 1)
+        {
+            Debug.Log("You will play the tutorial now");
+        }
+        else
+        {
+            Debug.Log("You passed the tutorial");
+            SceneManager.LoadScene("Lobby");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,5 +66,12 @@ public class Tutorial1PC : MonoBehaviour
 
         yield return null;
     }
+
+    public void EndTutorial()
+    {
+        PlayerPrefs.SetInt("TutoDone",1);
+    }
+
+
 
 }

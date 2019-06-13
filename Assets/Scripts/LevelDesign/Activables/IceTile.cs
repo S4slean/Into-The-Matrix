@@ -16,7 +16,11 @@ public class IceTile : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.name == "Player")
+		{
 			player.StartCoroutine(player.FreezePlayer(TickManager.tickDuration/2));
+			other.GetComponent<CharaController>().anim.SetBool("Slide", true);
+			other.GetComponent<CharaController>().anim.CrossFade("Slide", .2f);
+		}
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -39,6 +43,7 @@ public class IceTile : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			player.freezing = false;
+			other.GetComponent<CharaController>().anim.SetBool("Slide", false);
 		}
 	}
 }
