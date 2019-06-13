@@ -28,7 +28,7 @@ public class dialogueBox : MonoBehaviour
         }
         else
         {
-            rt.anchoredPosition = new Vector2(160, 1250);
+            rt.anchoredPosition = new Vector2(160, Screen.height - 200);
         }
 
 	}
