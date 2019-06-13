@@ -28,7 +28,7 @@ public class dialogueBox : MonoBehaviour
         }
         else
         {
-            rt.anchoredPosition = new Vector2(160, 1000);
+            rt.anchoredPosition = new Vector2(160, 1250);
         }
 
 	}
@@ -53,7 +53,7 @@ public class dialogueBox : MonoBehaviour
 
 	private void Update()
 	{
-		rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400), (Mathf.Ceil(text.text.Length / 20)) * 50 +20);
+		rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(text.text.Length * 10 ),0,400),(Mathf.Ceil(text.text.Length / 20) * 50 +20));
 
 		if (displayTime > 4 && text.text.Length > 0)
 			TypeWritter.NextText("");
