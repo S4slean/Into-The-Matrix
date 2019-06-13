@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 7232873465665355467}
   - component: {fileID: 6122316380616999527}
   m_Layer: 0
-  m_Name: Shadow
+  m_Name: ShadowRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ Transform:
   m_GameObject: {fileID: 3138249497693131987}
   m_LocalRotation: {x: 0.7071067, y: -0, z: -0, w: 0.70710695}
   m_LocalPosition: {x: -0.04, y: 0.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3487912421492915324}
   m_RootOrder: 3
@@ -758,9 +758,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 82dfb1b561249714d98c1c5fccfd1fd7, type: 2}
     - target: {fileID: 9500000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed by
-        Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tFrom animation clip 'TestFallingDonjon'"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
       propertyPath: m_Materials.Array.data[0]

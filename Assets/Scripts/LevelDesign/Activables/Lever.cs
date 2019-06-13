@@ -6,8 +6,9 @@ using UnityEngine.Events;
 public class Lever : MonoBehaviour
 {
 	public Animator anim;
-
+	public MaterialChange changer;
 	public UnityEvent Activate;
+	bool isActive = false;
 
 	private void OnTriggerEnter(Collider other)
 	{
@@ -21,5 +22,10 @@ public class Lever : MonoBehaviour
     {
         Activate.Invoke();
         anim.SetTrigger("Impulse");
+		isActive = !isActive;
+		if (isActive)
+			changer.ChangeMat(changer.green);
+		else
+			changer.ChangeMat(changer.red);
     }
 }
