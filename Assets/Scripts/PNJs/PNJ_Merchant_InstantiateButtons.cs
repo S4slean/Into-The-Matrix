@@ -37,8 +37,8 @@ public class PNJ_Merchant_InstantiateButtons : MonoBehaviour
                 instance.GetComponent<Button>().onClick.AddListener(() => PDMS.UnlockItem());
 
                 
-                instance.transform.GetChild(0).GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f);         //Grise l'icone du skill
-                instance.transform.GetChild(2).GetComponent<Text>().text = SL.skills[i].cost.ToString();        //Donne the prix du skill au bouton
+                //instance.transform.GetChild(0).GetComponent<Image>().color = new Color(0.3f, 0.3f, 0.3f);         //Grise l'icone du skill
+                //instance.transform.GetChild(2).GetComponent<Text>().text = SL.skills[i].cost.ToString();        //Donne the prix du skill au bouton
              /*
             else // Si l'item a été acheté
             {
