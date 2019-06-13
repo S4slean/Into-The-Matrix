@@ -216,6 +216,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
 
     public void CloseStore()
     {
+        CC = FindObjectOfType<CharaController>();
         CC.enabled = true;
         transform.GetChild(0).gameObject.SetActive(false);
         transform.GetChild(1).gameObject.SetActive(false);
