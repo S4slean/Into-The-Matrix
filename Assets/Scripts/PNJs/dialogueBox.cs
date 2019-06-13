@@ -42,7 +42,7 @@ public class dialogueBox : MonoBehaviour
         if (index <= dialogueLines.Count -1)
         {
             TypeWritter.NextText(dialogueLines[index]);
-            
+            rt.sizeDelta = new Vector2(Mathf.Clamp(Mathf.Ceil(dialogueLines[index].Length * 10), 0, 400), (Mathf.Ceil(dialogueLines[index].Length / 20) * 50 + 20));
             index++;
         }
 
