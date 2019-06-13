@@ -124,7 +124,7 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
-		if (Input.GetMouseButtonUp(0))
+		if (!Input.GetMouseButton(0))
 		{
 			anim.SetBool("isMoving", false);
 		}

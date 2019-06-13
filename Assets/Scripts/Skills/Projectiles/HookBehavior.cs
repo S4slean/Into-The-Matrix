@@ -38,7 +38,7 @@ public class HookBehavior : MonoBehaviour
 
 			
 			comparePos = catchPos - (player.transform.position);
-			if(comparePos.magnitude < .1f)
+			if(comparePos.magnitude < .2f)
 			{
 				Debug.Log("hooked to pos");
 				player.transform.position = catchPos;

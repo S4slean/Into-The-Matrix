@@ -53,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 
 	public void SetStartPos()
 	{
+		anim.Play("idle");
 		Debug.Log("StartPosnotSet");
 		if (startingRoom != null)
 		{

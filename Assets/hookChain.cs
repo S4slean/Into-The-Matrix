@@ -13,13 +13,12 @@ public class hookChain : MonoBehaviour
     {
 		lRend = GetComponent<LineRenderer>();
 		player = FindObjectOfType<CharaController>().transform;
-		startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-		Vector3 Pos = new Vector3(player.position.x - transform.position.x, 1, player.position.z - transform.position.z);
-		lRend.SetPosition(1,-startPos); 
+		lRend.SetPosition(0, transform.position);
+		lRend.SetPosition(1,player.position + Vector3.up); 
     }
 }
