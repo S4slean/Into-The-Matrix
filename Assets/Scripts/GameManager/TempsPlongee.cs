@@ -42,10 +42,10 @@ public class TempsPlongee : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         { StartCoroutine(TimeLoss(5)); }
 
-		if (timer < 60)
+		if (timer < 40)
 		{
 			anim.SetBool("Glitch", true);
-			if (timer < 30)
+			if (timer < 20)
 			{
 				anim.SetBool("Hurry", true);
 			}
