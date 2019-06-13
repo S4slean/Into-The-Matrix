@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 1683750707}
   - component: {fileID: 1683750708}
   - component: {fileID: 653205175}
+  - component: {fileID: 3839175365185978730}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -301,7 +302,7 @@ MonoBehaviour:
   AttackBox: {fileID: 0}
   MoveBox: {fileID: 0}
   anim: {fileID: 274159437709956833}
-  swipeTolerance: 14
+  swipeTolerance: 20
   stepDistance: 16
   lastMove: {x: 0, y: 0, z: 1}
   attackStrength: 1
@@ -331,11 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52aab9c9f22ffcb4c84b5a5f8d91a466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 274159437709956833}
   minimap: {fileID: 0}
   loadingScreen: {fileID: 0}
   timebar: {fileID: 0}
   startingRoom: {fileID: 0}
+  dmgUI: {fileID: 0}
   trapOvrd: 0
   enmyOvrd: 0
   phoneOvrd: 0
@@ -392,6 +394,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentMoney: 0
   CoinsText: {fileID: 0}
+--- !u!114 &3839175365185978730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3487912421492915326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_RawSignal: {fileID: 11400000, guid: 95eca56b9a016b4429d874667d8bda3f, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 1000
 --- !u!1 &3487912422431807496
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +756,12 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 82dfb1b561249714d98c1c5fccfd1fd7, type: 2}
+    - target: {fileID: 9500000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed by
+        Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tFrom animation clip 'TestFallingDonjon'"
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

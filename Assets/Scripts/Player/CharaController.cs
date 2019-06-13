@@ -124,6 +124,11 @@ public class CharaController : MonoBehaviour
 		hitPosition = Input.mousePosition;
 		swipe = hitPosition - startMousePos;
 
+		if (Input.GetMouseButtonUp(0))
+		{
+			anim.SetBool("isMoving", false);
+		}
+
 		if (Input.GetMouseButtonUp(0) && !inUI)
 		{
 			if (swipe.magnitude < swipeTolerance && holdedTime <delayBeforeRun && !freezing)
@@ -236,8 +241,7 @@ public class CharaController : MonoBehaviour
 			transform.LookAt(transform.position + lastMove);
 
 		lastMove = axe;
-		isMoving = true;
-		anim.SetBool("isMoving", true);
+
 
 		RaycastHit hit;
 		if (Physics.Raycast(transform.position + Vector3.up, axe, out hit, 2, 9))
@@ -263,19 +267,24 @@ public class CharaController : MonoBehaviour
 			yield break;
 		}
 
+		isMoving = true;
+		anim.SetBool("isMoving", true);
+
 		MoveBox.SetActive(true);
 
 		if(!freezing)
 		{
 			if(SceneManager.GetActiveScene().name == "Lobby")
 			{
-				anim.CrossFade("Walk", 0);
+				anim.SetBool("isMoving", true);
+				
 
 			}
 			else
 			{
-				anim.CrossFade("Run", 0);
+				anim.SetBool("isMoving", true);
 			}
+				anim.SetBool("mirror", !anim.GetBool("mirror"));
 		}
 
 		//stepState = 0;
@@ -317,7 +326,7 @@ public class CharaController : MonoBehaviour
 		//	StartCoroutine(FreezePlayer(TickManager.tickDuration*9/10/2));
 
 		isMoving = false;
-	
+
         moveIsOver = true;
         yield return new WaitForSeconds(0.05f);
         moveIsOver = false;

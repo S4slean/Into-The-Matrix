@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerStats : MonoBehaviour
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
 	public GameObject startingRoom;
+	public GameObject dmgUI;
+
 
 	public int trapOvrd = 0;
 	public int enmyOvrd = 0;
@@ -118,6 +121,9 @@ public class PlayerStats : MonoBehaviour
             //health -= dmg;
             anim.CrossFade("TakeDamage", .1f);
 			timebar.LoseTime(20);
+			GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+			dmgUI.SetActive(true);
+
 			CheckDeath();
         }
     }
