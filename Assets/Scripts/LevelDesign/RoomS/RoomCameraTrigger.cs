@@ -46,6 +46,8 @@ public class RoomCameraTrigger : MonoBehaviour
 			if (other.GetComponent<DealDamage>() != null || other.GetComponent<Projectile>() != null)
 				return;
 
+            other.GetComponent<PlayerStats>().squareRoomEntered = new Vector3(Mathf.Ceil(other.transform.position.x / 2) * 2, 0, (Mathf.Ceil((other.transform.position.z) / 2) * 2) - 1) ;
+
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
 				spawner.Spawn();
@@ -141,7 +143,11 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 		Instantiate(Resources.Load("LD/Spawner") as GameObject, transform.position, Quaternion.identity);
 		Destroy(transform.parent.gameObject);
-
-
 	}
+
+    public IEnumerator GetSquareEntered()
+    {
+        yield return new WaitForSecondsRealtime(TickManager.tickDuration/2);
+
+    }
 }
