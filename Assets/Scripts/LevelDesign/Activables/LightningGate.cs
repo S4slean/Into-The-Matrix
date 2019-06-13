@@ -26,6 +26,7 @@ public class LightningGate : MonoBehaviour
 		lineR.enabled = !lineR.enabled;
 		capsule.enabled = !capsule.enabled;
 		isActive = !isActive;
+		target.GetComponent<LightningGate>().anim.SetBool("isActive", isActive);
 		anim.SetBool("isActive", isActive);
 	}
 
@@ -36,7 +37,7 @@ public class LightningGate : MonoBehaviour
 		if(target == null)
 		{
 			pos = new Vector3(0, 1.5f,0);
-			isActive = false;
+
 		}
 		else
 			pos = new Vector3(target.position.x - transform.position.x, 1.5f, target.position.z -transform.position.z);
@@ -52,6 +53,7 @@ public class LightningGate : MonoBehaviour
 		lineR.enabled = isActive;
 		capsule.enabled = isActive;
         anim = transform.GetComponentInChildren<Animator>();
+		anim.SetBool("isActive", isActive);
 
 
 	}

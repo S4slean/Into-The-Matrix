@@ -16,11 +16,9 @@ public class PNJ_DialogueHint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("hint");
 
         if(other.name == "Player" && Started == false)
         {
-            Debug.Log("hint2");
             StartCoroutine(NextLine());
             Started = true;
         }
@@ -28,10 +26,8 @@ public class PNJ_DialogueHint : MonoBehaviour
 
     IEnumerator NextLine()
     {
-        Debug.Log("nextline");
         for (int i = 0; i < dialogue.dialogueLines.Count; i++)
         {
-            Debug.Log("index " + dialogue.index);
             dialogue.DisplayDialogue();
             yield return new WaitForSeconds(3);
         }

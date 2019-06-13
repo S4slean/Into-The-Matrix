@@ -71,14 +71,32 @@ public class RoomSpawner : MonoBehaviour
 
 		if (roomTemplates.spawnedRooms.Count > roomTemplates.dungeonSize)		//génère les salles du donjon tant qu'il n'a pas dépassé sa taille max
 		{
-			if (openingdir == OpeningDirection.Left)							//si on a besoin d'un salle avec une ouverture vers la gauche, récupère une salle dans la liste des salle avec une ouverture à gauche
-				SpawnRoom(roomTemplates.leftEnds);
-			if (openingdir == OpeningDirection.Top)								//etc.
-				SpawnRoom(roomTemplates.upEnds);
-			if (openingdir == OpeningDirection.Right)
-				SpawnRoom(roomTemplates.rightEnds);
-			if (openingdir == OpeningDirection.Bottom)
-				SpawnRoom(roomTemplates.downEnds);
+			if (!roomTemplates.runeSpawned)
+			{
+				if (openingdir == OpeningDirection.Left)                            //si on a besoin d'un salle avec une ouverture vers la gauche, récupère une salle dans la liste des salle avec une ouverture à gauche
+					SpawnRoom(roomTemplates.leftRuneRooms);
+				if (openingdir == OpeningDirection.Top)                             //etc.
+					SpawnRoom(roomTemplates.upRuneRooms);
+				if (openingdir == OpeningDirection.Right)
+					SpawnRoom(roomTemplates.rightRuneRooms);
+				if (openingdir == OpeningDirection.Bottom)
+					SpawnRoom(roomTemplates.downRuneRooms);
+
+				roomTemplates.runeSpawned = true;
+			}
+			else
+			{
+				if (openingdir == OpeningDirection.Left)							//si on a besoin d'un salle avec une ouverture vers la gauche, récupère une salle dans la liste des salle avec une ouverture à gauche
+					SpawnRoom(roomTemplates.leftEnds);
+				if (openingdir == OpeningDirection.Top)								//etc.
+					SpawnRoom(roomTemplates.upEnds);
+				if (openingdir == OpeningDirection.Right)
+					SpawnRoom(roomTemplates.rightEnds);
+				if (openingdir == OpeningDirection.Bottom)
+					SpawnRoom(roomTemplates.downEnds);
+
+			}
+
 
 			FindObjectOfType<PlayerStats>().SetStartPos();
 

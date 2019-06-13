@@ -41,9 +41,10 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 
 
-		if(other.tag == "Player" && other.GetComponent<DealDamage>()==null)
+		if(other.tag == "Player" )
 		{
-
+			if (other.GetComponent<DealDamage>() != null || other.GetComponent<Projectile>() != null)
+				return;
 
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
