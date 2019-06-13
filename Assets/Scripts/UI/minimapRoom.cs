@@ -17,12 +17,12 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
-		if (isTP && SceneManager.GetActiveScene().buildIndex == 0)
+		if (isTP && SceneManager.GetActiveScene().name == "Lobby")
 		{
 			FindObjectOfType<PlayerStats>().startingRoom = gameObject;
 			DJdoor.SelectRoom(this);
 		}
-		if(isSelectable && SceneManager.GetActiveScene().buildIndex == 0)
+		if(isSelectable && SceneManager.GetActiveScene().name == "Lobby")
 		{
 			runeUI.SelectRoom(this);
 		}
