@@ -1945,14 +1945,22 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 698399017, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: DJdoor
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8522860418090502125, guid: 51abff4104b17214eb588ef22ba76657,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 698399017, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
-      propertyPath: DJdoor
-      value: 
+    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2090213033, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.574997
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
@@ -13921,18 +13929,6 @@ PrefabInstance:
       propertyPath: swipeTolerance
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: lifebar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: minimap
-      value: 
-      objectReference: {fileID: 875551919}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: loadingScreen
-      value: 
-      objectReference: {fileID: 8522860418090502125}
     - target: {fileID: 3487912421492915324, guid: 307d6ebf27bc90d439fc9113dfd69c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13988,6 +13984,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: lifebar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: minimap
+      value: 
+      objectReference: {fileID: 875551919}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 8522860418090502125}
     - target: {fileID: 653205175, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
       propertyPath: CoinsText
       value: 
