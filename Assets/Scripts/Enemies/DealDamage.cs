@@ -12,8 +12,6 @@ public class DealDamage : MonoBehaviour
 	float tick;
 	int count = 0;
 
-
-
 	private void OnTriggerEnter(Collider other)
 	{
 		tick = dmgTick;

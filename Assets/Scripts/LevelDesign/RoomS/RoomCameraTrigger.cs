@@ -40,9 +40,9 @@ public class RoomCameraTrigger : MonoBehaviour
 	//Si le joueur entre dans le trigger: désactive la virtual cam actuelle et active celle de la salle
 	private void OnTriggerEnter(Collider other)
 	{
+		minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
 
-
-		if(other.tag == "Player" )
+		if (other.tag == "Player" )
 		{
 			if (other.GetComponent<DealDamage>() != null || other.GetComponent<Projectile>() != null)
 				return;
