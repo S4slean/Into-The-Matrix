@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class CabineTéléphonique : MonoBehaviour
 {
     private CabineUIScript cabineScript;
+    public testson SoundDj;
 
     private void Start()
     {
-        cabineScript = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+
+    cabineScript = GameObject.FindGameObjectWithTag("CabineUI").GetComponent<CabineUIScript>();
+
     }
 
 	private void OnTriggerEnter(Collider other)
@@ -18,6 +22,7 @@ public class CabineTéléphonique : MonoBehaviour
 		if (other.tag == "Player" && other.GetComponent<DealDamage>() != null)
 		{
 			cabineScript.Activate();
+            SoundDj.PhoneRing.Play();
 		}
 	}
 }

@@ -14,8 +14,14 @@ public class Counter : Skill
 
     public PlayerStats playerStats;
 
+    public testson SoundDj;
+
     [SerializeField] bool isActive = false;
 
+    public void Start()
+    {
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+    }
     public override void Activate(GameObject user)
     {
         if (CheckIfInLobby())
@@ -39,7 +45,7 @@ public class Counter : Skill
 
         if (skillUser.tag == "Player" && !isActive)
         {
-
+            SoundDj.StartShield.Play();
 			collider = skillUser.GetComponent<CapsuleCollider>();
 			Debug.Log("Shield : ");
 			instance = Instantiate(particles,FindObjectOfType<CharaController>().transform);
@@ -85,6 +91,7 @@ public class Counter : Skill
 
     public IEnumerator WaitForAttack()
     {
+        SoundDj.Reflect.Play();
         isActive = false;
         simpleEnemy enemy = skillUser.GetComponent<simpleEnemy>();
         yield return new WaitForSeconds(enemyLaunchTime);
