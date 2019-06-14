@@ -51,7 +51,7 @@ public class Skill : MonoBehaviour
 	}
 
 	//Activation by enemy, contains placement functions if needed
-	public virtual IEnumerator EnemyUse(SimpleEnemy enemy)
+	public virtual IEnumerator EnemyUse(simpleEnemy enemy)
 	{
 		yield return new WaitForSeconds(enemyLaunchTime * TickManager.tickDuration);
 		Activate(enemy.gameObject);
@@ -101,7 +101,7 @@ public class Skill : MonoBehaviour
             skillsShop.UpdateMySkillNumber();
             buttonsShop.ResetShopButtons();*/
 
-			if(gameObject.GetComponent<SimpleEnemy>() == null)
+			if(gameObject.GetComponent<simpleEnemy>() == null)
 				Destroy(gameObject);
         }
     }

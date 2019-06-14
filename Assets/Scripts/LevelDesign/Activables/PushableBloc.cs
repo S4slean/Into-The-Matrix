@@ -60,9 +60,4 @@ public class  PushableBloc : MonoBehaviour
 	{
 		boxCollider.enabled = false;
 	}
-
-	private void OnDestroy()
-	{
-		Debug.Log("bye");
-	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleEnemy : MonoBehaviour
+public class simpleEnemy : MonoBehaviour
 {
 	public enum State
 	{
@@ -183,22 +183,22 @@ public class SimpleEnemy : MonoBehaviour
 
 
 		////Déplacement du perso sur chaque frame pendant "moveStep" frame
-		//for (int i = 0; i < Mathf.Abs(moveStep); i++)
-		//{
-		//	transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
-
-		//	yield return new WaitForSeconds(stepDuration / moveStep);
-		//}
-		//ismoving = false;
-		Vector3 startPos = transform.position;
-
-		for (float count = 0; count < TickManager.tickDuration - .05f; count += Time.deltaTime)
+		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{
-			transform.localPosition = startPos + axe * (count / TickManager.tickDuration) * 2;
+			transform.localPosition = transform.localPosition + (axe / moveStep) * 2;
 
-			yield return new WaitForEndOfFrame();
+			yield return new WaitForSeconds(stepDuration / moveStep);
 		}
-		transform.localPosition = startPos + axe * 2;
+		ismoving = false;
+		//Vector3 startPos = transform.position;
+
+		//for (float count = 0; count < TickManager.tickDuration - .05f; count += Time.deltaTime)
+		//{
+		//	transform.localPosition = startPos + axe * (count / TickManager.tickDuration) * 2;
+
+		//	yield return new WaitForEndOfFrame();
+		//}
+		//transform.localPosition = startPos + axe * 2;
 
 		StartCoroutine(WaitForNewCycle(stepFreeze));
 	}
@@ -211,4 +211,6 @@ public class SimpleEnemy : MonoBehaviour
 
 		state = State.SelectSkill;
 	}
+
+
 }

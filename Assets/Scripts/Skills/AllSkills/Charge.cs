@@ -27,8 +27,8 @@ public class Charge : Skill
 
         if (cooldown > 0)
         {
-            if (user.GetComponent<SimpleEnemy>() != null)
-                user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+            if (user.GetComponent<simpleEnemy>() != null)
+                user.GetComponent<simpleEnemy>().StartCoroutine(user.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
             return;
         }
 
@@ -99,7 +99,7 @@ public class Charge : Skill
             playerController.enemyConfronted.transform.position += playerController.enemyDir * 2;
             squaresCrossed++;
             yield return new WaitForSeconds(TickManager.tickDuration);
-            playerController.enemyConfronted.GetComponent<SimpleEnemy>().health -= damages;
+            playerController.enemyConfronted.GetComponent<simpleEnemy>().health -= damages;
         }
     }
 
@@ -110,7 +110,7 @@ public class Charge : Skill
     public IEnumerator WaitForAttack()
     {
         isActive = false;
-        SimpleEnemy enemy = skillUser.GetComponent<SimpleEnemy>();
+        simpleEnemy enemy = skillUser.GetComponent<simpleEnemy>();
         yield return new WaitForSeconds(enemyLaunchTime);
         if (Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
         {
@@ -127,8 +127,8 @@ public class Charge : Skill
         yield return new WaitForSeconds(TickManager.tickDuration);
         //Ici on mettra l'animation/FX de réapparition
 
-        if (skillUser.GetComponent<SimpleEnemy>() != null)
-            skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+        if (skillUser.GetComponent<simpleEnemy>() != null)
+            skillUser.GetComponent<simpleEnemy>().StartCoroutine(skillUser.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
         yield break;
 
