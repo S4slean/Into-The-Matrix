@@ -8,7 +8,7 @@ public class IntroCine : MonoBehaviour
 {
 	public List<GameObject> UItoActivate;
 	public GameObject loading;
-	public GameObject minimap;
+	public GameObject map;
 
 
 	public List<CinemachineVirtualCamera> Cams;
@@ -41,6 +41,7 @@ public class IntroCine : MonoBehaviour
 							obj.SetActive(true);
 					}
 					Debug.Log("You passed the tutorial");
+					map.SetActive(true);
 					SceneManager.LoadSceneAsync("Lobby");
 					
 				return;

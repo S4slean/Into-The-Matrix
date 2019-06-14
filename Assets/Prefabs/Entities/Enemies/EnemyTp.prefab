@@ -74,6 +74,7 @@ MonoBehaviour:
   meleeSkills: []
   rangedSkills:
   - {fileID: 0}
+  SoundDj: {fileID: 0}
 --- !u!114 &184507179111413651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +148,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 55b4f07ab8e11954d84254d5f7fce8bb, type: 3}
       propertyPath: m_Name
       value: Agile_Tp01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 55b4f07ab8e11954d84254d5f7fce8bb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 55b4f07ab8e11954d84254d5f7fce8bb, type: 3}
       propertyPath: m_LocalPosition.x

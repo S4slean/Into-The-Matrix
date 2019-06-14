@@ -67,6 +67,21 @@ public class RuneUI : MonoBehaviour
 			noRmSelected.SetActive(true);
 			return;
 		}
+		if (i == 0 && stats.enmyOvrd < 1)
+		{
+			noOvrd.SetActive(true);
+			return;
+		}
+		if(i == 1 && stats.trapOvrd < 1)
+		{
+			noOvrd.SetActive(true);
+			return;
+		}
+		if(i == 2 && stats.phoneOvrd < 1)
+		{
+			noOvrd.SetActive(true);
+			return;
+		}
 		DungeonOverride ovrd = new DungeonOverride();
 		ovrd.overridesIndex = i;
 		ovrd.spritePos = selectedRoom.GetComponent<RectTransform>().anchoredPosition;
