@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
 	public GameObject minimap;
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
-	public GameObject startingRoom;
+	public Vector2 startingRoom;
 	public GameObject dmgUI;
 
 
@@ -42,9 +42,12 @@ public class PlayerStats : MonoBehaviour
 
     public Vector3 squareRoomEntered;
 
-	private void Start()
+    public testson SoundDj;
+
+    private void Start()
 	{
-		money = GetComponent<PlayerMoneyManager>();
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
 		timebar = FindObjectOfType<TempsPlongee>();
@@ -61,8 +64,8 @@ public class PlayerStats : MonoBehaviour
 		{
 
 			Debug.Log("PlayerMoved");
-			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
-			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 * 14, 0, rTransform.anchoredPosition.y / 31.5f * 20);
+			
+			transform.position = new Vector3(startingRoom.x / 21 * 14, 0, (startingRoom.y / 31.5f * 20) -5);
 		}
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 	}
@@ -119,6 +122,7 @@ public class PlayerStats : MonoBehaviour
 	{
         if (!counter)
         {
+            SoundDj.HeroDamage.Play();
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;
@@ -213,7 +217,8 @@ public class PlayerStats : MonoBehaviour
     public IEnumerator FallInHole()
     {
         //GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Appear");
-        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(GetComponent<CharaController>().FreezePlayer(0.25f));
+        yield return new WaitForSeconds(0.1f);
         TakeDamage(10);
         transform.position = squareRoomEntered;
         transform.LookAt(transform.position + Vector3.forward);
