@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class IntroCine : MonoBehaviour
 {
 	public List<GameObject> UItoActivate;
+	public GameObject loading;
+	public GameObject minimap;
 
 
 	public List<CinemachineVirtualCamera> Cams;
@@ -16,12 +19,42 @@ public class IntroCine : MonoBehaviour
     {
 		if (Input.GetMouseButtonDown(0))
 		{
+			if(camIndex == 0)
+			{
+				if (PlayerPrefs.HasKey("TutoDone") != true)
+				{
+					PlayerPrefs.SetInt("TutoDone", 0);
+				}
+
+				if (PlayerPrefs.GetInt("TutoDone") != 1)
+				{
+					Debug.Log("You will play the tutorial now");
+				}
+				else
+				{
+					loading.SetActive(true);
+					//minimap.SetActive(true);
+					//loading.GetComponent<Animator>().Play("Appear");
+					foreach(GameObject obj in UItoActivate)
+					{
+						if(obj.GetComponent<RoomCameraTrigger>() == null)
+							obj.SetActive(true);
+					}
+					Debug.Log("You passed the tutorial");
+					SceneManager.LoadSceneAsync("Lobby");
+					
+				return;
+				}
+			}
+
 			if (Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera != null)
 				Camera.main.GetComponent<CinemachineBrain>().ActiveVirtualCamera.VirtualCameraGameObject.SetActive(false);
 			if(camIndex < Cams.Count)
 				Cams[camIndex].gameObject.SetActive(true);
 			camIndex++;
 		}
+
+		
 
 		if(camIndex == Cams.Count )
 		{

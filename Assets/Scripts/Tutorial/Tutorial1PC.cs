@@ -20,23 +20,11 @@ public class Tutorial1PC : MonoBehaviour
 	[Header ("Here")]
 	public List<GameObject> UitoActive;
 	public GameObject dmg;
+	public GameObject minimap;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("TutoDone") != true)
-        {
-            PlayerPrefs.SetInt("TutoDone", 0);
-        }
 
-        if (PlayerPrefs.GetInt("TutoDone") != 1)
-        {
-            Debug.Log("You will play the tutorial now");
-        }
-        else
-        {
-            Debug.Log("You passed the tutorial");
-            SceneManager.LoadScene("Lobby");
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -87,6 +75,8 @@ public class Tutorial1PC : MonoBehaviour
     {
         lastText.text = "";
         PlayerPrefs.SetInt("TutoDone",1);
+		minimap.SetActive(true);
+
     }
 
 
