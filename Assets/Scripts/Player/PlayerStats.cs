@@ -42,9 +42,12 @@ public class PlayerStats : MonoBehaviour
 
     public Vector3 squareRoomEntered;
 
-	private void Start()
+    public testson SoundDj;
+
+    private void Start()
 	{
-		money = GetComponent<PlayerMoneyManager>();
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
 		timebar = FindObjectOfType<TempsPlongee>();
@@ -119,6 +122,7 @@ public class PlayerStats : MonoBehaviour
 	{
         if (!counter)
         {
+            SoundDj.HeroDamage.Play();
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;

@@ -8,12 +8,14 @@ public class OvrdItem : MonoBehaviour
 	public Ovrd ovrd;
 	public SpriteRenderer sprite;
 	public List<Sprite> spr;
+    public  testson SoundDj;
 
-	PlayerStats player;
+    PlayerStats player;
 
 	private void Start()
 	{
-		player = FindObjectOfType<PlayerStats>();
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        player = FindObjectOfType<PlayerStats>();
 		int rd = Random.Range(0, 3);
 		if (ovrd == Ovrd.key)
 		{
@@ -56,21 +58,25 @@ public class OvrdItem : MonoBehaviour
 			{
 				case Ovrd.trap:
 					{
-						player.trapOvrd++;
+                        SoundDj.Bonus.Play();
+                        player.trapOvrd++;
 						break;
 					}
 				case Ovrd.enmy:
 					{
-						player.enmyOvrd++;
+                        SoundDj.Bonus.Play();
+                        player.enmyOvrd++;
 						break;
 					}
 				case Ovrd.spawn:
 					{
+                        SoundDj.Bonus.Play();
 						player.phoneOvrd++;
 						break;
 					}
 				case Ovrd.key:
 					{
+                        SoundDj.GetRuneSound.Play();
 						player.key++;
 						break;
 					}

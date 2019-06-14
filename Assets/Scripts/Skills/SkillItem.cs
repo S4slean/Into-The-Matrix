@@ -11,10 +11,12 @@ public class SkillItem : MonoBehaviour
 	SkillBar skillBar;
 	public Skill skill;
 	public SpriteRenderer sprRendr;
+    public testson SoundDj;
 
-	private void Start()
+    private void Start()
 	{
-		player = FindObjectOfType<CharaController>().gameObject;
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        player = FindObjectOfType<CharaController>().gameObject;
 		itemPrefab = Resources.Load("skillItem") as GameObject;
 		list = FindObjectOfType<skillList>();
 		anim = GetComponent<Animator>();
@@ -29,9 +31,11 @@ public class SkillItem : MonoBehaviour
 	//en cas de collision avec le joueur
 	private void OnTriggerEnter(Collider other)
 	{
+        
 		if (other.gameObject.tag == "Player" && other.GetComponent<CharaController>() != null)
 		{
-			bool alreadyEquipped = false;
+            SoundDj.Bonus.Play();
+            bool alreadyEquipped = false;
 			int index = 0;
 			for(int i = 0; i < skillBar.PlayerSkills.Count; i++ )
 			{
