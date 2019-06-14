@@ -352,11 +352,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -2191,6 +2191,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 29e8ae7f90e845440b328192c2b4bede,
         type: 3}
+    - target: {fileID: 2090213032, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7975457990113324475, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 223651815}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5179556149982790176, guid: 51abff4104b17214eb588ef22ba76657,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51abff4104b17214eb588ef22ba76657, type: 3}
 --- !u!95 &147807887 stripped
@@ -2827,6 +2866,7 @@ MonoBehaviour:
   cam: {fileID: 638587747}
   tpPoint: {fileID: 475202668}
   canvasPNJ: {fileID: 2299834069127166139}
+  lastText: {fileID: 1100593330}
   machine: {fileID: 99888331}
   UI: {fileID: 474930258}
   loadingScreen: {fileID: 147807887}
@@ -6111,11 +6151,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -12688,11 +12728,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -17401,11 +17441,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -18618,11 +18658,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -34149,11 +34189,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1b6401941cb023b4097fc719f7e7c8bc, type: 3}
-    m_FontSize: 38
+    m_Font: {fileID: 12800000, guid: 218a149cc0d428b40b669357b49bf885, type: 3}
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -34180,7 +34220,7 @@ MonoBehaviour:
   - 'Hello ? Hey you !           '
   - Finally someone hear me, I'm stuck in the simulation
   - I am trying to establish a connection with your computer to get out, hold on
-  - PLAYER GET TELEPORTED
+  - 
   index: 0
 --- !u!222 &2299834070783242868
 CanvasRenderer:
