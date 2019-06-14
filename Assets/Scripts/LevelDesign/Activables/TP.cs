@@ -20,9 +20,15 @@ public class TP : MonoBehaviour
 
 	IEnumerator DelayTP(Transform other)
 	{
+		other.gameObject.SetActive(false);
 		linkedTP.GetComponent<TP>().active = false;
 		yield return new WaitForSeconds(.1f);
 		other.position = new Vector3(linkedTP.transform.position.x, other.transform.position.y, linkedTP.transform.position.z);
+		other.gameObject.SetActive(true);
+		if(other.name == "Player")
+		{
+			other.GetComponent<CharaController>().isMoving = false;
+		}
 	}
 
 	private void OnTriggerExit(Collider other)

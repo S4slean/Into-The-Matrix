@@ -350,6 +350,7 @@ MonoBehaviour:
   counter: 0
   runePieces: 0
   runePiecesToGet: 0
+  squareRoomEntered: {x: -1, y: 0, z: 3}
 --- !u!54 &1683750707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -756,10 +757,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 82dfb1b561249714d98c1c5fccfd1fd7, type: 2}
-    - target: {fileID: 9500000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
-      propertyPath: m_WarningMessage
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 4efeb54e9a149dc47a938a9e43f9cd57, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

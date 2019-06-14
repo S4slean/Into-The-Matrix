@@ -43,6 +43,7 @@ public class CabineUIScript : MonoBehaviour
 		player.StartCoroutine(player.BackToLobby());
 		tpButton.gameObject.SetActive(false);
 		returnButton.gameObject.SetActive(false);
+		Fond.gameObject.SetActive(false);
 		StartCoroutine(DesactiveUI());
 		
 	}
@@ -51,6 +52,7 @@ public class CabineUIScript : MonoBehaviour
     {
         tpButton.gameObject.SetActive(false);
         returnButton.gameObject.SetActive(false);
+		Fond.gameObject.SetActive(false);
 		controller.freezing = false;
 		StartCoroutine(DesactiveUI());
     }

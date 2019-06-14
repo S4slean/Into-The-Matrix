@@ -22,6 +22,7 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
     public CharaController CC;
     public Text equipmentText;
     public int HowManySkillsIHave;
+	
 
 
     // Start is called before the first frame update
@@ -110,7 +111,8 @@ public class PNJ_DoorKeeper_MySkills : MonoBehaviour
         }
         else // SI le joueur n'as pas assez d'argent
         {
-            InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
+			//InfoPopup.transform.GetChild(3).GetChild(1).gameObject.SetActive(true);
+			GameObject.FindGameObjectWithTag("ShopPopUp").transform.GetChild(0).gameObject.SetActive(true);
             Debug.Log("Not enough money !");
         }
     }
