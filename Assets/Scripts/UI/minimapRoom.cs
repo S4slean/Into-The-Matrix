@@ -19,7 +19,7 @@ public class minimapRoom : MonoBehaviour, IPointerDownHandler
 	{
 		if (isTP && SceneManager.GetActiveScene().name == "Lobby")
 		{
-			FindObjectOfType<PlayerStats>().startingRoom = gameObject;
+			FindObjectOfType<PlayerStats>().startingRoom = gameObject.GetComponent<RectTransform>().anchoredPosition;
 			DJdoor.SelectRoom(this);
 		}
 		if(isSelectable && SceneManager.GetActiveScene().name == "Lobby")
