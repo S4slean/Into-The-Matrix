@@ -11,9 +11,12 @@ public class PickUpScript : MonoBehaviour
 
     public bool timePickUp;
     public TempsPlongee timeScript;
+    public testson SoundDj;
+
 
     void Start()
     {
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
         if (moneyPickUp)
         { PMM = GameObject.Find("Player").GetComponent<PlayerMoneyManager>(); }
         if (timePickUp)
@@ -23,6 +26,7 @@ public class PickUpScript : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            SoundDj.Coins.Play();
             PickedUp();
         }
     }

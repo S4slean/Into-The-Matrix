@@ -10,11 +10,13 @@ public class Turret : MonoBehaviour
 	public GameObject projectile;
 	private int tickDelay = 5;
 	private int tickCount = 0;
+    public testson SoundDj;
 
 
-	private void Start()
+    private void Start()
 	{
-		TickManager.OnTick += AddCount;
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        TickManager.OnTick += AddCount;
 		pool = GetComponentInChildren<BulletPool>();
 	}
 
@@ -28,6 +30,7 @@ public class Turret : MonoBehaviour
 
 			if (tickCount >= tickDelay)
 			{
+           // SoundDj.FireEnemie.Play();
 				projectile = pool.GetBullet();
 				projectile.transform.position = transform.position + transform.forward * 1.2f + transform.up;
 			projectile.transform.rotation = transform.rotation;
@@ -38,6 +41,7 @@ public class Turret : MonoBehaviour
 
 	public void Kill()
 	{
+        SoundDj.Deathrobot.Play();
 		Destroy(gameObject);
 	}
 }

@@ -16,6 +16,9 @@ public class testson : MonoBehaviour
     public AudioSource PhoneRing;
     public AudioSource StartShield;
     public AudioSource BruitdesPique;
+    public AudioSource HeroDamage;
+    public AudioSource Coins;
+    public AudioSource FireEnemie;
 
     [Header("Lobby")]
 
