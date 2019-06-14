@@ -8,7 +8,7 @@ public class DeathBeam : Skill
 	public float duration;
 	Transform player;
 	GameObject instance;
-	SimpleEnemy simpleEnemy;
+	simpleEnemy simpleEnemy;
 
 	private void Start()
 	{
@@ -26,20 +26,20 @@ public class DeathBeam : Skill
 
 		if (cooldown > 0)
 		{
-			if (user.GetComponent<SimpleEnemy>() != null)
-				user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+			if (user.GetComponent<simpleEnemy>() != null)
+				user.GetComponent<simpleEnemy>().StartCoroutine(user.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 			return;
 		}
 
 		if(user.tag =="Player")
 			player.GetComponent<CharaController>().SetPlayerMovement(true, false);
 
-		if (user.GetComponent<SimpleEnemy>() != null)
+		if (user.GetComponent<simpleEnemy>() != null)
 		{
-			simpleEnemy = user.GetComponent<SimpleEnemy>();
+			simpleEnemy = user.GetComponent<simpleEnemy>();
 			simpleEnemy.isAttacking = true;
 			simpleEnemy.unableToRotate = true;
-			simpleEnemy.state = SimpleEnemy.State.follow;
+			simpleEnemy.state = simpleEnemy.State.follow;
 		}
 		
 

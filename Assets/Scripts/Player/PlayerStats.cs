@@ -123,7 +123,7 @@ public class PlayerStats : MonoBehaviour
 
             //health -= dmg;
             anim.CrossFade("TakeDamage", .1f);
-			timebar.LoseTime(20);
+			timebar.LoseTime(dmg);
 			GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 			dmgUI.SetActive(true);
 
@@ -208,5 +208,14 @@ public class PlayerStats : MonoBehaviour
         {
             Debug.Log("Toutes les runes ont été collectées, la porte s'ouvre ");
         }
+    }
+
+    public IEnumerator FallInHole()
+    {
+        //GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Appear");
+        yield return new WaitForSeconds(0.2f);
+        TakeDamage(10);
+        transform.position = squareRoomEntered;
+        //GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Disappear");
     }
 }

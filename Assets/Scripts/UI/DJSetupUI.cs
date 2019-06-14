@@ -8,6 +8,8 @@ public class DJSetupUI : MonoBehaviour
 	public DungeonDoor DJdoor;
 	public GameObject minimap;
 	public GameObject mapAnchor;
+	public GameObject NotEnough;
+	public GameObject rerolled;
 	GameObject instance;
 	MoneyBank money;
 
@@ -56,11 +58,13 @@ public class DJSetupUI : MonoBehaviour
 			Destroy(instance);
 			GenerateMap();
 
+			rerolled.SetActive(true);
 			PlayerPrefs.DeleteKey("LastDay");
 			Debug.Log("Donjon rerolled !");
 		}
 		else
 		{
+			NotEnough.SetActive(true);
 			//Play anim : not enough money
 			Debug.Log("not enough money ! ");
 		}

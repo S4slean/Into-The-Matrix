@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DealDamage : MonoBehaviour
 {
-	public int damage = 1;
+	public int damage = 10;
 	public string user = "Player";
 	public bool DamageOverTime = false;
 
@@ -59,7 +59,7 @@ public class DealDamage : MonoBehaviour
 			if (other.tag == gameObject.tag)
 				return;
 
-			other.GetComponent<SimpleEnemy>().health -= damage;
+			other.GetComponent<simpleEnemy>().health -= damage;
 		}
 
 		//Trigger interaction with NPC
@@ -87,9 +87,9 @@ public class DealDamage : MonoBehaviour
 		if (user.tag == "Player")
 			user.gameObject.GetComponent<CharaController>().SetPlayerMovement(true, true);
 
-		if (user.GetComponent<SimpleEnemy>() != null)
+		if (user.GetComponent<simpleEnemy>() != null)
 		{
-			SimpleEnemy simpleEnemy = user.GetComponent<SimpleEnemy>();
+			simpleEnemy simpleEnemy = user.GetComponent<simpleEnemy>();
 			simpleEnemy.isAttacking = false;
 			simpleEnemy.unableToRotate = false;
 			simpleEnemy.StartCoroutine(simpleEnemy.WaitForNewCycle(enemyRecoverTime));

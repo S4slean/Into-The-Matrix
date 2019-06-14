@@ -22,9 +22,9 @@ public class FireWallSquareBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<SimpleEnemy>() != null)
+        if (other.GetComponent<simpleEnemy>() != null)
         {
-            other.GetComponent<SimpleEnemy>().health -= damages;
+            other.GetComponent<simpleEnemy>().health -= damages;
         }
     }
 }

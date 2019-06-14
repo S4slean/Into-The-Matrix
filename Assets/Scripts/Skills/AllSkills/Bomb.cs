@@ -28,8 +28,8 @@ public class Bomb : Skill
 
         if (cooldown > 0)
         {
-            if (user.GetComponent<SimpleEnemy>() != null)
-                user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+            if (user.GetComponent<simpleEnemy>() != null)
+                user.GetComponent<simpleEnemy>().StartCoroutine(user.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
             return;
         }
 
@@ -82,7 +82,7 @@ public class Bomb : Skill
     public IEnumerator WaitForAttack()
     {
         isActive = false;
-        SimpleEnemy enemy = skillUser.GetComponent<SimpleEnemy>();
+        simpleEnemy enemy = skillUser.GetComponent<simpleEnemy>();
         yield return new WaitForSeconds(enemyLaunchTime);
         if (Mathf.Abs(enemy.enemyToPlayer.x) > Mathf.Abs(enemy.enemyToPlayer.z))
         {
@@ -109,8 +109,8 @@ public class Bomb : Skill
         transform.GetChild(0).GetComponent<Text>().text = "BOOM";
 
 
-        if (skillUser.GetComponent<SimpleEnemy>() != null)
-            skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+        if (skillUser.GetComponent<simpleEnemy>() != null)
+            skillUser.GetComponent<simpleEnemy>().StartCoroutine(skillUser.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
         yield break;
 
