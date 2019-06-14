@@ -54,7 +54,7 @@ public class RuneUI : MonoBehaviour
 
 	private void OnDisable()
 	{
-
+		FindObjectOfType<CharaController>().enabled = true;
 		Destroy(instance);
 	}
 
