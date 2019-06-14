@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 4158611657601300118}
   - component: {fileID: 4158611657601300117}
   - component: {fileID: 5022173492797703851}
+  - component: {fileID: 3261367582461435845}
   m_Layer: 9
   m_Name: TimeBonus
   m_TagString: Untagged
@@ -191,6 +192,26 @@ MonoBehaviour:
   PMM: {fileID: 0}
   timePickUp: 1
   timeScript: {fileID: 0}
+  SoundDj: {fileID: 0}
+--- !u!95 &3261367582461435845
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158611657601300116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b868772ab1e9a35479896ebc3e5058d4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5483463065950225616
 GameObject:
   m_ObjectHideFlags: 0
