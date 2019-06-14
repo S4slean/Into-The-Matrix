@@ -51,7 +51,7 @@ public class  PushableBloc : MonoBehaviour
 		felt = true;
 		yield return new WaitForSeconds(.05f);
 		transform.parent = null;
-		transform.position = new Vector3(Mathf.Round(tempPos.x / 2) * 2, 0, (Mathf.Round((tempPos.z) / 2) * 2) - 1);
+		transform.position = new Vector3(Mathf.Round(tempPos.x / 2) * 2, 0, (Mathf.Round((tempPos.z+.1f) / 2) * 2) - 1);
 		Debug.Log(transform.position);
 		anim.Play("Fall");
 	}

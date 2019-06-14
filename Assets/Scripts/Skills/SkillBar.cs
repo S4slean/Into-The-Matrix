@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SkillBar : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class SkillBar : MonoBehaviour
 	//Création du boutton
     public void CreateButton(Skill skill)
 	{
-		if (PlayerSkills.Count > 3)							// si le joueur à déjà 3 skill ne fait rien
-			return;
+		//if (PlayerSkills.Count > 3)							// si le joueur à déjà 3 skill ne fait rien
+		//	return;
+	
 
 		bool gotThatSkill = false;
 
@@ -27,6 +29,7 @@ public class SkillBar : MonoBehaviour
 
 			if(PlayerSkills[i].name == skill.name)
 			{
+
 				gotThatSkill = true;
 
 				if (PlayerSkills[i].nbOfUse < 3)
@@ -90,7 +93,8 @@ public class SkillBar : MonoBehaviour
 
         skillsShop = FindObjectOfType<PNJ_DoorKeeper_MySkills>();
         //buttonsShop = GameObject.Find("HubUIv2").transform.GetChild(0).GetChild(4).GetChild(0).GetChild(0).GetComponent<PNJ_Merchant_InstantiateButtons>();
-        skillsShop.UpdateMySkillNumber();
+		if(SceneManager.GetActiveScene().name == "Lobby")
+			skillsShop.UpdateMySkillNumber();
         //buttonsShop.ResetShopButtons();
     }
 }

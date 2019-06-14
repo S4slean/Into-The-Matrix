@@ -40,6 +40,8 @@ public class PlayerStats : MonoBehaviour
     public int runePieces = 0;
     public int runePiecesToGet;
 
+    public Vector3 squareRoomEntered;
+
 	private void Start()
 	{
 		money = GetComponent<PlayerMoneyManager>();
@@ -78,7 +80,7 @@ public class PlayerStats : MonoBehaviour
         loadingScreen.GetComponent<Animator>().Play("Appear");
         yield return new WaitForSeconds(0.5f);
         anim.Play("idle");
-        transform.position = new Vector3(-45, 0, -4);
+        transform.position = squareRoomEntered;
         transform.LookAt(transform.position + Vector3.forward);
         yield return new WaitForSeconds(0.7f);
         loadingScreen.GetComponent<Animator>().Play("Disappear");
