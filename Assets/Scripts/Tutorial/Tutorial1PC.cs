@@ -17,6 +17,10 @@ public class Tutorial1PC : MonoBehaviour
     public GameObject UI; // L'UI du donjon
     public Animator loadingScreen; // Animator de l'écran de chargement
 
+	[Header ("Here")]
+	public List<GameObject> UitoActive;
+	public GameObject dmg;
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("TutoDone") != true)
@@ -41,9 +45,11 @@ public class Tutorial1PC : MonoBehaviour
         if (other.name == "AttackCollider")
         {
 
+
             if (dialogue_pc.index > dialogue_pc.dialogueLines.Count - 1)
             {
                 Debug.Log("Player get teleported to the tutorial dungeon");
+
                 StartCoroutine("TutoTP");
             }
         }
@@ -58,10 +64,13 @@ public class Tutorial1PC : MonoBehaviour
         machine.SetActive(true); // la machine se matérialise 
         yield return new WaitForSeconds(1);
 
-        // la machine fait son anim de TP ?
+		// la machine fait son anim de TP ?
+		foreach (GameObject obj in UitoActive)
+		{
+			obj.SetActive(true);
+		}
 
-
-        loadingScreen.Play("Appear");// le joueur est téléporté (fade in écran noir) (fade out écran noir)
+		loadingScreen.Play("Appear");// le joueur est téléporté (fade in écran noir) (fade out écran noir)
         yield return new WaitForSeconds(1);
         player.transform.position = tpPoint.position;
         player.transform.rotation = Quaternion.identity;
