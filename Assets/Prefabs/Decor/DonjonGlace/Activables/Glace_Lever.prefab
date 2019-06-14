@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7371343708639449483}
   - component: {fileID: 7371343708639449482}
   - component: {fileID: 7371343708639449485}
-  - component: {fileID: 7371343708639449480}
   - component: {fileID: 6180672071120719738}
   - component: {fileID: 2398035986710639256}
   m_Layer: 0
@@ -61,7 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e4e80f18fcdc7439d17ed10a8343d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 7371343708639449480}
+  anim: {fileID: 8024258887022848592}
+  changer: {fileID: 0}
   Activate:
     m_PersistentCalls:
       m_Calls:
@@ -78,25 +78,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!95 &7371343708639449480
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7371343708639449484}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 291b9490647b8f64f9e2156bde159ec6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &6180672071120719738
 AudioSource:
   m_ObjectHideFlags: 0
@@ -298,10 +279,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7371343708639449483}
     m_Modifications:
-    - target: {fileID: 100010, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
-      propertyPath: m_Name
-      value: Tile_Levier
-      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -346,27 +323,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 100010, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
+      propertyPath: m_Name
+      value: Tile_Levier
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 2100000, guid: 67e07b2e0156bae4e84a326d815f1d32, type: 2}
-    - target: {fileID: 2300006, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 60715602c2ab82848a5613cf0efe4d52, type: 2}
+      objectReference: {fileID: 9100000, guid: 291b9490647b8f64f9e2156bde159ec6, type: 2}
     - target: {fileID: 2300000, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d552ed6457766f649aa69a8abdca8523, type: 2}
+    - target: {fileID: 2300002, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 67e07b2e0156bae4e84a326d815f1d32, type: 2}
     - target: {fileID: 2300004, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d552ed6457766f649aa69a8abdca8523, type: 2}
+    - target: {fileID: 2300006, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60715602c2ab82848a5613cf0efe4d52, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3edade4753e6d11419cc234d1eebd756, type: 3}
 --- !u!4 &8024258887015351738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400010, guid: 3edade4753e6d11419cc234d1eebd756,
+    type: 3}
+  m_PrefabInstance: {fileID: 8024258887015489328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8024258887022848592 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 3edade4753e6d11419cc234d1eebd756,
     type: 3}
   m_PrefabInstance: {fileID: 8024258887015489328}
   m_PrefabAsset: {fileID: 0}
