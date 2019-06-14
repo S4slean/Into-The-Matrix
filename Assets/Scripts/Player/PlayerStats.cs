@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
 	public GameObject minimap;
 	public GameObject loadingScreen;
 	public TempsPlongee timebar;
-	public GameObject startingRoom;
+	public Vector2 startingRoom;
 	public GameObject dmgUI;
 
 
@@ -42,9 +42,12 @@ public class PlayerStats : MonoBehaviour
 
     public Vector3 squareRoomEntered;
 
-	private void Start()
+    public testson SoundDj;
+
+    private void Start()
 	{
-		money = GetComponent<PlayerMoneyManager>();
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+        money = GetComponent<PlayerMoneyManager>();
         health = MaxHealth;
         
 		timebar = FindObjectOfType<TempsPlongee>();
@@ -53,18 +56,31 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+	bool positionned = false;
+
 	public void SetStartPos()
 	{
+		if (positionned)
+			return;
+
+		positionned = true;
+
 		anim.Play("idle");
 		Debug.Log("StartPosnotSet");
 		if (startingRoom != null)
 		{
 
 			Debug.Log("PlayerMoved");
-			RectTransform rTransform = startingRoom.GetComponent<RectTransform>();
-			transform.position = new Vector3(rTransform.anchoredPosition.x / 21 * 14, 0, rTransform.anchoredPosition.y / 31.5f * 20);
+			
+			transform.position = new Vector3(startingRoom.x / 21 * 14, 0, (startingRoom.y / 31.5f * 20) -5);
 		}
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
+	}
+
+	IEnumerator PosSetup()
+	{
+		yield return new WaitForSeconds(2f);
+		positionned = false;
 	}
 
 	public void CheckDeath()
@@ -119,10 +135,15 @@ public class PlayerStats : MonoBehaviour
 	{
         if (!counter)
         {
+            SoundDj.HeroDamage.Play();
 			//SPAWN PARTICLE -5S
 
             //health -= dmg;
             anim.CrossFade("TakeDamage", .1f);
+			if(timebar == null)
+			{
+				timebar = FindObjectOfType<TempsPlongee>();
+			}
 			timebar.LoseTime(dmg);
 			GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 			dmgUI.SetActive(true);
@@ -159,6 +180,7 @@ public class PlayerStats : MonoBehaviour
 
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
+		timebar = FindObjectOfType<TempsPlongee>();
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
 		//overrides = new List<DungeonOverride>();

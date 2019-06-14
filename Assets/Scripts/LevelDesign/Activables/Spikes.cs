@@ -17,8 +17,11 @@ public class Spikes : MonoBehaviour
 
 	[SerializeField] int count =0;
 
+    public AudioSource Spike;
+
 	private void Start()
-	{ 
+	{
+       
 		anim = GetComponent<Animator>();
 		StartCoroutine(Delay());
 	}
@@ -35,6 +38,7 @@ public class Spikes : MonoBehaviour
 
 	public void Activate()
 	{
+        Spike.Play();
 		isActive = !isActive;	
 		anim.SetBool("isActive", isActive);
 		count = 0;

@@ -44,8 +44,10 @@ public class simpleEnemy : MonoBehaviour
 	public List<Skill> meleeSkills;
 	public List<Skill> rangedSkills;
 
+    [Header("Son")]
+    public testson SoundDj;
 
-	private void Start()
+    private void Start()
 	{
 		player = FindObjectOfType<CharaController>().gameObject;
 		state = State.wait;
@@ -129,6 +131,7 @@ public class simpleEnemy : MonoBehaviour
 	{
 		if(health < 1)
 		{
+            SoundDj.Deathrobot.Play();
 			Debug.Log("aie!");
 			gameObject.SetActive(false);
 		}

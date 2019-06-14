@@ -6,11 +6,19 @@ public class TP : MonoBehaviour
 {
 	public GameObject linkedTP;
 	public bool active = true;
+    public testson SoundDj;
 
-	private void OnTriggerStay(Collider other)
+
+    private void Start()
+    {
+        SoundDj = GameObject.FindGameObjectWithTag("SoundDj").GetComponent<testson>();
+
+    }
+    private void OnTriggerStay(Collider other)
 	{
 		if (active)
 		{
+            SoundDj.TP.Play();
 			if (other.GetComponent<CharaController>() != null || other.tag == "Projectile")
 				StartCoroutine(DelayTP(other.transform));
 			if (other.tag == "Enemy")
