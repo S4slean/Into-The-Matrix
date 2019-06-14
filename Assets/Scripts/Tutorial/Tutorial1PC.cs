@@ -17,6 +17,11 @@ public class Tutorial1PC : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("TutoDone") != true)
+        {
+            PlayerPrefs.SetInt("TutoDone", 0);
+        }
+
         if (PlayerPrefs.GetInt("TutoDone") != 1)
         {
             Debug.Log("You will play the tutorial now");
