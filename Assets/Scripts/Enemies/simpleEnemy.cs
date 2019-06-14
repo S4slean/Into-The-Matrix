@@ -46,6 +46,7 @@ public class simpleEnemy : MonoBehaviour
 
     [Header("Son")]
     public testson SoundDj;
+	public Animator anim;
 
     private void Start()
 	{
@@ -184,7 +185,7 @@ public class simpleEnemy : MonoBehaviour
 		if(!unableToRotate)
 			transform.rotation = Quaternion.LookRotation(axe);
 
-
+		anim.Play("Walk");
 		////Déplacement du perso sur chaque frame pendant "moveStep" frame
 		for (int i = 0; i < Mathf.Abs(moveStep); i++)
 		{

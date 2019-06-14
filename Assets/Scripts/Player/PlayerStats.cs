@@ -77,6 +77,7 @@ public class PlayerStats : MonoBehaviour
 		startingRoom = Vector3.zero;
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
 		minimap.SetActive(true);
+		StartCoroutine(PosSetup());
 	}
 
 	IEnumerator PosSetup()

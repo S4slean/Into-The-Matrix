@@ -12,15 +12,16 @@ public class EnemyPatrol : MonoBehaviour
 	public bool attack = false;
     public simpleEnemy enemyScript;
 	CharaController player;
-	Animator anim;
+	public Animator anim;
     Vector3 startPos;
 	Vector3 Dest;
+
 
     void Start()
 	{
 		player = FindObjectOfType<CharaController>();
 		enemyScript = GetComponent<simpleEnemy>();
-		anim = GetComponent<Animator>();
+		
         startPos = transform.position;
 		nextWayPoint = PatrolWayPoints[index];
 		Dest = startPos + nextWayPoint;
