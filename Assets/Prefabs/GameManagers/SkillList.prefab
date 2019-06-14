@@ -62,9 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff488d6e237fd04f9a023ae4a763559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Fire Ball
+  name: Shock beam
   icon: {fileID: 21300000, guid: ed892e5932238cd4d8f37d4efd014087, type: 3}
-  description: Throws a Plasma Ball at your enemy !
+  description: 'Throws a Shock Beam at your enemy ! Useful for the levers too ! '
   itemSlot: 0
   charge: 1
   cost: 50
@@ -105,6 +105,7 @@ MonoBehaviour:
   counterTimerMaxInTicks: 20
   counterTimerInTicks: 0
   playerStats: {fileID: 0}
+  SoundDj: {fileID: 0}
   isActive: 0
 --- !u!114 &5154938837723931560
 MonoBehaviour:
