@@ -70,7 +70,9 @@ public class RoomTemplates : MonoBehaviour
 				Debug.Log("new Dungeon !");
 				Debug.Log(System.DateTime.Now.Day);
 				seedGenerated = false;
-				FindObjectOfType<minimap>().ClearMap();
+				minimap map = Resources.FindObjectsOfTypeAll<minimap>()[0];
+				map.transform.parent.gameObject.SetActive(true);
+				map.ClearMap();
 				FindObjectOfType<PlayerStats>().overrides.Clear();
 
 			}

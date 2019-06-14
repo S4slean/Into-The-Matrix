@@ -21,6 +21,8 @@ public class IceTile : MonoBehaviour
 			other.GetComponent<CharaController>().anim.SetBool("Slide", true);
 			other.GetComponent<CharaController>().anim.CrossFade("Slide", .2f);
 		}
+
+		
 	}
 
 	private void OnTriggerStay(Collider other)

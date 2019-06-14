@@ -3261,6 +3261,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraTriggerMain
+      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3316,10 +3321,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerMain
+      propertyPath: m_Size.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -3327,11 +3332,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!114 &673950278 stripped
@@ -5375,6 +5375,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: minimap
+      value: 
+      objectReference: {fileID: 875551919}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 8522860418090502125}
+    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: dmgUI
+      value: 
+      objectReference: {fileID: 1847825873}
     - target: {fileID: 3487912421492915324, guid: 307d6ebf27bc90d439fc9113dfd69c76,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5430,27 +5442,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 653205175, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
+      propertyPath: CoinsText
+      value: 
+      objectReference: {fileID: 1472567942}
     - target: {fileID: 274159437709956833, guid: 307d6ebf27bc90d439fc9113dfd69c76,
         type: 3}
       propertyPath: m_WarningMessage
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: minimap
-      value: 
-      objectReference: {fileID: 875551919}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: loadingScreen
-      value: 
-      objectReference: {fileID: 8522860418090502125}
-    - target: {fileID: 194799647, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: dmgUI
-      value: 
-      objectReference: {fileID: 1847825873}
-    - target: {fileID: 653205175, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
-      propertyPath: CoinsText
-      value: 
-      objectReference: {fileID: 1472567942}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 307d6ebf27bc90d439fc9113dfd69c76, type: 3}
 --- !u!4 &1255428267 stripped
@@ -6288,6 +6288,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraTriggerSide
+      objectReference: {fileID: 0}
     - target: {fileID: 5378496662245879200, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6343,10 +6348,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8031214596103297822, guid: e193762e3972d4446b73532c159ddf57,
+    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
-      propertyPath: m_Name
-      value: CameraTriggerSide
+      propertyPath: m_Size.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2237776762074478974, guid: e193762e3972d4446b73532c159ddf57,
         type: 3}
@@ -6354,11 +6359,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7f00d69182c767e45a47d7ad012c68f8,
         type: 3}
-    - target: {fileID: 6905466451323932040, guid: e193762e3972d4446b73532c159ddf57,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e193762e3972d4446b73532c159ddf57, type: 3}
 --- !u!4 &1511091641 stripped
@@ -8390,6 +8390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1790703065}
+  - component: {fileID: 1790703066}
   m_Layer: 0
   m_Name: '---------------MAIN--------------'
   m_TagString: Untagged
@@ -8411,6 +8412,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1790703066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790703064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad7a80776db23a4ea27582b15a29a04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1798495031
 PrefabInstance:
   m_ObjectHideFlags: 0
