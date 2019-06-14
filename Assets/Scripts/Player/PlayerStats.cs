@@ -213,7 +213,8 @@ public class PlayerStats : MonoBehaviour
     public IEnumerator FallInHole()
     {
         //GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Appear");
-        yield return new WaitForSeconds(0.2f);
+        StartCoroutine(GetComponent<CharaController>().FreezePlayer(0.25f));
+        yield return new WaitForSeconds(0.1f);
         TakeDamage(10);
         transform.position = squareRoomEntered;
         transform.LookAt(transform.position + Vector3.forward);

@@ -364,7 +364,6 @@ public class CharaController : MonoBehaviour
 
 	public IEnumerator FreezePlayer(float duration)
 	{
-		Debug.Log("freeeze " + duration);
 		if (freezing)
 			yield break;
 
