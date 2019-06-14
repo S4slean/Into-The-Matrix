@@ -852,7 +852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 1.575}
+  m_AnchoredPosition: {x: 0, y: 1.574997}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2090213035
@@ -2001,6 +2001,10 @@ MonoBehaviour:
   PauseMenu: {fileID: 2807159824067587320}
   PauseButton: {fileID: 6125497700902439789}
   ResumeButton: {fileID: 3498396612090508504}
+  mixer: {fileID: 0}
+  master: {fileID: 0}
+  music: {fileID: 0}
+  sfx: {fileID: 0}
 --- !u!95 &1641797782
 Animator:
   serializedVersion: 3
@@ -2198,7 +2202,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 0911b7a001b50af4f912b195b6cf52d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60c3e16b0b634c04e967eac319a6a045, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3124,7 +3128,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ed833347fc692814c8ca78b4c6bb1961, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2be2f241d9fb31d458d747c27018e992, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4451,11 +4455,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3574417311935525337}
     m_Modifications:
-    - target: {fileID: 7447258838433527874, guid: f8cd790be38834049ba5cd6c1cb7b2f6,
-        type: 3}
-      propertyPath: m_Name
-      value: timeBar
-      objectReference: {fileID: 0}
     - target: {fileID: 7447258838433527875, guid: f8cd790be38834049ba5cd6c1cb7b2f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4560,6 +4559,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447258838433527874, guid: f8cd790be38834049ba5cd6c1cb7b2f6,
+        type: 3}
+      propertyPath: m_Name
+      value: timeBar
       objectReference: {fileID: 0}
     - target: {fileID: 7447258838433527872, guid: f8cd790be38834049ba5cd6c1cb7b2f6,
         type: 3}
