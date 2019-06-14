@@ -216,6 +216,8 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         TakeDamage(10);
         transform.position = squareRoomEntered;
+        transform.LookAt(transform.position + Vector3.forward);
+        GetComponent<CharaController>().fell = false;
         //GameObject.FindGameObjectWithTag("Loading").GetComponent<Animator>().Play("Disappear");
     }
 }
