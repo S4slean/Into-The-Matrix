@@ -56,8 +56,15 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+	bool positionned = false;
+
 	public void SetStartPos()
 	{
+		if (positionned)
+			return;
+
+		positionned = true;
+
 		anim.Play("idle");
 		Debug.Log("StartPosnotSet");
 		if (startingRoom != null)
@@ -68,6 +75,12 @@ public class PlayerStats : MonoBehaviour
 			transform.position = new Vector3(startingRoom.x / 21 * 14, 0, (startingRoom.y / 31.5f * 20) -5);
 		}
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
+	}
+
+	IEnumerator PosSetup()
+	{
+		yield return new WaitForSeconds(2f);
+		positionned = false;
 	}
 
 	public void CheckDeath()
@@ -127,6 +140,10 @@ public class PlayerStats : MonoBehaviour
 
             //health -= dmg;
             anim.CrossFade("TakeDamage", .1f);
+			if(timebar == null)
+			{
+				timebar = FindObjectOfType<TempsPlongee>();
+			}
 			timebar.LoseTime(dmg);
 			GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 			dmgUI.SetActive(true);
@@ -163,6 +180,7 @@ public class PlayerStats : MonoBehaviour
 
 		anim.Play("idle");
 		GetComponent<CharaController>().enabled = true;
+		timebar = FindObjectOfType<TempsPlongee>();
 		timebar.timer = timebar.timeMax;
 		timebar.plongee = false;
 		//overrides = new List<DungeonOverride>();
