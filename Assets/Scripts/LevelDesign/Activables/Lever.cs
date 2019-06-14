@@ -23,9 +23,6 @@ public class Lever : MonoBehaviour
         Activate.Invoke();
         anim.SetTrigger("Impulse");
 		isActive = !isActive;
-		if (isActive)
-			changer.ChangeMat(changer.green);
-		else
-			changer.ChangeMat(changer.red);
+
     }
 }

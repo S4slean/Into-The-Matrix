@@ -22,8 +22,8 @@ public class Hook : Skill
 
         if (cooldown > 0)
         {
-            if (user.GetComponent<SimpleEnemy>() != null)
-                user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+            if (user.GetComponent<simpleEnemy>() != null)
+                user.GetComponent<simpleEnemy>().StartCoroutine(user.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
             return;
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
 	Animator anim;
+	public Animator meshAnim;
 
 	public bool isActive = true;
 	public bool cycling = true;
@@ -37,6 +38,11 @@ public class Spikes : MonoBehaviour
 		isActive = !isActive;	
 		anim.SetBool("isActive", isActive);
 		count = 0;
+	}
+
+	public void Anticipation()
+	{
+		meshAnim.Play("Play");
 	}
 
 	IEnumerator Delay()

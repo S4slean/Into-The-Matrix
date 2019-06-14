@@ -21,7 +21,7 @@ public class RoomCameraTrigger : MonoBehaviour
 
 	public bool isTimeSafe = false;
 
-	
+    public PlayerStats playerStatsScript;
 
 	public List<GameObject> traps;
 	public List<GameObject> enemies;
@@ -32,6 +32,7 @@ public class RoomCameraTrigger : MonoBehaviour
 		minimapRoomPrefab = Resources.Load("minimapRoom") as GameObject;
 		roomTemplate = FindObjectOfType<RoomTemplates>();
 		timeBar = FindObjectOfType<TempsPlongee>();
+        playerStatsScript = FindObjectOfType<PlayerStats>();
 
 		
 	}
@@ -39,12 +40,14 @@ public class RoomCameraTrigger : MonoBehaviour
 	//Si le joueur entre dans le trigger: désactive la virtual cam actuelle et active celle de la salle
 	private void OnTriggerEnter(Collider other)
 	{
+		minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
 
-
-		if(other.tag == "Player" )
+		if (other.tag == "Player" )
 		{
 			if (other.GetComponent<DealDamage>() != null || other.GetComponent<Projectile>() != null)
 				return;
+
+            StartCoroutine(GetSquareEntered());
 
 			foreach(SpawnEnnemis spawner in enemySpawn)
 			{
@@ -141,7 +144,12 @@ public class RoomCameraTrigger : MonoBehaviour
 	{
 		Instantiate(Resources.Load("LD/Spawner") as GameObject, transform.position, Quaternion.identity);
 		Destroy(transform.parent.gameObject);
-
-
 	}
+
+    public IEnumerator GetSquareEntered()
+    {
+        yield return new WaitForSecondsRealtime(TickManager.tickDuration*0.75f);
+
+        playerStatsScript.squareRoomEntered = new Vector3(Mathf.Ceil(playerStatsScript.transform.position.x / 2) * 2, 0, (Mathf.Ceil((playerStatsScript.transform.position.z) / 2) * 2) - 1);
+    }
 }

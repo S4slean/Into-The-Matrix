@@ -51,6 +51,8 @@ public class CharaController : MonoBehaviour
 
     public bool moveIsOver;
 
+    public bool fell = false;
+
 	private void Awake()
 	{
 		if (FindObjectsOfType<CharaController>().Length > 1)
@@ -189,9 +191,14 @@ public class CharaController : MonoBehaviour
 	{
 		if(!Physics.Raycast(transform.position + .1f * Vector3.up, Vector3.down,2 ) && !freezing && !hooked/* && anim.GetCurrentAnimatorStateInfo(0).IsName("Fall")*/)
 		{
-			anim.CrossFade("Fall", .1f);
-			GetComponent<PlayerStats>().KillPlayer();
-			GetComponent<PlayerStats>().CheckDeath();
+            if (!fell)
+            {
+                Debug.Log("Il tombe");
+                anim.CrossFade("Fall", .1f);
+                StartCoroutine(GetComponent<PlayerStats>().FallInHole());
+                GetComponent<PlayerStats>().CheckDeath();
+                fell = true;
+            }
 		}
 	}
 

@@ -21,8 +21,8 @@ public class GlitchOut : Skill
 
             if (cooldown > 0)
             {
-                if (user.GetComponent<SimpleEnemy>() != null)
-                    user.GetComponent<SimpleEnemy>().StartCoroutine(user.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+                if (user.GetComponent<simpleEnemy>() != null)
+                    user.GetComponent<simpleEnemy>().StartCoroutine(user.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
                 return;
             }
 
@@ -89,8 +89,8 @@ public class GlitchOut : Skill
         collider.enabled = true;
         this.skillUser.GetComponent<CharaController>().SetPlayerMovement(true, true);
 
-        if (skillUser.GetComponent<SimpleEnemy>() != null)
-            skillUser.GetComponent<SimpleEnemy>().StartCoroutine(skillUser.GetComponent<SimpleEnemy>().WaitForNewCycle(enemyRecoverTime));
+        if (skillUser.GetComponent<simpleEnemy>() != null)
+            skillUser.GetComponent<simpleEnemy>().StartCoroutine(skillUser.GetComponent<simpleEnemy>().WaitForNewCycle(enemyRecoverTime));
 
         isActive = false;
         PowerUsed();

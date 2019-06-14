@@ -10,7 +10,7 @@ public class EnemyPatrol : MonoBehaviour
     public int index = 0;
     public bool isMoving = false;
 	public bool attack = false;
-    public SimpleEnemy enemyScript;
+    public simpleEnemy enemyScript;
 	CharaController player;
 	Animator anim;
     Vector3 startPos;
@@ -19,7 +19,7 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
 	{
 		player = FindObjectOfType<CharaController>();
-		enemyScript = GetComponent<SimpleEnemy>();
+		enemyScript = GetComponent<simpleEnemy>();
 		anim = GetComponent<Animator>();
         startPos = transform.position;
 		nextWayPoint = PatrolWayPoints[index];
@@ -112,5 +112,10 @@ public class EnemyPatrol : MonoBehaviour
         }
 
         yield return new WaitForSeconds(TickManager.tickDuration);
+    }
+    
+    public void OnDisable()
+    {
+        TickManager.OnTick -= EnemyDecision;
     }
 }

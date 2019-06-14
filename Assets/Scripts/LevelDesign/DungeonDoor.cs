@@ -21,13 +21,13 @@ public class DungeonDoor : MonoBehaviour
 		player = FindObjectOfType<CharaController>().transform;
 		loadingScreen = GameObject.FindGameObjectWithTag("Loading");
 		lifeBar = GameObject.FindGameObjectWithTag("LifeBar");
-		dJSetupUI = Resources.FindObjectsOfTypeAll<DJSetupUI>()[0].gameObject;
-		dJSetupUI.GetComponent<DJSetupUI>().DJdoor = this;
 		minimapBck = GameObject.FindGameObjectWithTag("minimap");
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
+		dJSetupUI = Resources.FindObjectsOfTypeAll<DJSetupUI>()[0].gameObject;
+		dJSetupUI.GetComponent<DJSetupUI>().DJdoor = this;
 		if(other.tag == "Player" && other.GetComponent<DealDamage>() != null)
 		{
 			player.GetComponent<CharaController>().StartCoroutine(player.GetComponent<CharaController>().FreezePlayer(1));

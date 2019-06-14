@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Tutorial1PC : MonoBehaviour
@@ -11,12 +12,18 @@ public class Tutorial1PC : MonoBehaviour
     public GameObject cam; // la caméra
     public Transform tpPoint; // le point où le joueur est tp dans le donjon
     public GameObject canvasPNJ; // le canvas du dialogue du pnj
+    public Text lastText; // Canvas du derier hint
     public GameObject machine; // la machine
     public GameObject UI; // L'UI du donjon
     public Animator loadingScreen; // Animator de l'écran de chargement
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("TutoDone") != true)
+        {
+            PlayerPrefs.SetInt("TutoDone", 0);
+        }
+
         if (PlayerPrefs.GetInt("TutoDone") != 1)
         {
             Debug.Log("You will play the tutorial now");
@@ -69,6 +76,7 @@ public class Tutorial1PC : MonoBehaviour
 
     public void EndTutorial()
     {
+        lastText.text = "";
         PlayerPrefs.SetInt("TutoDone",1);
     }
 

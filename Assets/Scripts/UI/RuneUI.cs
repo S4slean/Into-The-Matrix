@@ -25,6 +25,7 @@ public class RuneUI : MonoBehaviour
 	private void OnEnable()
 	{
 		stats = FindObjectOfType<PlayerStats>();
+		FindObjectOfType<CharaController>().enabled = false;
 
 		GameObject minimap = Resources.FindObjectsOfTypeAll<minimap>()[0].gameObject;
 		instance = Instantiate(minimap, minimapAnchor.transform);
@@ -53,6 +54,7 @@ public class RuneUI : MonoBehaviour
 
 	private void OnDisable()
 	{
+		FindObjectOfType<CharaController>().enabled = true;
 		Destroy(instance);
 	}
 
