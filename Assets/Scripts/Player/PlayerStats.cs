@@ -135,6 +135,10 @@ public class PlayerStats : MonoBehaviour
 	{
         if (!counter)
         {
+			if(SoundDj == null)
+			{
+				SoundDj = FindObjectOfType<testson>();
+			}
             SoundDj.HeroDamage.Play();
 			//SPAWN PARTICLE -5S
 
