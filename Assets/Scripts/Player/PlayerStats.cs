@@ -74,7 +74,9 @@ public class PlayerStats : MonoBehaviour
 			
 			transform.position = new Vector3(startingRoom.x / 21 * 14, 0, (startingRoom.y / 31.5f * 20) -5);
 		}
+		startingRoom = Vector3.zero;
 		loadingScreen.GetComponent<Animator>().Play("Disappear");
+		minimap.SetActive(true);
 	}
 
 	IEnumerator PosSetup()
